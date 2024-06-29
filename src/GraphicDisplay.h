@@ -8,7 +8,7 @@
 #ifndef GRAPHICDISPLAY_H_
 #define GRAPHICDISPLAY_H_
 
-/**
+/*
  * Includes
  */
 
@@ -22,7 +22,33 @@
 #include <stdbool.h>
 #include <string.h>
 
-/**
+/*
+ * Check if gd_config.h exists, otherwise, we load a 'default' configuration
+ *
+ * NOTE: Some compilers can`t support this directive, but the following list can support.
+ * Clang
+ * GCC from 5.X
+ * Visual Studio from VS2015 Update 2
+ *
+ * If your compiler give an error in this line, insert the NO_SUPPORT_FOR_HAS_INCLUDED
+ * in the preprocessor of your compiler and you need to create the "gd_config.h" header file
+ */
+#ifndef NO_SUPPORT_FOR_HAS_INCLUDED
+	#if __has_include("gd_config.h")
+		#include "gd_config.h"
+	#else
+		#define GD_INCLUDE_FONT_6x8
+		#define GD_INCLUDE_FONT_7x10
+		#define GD_INCLUDE_FONT_11x18
+		#define GD_INCLUDE_FONT_16x26
+		#define GD_INCLUDE_FONT_16x24
+		#define GD_INCLUDE_FONT_16x15
+	#endif
+#else
+	#include "gd_config.h"
+#endif
+
+/*
  * Macros
  */
 
@@ -31,7 +57,7 @@
 #define GD_FXN_SET_MTX_LOCK(HANDLE, MTXLOCK)
 #define GD_FXN_SET_MTX_UNLOCK(HANDLE, MTXUNLOCK)
 
-/**
+/*
  * Enumerates
  */
 
@@ -45,7 +71,7 @@ typedef enum{
 	GD_WHITE
 }gd_color_e;
 
-/**
+/*
  * Structs
  */
 
@@ -90,10 +116,10 @@ typedef struct{
 	}_intern;
 }gd_t;
 
-/**
+/*
  * Publics
  */
-gd_error_e GD_Init(gd_t *Gd);
+gd_error_e GD_Init(gd_t *Gd, const uint8_t *FrameBuffer);
 gd_error_e GD_Fill(gd_t *Gd, gd_color_e color);
 gd_error_e GD_UpdateScreen(gd_t *Gd);
 gd_error_e GD_DrawPixel(gd_t *Gd,  uint32_t x, uint32_t y, gd_color_e color);

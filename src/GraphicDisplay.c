@@ -69,13 +69,22 @@ gd_error_e ssd1306_FillBuffer(gd_t *Gd, uint8_t* buf, uint32_t len) {
 }
 
 /* Initialize the oled screen */
-gd_error_e ssd1306_Init(gd_t *Gd) {
-	// TODO Asserts
+gd_error_e GD_Init(gd_t *Gd, const uint8_t *FrameBuffer) {
+	// Assert if some parameter is invalid
+	assert(Gd != NULL);
+	assert(Gd->u32Width != 0);
+	assert(Gd->u32Height != 0);
+	assert(Gd->disp != NULL);
+	assert(Gd->disp->pHandle != NULL);
+	assert(Gd->disp->fxnWriteDisp != NULL);
 
 	// Allocate buffer if doesn`t exitsts
 	Gd->_intern.u32BufferLen = Gd->u32Height * Gd->u32Width / 8;
-	if (Gd->_intern.pu8FrameBuffer == NULL){
+	if (FrameBuffer == NULL){
 		Gd->_intern.pu8FrameBuffer = (uint8_t*)malloc((size_t)Gd->_intern.u32BufferLen);
+	}
+	else{
+		Gd->_intern.pu8FrameBuffer = (uint8_t*)FrameBuffer;
 	}
 	assert(Gd->_intern.pu8FrameBuffer != NULL);
 
@@ -474,16 +483,16 @@ gd_error_e GD_DrawRectangle(gd_t *Gd, uint32_t x1, uint32_t y1, uint32_t x2, uin
 	assert(Gd != NULL);
 	assert(Gd->_intern.bInitialized == true);
 
-	if (GD_Line(Gd, x1,y1,x2,y1,color) != GD_OK){
+	if (GD_Line(Gd, x1, y1, x2, y1, color) != GD_OK){
 		return GD_FAIL;
 	}
-	if (GD_Line(Gd, x2,y1,x2,y2,color) != GD_OK){
+	if (GD_Line(Gd, x2, y1, x2, y2, color) != GD_OK){
 		return GD_FAIL;
 	}
-	if (GD_Line(Gd, x2,y2,x1,y2,color) != GD_OK){
+	if (GD_Line(Gd, x2, y2, x1, y2, color) != GD_OK){
 		return GD_FAIL;
 	}
-	if (GD_Line(Gd, x1,y2,x1,y1,color) != GD_OK){
+	if (GD_Line(Gd, x1, y2, x1, y1, color) != GD_OK){
 		return GD_FAIL;
 	}
 
