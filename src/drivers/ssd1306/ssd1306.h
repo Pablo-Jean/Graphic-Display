@@ -30,6 +30,9 @@
 #define SSD1306_OK				0
 #define SSD1306_FAIL			1
 
+#define SSD1306_COLOR_BLACK		0
+#define SSD1306_COLOR_WHITE		1
+
 /*
  * Enumerates
  */
@@ -107,12 +110,6 @@ typedef struct{
 	fxn1306spi_write spiWrite;
 }ssd1306_params_t;
 
-typedef struct{
-	uint8_t X;
-	uint8_t Y;
-	bool color;
-}ssd1306_write_info_t;
-
 /*
  * Publics
  */
@@ -127,8 +124,8 @@ uint8_t SSD1306_SetDisplayOn(ssd1306_t *ssd1306, bool on);
 
 uint8_t SSD1306_Refresh(ssd1306_t *ssd1306);
 
-uint8_t SSD1306_Write(ssd1306_t *ssd1306, ssd1306_write_info_t *WriteInfo);
+uint8_t SSD1306_Write(ssd1306_t *ssd1306, uint32_t x, uint32_t y, bool color);
 
-uint8_t SSD1306_Clear(ssd1306_t *ssd1306);
+uint8_t SSD1306_Fill(ssd1306_t *ssd1306, uint8_t color);
 
 #endif /* DRIVERS_SSD1306_SSD1306_H_ */

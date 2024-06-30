@@ -22,7 +22,9 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "drivers/ssd1306/ssd1306.h"
+
 #include "GraphicDisplay.h"
+#include "GraphicDisplay_Fonts.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -111,11 +113,13 @@ int main(void)
   MX_I2C3_Init();
   /* USER CODE BEGIN 2 */
   SSD1306_Init(&Ssd1306, &Ssd1306_Params);
-  SSD1306_Clear(&Ssd1306);
+  SSD1306_Fill(&Ssd1306, 0);
   SSD1306_Refresh(&Ssd1306);
 
   GD_Init(&Graphic, &Graphic_Params);
-  GD_DrawCircle(&Graphic, 20, 20, 5, GD_WHITE);
+  GD_SetCursor(&Graphic, 2, 10);
+  GD_WriteString(&Graphic, "Ola Mundo", Font_11x18, GD_WHITE);
+  GD_DrawCircle(&Graphic, 40, 55, 5, GD_WHITE);
   GD_UpdateScreen(&Graphic);
   /* USER CODE END 2 */
 

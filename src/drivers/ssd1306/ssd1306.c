@@ -287,7 +287,7 @@ uint8_t SSD1306_SetDisplayOn(ssd1306_t *ssd1306, bool on){
 }
 
 uint8_t SSD1306_Refresh(ssd1306_t *ssd1306){
-	uint32_t i, width, heigth, offset;
+	uint32_t i, width, offset;
 	uint8_t *FrameBuffer;
 	uint8_t offsetUpper, offsetLower;
 
@@ -302,7 +302,6 @@ uint8_t SSD1306_Refresh(ssd1306_t *ssd1306){
     //  * 128px  ==  16 pages
 	FrameBuffer = ssd1306->_intern.pu8FrameBuffer;
 	width = ssd1306->_intern.u32Width;
-	heigth = ssd1306->_intern.u32Heigth;
 
 	offset = ssd1306->_intern.u32Offset;
 	offsetUpper = ((offset >> 4) & 0x7);
@@ -319,23 +318,21 @@ uint8_t SSD1306_Refresh(ssd1306_t *ssd1306){
     return SSD1306_OK;
 }
 
-uint8_t SSD1306_Write(ssd1306_t *ssd1306, ssd1306_write_info_t *WriteInfo){
+uint8_t SSD1306_Write(ssd1306_t *ssd1306, uint32_t x, uint32_t y, bool color){
 	uint8_t *FrameBuffer;
-	uint32_t x, y, width;
+	uint32_t width;
 
 	assert(ssd1306 != NULL);
 	assert(ssd1306->_intern.bInitialized == true);
 	assert(ssd1306->_intern.pu8FrameBuffer != NULL);
-	assert(WriteInfo->X < ssd1306->_intern.u32Width);
-	assert(WriteInfo->Y < ssd1306->_intern.u32Heigth);
+	assert(x < ssd1306->_intern.u32Width);
+	assert(y < ssd1306->_intern.u32Heigth);
 
 	FrameBuffer = ssd1306->_intern.pu8FrameBuffer;
 	width = ssd1306->_intern.u32Width;
-	x = WriteInfo->X;
-	y = WriteInfo->Y;
 
 	_mtx_lock(ssd1306);
-	if(WriteInfo->color == true) {
+	if(color == true) {
 		FrameBuffer[x + (y / 8) * width] |= 1 << (y % 8);
 	} else {
 		FrameBuffer[x + (y / 8) * width] &= ~(1 << (y % 8));
@@ -345,7 +342,7 @@ uint8_t SSD1306_Write(ssd1306_t *ssd1306, ssd1306_write_info_t *WriteInfo){
 	return SSD1306_OK;
 }
 
-uint8_t SSD1306_Clear(ssd1306_t *ssd1306){
+uint8_t SSD1306_Fill(ssd1306_t *ssd1306, uint8_t color){
 	uint8_t *FrameBuffer;
 
 	assert(ssd1306 != NULL);
@@ -353,7 +350,12 @@ uint8_t SSD1306_Clear(ssd1306_t *ssd1306){
 	assert(ssd1306->_intern.pu8FrameBuffer != NULL);
 
 	FrameBuffer = ssd1306->_intern.pu8FrameBuffer;
-	memset(FrameBuffer, 0, ssd1306->_intern.u32FrameSize);
+	if (color == SSD1306_COLOR_BLACK){
+		memset(FrameBuffer, 0, ssd1306->_intern.u32FrameSize);
+	}
+	else{
+		memset(FrameBuffer, 0xFF, ssd1306->_intern.u32FrameSize);
+	}
 
 	return SSD1306_OK;
 }

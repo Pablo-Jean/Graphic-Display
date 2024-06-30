@@ -21,8 +21,6 @@
 #include <stdbool.h>
 #include <string.h>
 
-#include "GraphicDisplay_Fonts.h"
-
 #include "drivers/ssd1306/ssd1306.h"
 
 /*
@@ -80,7 +78,8 @@ typedef void (*fxnGd_mtxUnlock)(void);
 
 typedef struct{
 	void* pHandle;
-	uint8_t (*fxnSetExtFrameBuffer)(void* handle, uint8_t *FrameBuffer);
+	uint8_t (*fxnSetPixelColor)(void* handle, uint32_t x, uint32_t y, uint8_t color);
+	uint8_t (*fxnFillFrameBuffer)(void* handle, uint8_t color);
 	uint8_t (*fxnRefreshDisp)(void* handle);
 	uint8_t (*fxnSetOn)(void* handle, bool on);
 	uint8_t (*fxnSetContrast)(void* handle, uint8_t value);
@@ -109,7 +108,6 @@ typedef struct{
 
 	gd_driver_t *disp;
 	struct{
-		uint8_t *pu8FrameBuffer;
 		uint32_t u32BufferLen;
 		uint32_t u32CurrX;
 		uint32_t u32CurrY;
@@ -121,7 +119,6 @@ typedef struct{
 typedef struct{
 	void *DisplayHandle;
 	gd_driver_t *DisplayDriver;
-	uint8_t *pu8FrameBuffer;
 	uint32_t u32Height;
 	uint32_t u32Width;
 	fxnGd_mtxLock mtxLock;
@@ -141,8 +138,8 @@ gd_error_e GD_Init(gd_t *Gd, gd_params_t *params);
 gd_error_e GD_Fill(gd_t *Gd, gd_color_e color);
 gd_error_e GD_UpdateScreen(gd_t *Gd);
 gd_error_e GD_DrawPixel(gd_t *Gd,  uint32_t x, uint32_t y, gd_color_e color);
-gd_error_e GD_WriteChar(gd_t *Gd,  char ch, gd_font_t *Font, gd_color_e color);
-gd_error_e GD_WriteString(gd_t *Gd,  char* str, gd_font_t *Font, gd_color_e color);
+gd_error_e GD_WriteChar(gd_t *Gd,  char ch, const gd_font_t *Font, gd_color_e color);
+gd_error_e GD_WriteString(gd_t *Gd,  char* str, const gd_font_t *Font, gd_color_e color);
 gd_error_e GD_SetCursor(gd_t *Gd,  uint32_t x, uint32_t y);
 gd_error_e GD_Line(gd_t *Gd,  uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2, gd_color_e color);
 gd_error_e GD_DrawArc(gd_t *Gd,  uint32_t x, uint32_t y, uint32_t radius, uint16_t start_angle, uint16_t sweep, gd_color_e color);
@@ -152,17 +149,6 @@ gd_error_e GD_FillCircle(gd_t *Gd, uint32_t par_x,uint32_t par_y,uint32_t par_r,
 gd_error_e GD_Polyline(gd_t *Gd, gd_vertex_t *par_vertex, uint16_t par_size, gd_color_e color);
 gd_error_e GD_DrawRectangle(gd_t *Gd, uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2, gd_color_e color);
 gd_error_e GD_FillRectangle(gd_t *Gd, uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2, gd_error_e color);
-
-/**
- * @brief Invert color of pixels in rectangle (include border)
- *
- * @param x1 X Coordinate of top left corner
- * @param y1 Y Coordinate of top left corner
- * @param x2 X Coordinate of bottom right corner
- * @param y2 Y Coordinate of bottom right corner
- * @return gd_error_e status
- */
-gd_error_e GD_InvertRectangle(gd_t *Gd, uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2);
 
 gd_error_e GD_DrawBitmap(gd_t *Gd, uint32_t x, uint32_t y, const unsigned char* bitmap, uint32_t w, uint32_t h, gd_color_e color);
 
@@ -191,7 +177,6 @@ bool GD_GetDisplayOn(gd_t *Gd);
 gd_error_e GD_Reset(gd_t *Gd);
 gd_error_e GD_WriteCommand(gd_t *Gd, uint8_t byte);
 gd_error_e GD_WriteData(gd_t *Gd, uint8_t* buffer, size_t buff_size);
-gd_error_e GD_FillBuffer(gd_t *Gd, uint8_t* buf, uint32_t len);
 
 
 #endif /* GRAPHICDISPLAY_H_ */
