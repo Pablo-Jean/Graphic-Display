@@ -21,6 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "drivers/ssd1306/ssd1306.h"
 #include "GraphicDisplay.h"
 /* USER CODE END Includes */
 
@@ -56,7 +57,9 @@ static void MX_I2C3_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+uint8_t _ssd_i2c_write(uint8_t i2cAddr, uint8_t reg, uint8_t *buff, uint32_t len){
+	return (uint8_t)HAL_I2C_Mem_Write(&hi2c3, (i2cAddr << 1), reg, 1, buff, len, 100);
+}
 /* USER CODE END 0 */
 
 /**
@@ -67,7 +70,24 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
+	ssd1306_t Ssd1306 = {0};
+	ssd1306_params_t Ssd1306_Params = {
+			.Mode = SSD1306_MODE_I2C,
+			.u32Heigth = 64,
+			.u32Width = 128,
+			.bUseExternalFrameBuffer = false,
+			.delayMs = HAL_Delay,
+			.i2cWrite = _ssd_i2c_write,
+			.u8I2CAddr = 0x3C
+	};
 
+	gd_t Graphic = {0};
+	gd_params_t Graphic_Params = {
+			.DisplayDriver = Gd_Driver_SSD1306,
+			.DisplayHandle = (void*)(&Ssd1306),
+			.u32Height = 64,
+			.u32Width = 128
+	};
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -90,7 +110,13 @@ int main(void)
   MX_GPIO_Init();
   MX_I2C3_Init();
   /* USER CODE BEGIN 2 */
+  SSD1306_Init(&Ssd1306, &Ssd1306_Params);
+  SSD1306_Clear(&Ssd1306);
+  SSD1306_Refresh(&Ssd1306);
 
+  GD_Init(&Graphic, &Graphic_Params);
+  GD_DrawCircle(&Graphic, 20, 20, 5, GD_WHITE);
+  GD_UpdateScreen(&Graphic);
   /* USER CODE END 2 */
 
   /* Infinite loop */

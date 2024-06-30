@@ -12,6 +12,9 @@
  * https://github.com/afiskon/stm32-ssd1306
  *
  * A big refactor was made, to support any device and not gluing to any specific chipset
+ *
+ * One big change: we using now the Fonts as a pointer, the process is more fast when we
+ * pass the Font parameter to the function, proving performance and reducing stack usage.
  */
 
 #ifndef GRAPHICDISPLAY_FONTS_H_

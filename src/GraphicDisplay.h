@@ -14,13 +14,16 @@
 
 #include <assert.h>
 #include <math.h>
-#include <malloc.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
 #include <stdbool.h>
 #include <string.h>
+
+#include "GraphicDisplay_Fonts.h"
+
+#include "drivers/ssd1306/ssd1306.h"
 
 /*
  * Check if gd_config.h exists, otherwise, we load a 'default' configuration
@@ -51,11 +54,8 @@
 /*
  * Macros
  */
-
-#define GD_BUFFER_SET(HANDLE, BUFFER)
-
-#define GD_FXN_SET_MTX_LOCK(HANDLE, MTXLOCK)
-#define GD_FXN_SET_MTX_UNLOCK(HANDLE, MTXUNLOCK)
+#define GD_FXN_SET_MTX_LOCK(HANDLE, MTXLOCK)		HANDLE.fxn.mtxLock = MTXLOCK;
+#define GD_FXN_SET_MTX_UNLOCK(HANDLE, MTXUNLOCK)	HANDLE.fxn.mtxUnlock = MTXUNLOCK;
 
 /*
  * Enumerates
@@ -75,12 +75,15 @@ typedef enum{
  * Structs
  */
 
+typedef void (*fxnGd_mtxLock)(void);
+typedef void (*fxnGd_mtxUnlock)(void);
+
 typedef struct{
 	void* pHandle;
-	uint8_t (*fxnInitDisp)(void* handle, void* startParams);
-	void (*fxnWriteDisp)(void* handle, uint8_t *data, uint32_t l);
-	void (*fxnSetOn)(void* handle, bool on);
-	void (*fxnSetContrast)(void* handle, uint8_t value);
+	uint8_t (*fxnSetExtFrameBuffer)(void* handle, uint8_t *FrameBuffer);
+	uint8_t (*fxnRefreshDisp)(void* handle);
+	uint8_t (*fxnSetOn)(void* handle, bool on);
+	uint8_t (*fxnSetContrast)(void* handle, uint8_t value);
 }gd_driver_t;
 
 typedef struct {
@@ -98,11 +101,10 @@ typedef struct{
 typedef struct{
 	uint32_t u32Height;
 	uint32_t u32Width;
-	uint32_t u32offset;
 
 	struct{
-		void (*mtxLock)(void);
-		void (*mtxUnlock)(void);
+		fxnGd_mtxLock mtxLock;
+		fxnGd_mtxUnlock mtxUnlock;
 	}fxn;
 
 	gd_driver_t *disp;
@@ -116,10 +118,26 @@ typedef struct{
 	}_intern;
 }gd_t;
 
+typedef struct{
+	void *DisplayHandle;
+	gd_driver_t *DisplayDriver;
+	uint8_t *pu8FrameBuffer;
+	uint32_t u32Height;
+	uint32_t u32Width;
+	fxnGd_mtxLock mtxLock;
+	fxnGd_mtxUnlock mtxUnlock;
+}gd_params_t;
+
+/*
+ * Exterrns
+ */
+
+extern gd_driver_t* Gd_Driver_SSD1306;
+
 /*
  * Publics
  */
-gd_error_e GD_Init(gd_t *Gd, const uint8_t *FrameBuffer);
+gd_error_e GD_Init(gd_t *Gd, gd_params_t *params);
 gd_error_e GD_Fill(gd_t *Gd, gd_color_e color);
 gd_error_e GD_UpdateScreen(gd_t *Gd);
 gd_error_e GD_DrawPixel(gd_t *Gd,  uint32_t x, uint32_t y, gd_color_e color);

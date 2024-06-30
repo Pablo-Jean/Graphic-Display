@@ -13,14 +13,14 @@
 
 /* Macros */
 
-/* Functions */
+/* Display Functions */
 
-static uint8_t _drv_init_display(gd_t *Gd, void* StartParams){
-	return Gd->disp->fxnInitDisp(Gd->disp->pHandle, StartParams);
+static void _drv_set_frame_buffer(gd_t *Gd, uint8_t *FrameBuffer){
+	Gd->disp->fxnSetExtFrameBuffer(Gd->disp->pHandle, FrameBuffer);
 }
 
-static void _drv_write_display(gd_t *Gd, uint8_t *data, uint32_t len){
-	Gd->disp->fxnWriteDisp(Gd->disp->pHandle, data, len);
+static void _drv_set_refresh(gd_t *Gd){
+	Gd->disp->fxnRefreshDisp(Gd->disp->pHandle);
 }
 
 static void _drv_set_constrat(gd_t *Gd, uint8_t value){
@@ -32,6 +32,19 @@ static void _drv_set_constrat(gd_t *Gd, uint8_t value){
 static void _drv_set_on(gd_t *Gd, bool On){
 	if (Gd->disp->fxnSetOn != NULL){
 		Gd->disp->fxnSetOn(Gd->disp->pHandle, On);
+	}
+}
+
+/* Mutex Functions */
+static void _mtx_lock(gd_t *Gd){
+	if (Gd->fxn.mtxLock != NULL){
+		Gd->fxn.mtxLock();
+	}
+}
+
+static void _mtx_unlock(gd_t *Gd){
+	if (Gd->fxn.mtxUnlock != NULL){
+		Gd->fxn.mtxUnlock();
 	}
 }
 
@@ -53,44 +66,65 @@ static uint16_t _NormalizeTo0_360(uint16_t par_deg) {
 }
 
 /*
+ * Extern
+ */
+gd_driver_t _Gd_Driver_SSD1306Attr = {
+		.pHandle = NULL,
+		.fxnSetExtFrameBuffer = (uint8_t (*)(void *, uint8_t *))SSD1306_SetFrameBuffer,
+		.fxnRefreshDisp = (uint8_t (*)(void *))SSD1306_Refresh,
+		.fxnSetOn = (uint8_t (*)(void *, _Bool))SSD1306_SetDisplayOn,
+		.fxnSetContrast = (uint8_t (*)(void *, uint8_t))SSD1306_SetContrast
+};
+gd_driver_t *Gd_Driver_SSD1306 = &_Gd_Driver_SSD1306Attr;
+
+
+/*
  * Publics
  */
 
 /* Fills the Screenbuffer with values from a given buffer of a fixed length */
-gd_error_e ssd1306_FillBuffer(gd_t *Gd, uint8_t* buf, uint32_t len) {
+gd_error_e GD_FillBuffer(gd_t *Gd, uint8_t* buf, uint32_t len) {
 	gd_error_e ret = GD_FAIL;
 
+	_mtx_lock(Gd);
 	if (len <= Gd->_intern.u32BufferLen) {
 		memcpy(Gd->_intern.pu8FrameBuffer, buf, len);
 		ret = GD_OK;
 	}
+	_mtx_unlock(Gd);
 
 	return ret;
 }
 
 /* Initialize the oled screen */
-gd_error_e GD_Init(gd_t *Gd, const uint8_t *FrameBuffer) {
+gd_error_e GD_Init(gd_t *Gd, gd_params_t *params) {
 	// Assert if some parameter is invalid
 	assert(Gd != NULL);
-	assert(Gd->u32Width != 0);
-	assert(Gd->u32Height != 0);
-	assert(Gd->disp != NULL);
-	assert(Gd->disp->pHandle != NULL);
-	assert(Gd->disp->fxnWriteDisp != NULL);
+	assert(params != NULL);
+	assert(params->u32Width != 0);
+	assert(params->u32Height != 0);
+	assert(params->DisplayHandle != NULL);
+	assert(params->DisplayDriver != NULL);
 
 	// Allocate buffer if doesn`t exitsts
+	Gd->u32Height = params->u32Height;
+	Gd->u32Width = params->u32Width;
+	Gd->disp = params->DisplayDriver;
+	Gd->disp->pHandle = params->DisplayHandle;
 	Gd->_intern.u32BufferLen = Gd->u32Height * Gd->u32Width / 8;
-	if (FrameBuffer == NULL){
-		Gd->_intern.pu8FrameBuffer = (uint8_t*)malloc((size_t)Gd->_intern.u32BufferLen);
+	if (params->pu8FrameBuffer == NULL){
+		params->pu8FrameBuffer = (uint8_t*)malloc((size_t)Gd->_intern.u32BufferLen);
+		assert(params->pu8FrameBuffer != NULL);
 	}
-	else{
-		Gd->_intern.pu8FrameBuffer = (uint8_t*)FrameBuffer;
-	}
-	assert(Gd->_intern.pu8FrameBuffer != NULL);
+	Gd->_intern.pu8FrameBuffer = params->pu8FrameBuffer;
 
-	// Initialize the Display
-	assert (_drv_init_display(Gd, NULL) == 0);
-	GD_SetDisplayOn(Gd, true); //--turn on SSD1306 panel
+	// attribute our frame buffer into driver
+	_drv_set_frame_buffer(Gd, Gd->_intern.pu8FrameBuffer);
+
+	// Set default values for screen object
+	Gd->_intern.u32CurrX = 0;
+	Gd->_intern.u32CurrX = 0;
+	Gd->_intern.bInitialized = true;
 
 	// Clear screen
 	GD_Fill(Gd, GD_BLACK);
@@ -98,29 +132,27 @@ gd_error_e GD_Init(gd_t *Gd, const uint8_t *FrameBuffer) {
 	// Flush buffer to screen
 	GD_UpdateScreen(Gd);
 
-	// Set default values for screen object
-	Gd->_intern.u32CurrX = 0;
-	Gd->_intern.u32CurrX = 0;
-
-	Gd->_intern.bInitialized= true;
-
 	return GD_OK;
 }
 
 /* Fill the whole screen with the given color */
-gd_error_e ssd1306_Fill(gd_t *Gd, gd_color_e color) {
+gd_error_e GD_Fill(gd_t *Gd, gd_color_e color) {
+	_mtx_lock(Gd);
 	memset(Gd->_intern.pu8FrameBuffer, (color == GD_BLACK) ? 0x00 : 0xFF, Gd->_intern.u32BufferLen);
+	_mtx_unlock(Gd);
 
 	return GD_OK;
 }
 
 /* Write the screenbuffer with changed to the screen */
-gd_error_e ssd1306_UpdateScreen(gd_t *Gd) {
+gd_error_e GD_UpdateScreen(gd_t *Gd) {
 	assert(Gd != NULL);
 	assert(Gd->_intern.bInitialized == true);
-	assert(Gd->disp->fxnWriteDisp == NULL);
+	assert(Gd->disp->fxnRefreshDisp != NULL);
 
-	_drv_write_display(Gd, Gd->_intern.pu8FrameBuffer, Gd->_intern.u32BufferLen);
+	_mtx_lock(Gd);
+	_drv_set_refresh(Gd);
+	_mtx_unlock(Gd);
 
 	return GD_OK;
 }
@@ -140,12 +172,14 @@ gd_error_e GD_DrawPixel(gd_t *Gd, uint32_t x, uint32_t y, gd_color_e color) {
 		return GD_FAIL;
 	}
 
+	_mtx_lock(Gd);
 	// Draw in the right color
 	if(color == GD_WHITE) {
 		Gd->_intern.pu8FrameBuffer[x + (y / 8) * Gd->u32Width] |= 1 << (y % 8);
 	} else {
 		Gd->_intern.pu8FrameBuffer[x + (y / 8) * Gd->u32Width] &= ~(1 << (y % 8));
 	}
+	_mtx_unlock(Gd);
 
 	return GD_OK;
 }
@@ -159,6 +193,7 @@ gd_error_e GD_DrawPixel(gd_t *Gd, uint32_t x, uint32_t y, gd_color_e color) {
 gd_error_e GD_WriteChar(gd_t *Gd, char ch, gd_font_t *Font, gd_color_e color) {
 	uint32_t i, b, j;
 	gd_color_e pxColor;
+	gd_error_e e;
 
 	assert(Gd != NULL);
 	assert(Font != NULL);
@@ -185,10 +220,13 @@ gd_error_e GD_WriteChar(gd_t *Gd, char ch, gd_font_t *Font, gd_color_e color) {
 			} else {
 				pxColor = (gd_color_e)!color;
 			}
-			GD_DrawPixel(Gd,
+			e = GD_DrawPixel(Gd,
 					Gd->_intern.u32CurrX + j,
 					Gd->_intern.u32CurrY + i,
 					pxColor);
+			if (e != GD_OK){
+				return GD_FAIL;
+			}
 		}
 	}
 
@@ -229,8 +267,10 @@ gd_error_e GD_SetCursor(gd_t *Gd, uint32_t x, uint32_t y) {
 		// Don't write outside the buffer
 		return GD_FAIL;
 	}
+	_mtx_lock(Gd);
 	Gd->_intern.u32CurrX = x;
 	Gd->_intern.u32CurrY = y;
+	_mtx_unlock(Gd);
 
 	return GD_OK;
 }
@@ -248,7 +288,6 @@ gd_error_e GD_Line(gd_t *Gd, uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2,
 	assert(Gd->_intern.bInitialized == true);
 
 	GD_DrawPixel(Gd, x2, y2, color);
-
 	while((x1 != x2) || (y1 != y2)) {
 		GD_DrawPixel(Gd, x1, y1, color);
 		error2 = error * 2;
@@ -521,6 +560,8 @@ gd_error_e GD_FillRectangle(gd_t *Gd, uint32_t x1, uint32_t y1, uint32_t x2, uin
 }
 
 gd_error_e GD_InvertRectangle(gd_t *Gd, uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2) {
+	uint32_t i;
+
 	assert(Gd != NULL);
 	assert(Gd->_intern.bInitialized == true);
 
@@ -530,7 +571,7 @@ gd_error_e GD_InvertRectangle(gd_t *Gd, uint32_t x1, uint32_t y1, uint32_t x2, u
 	if ((x1 > x2) || (y1 > y2)) {
 		return GD_FAIL;
 	}
-	uint32_t i;
+	_mtx_lock(Gd);
 	if ((y1 / 8) != (y2 / 8)) {
 		/* if rectangle doesn't lie on one 8px row */
 		for (uint32_t x = x1; x <= x2; x++) {
@@ -550,6 +591,7 @@ gd_error_e GD_InvertRectangle(gd_t *Gd, uint32_t x1, uint32_t y1, uint32_t x2, u
 			Gd->_intern.pu8FrameBuffer[i] ^= mask;
 		}
 	}
+	_mtx_unlock(Gd);
 
 	return GD_OK;
 }
@@ -605,7 +647,7 @@ gd_error_e GD_SetDisplayOn(gd_t *Gd, bool on) {
 	return GD_OK;
 }
 
-bool ssd1306_GetDisplayOn(gd_t *Gd) {
+bool GD_GetDisplayOn(gd_t *Gd) {
 	assert(Gd != NULL);
 	assert(Gd->_intern.bInitialized == true);
 
