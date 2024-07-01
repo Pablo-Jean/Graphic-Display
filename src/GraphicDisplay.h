@@ -22,6 +22,7 @@
 #include <string.h>
 
 #include "drivers/ssd1306/ssd1306.h"
+#include "drivers/st7920/st7920.h"
 
 /*
  * Check if gd_config.h exists, otherwise, we load a 'default' configuration
@@ -130,6 +131,7 @@ typedef struct{
  */
 
 extern gd_driver_t* Gd_Driver_SSD1306;
+extern gd_driver_t* Gd_Driver_ST7920;
 
 /*
  * Publics

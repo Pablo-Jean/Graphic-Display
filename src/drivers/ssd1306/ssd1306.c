@@ -13,9 +13,9 @@
 
 #define _PIN_HIGH		1
 #define _PIN_LOW		0
-#define _SUCESS			0
+#define _SUCCESS			0
 
-#define _SSD_ERROR_CHECK(x)		if (x != _SUCESS) { return SSD1306_FAIL; }
+#define _SSD_ERROR_CHECK(x)		if (x != _SUCCESS) { return SSD1306_FAIL; }
 
 /* Function Pointers Handles */
 static void _delay_ms(ssd1306_t *ssd1306, uint32_t ms){
@@ -325,8 +325,12 @@ uint8_t SSD1306_Write(ssd1306_t *ssd1306, uint32_t x, uint32_t y, bool color){
 	assert(ssd1306 != NULL);
 	assert(ssd1306->_intern.bInitialized == true);
 	assert(ssd1306->_intern.pu8FrameBuffer != NULL);
-	assert(x < ssd1306->_intern.u32Width);
-	assert(y < ssd1306->_intern.u32Heigth);
+
+	if (x >= ssd1306->_intern.u32Width ||
+			y >= ssd1306->_intern.u32Heigth){
+		// Pixel is out of range
+		return SSD1306_FAIL;
+	}
 
 	FrameBuffer = ssd1306->_intern.pu8FrameBuffer;
 	width = ssd1306->_intern.u32Width;

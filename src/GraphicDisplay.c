@@ -36,6 +36,17 @@ gd_driver_t _Gd_Driver_SSD1306Attr = {
 };
 gd_driver_t *Gd_Driver_SSD1306 = &_Gd_Driver_SSD1306Attr;
 
+/** Diver for ST7920 **/
+gd_driver_t _Gd_Driver_ST7920Attr = {
+		.pHandle = NULL,
+		.fxnSetPixelColor = _SET_PIXEL_COLOR_TYPECAST		ST7920_Write,
+		.fxnFillFrameBuffer = _FILL_FRAME_BUFFER_TYPEFCAST 	ST7920_Fill,
+		.fxnRefreshDisp = _REFRESH_DISP_TYPECAST 			ST7920_Refresh,
+		.fxnSetOn = _SET_ON_TYPECASTAT 						NULL,
+		.fxnSetContrast = _SET_CONTRAST_TYPECAST			NULL
+};
+gd_driver_t *Gd_Driver_ST7920 = &_Gd_Driver_ST7920Attr;
+
 /* Macros */
 
 /* Display Functions */
