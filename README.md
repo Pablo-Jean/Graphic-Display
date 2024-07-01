@@ -1,22 +1,5 @@
 # 📊 Graphic Display
 ------------------
-
-## 📖 Table of Contents
---------------------
-
-*   [About]
-    
-*   [Features]
-    
-*   [Installation]
-    
-*   [Usage]
-    
-*   [Examples]
-    
-*   [Contributing]
-    
-*   [License]
     
 
 ##  🔍 About the Library
