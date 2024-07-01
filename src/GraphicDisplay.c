@@ -538,6 +538,7 @@ gd_error_e GD_FillRectangle(gd_t *Gd, uint32_t x1, uint32_t y1, uint32_t x2, uin
 }
 
 /* Draw a bitmap */
+/* You can use the https://github.com/faytor/open_lcd_assistant assistant to create you bitmaps */
 gd_error_e GD_DrawBitmap(gd_t *Gd, uint32_t x, uint32_t y, const unsigned char* bitmap, uint32_t w, uint32_t h, gd_color_e color) {
 	int16_t byteWidth = (w + 7) / 8; // Bitmap scanline pad = whole byte
 	uint32_t byte = 0;
@@ -553,13 +554,16 @@ gd_error_e GD_DrawBitmap(gd_t *Gd, uint32_t x, uint32_t y, const unsigned char* 
 	for (uint32_t j = 0; j < h; j++, y++) {
 		for (uint32_t i = 0; i < w; i++) {
 			if (i & 7) {
-				byte <<= 1;
+				byte >>= 1;
 			} else {
 				byte = (*(const unsigned char *)(&bitmap[j * byteWidth + i / 8]));
 			}
 
-			if (byte & 0x80) {
+			if (byte & 0x1) {
 				GD_DrawPixel(Gd, x + i, y, color);
+			}
+			else{
+				GD_DrawPixel(Gd, x + i, y, !color);
 			}
 		}
 	}
