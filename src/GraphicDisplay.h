@@ -145,13 +145,13 @@ typedef void (*fxnGd_mtxUnlock)(void);
  * uint8_t SS9090_Fill(ss9090_t *ss9090, uint8_t color);
  * ~~~~~
  * 
- * - Q: I can modify functions names?
+ * - **Q: I can modify functions names?**
  * - A: Yes, you can!
  * 
- * - Q: I can modify parameters of the functions?
+ * - **Q: I can modify parameters of the functions?**
  * - A: No, you have the use the same parameters, in same order, and, parameters size, must be compatible.
  * 
- * - Q: Must be compatible to use without Graphic Display?
+ * - **Q: Must be compatible to use without Graphic Display?**
  * - A: Yes
  * 
  * ### 4.5 Test
