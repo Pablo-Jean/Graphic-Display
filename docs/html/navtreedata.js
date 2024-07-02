@@ -25,6 +25,7 @@
 var NAVTREE =
 [
   [ "Graphic Display", "index.html", [
+    [ "📊 Graphic Display", "index.html", "index" ],
     [ "Topics", "topics.html", "topics" ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
@@ -52,7 +53,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "GraphicDisplay_8c.html",
-"structgd__vertex__t.html#af4a2542f9f937eaccb213ffb9cbf9f07"
+"structgd__t_1_1t__fxn.html#aac006189f35c42c7b2df4eb25d8b1607"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

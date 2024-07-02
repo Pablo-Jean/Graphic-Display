@@ -1,15 +1,16 @@
 var indexSectionsWithContent =
 {
-  0: "_bcdefghimpstuwxy",
+  0: "_abcdefghilmprstuwxy✨💡📄📊🔍🚀🛠🤝",
   1: "gst",
-  2: "gs",
+  2: "grs",
   3: "_gs",
   4: "_bcdfghimpsuwxy",
   5: "f",
   6: "gs",
   7: "gs",
   8: "_gs",
-  9: "defi"
+  9: "defi",
+  10: "dg📊"
 };
 
 var indexSectionNames =
@@ -23,7 +24,8 @@ var indexSectionNames =
   6: "enums",
   7: "enumvalues",
   8: "defines",
-  9: "groups"
+  9: "groups",
+  10: "pages"
 };
 
 var indexSectionLabels =
@@ -37,6 +39,7 @@ var indexSectionLabels =
   6: "Enumerations",
   7: "Enumerator",
   8: "Macros",
-  9: "Modules"
+  9: "Modules",
+  10: "Pages"
 };
 
