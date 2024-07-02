@@ -1,0 +1,106 @@
+\doxysection{Driver Definition and Creation}
+\hypertarget{group__Gd__Drivers}{}\label{group__Gd__Drivers}\index{Driver Definition and Creation@{Driver Definition and Creation}}
+
+
+Driver definition for the Graphic Display library, this driver is the main reason why we can use any display with this library, you just need to create functions that are compatible with this structure.  
+
+
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structgd__driver__t}{gd\+\_\+driver\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Struct that creates a driver for the display, holding the handle and functions that are private of the display driver. This allows the library to be very flexible and can handles any display. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Driver definition for the Graphic Display library, this driver is the main reason why we can use any display with this library, you just need to create functions that are compatible with this structure. 
+
+\hypertarget{group__Gd__Drivers_autotoc_md0}{}\doxysubsubsection{\texorpdfstring{\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>} Step by Step\+:}{\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>} Step by Step\+:}}\label{group__Gd__Drivers_autotoc_md0}
+\hypertarget{group__Gd__Drivers_autotoc_md1}{}\doxysubsubsubsection{\texorpdfstring{1. Create a folder inside drivers with the name of driver device.}{1. Create a folder inside drivers with the name of driver device.}}\label{group__Gd__Drivers_autotoc_md1}
+Create a folder to place the source code of your driver, in this way, we can keep a clean and nice repository.\hypertarget{group__Gd__Drivers_autotoc_md2}{}\doxysubsubsubsection{\texorpdfstring{2. Create the .h and .c file for you device.}{2. Create the .h and .c file for you device.}}\label{group__Gd__Drivers_autotoc_md2}
+Suppose we create a driver for a fictional ss9090 device, we will create {\bfseries{ss9090.\+h}} and {\bfseries{ss9090.\+c files}}.\hypertarget{group__Gd__Drivers_autotoc_md3}{}\doxysubsubsubsection{\texorpdfstring{3. In header file, create the handle structure}{3. In header file, create the handle structure}}\label{group__Gd__Drivers_autotoc_md3}
+The handle structure is used to keep data of a display, with this approach, we can have many displays our project requires, and this displays can be the same or different.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ define\ the\ parameters\ that\ you\ need\ and\ functions\ to\ handle\ the\ device}}
+\DoxyCodeLine{\}ss9090\_t;}
+
+\end{DoxyCode}
+
+
+The most common parameters are the\+:
+\begin{DoxyItemize}
+\item Height and Width of the display;
+\item Frame Buffer pointer;
+\item Communication Functions (For SPI, we have the Chip Select and SPI transfer, For I2C, commonly has only the write function).
+\end{DoxyItemize}
+
+Other parameters, that\textquotesingle{}s are optional, but recommended, if a function to mutex lock and unlock (useful for RTOS environments that need threadsafe), and Delay Milliseconds routine, some times, delay is mandatory in initialization.
+
+Remember, the driver must be not glued with any chipset, this library must be compatible with any microcontroller.\hypertarget{group__Gd__Drivers_autotoc_md4}{}\doxysubsubsubsection{\texorpdfstring{4. Create routines}{4. Create routines}}\label{group__Gd__Drivers_autotoc_md4}
+Here, we have the MANDATORY FUNCTIONS, must be implemented by you, following the fictional ss9090, we have this prototypes\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{uint8\_t\ SS9090\_Init(ss9090\_t\ *ss9090,\ ss9090\_params\_t\ *params);}
+\DoxyCodeLine{uint8\_t\ SS9090\_Refresh(ss9090\_t\ *ss9090);}
+\DoxyCodeLine{uint8\_t\ SS9090\_WritePixel(ss9090\_t\ *ss9090,\ uint32\_t\ x,\ uint32\_t\ y,\ \textcolor{keywordtype}{bool}\ color);}
+\DoxyCodeLine{uint8\_t\ SS9090\_Fill(ss9090\_t\ *ss9090,\ uint8\_t\ color);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item Q\+: I can modify functions names?
+\item A\+: Yes, you can!
+\item Q\+: I can modify parameters of the functions?
+\item A\+: No, you have the use the same parameters, in same order, and, parameters size, must be compatible.
+\item Q\+: Must be compatible to use without Graphic Display?
+\item A\+: Yes
+\end{DoxyItemize}\hypertarget{group__Gd__Drivers_autotoc_md5}{}\doxysubsubsubsection{\texorpdfstring{4.\+5 Test}{4.\+5 Test}}\label{group__Gd__Drivers_autotoc_md5}
+At this point, test your library, check if initialization works, if the pixels are written into correct position, response speed, and everything else.
+
+After you test your driver, you can move on to the next steps.\hypertarget{group__Gd__Drivers_autotoc_md6}{}\doxysubsubsubsection{\texorpdfstring{5. Add include into Graphic\+Display.\+h}{5. Add include into Graphic\+Display.\+h}}\label{group__Gd__Drivers_autotoc_md6}
+Go to {\itshape \doxylink{GraphicDisplay_8h}{Graphic\+Display.\+h}} and include the new driver
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}driver/ss9090/ss9090.h"{}}}
+
+\end{DoxyCode}
+\hypertarget{group__Gd__Drivers_autotoc_md7}{}\doxysubsubsubsection{\texorpdfstring{6. Create extern pointer to driver}{6. Create extern pointer to driver}}\label{group__Gd__Drivers_autotoc_md7}
+Before the Public functions, you will see a piece of code with the Driver externs.
+
+Here, you need to create the extern pointer to the driver, this will help developer to insert the driver on code. For SS9090, we write as follows the extern\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{extern}\ \mbox{\hyperlink{structgd__driver__t}{gd\_driver\_t}}*\ Gd\_Driver\_SS9090;}
+
+\end{DoxyCode}
+\hypertarget{group__Gd__Drivers_autotoc_md8}{}\doxysubsubsubsection{\texorpdfstring{7. Instance the Driver Variable}{7. Instance the Driver Variable}}\label{group__Gd__Drivers_autotoc_md8}
+Go to {\itshape \doxylink{GraphicDisplay_8c}{Graphic\+Display.\+c}}, in the beginning, you will see the structs containing the drivers, now, creates the instance attributing the function calls to the struct, and the pointer. Here, we use pointers, because they are more fast to pass as a parameters. For our fictional SS9090 driver, we have something similar to this\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Diver\ for\ SS9090\ }}
+\DoxyCodeLine{\mbox{\hyperlink{structgd__driver__t}{gd\_driver\_t}}\ \_Gd\_Driver\_SS9090Attr\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .\mbox{\hyperlink{structgd__driver__t_a4160faa3f8da427a3941ad11bafc74f0}{pHandle}}\ =\ NULL,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .fxnSetPixelColor\ =\ \mbox{\hyperlink{GraphicDisplay_8c_accd51e349e2545860ef4fa3ca42bbbf9}{\_SET\_PIXEL\_COLOR\_TYPECAST}}\ \ \ \ \ \ \ SS9090\_WritePixel,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .fxnFillFrameBuffer\ =\ \mbox{\hyperlink{GraphicDisplay_8c_a0202b385f165b17c1b122085d3bc2484}{\_FILL\_FRAME\_BUFFER\_TYPEFCAST}}\ \ SS9090\_Fill,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .fxnRefreshDisp\ =\ \mbox{\hyperlink{GraphicDisplay_8c_a217f263a70f204c3901d479b864e1326}{\_REFRESH\_DISP\_TYPECAST}}\ \ \ \ \ \ \ \ \ \ \ \ SS9090\_Refresh,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .fxnSetOn\ =\ \mbox{\hyperlink{GraphicDisplay_8c_a85a107bbd540349781df3d8399e79a0a}{\_SET\_ON\_TYPECASTAT}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NULL,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .fxnSetContrast\ =\ \mbox{\hyperlink{GraphicDisplay_8c_a47d1fd5a8bffc7dcbf3c9693bd4db2bd}{\_SET\_CONTRAST\_TYPECAST}}\ \ \ \ \ \ \ \ \ \ \ \ NULL}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{\mbox{\hyperlink{structgd__driver__t}{gd\_driver\_t}}\ *Gd\_Driver\_SS9090\ =\ \&\_Gd\_Driver\_SS9090Attr;}
+
+\end{DoxyCode}
+\hypertarget{group__Gd__Drivers_autotoc_md9}{}\doxysubsubsubsection{\texorpdfstring{8. Done}{8. Done}}\label{group__Gd__Drivers_autotoc_md9}
+Your library is implemented, so, almost, all you need to do is test your implementation ans check if everything works as expected.
+
+Any doubts, feel free to open issues into the repository.
+
+Engineer\+: Pablo Jean Rozario. 

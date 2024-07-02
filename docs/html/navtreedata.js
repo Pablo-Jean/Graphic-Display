@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "Graphic Display", "index.html", [
-    [ "📊 Graphic Display", "index.html", "index" ],
+    [ "Graphic Display - Library for Monochrome Display, without any Microcontroller or Display dependency.", "index.html", "index" ],
     [ "Topics", "topics.html", "topics" ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
@@ -53,7 +53,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "GraphicDisplay_8c.html",
-"structgd__t_1_1t__fxn.html"
+"structssd1306__params__t.html#a56ff898fbb352dbc77f2ed223fb09308"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

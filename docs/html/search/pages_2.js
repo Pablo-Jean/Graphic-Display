@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['📊_20graphic_20display_0',['📊 Graphic Display',['../index.html',1,'']]]
+  ['for_20monochrome_20display_20without_20any_20microcontroller_20or_20display_20dependency_0',['Graphic Display - Library for Monochrome Display, without any Microcontroller or Display dependency.',['../index.html',1,'']]]
 ];

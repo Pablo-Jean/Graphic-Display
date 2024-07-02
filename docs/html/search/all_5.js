@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['examples_0',['💡 Examples',['../index.html#autotoc_md6',1,'']]],
-  ['external_20implemented_20drivers_20for_20displays_1',['External implemented drivers for displays.',['../group__Ext__Drivers.html',1,'']]]
+  ['6_20create_20extern_20pointer_20to_20driver_0',['6. Create extern pointer to driver',['../group__Gd__Drivers.html#autotoc_md7',1,'']]]
 ];

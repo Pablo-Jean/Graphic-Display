@@ -1,17 +1,17 @@
-\chapter{📊 Graphic Display}
-\hypertarget{index}{}\label{index}\index{📊 Graphic Display@{📊 Graphic Display}}
+\chapter{Graphic Display -\/ Library for Monochrome Display, without any Microcontroller or Display dependency.}
+\hypertarget{index}{}\label{index}\index{Graphic Display -\/ Library for Monochrome Display, without any Microcontroller or Display dependency.@{Graphic Display -\/ Library for Monochrome Display, without any Microcontroller or Display dependency.}}
 \label{index_md_README}%
 \Hypertarget{index_md_README}%
- \hypertarget{index_autotoc_md1}{}\doxysection{\texorpdfstring{🔍 About the Library}{🔍 About the Library}}\label{index_autotoc_md1}
-Graphic Display is a C library designed for controlling monochromatic displays without any chipset or microcontroller dependency. This library allows you to use any display by providing a driver logic, making it a versatile solution for your project.\hypertarget{index_autotoc_md2}{}\doxysection{\texorpdfstring{✨ Features}{✨ Features}}\label{index_autotoc_md2}
+ \hypertarget{index_autotoc_md11}{}\doxysection{\texorpdfstring{🔍 About the Library}{🔍 About the Library}}\label{index_autotoc_md11}
+Graphic Display is a C library designed for controlling monochromatic displays without any chipset or microcontroller dependency. This library allows you to use any display by providing a driver logic, making it a versatile solution for your project.\hypertarget{index_autotoc_md12}{}\doxysection{\texorpdfstring{✨ Features}{✨ Features}}\label{index_autotoc_md12}
 
 \begin{DoxyItemize}
 \item {\bfseries{Chipset and Microcontroller Independent}}\+: Graphic Display does not rely on any specific chipset or microcontroller, allowing you to use it with a wide range of hardware.
 \item {\bfseries{Customizable Driver Logic}}\+: The library provides a flexible interface for implementing your own display driver logic, enabling you to support various types of displays.
 \item {\bfseries{Cross-\/platform Compatibility}}\+: Graphic Display is designed to be platform-\/independent, making it easy to integrate into your projects across different operating systems.
 \item {\bfseries{Efficient and Lightweight}}\+: The library is optimized for performance and has a small footprint, ensuring minimal impact on your project\textquotesingle{}s resources.
-\end{DoxyItemize}\hypertarget{index_autotoc_md3}{}\doxysection{\texorpdfstring{🗂️ API Reference}{🗂️ API Reference}}\label{index_autotoc_md3}
-Access the Link \href{https://pablo-jean.github.io/Graphic-Display}{\texttt{ Graphic Display API Reference}} to see detailed information about functions, structs and more.\hypertarget{index_autotoc_md4}{}\doxysection{\texorpdfstring{🛠️ Installation}{🛠️ Installation}}\label{index_autotoc_md4}
+\end{DoxyItemize}\hypertarget{index_autotoc_md13}{}\doxysection{\texorpdfstring{🗂️ API Reference}{🗂️ API Reference}}\label{index_autotoc_md13}
+Access the Link \href{https://pablo-jean.github.io/Graphic-Display}{\texttt{ Graphic Display API Reference}} to see detailed information about functions, structs and more.\hypertarget{index_autotoc_md14}{}\doxysection{\texorpdfstring{🛠️ Installation}{🛠️ Installation}}\label{index_autotoc_md14}
 To use Graphic Display in your project, follow these steps\+:
 
 
@@ -22,7 +22,7 @@ To use Graphic Display in your project, follow these steps\+:
 \item Link the library to your project during compilation.
 \end{DoxyEnumerate}
 
-Do not forget to remove examples from source code path \+:).\hypertarget{index_autotoc_md5}{}\doxysection{\texorpdfstring{🚀 Usage}{🚀 Usage}}\label{index_autotoc_md5}
+Do not forget to remove examples from source code path \+:).\hypertarget{index_autotoc_md15}{}\doxysection{\texorpdfstring{🚀 Usage}{🚀 Usage}}\label{index_autotoc_md15}
 Here\textquotesingle{}s a basic example of how to use the Graphic Display library with {\bfseries{SSD1306}} display in I2C mode\+:
 
 
@@ -83,23 +83,25 @@ Here\textquotesingle{}s a basic example of how to use the Graphic Display librar
 \DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{ssd1306_8c_a89baf372e82a096c62f1d961776b3a07}{SSD1306\_Init}}(\&Ssd1306,\ \&Ssd1306\_Params);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Initialize\ the\ Graphic\ Display\ layer}}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{GraphicDisplay_8c_a058b61d16a02b94864bd04314ddbea6d}{GD\_Init}}(\&Graphic,\ \&Graphic\_Params);}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{group__Gd__Function_ga058b61d16a02b94864bd04314ddbea6d}{GD\_Init}}(\&Graphic,\ \&Graphic\_Params);}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Write\ your\ text,\ or\ symbols,\ or\ images}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ To\ see\ all\ changes\ on\ display,\ you\ need\ to\ refresh\ manually}}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{GraphicDisplay_8c_abbd368ffa7d5d787e5c4aaa64e5e81f2}{GD\_UpdateScreen}}(\&Graphic);}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{group__Gd__Function_gabbd368ffa7d5d787e5c4aaa64e5e81f2}{GD\_UpdateScreen}}(\&Graphic);}
 \DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ You\ do\ not\ need\ to\ call\ the\ device\ driver\ refresh,\ Graphic\ Display\ library\ to\ this\ for\ you.}}
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md6}{}\doxysection{\texorpdfstring{💡 Examples}{💡 Examples}}\label{index_autotoc_md6}
-You can find various examples of using the Graphic Display library in the \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}examples\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} directory. These examples cover different use cases and demonstrate the library\textquotesingle{}s capabilities.\hypertarget{index_autotoc_md7}{}\doxysection{\texorpdfstring{🤝 Contributing}{🤝 Contributing}}\label{index_autotoc_md7}
-We welcome contributions to the Graphic Display library! If you find any issues or have ideas for improvements, please feel free to submit a pull request or open an issue on the \href{https://github.com/pablo-jean/graphic-display}{\texttt{ Git\+Hub repository}}.\hypertarget{index_autotoc_md8}{}\doxysection{\texorpdfstring{🛠️ Creating Your Driver}{🛠️ Creating Your Driver}}\label{index_autotoc_md8}
+\hypertarget{index_autotoc_md16}{}\doxysection{\texorpdfstring{💡 Examples}{💡 Examples}}\label{index_autotoc_md16}
+You can find various examples of using the Graphic Display library in the \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}examples\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} directory. These examples cover different use cases and demonstrate the library\textquotesingle{}s capabilities.\hypertarget{index_autotoc_md17}{}\doxysection{\texorpdfstring{🤝 Contributing}{🤝 Contributing}}\label{index_autotoc_md17}
+We welcome contributions to the Graphic Display library! If you find any issues or have ideas for improvements, please feel free to submit a pull request or open an issue on the \href{https://github.com/pablo-jean/graphic-display}{\texttt{ Git\+Hub repository}}.\hypertarget{index_autotoc_md18}{}\doxysection{\texorpdfstring{🛠️ Creating Your Driver}{🛠️ Creating Your Driver}}\label{index_autotoc_md18}
 You can write your own driver to use with this library, the only requirement is that your display is Monochromatic, this library doesn\textquotesingle{}t support color displays.
 
 Feel free to perform a Fork, implement your driver, and make a Pull request, sharing your contributing with other developers.
 
-To see what you need to do, check the API reference.\hypertarget{index_autotoc_md9}{}\doxysection{\texorpdfstring{📄 License}{📄 License}}\label{index_autotoc_md9}
-Graphic Display is released under the \+MIT License. Feel free to use, modify, and distribute the library as per the terms of the license.\hypertarget{index_autotoc_md10}{}\doxysection{\texorpdfstring{Credits}{Credits}}\label{index_autotoc_md10}
-This library was based on \href{https://github.com/afiskon/stm32-ssd1306}{\texttt{ Afiskon/stm32-\/ssd1306}}. 
+To see what you need to do, check the API reference.\hypertarget{index_autotoc_md19}{}\doxysection{\texorpdfstring{📄 License}{📄 License}}\label{index_autotoc_md19}
+Graphic Display is released under the \+MIT License. Feel free to use, modify, and distribute the library as per the terms of the license.\hypertarget{index_autotoc_md20}{}\doxysection{\texorpdfstring{Credits}{Credits}}\label{index_autotoc_md20}
+This library was based on \href{https://github.com/afiskon/stm32-ssd1306}{\texttt{ Afiskon/stm32-\/ssd1306}}.
+
+My object is to create a easy simple Graphic Display Library, with all flexibility it deserves. 

@@ -1,4 +1,4 @@
-# 📊 Graphic Display
+# Graphic Display - Library for Monochrome Display, without any Microcontroller or Display dependency.
 
 ##  🔍 About the Library
 
@@ -122,3 +122,5 @@ Graphic Display is released under the MIT License. Feel free to use, modify, an
 ## Credits
 
 This library was based on [Afiskon/stm32-ssd1306](https://github.com/afiskon/stm32-ssd1306).
+
+My object is to create a easy simple Graphic Display Library, with all flexibility it deserves.

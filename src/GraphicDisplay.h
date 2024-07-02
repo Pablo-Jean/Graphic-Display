@@ -99,6 +99,114 @@ typedef void (*fxnGd_mtxLock)(void);
  */
 typedef void (*fxnGd_mtxUnlock)(void);
 
+/** @defgroup Gd_Drivers Driver Definition and Creation
+ * 	@brief Driver definition for the Graphic Display library, this driver is the main reason
+ *  why we can use any display with this library, you just need to create functions that are
+ *  compatible with this structure.
+ * 
+ *  ## >> Step by Step:
+ *  ### 1. Create a folder inside drivers with the name of driver device.
+ * Create a folder to place the source code of your driver, in this way, we can keep a clean and nice
+ * repository.
+ * 
+ *  ### 2. Create the .h and .c file for you device.
+ * 	Suppose we create a driver for a fictional ss9090 device, we will create **ss9090.h** and **ss9090.c files**.
+ * 
+ * ### 3. In header file, create the handle structure 
+ * The handle structure is used to keep data of a display, with this approach, we can have many displays
+ * our project requires, and this displays can be the same or different.
+ * 
+ * ~~~~~{.c} 
+ * typedef struct{
+ * 	// define the parameters that you need and functions to handle the device
+ * }ss9090_t;
+ * ~~~~~
+ * 
+ * The most common parameters are the:
+ *  - Height and Width of the display;
+ *  - Frame Buffer pointer;
+ *  - Communication Functions (For SPI, we have the Chip Select and SPI transfer, For I2C, commonly has only
+ *  the write function).
+ * 
+ * Other parameters, that's are optional, but recommended, if a function to mutex lock and unlock (useful for
+ * RTOS environments that need threadsafe), and Delay Milliseconds routine, some times, delay is mandatory in
+ * initialization.
+ * 
+ * Remember, the driver must be not glued with any chipset, this library must be compatible with any microcontroller.
+ * 
+ * ### 4. Create routines
+ * Here, we have the MANDATORY FUNCTIONS, must be implemented by you, following the fictional ss9090, 
+ * we have this prototypes:
+ * 
+ * ~~~~~{.c} 
+ * uint8_t SS9090_Init(ss9090_t *ss9090, ss9090_params_t *params);
+ * uint8_t SS9090_Refresh(ss9090_t *ss9090);
+ * uint8_t SS9090_WritePixel(ss9090_t *ss9090, uint32_t x, uint32_t y, bool color);
+ * uint8_t SS9090_Fill(ss9090_t *ss9090, uint8_t color);
+ * ~~~~~
+ * 
+ * - Q: I can modify functions names?
+ * - A: Yes, you can!
+ * 
+ * - Q: I can modify parameters of the functions?
+ * - A: No, you have the use the same parameters, in same order, and, parameters size, must be compatible.
+ * 
+ * - Q: Must be compatible to use without Graphic Display?
+ * - A: Yes
+ * 
+ * ### 4.5 Test
+ * At this point, test your library, check if initialization works, if the pixels are written into correct
+ * position, response speed, and everything else.
+ * 
+ * After you test your driver, you can move on to the next steps.
+ * 
+ * ### 5. Add include into GraphicDisplay.h
+ * Go to *GraphicDisplay.h* and include the new driver 
+ * 
+ * ~~~~~{.c} 
+ * #include "driver/ss9090/ss9090.h"
+ * ~~~~~
+ * 
+ *  ### 6. Create extern pointer to driver
+ *  Before the Public functions, you will see a piece of code with the Driver externs.
+ *  
+ *  Here, you need to create the extern pointer to the driver, this will help developer to insert
+ * the driver on code. For SS9090, we write as follows the extern:
+ * 
+ * ~~~~~{.c} 
+ * extern gd_driver_t* Gd_Driver_SS9090;
+ * ~~~~~
+ * 
+ * ### 7. Instance the Driver Variable
+ * Go to *GraphicDisplay.c*, in the beginning, you will see the structs containing the drivers, now, creates
+ * the instance attributing the function calls to the struct, and the pointer. Here, we use pointers, because they
+ * are more fast to pass as a parameters.
+ * For our fictional SS9090 driver, we have something similar to this:
+ * 
+ * ~~~~~{.c}
+ * // Diver for SS9090 
+ * gd_driver_t _Gd_Driver_SS9090Attr = {
+ * 		.pHandle = NULL,
+ * 		.fxnSetPixelColor = _SET_PIXEL_COLOR_TYPECAST		SS9090_WritePixel,
+ * 		.fxnFillFrameBuffer = _FILL_FRAME_BUFFER_TYPEFCAST 	SS9090_Fill,
+ * 		.fxnRefreshDisp = _REFRESH_DISP_TYPECAST 			SS9090_Refresh,
+ * 		.fxnSetOn = _SET_ON_TYPECASTAT 						NULL,
+ * 		.fxnSetContrast = _SET_CONTRAST_TYPECAST			NULL
+ * };
+ * gd_driver_t *Gd_Driver_SS9090 = &_Gd_Driver_SS9090Attr;
+ * ~~~~~
+ * 
+ * ### 8. Done
+ * Your library is implemented, so, almost, all you need to do is test your implementation ans check if everything works
+ * as expected.
+ * 
+ * Any doubts, feel free to open issues into the repository.
+ * 
+ * Engineer: Pablo Jean Rozario.
+ * 
+ * @{
+ *
+ */
 /**
  * @struct gd_driver_t
  * @brief Struct that creates a driver for the display, holding the handle and
@@ -171,6 +279,10 @@ typedef struct{
 	uint8_t (*fxnSetContrast)(void* handle, uint8_t value);
 
 }gd_driver_t;
+
+ /**
+ * 	@}
+ */
 
 /**
  * @struct gd_font_t
@@ -298,10 +410,10 @@ typedef struct{
 }gd_params_t;
 
 /*
- * Exterrns
+ * Externs
  */
 
-/** @defgroup Ext_Drivers External implemented drivers for displays.
+/** @defgroup Ext_Drivers External Drivers Already Implemented
  * 	@brief Drivers for implemented display device drivers.
  * 	Below, we have the devices implemented.
  *
@@ -319,6 +431,11 @@ extern gd_driver_t* Gd_Driver_ST7920;
  * Publics
  */
 
+/** @defgroup Gd_Function Graphic Display Functions
+ * 	@brief Graphic Display functions, used during Graphic Display Operation.
+ *
+ * 	@{
+ */
 /**
  * @fn gd_error_e GD_Init(gd_t*, gd_params_t*)
  * @brief Initializes the Graphic Display module, configured with the parameters
@@ -569,5 +686,8 @@ gd_error_e GD_Reset(gd_t *Gd);
 gd_error_e GD_WriteCommand(gd_t *Gd, uint8_t byte);
 gd_error_e GD_WriteData(gd_t *Gd, uint8_t* buffer, size_t buff_size);
 
+/**
+  * @}
+  */
 
 #endif /* GRAPHICDISPLAY_H_ */
