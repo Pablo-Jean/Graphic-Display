@@ -1,0 +1,710 @@
+\doxysection{src/\+Graphic\+Display.c File Reference}
+\hypertarget{GraphicDisplay_8c}{}\label{GraphicDisplay_8c}\index{src/GraphicDisplay.c@{src/GraphicDisplay.c}}
+{\ttfamily \#include "{}Graphic\+Display.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{GraphicDisplay_8c_accd51e349e2545860ef4fa3ca42bbbf9}{\+\_\+\+SET\+\_\+\+PIXEL\+\_\+\+COLOR\+\_\+\+TYPECAST}}~(uint8\+\_\+t (\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*}, uint32\+\_\+t, uint32\+\_\+t, uint8\+\_\+t))
+\item 
+\#define \mbox{\hyperlink{GraphicDisplay_8c_a0202b385f165b17c1b122085d3bc2484}{\+\_\+\+FILL\+\_\+\+FRAME\+\_\+\+BUFFER\+\_\+\+TYPEFCAST}}~(uint8\+\_\+t (\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*}, uint8\+\_\+t))
+\item 
+\#define \mbox{\hyperlink{GraphicDisplay_8c_a217f263a70f204c3901d479b864e1326}{\+\_\+\+REFRESH\+\_\+\+DISP\+\_\+\+TYPECAST}}~(uint8\+\_\+t (\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*}))
+\item 
+\#define \mbox{\hyperlink{GraphicDisplay_8c_a85a107bbd540349781df3d8399e79a0a}{\+\_\+\+SET\+\_\+\+ON\+\_\+\+TYPECASTAT}}~(uint8\+\_\+t (\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*}, \+\_\+\+Bool))
+\item 
+\#define \mbox{\hyperlink{GraphicDisplay_8c_a47d1fd5a8bffc7dcbf3c9693bd4db2bd}{\+\_\+\+SET\+\_\+\+CONTRAST\+\_\+\+TYPECAST}}~(uint8\+\_\+t (\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*}, uint8\+\_\+t))
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{GraphicDisplay_8c_a2ab430bbb5a4ca3147121212841cae78}{\+\_\+drv\+\_\+fill\+\_\+frame\+\_\+buffer}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
+\item 
+static void \mbox{\hyperlink{GraphicDisplay_8c_a9c5f4d343ad1954daa2561bb6dceab59}{\+\_\+drv\+\_\+set\+\_\+pixel}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, uint32\+\_\+t x, uint32\+\_\+t y, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
+\item 
+static void \mbox{\hyperlink{GraphicDisplay_8c_ac2fde8fb413c0ca2f900b4950aa9187d}{\+\_\+drv\+\_\+set\+\_\+refresh}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd)
+\item 
+static void \mbox{\hyperlink{GraphicDisplay_8c_a4467c26dcf7710641b8182eae558b497}{\+\_\+drv\+\_\+set\+\_\+constrat}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, uint8\+\_\+t value)
+\item 
+static void \mbox{\hyperlink{GraphicDisplay_8c_a754fd5a17d2a319b2c46277b4003d502}{\+\_\+drv\+\_\+set\+\_\+on}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, bool On)
+\item 
+static void \mbox{\hyperlink{GraphicDisplay_8c_ad251d66f39ff5e57fdcec225d8d53dd8}{\+\_\+mtx\+\_\+lock}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd)
+\item 
+static void \mbox{\hyperlink{GraphicDisplay_8c_abe68146db0926d89342fbe8b8cf2f32d}{\+\_\+mtx\+\_\+unlock}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd)
+\item 
+static float \mbox{\hyperlink{GraphicDisplay_8c_aa2b27e1fe48e12a048f8ce44b45a9112}{\+\_\+\+Deg\+To\+Rad}} (float par\+\_\+deg)
+\item 
+static uint16\+\_\+t \mbox{\hyperlink{GraphicDisplay_8c_a5fd04a7d00ffba567ff17cf842c1afb1}{\+\_\+\+Normalize\+To0\+\_\+360}} (uint16\+\_\+t par\+\_\+deg)
+\item 
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{GraphicDisplay_8c_a058b61d16a02b94864bd04314ddbea6d}{GD\+\_\+\+Init}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, \mbox{\hyperlink{structgd__params__t}{gd\+\_\+params\+\_\+t}} \texorpdfstring{$\ast$}{*}params)
+\begin{DoxyCompactList}\small\item\em Initializes the Graphic Display module, configured with the parameters provided. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{GraphicDisplay_8c_a6c6678fa834f9eda68100a55bc829929}{GD\+\_\+\+Fill}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
+\begin{DoxyCompactList}\small\item\em Fill the Frame Buffer with the provided color. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{GraphicDisplay_8c_abbd368ffa7d5d787e5c4aaa64e5e81f2}{GD\+\_\+\+Update\+Screen}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd)
+\begin{DoxyCompactList}\small\item\em Update and refresh the update screen with the data into Frame Buffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{GraphicDisplay_8c_acf5efac777700f62a56e485113e671fc}{GD\+\_\+\+Draw\+Pixel}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, uint32\+\_\+t x, uint32\+\_\+t y, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
+\begin{DoxyCompactList}\small\item\em Write a color into the desired pixel in the frame buffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{GraphicDisplay_8c_a54e4b411218cbeda9d441d3e0d541b27}{GD\+\_\+\+Write\+Char}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, char ch, const \mbox{\hyperlink{structgd__font__t}{gd\+\_\+font\+\_\+t}} \texorpdfstring{$\ast$}{*}Font, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
+\begin{DoxyCompactList}\small\item\em Write a character into a Frame Buffer, with the lines with the desired color. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{GraphicDisplay_8c_aefebb04456bcf0613f9369a339b75f28}{GD\+\_\+\+Write\+String}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, char \texorpdfstring{$\ast$}{*}str, const \mbox{\hyperlink{structgd__font__t}{gd\+\_\+font\+\_\+t}} \texorpdfstring{$\ast$}{*}Font, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
+\begin{DoxyCompactList}\small\item\em Write a string into frame buffer, with the character lines with the desired color. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{GraphicDisplay_8c_a7e227bdbef25fc6ec669b4a84c649dc5}{GD\+\_\+\+Set\+Cursor}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, uint32\+\_\+t x, uint32\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Set the cursor to the position X,Y. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{GraphicDisplay_8c_a5fb7fb14fb864ee9912458539ed0b030}{GD\+\_\+\+Line}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, uint32\+\_\+t x1, uint32\+\_\+t y1, uint32\+\_\+t x2, uint32\+\_\+t y2, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
+\begin{DoxyCompactList}\small\item\em Write a line into the frame buffer between (x1,y1) (x2,y2). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{GraphicDisplay_8c_a61dabdcec8681e3d106c2ae32846e5a1}{GD\+\_\+\+Polyline}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, \mbox{\hyperlink{structgd__vertex__t}{gd\+\_\+vertex\+\_\+t}} \texorpdfstring{$\ast$}{*}par\+\_\+vertex, uint16\+\_\+t par\+\_\+size, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
+\item 
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{GraphicDisplay_8c_a1b00f4fc32367f504451fca2f6736ab5}{GD\+\_\+\+Draw\+Arc}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, uint32\+\_\+t x, uint32\+\_\+t y, uint32\+\_\+t radius, uint16\+\_\+t start\+\_\+angle, uint16\+\_\+t sweep, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
+\begin{DoxyCompactList}\small\item\em Draw an arc into the frame buffer with center, radius, start angle, and sweep. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{GraphicDisplay_8c_aa1cd0457fcc71e1698445f4011b52d08}{GD\+\_\+\+Draw\+Arc\+With\+Radius\+Line}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, uint32\+\_\+t x, uint32\+\_\+t y, uint32\+\_\+t radius, uint16\+\_\+t start\+\_\+angle, uint16\+\_\+t sweep, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
+\begin{DoxyCompactList}\small\item\em Draw an arc into frame buffer with lines in the radius line. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{GraphicDisplay_8c_af9a2f52b48c9cdffc5138bc884e7a1d0}{GD\+\_\+\+Draw\+Circle}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, uint32\+\_\+t par\+\_\+x, uint32\+\_\+t par\+\_\+y, uint32\+\_\+t par\+\_\+r, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} par\+\_\+color)
+\begin{DoxyCompactList}\small\item\em Draw a complete circle with defined radius. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{GraphicDisplay_8c_aedea84e326e35e9647d1c26e28d68636}{GD\+\_\+\+Fill\+Circle}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, uint32\+\_\+t par\+\_\+x, uint32\+\_\+t par\+\_\+y, uint32\+\_\+t par\+\_\+r, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} par\+\_\+color)
+\begin{DoxyCompactList}\small\item\em Draw a circle filled with the provided color. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{GraphicDisplay_8c_a8b7073ba76962ae60d6dbf84269ff519}{GD\+\_\+\+Draw\+Rectangle}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, uint32\+\_\+t x1, uint32\+\_\+t y1, uint32\+\_\+t x2, uint32\+\_\+t y2, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
+\item 
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{GraphicDisplay_8c_aaed1396f92e368d4925305a3cd4c1152}{GD\+\_\+\+Fill\+Rectangle}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, uint32\+\_\+t x1, uint32\+\_\+t y1, uint32\+\_\+t x2, uint32\+\_\+t y2, \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} color)
+\item 
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{GraphicDisplay_8c_a7218665b79a12fc0b2152ed9aec842aa}{GD\+\_\+\+Draw\+Bitmap}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, uint32\+\_\+t x, uint32\+\_\+t y, const unsigned char \texorpdfstring{$\ast$}{*}bitmap, uint32\+\_\+t w, uint32\+\_\+t h, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
+\item 
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{GraphicDisplay_8c_a9a1d8ddd920fa3190e099baad2cce647}{GD\+\_\+\+Set\+Contrast}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, uint8\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Sets the contrast of the display. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{GraphicDisplay_8c_a0a2122066e0046a15d3446441b27fb06}{GD\+\_\+\+Set\+Display\+On}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, bool on)
+\begin{DoxyCompactList}\small\item\em Set Display ON/\+OFF. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{GraphicDisplay_8c_aa392d77a94fb811c7114fcd003398f8d}{GD\+\_\+\+Get\+Display\+On}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd)
+\begin{DoxyCompactList}\small\item\em Reads Display\+On state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structgd__driver__t}{gd\+\_\+driver\+\_\+t}} \mbox{\hyperlink{GraphicDisplay_8c_a55830c568fe0e586f25f70760b6c6e45}{\+\_\+\+Gd\+\_\+\+Driver\+\_\+\+SSD1306\+Attr}}
+\item 
+\mbox{\hyperlink{structgd__driver__t}{gd\+\_\+driver\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__Ext__Drivers_ga9b964786596cf1d0f845eddc13ea9a67}{Gd\+\_\+\+Driver\+\_\+\+SSD1306}} = \&\mbox{\hyperlink{GraphicDisplay_8c_a55830c568fe0e586f25f70760b6c6e45}{\+\_\+\+Gd\+\_\+\+Driver\+\_\+\+SSD1306\+Attr}}
+\begin{DoxyCompactList}\small\item\em SSD1306 Display Driver pointer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structgd__driver__t}{gd\+\_\+driver\+\_\+t}} \mbox{\hyperlink{GraphicDisplay_8c_a63dffc519e0905cb29b45f0cffb76c7b}{\+\_\+\+Gd\+\_\+\+Driver\+\_\+\+ST7920\+Attr}}
+\item 
+\mbox{\hyperlink{structgd__driver__t}{gd\+\_\+driver\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__Ext__Drivers_gaa309ec642bd4ff6ad8d5975bf53bf33e}{Gd\+\_\+\+Driver\+\_\+\+ST7920}} = \&\mbox{\hyperlink{GraphicDisplay_8c_a63dffc519e0905cb29b45f0cffb76c7b}{\+\_\+\+Gd\+\_\+\+Driver\+\_\+\+ST7920\+Attr}}
+\begin{DoxyCompactList}\small\item\em ST7920 Display Driver poointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{GraphicDisplay_8c_a0202b385f165b17c1b122085d3bc2484}\label{GraphicDisplay_8c_a0202b385f165b17c1b122085d3bc2484} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!\_FILL\_FRAME\_BUFFER\_TYPEFCAST@{\_FILL\_FRAME\_BUFFER\_TYPEFCAST}}
+\index{\_FILL\_FRAME\_BUFFER\_TYPEFCAST@{\_FILL\_FRAME\_BUFFER\_TYPEFCAST}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{\_FILL\_FRAME\_BUFFER\_TYPEFCAST}{\_FILL\_FRAME\_BUFFER\_TYPEFCAST}}
+{\footnotesize\ttfamily \#define \+\_\+\+FILL\+\_\+\+FRAME\+\_\+\+BUFFER\+\_\+\+TYPEFCAST~(uint8\+\_\+t (\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*}, uint8\+\_\+t))}
+
+\Hypertarget{GraphicDisplay_8c_a217f263a70f204c3901d479b864e1326}\label{GraphicDisplay_8c_a217f263a70f204c3901d479b864e1326} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!\_REFRESH\_DISP\_TYPECAST@{\_REFRESH\_DISP\_TYPECAST}}
+\index{\_REFRESH\_DISP\_TYPECAST@{\_REFRESH\_DISP\_TYPECAST}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{\_REFRESH\_DISP\_TYPECAST}{\_REFRESH\_DISP\_TYPECAST}}
+{\footnotesize\ttfamily \#define \+\_\+\+REFRESH\+\_\+\+DISP\+\_\+\+TYPECAST~(uint8\+\_\+t (\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*}))}
+
+\Hypertarget{GraphicDisplay_8c_a47d1fd5a8bffc7dcbf3c9693bd4db2bd}\label{GraphicDisplay_8c_a47d1fd5a8bffc7dcbf3c9693bd4db2bd} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!\_SET\_CONTRAST\_TYPECAST@{\_SET\_CONTRAST\_TYPECAST}}
+\index{\_SET\_CONTRAST\_TYPECAST@{\_SET\_CONTRAST\_TYPECAST}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{\_SET\_CONTRAST\_TYPECAST}{\_SET\_CONTRAST\_TYPECAST}}
+{\footnotesize\ttfamily \#define \+\_\+\+SET\+\_\+\+CONTRAST\+\_\+\+TYPECAST~(uint8\+\_\+t (\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*}, uint8\+\_\+t))}
+
+\Hypertarget{GraphicDisplay_8c_a85a107bbd540349781df3d8399e79a0a}\label{GraphicDisplay_8c_a85a107bbd540349781df3d8399e79a0a} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!\_SET\_ON\_TYPECASTAT@{\_SET\_ON\_TYPECASTAT}}
+\index{\_SET\_ON\_TYPECASTAT@{\_SET\_ON\_TYPECASTAT}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{\_SET\_ON\_TYPECASTAT}{\_SET\_ON\_TYPECASTAT}}
+{\footnotesize\ttfamily \#define \+\_\+\+SET\+\_\+\+ON\+\_\+\+TYPECASTAT~(uint8\+\_\+t (\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*}, \+\_\+\+Bool))}
+
+\Hypertarget{GraphicDisplay_8c_accd51e349e2545860ef4fa3ca42bbbf9}\label{GraphicDisplay_8c_accd51e349e2545860ef4fa3ca42bbbf9} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!\_SET\_PIXEL\_COLOR\_TYPECAST@{\_SET\_PIXEL\_COLOR\_TYPECAST}}
+\index{\_SET\_PIXEL\_COLOR\_TYPECAST@{\_SET\_PIXEL\_COLOR\_TYPECAST}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{\_SET\_PIXEL\_COLOR\_TYPECAST}{\_SET\_PIXEL\_COLOR\_TYPECAST}}
+{\footnotesize\ttfamily \#define \+\_\+\+SET\+\_\+\+PIXEL\+\_\+\+COLOR\+\_\+\+TYPECAST~(uint8\+\_\+t (\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*}, uint32\+\_\+t, uint32\+\_\+t, uint8\+\_\+t))}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{GraphicDisplay_8c_aa2b27e1fe48e12a048f8ce44b45a9112}\label{GraphicDisplay_8c_aa2b27e1fe48e12a048f8ce44b45a9112} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!\_DegToRad@{\_DegToRad}}
+\index{\_DegToRad@{\_DegToRad}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{\_DegToRad()}{\_DegToRad()}}
+{\footnotesize\ttfamily static float \+\_\+\+Deg\+To\+Rad (\begin{DoxyParamCaption}\item[{float}]{par\+\_\+deg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{GraphicDisplay_8c_a2ab430bbb5a4ca3147121212841cae78}\label{GraphicDisplay_8c_a2ab430bbb5a4ca3147121212841cae78} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!\_drv\_fill\_frame\_buffer@{\_drv\_fill\_frame\_buffer}}
+\index{\_drv\_fill\_frame\_buffer@{\_drv\_fill\_frame\_buffer}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{\_drv\_fill\_frame\_buffer()}{\_drv\_fill\_frame\_buffer()}}
+{\footnotesize\ttfamily static void \+\_\+drv\+\_\+fill\+\_\+frame\+\_\+buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Gd,  }\item[{\mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}}}]{color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{GraphicDisplay_8c_a4467c26dcf7710641b8182eae558b497}\label{GraphicDisplay_8c_a4467c26dcf7710641b8182eae558b497} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!\_drv\_set\_constrat@{\_drv\_set\_constrat}}
+\index{\_drv\_set\_constrat@{\_drv\_set\_constrat}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{\_drv\_set\_constrat()}{\_drv\_set\_constrat()}}
+{\footnotesize\ttfamily static void \+\_\+drv\+\_\+set\+\_\+constrat (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Gd,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{GraphicDisplay_8c_a754fd5a17d2a319b2c46277b4003d502}\label{GraphicDisplay_8c_a754fd5a17d2a319b2c46277b4003d502} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!\_drv\_set\_on@{\_drv\_set\_on}}
+\index{\_drv\_set\_on@{\_drv\_set\_on}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{\_drv\_set\_on()}{\_drv\_set\_on()}}
+{\footnotesize\ttfamily static void \+\_\+drv\+\_\+set\+\_\+on (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Gd,  }\item[{bool}]{On }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{GraphicDisplay_8c_a9c5f4d343ad1954daa2561bb6dceab59}\label{GraphicDisplay_8c_a9c5f4d343ad1954daa2561bb6dceab59} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!\_drv\_set\_pixel@{\_drv\_set\_pixel}}
+\index{\_drv\_set\_pixel@{\_drv\_set\_pixel}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{\_drv\_set\_pixel()}{\_drv\_set\_pixel()}}
+{\footnotesize\ttfamily static void \+\_\+drv\+\_\+set\+\_\+pixel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Gd,  }\item[{uint32\+\_\+t}]{x,  }\item[{uint32\+\_\+t}]{y,  }\item[{\mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}}}]{color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{GraphicDisplay_8c_ac2fde8fb413c0ca2f900b4950aa9187d}\label{GraphicDisplay_8c_ac2fde8fb413c0ca2f900b4950aa9187d} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!\_drv\_set\_refresh@{\_drv\_set\_refresh}}
+\index{\_drv\_set\_refresh@{\_drv\_set\_refresh}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{\_drv\_set\_refresh()}{\_drv\_set\_refresh()}}
+{\footnotesize\ttfamily static void \+\_\+drv\+\_\+set\+\_\+refresh (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Gd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{GraphicDisplay_8c_ad251d66f39ff5e57fdcec225d8d53dd8}\label{GraphicDisplay_8c_ad251d66f39ff5e57fdcec225d8d53dd8} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!\_mtx\_lock@{\_mtx\_lock}}
+\index{\_mtx\_lock@{\_mtx\_lock}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{\_mtx\_lock()}{\_mtx\_lock()}}
+{\footnotesize\ttfamily static void \+\_\+mtx\+\_\+lock (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Gd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{GraphicDisplay_8c_abe68146db0926d89342fbe8b8cf2f32d}\label{GraphicDisplay_8c_abe68146db0926d89342fbe8b8cf2f32d} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!\_mtx\_unlock@{\_mtx\_unlock}}
+\index{\_mtx\_unlock@{\_mtx\_unlock}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{\_mtx\_unlock()}{\_mtx\_unlock()}}
+{\footnotesize\ttfamily static void \+\_\+mtx\+\_\+unlock (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Gd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{GraphicDisplay_8c_a5fd04a7d00ffba567ff17cf842c1afb1}\label{GraphicDisplay_8c_a5fd04a7d00ffba567ff17cf842c1afb1} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!\_NormalizeTo0\_360@{\_NormalizeTo0\_360}}
+\index{\_NormalizeTo0\_360@{\_NormalizeTo0\_360}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{\_NormalizeTo0\_360()}{\_NormalizeTo0\_360()}}
+{\footnotesize\ttfamily static uint16\+\_\+t \+\_\+\+Normalize\+To0\+\_\+360 (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{par\+\_\+deg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{GraphicDisplay_8c_a1b00f4fc32367f504451fca2f6736ab5}\label{GraphicDisplay_8c_a1b00f4fc32367f504451fca2f6736ab5} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!GD\_DrawArc@{GD\_DrawArc}}
+\index{GD\_DrawArc@{GD\_DrawArc}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{GD\_DrawArc()}{GD\_DrawArc()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} GD\+\_\+\+Draw\+Arc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Gd,  }\item[{uint32\+\_\+t}]{x,  }\item[{uint32\+\_\+t}]{y,  }\item[{uint32\+\_\+t}]{radius,  }\item[{uint16\+\_\+t}]{start\+\_\+angle,  }\item[{uint16\+\_\+t}]{sweep,  }\item[{\mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}}}]{color }\end{DoxyParamCaption})}
+
+
+
+Draw an arc into the frame buffer with center, radius, start angle, and sweep. 
+
+\begin{DoxyPrecond}{Precondition}
+Graphic Display is initialized. 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em Gd} & Pointer to the Graphic Display handle. \\
+\hline
+{\em x} & X axis of the center of Arc. \\
+\hline
+{\em y} & Y axis of the center of Arc. \\
+\hline
+{\em radius} & Radius of the Arc. \\
+\hline
+{\em start\+\_\+angle} & Initial angle in degrees. \\
+\hline
+{\em sweep} & Sweep of the arc. \\
+\hline
+{\em color} & Color of the arc. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+GD\+\_\+\+OK if success. 
+\end{DoxyReturn}
+\Hypertarget{GraphicDisplay_8c_aa1cd0457fcc71e1698445f4011b52d08}\label{GraphicDisplay_8c_aa1cd0457fcc71e1698445f4011b52d08} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!GD\_DrawArcWithRadiusLine@{GD\_DrawArcWithRadiusLine}}
+\index{GD\_DrawArcWithRadiusLine@{GD\_DrawArcWithRadiusLine}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{GD\_DrawArcWithRadiusLine()}{GD\_DrawArcWithRadiusLine()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} GD\+\_\+\+Draw\+Arc\+With\+Radius\+Line (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Gd,  }\item[{uint32\+\_\+t}]{x,  }\item[{uint32\+\_\+t}]{y,  }\item[{uint32\+\_\+t}]{radius,  }\item[{uint16\+\_\+t}]{start\+\_\+angle,  }\item[{uint16\+\_\+t}]{sweep,  }\item[{\mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}}}]{color }\end{DoxyParamCaption})}
+
+
+
+Draw an arc into frame buffer with lines in the radius line. 
+
+\begin{DoxyPrecond}{Precondition}
+Graphic Display is initialized. 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em Gd} & Pointer to the Graphic Display handle. \\
+\hline
+{\em x} & X axis of the center of Arc. \\
+\hline
+{\em y} & Y axis of the center of Arc. \\
+\hline
+{\em radius} & Radius of the Arc. \\
+\hline
+{\em start\+\_\+angle} & Initial angle in degrees. \\
+\hline
+{\em sweep} & Sweep of the arc. \\
+\hline
+{\em color} & Color of the arc. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+GD\+\_\+\+OK if success. 
+\end{DoxyReturn}
+\Hypertarget{GraphicDisplay_8c_a7218665b79a12fc0b2152ed9aec842aa}\label{GraphicDisplay_8c_a7218665b79a12fc0b2152ed9aec842aa} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!GD\_DrawBitmap@{GD\_DrawBitmap}}
+\index{GD\_DrawBitmap@{GD\_DrawBitmap}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{GD\_DrawBitmap()}{GD\_DrawBitmap()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} GD\+\_\+\+Draw\+Bitmap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Gd,  }\item[{uint32\+\_\+t}]{x,  }\item[{uint32\+\_\+t}]{y,  }\item[{const unsigned char \texorpdfstring{$\ast$}{*}}]{bitmap,  }\item[{uint32\+\_\+t}]{w,  }\item[{uint32\+\_\+t}]{h,  }\item[{\mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}}}]{color }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em Gd} & \\
+\hline
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+{\em bitmap} & \\
+\hline
+{\em w} & \\
+\hline
+{\em h} & \\
+\hline
+{\em color} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{GraphicDisplay_8c_af9a2f52b48c9cdffc5138bc884e7a1d0}\label{GraphicDisplay_8c_af9a2f52b48c9cdffc5138bc884e7a1d0} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!GD\_DrawCircle@{GD\_DrawCircle}}
+\index{GD\_DrawCircle@{GD\_DrawCircle}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{GD\_DrawCircle()}{GD\_DrawCircle()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} GD\+\_\+\+Draw\+Circle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Gd,  }\item[{uint32\+\_\+t}]{par\+\_\+x,  }\item[{uint32\+\_\+t}]{par\+\_\+y,  }\item[{uint32\+\_\+t}]{par\+\_\+r,  }\item[{\mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}}}]{par\+\_\+color }\end{DoxyParamCaption})}
+
+
+
+Draw a complete circle with defined radius. 
+
+\begin{DoxyPrecond}{Precondition}
+Graphic Display is initialized. 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em Gd} & Pointer to the Graphic Display handle. \\
+\hline
+{\em par\+\_\+x} & X axis of the center of circle. \\
+\hline
+{\em par\+\_\+y} & Y axis of the center of circle. \\
+\hline
+{\em par\+\_\+r} & Radius of the circle. \\
+\hline
+{\em color} & Color of the circle. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+GD\+\_\+\+OK if success. 
+\end{DoxyReturn}
+\Hypertarget{GraphicDisplay_8c_acf5efac777700f62a56e485113e671fc}\label{GraphicDisplay_8c_acf5efac777700f62a56e485113e671fc} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!GD\_DrawPixel@{GD\_DrawPixel}}
+\index{GD\_DrawPixel@{GD\_DrawPixel}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{GD\_DrawPixel()}{GD\_DrawPixel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} GD\+\_\+\+Draw\+Pixel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Gd,  }\item[{uint32\+\_\+t}]{x,  }\item[{uint32\+\_\+t}]{y,  }\item[{\mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}}}]{color }\end{DoxyParamCaption})}
+
+
+
+Write a color into the desired pixel in the frame buffer. 
+
+\begin{DoxyPrecond}{Precondition}
+Graphic Display is initialized. 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em Gd} & Pointer to the Graphic Display handle. \\
+\hline
+{\em x} & X axis of pixel to write. \\
+\hline
+{\em y} & Y axis of pixel to write. \\
+\hline
+{\em color} & Color to write on the pixel. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+GD\+\_\+\+OK if success. 
+\end{DoxyReturn}
+\Hypertarget{GraphicDisplay_8c_a8b7073ba76962ae60d6dbf84269ff519}\label{GraphicDisplay_8c_a8b7073ba76962ae60d6dbf84269ff519} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!GD\_DrawRectangle@{GD\_DrawRectangle}}
+\index{GD\_DrawRectangle@{GD\_DrawRectangle}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{GD\_DrawRectangle()}{GD\_DrawRectangle()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} GD\+\_\+\+Draw\+Rectangle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Gd,  }\item[{uint32\+\_\+t}]{x1,  }\item[{uint32\+\_\+t}]{y1,  }\item[{uint32\+\_\+t}]{x2,  }\item[{uint32\+\_\+t}]{y2,  }\item[{\mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}}}]{color }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em Gd} & \\
+\hline
+{\em x1} & \\
+\hline
+{\em y1} & \\
+\hline
+{\em x2} & \\
+\hline
+{\em y2} & \\
+\hline
+{\em color} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{GraphicDisplay_8c_a6c6678fa834f9eda68100a55bc829929}\label{GraphicDisplay_8c_a6c6678fa834f9eda68100a55bc829929} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!GD\_Fill@{GD\_Fill}}
+\index{GD\_Fill@{GD\_Fill}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{GD\_Fill()}{GD\_Fill()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} GD\+\_\+\+Fill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Gd,  }\item[{\mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}}}]{color }\end{DoxyParamCaption})}
+
+
+
+Fill the Frame Buffer with the provided color. 
+
+\begin{DoxyPrecond}{Precondition}
+Graphic Display is initialized. 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em Gd} & Pointer to the Graphic Display handle. \\
+\hline
+{\em color} & The color to fill the buffer, GD\+\_\+\+BLACK to erase, GD\+\_\+\+WHITE to turnon all pixels. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+GD\+\_\+\+OK if success. 
+\end{DoxyReturn}
+\Hypertarget{GraphicDisplay_8c_aedea84e326e35e9647d1c26e28d68636}\label{GraphicDisplay_8c_aedea84e326e35e9647d1c26e28d68636} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!GD\_FillCircle@{GD\_FillCircle}}
+\index{GD\_FillCircle@{GD\_FillCircle}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{GD\_FillCircle()}{GD\_FillCircle()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} GD\+\_\+\+Fill\+Circle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Gd,  }\item[{uint32\+\_\+t}]{par\+\_\+x,  }\item[{uint32\+\_\+t}]{par\+\_\+y,  }\item[{uint32\+\_\+t}]{par\+\_\+r,  }\item[{\mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}}}]{par\+\_\+color }\end{DoxyParamCaption})}
+
+
+
+Draw a circle filled with the provided color. 
+
+\begin{DoxyPrecond}{Precondition}
+Graphic Display is initialized. 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em Gd} & Pointer to the Graphic Display handle. \\
+\hline
+{\em par\+\_\+x} & X axis of the center of circle. \\
+\hline
+{\em par\+\_\+y} & Y axis of the center of circle. \\
+\hline
+{\em par\+\_\+r} & Radius of the circle. \\
+\hline
+{\em par\+\_\+color} & Color of the circle. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+GD\+\_\+\+OK if success. 
+\end{DoxyReturn}
+\Hypertarget{GraphicDisplay_8c_aaed1396f92e368d4925305a3cd4c1152}\label{GraphicDisplay_8c_aaed1396f92e368d4925305a3cd4c1152} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!GD\_FillRectangle@{GD\_FillRectangle}}
+\index{GD\_FillRectangle@{GD\_FillRectangle}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{GD\_FillRectangle()}{GD\_FillRectangle()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} GD\+\_\+\+Fill\+Rectangle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Gd,  }\item[{uint32\+\_\+t}]{x1,  }\item[{uint32\+\_\+t}]{y1,  }\item[{uint32\+\_\+t}]{x2,  }\item[{uint32\+\_\+t}]{y2,  }\item[{\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}}}]{color }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em Gd} & \\
+\hline
+{\em x1} & \\
+\hline
+{\em y1} & \\
+\hline
+{\em x2} & \\
+\hline
+{\em y2} & \\
+\hline
+{\em color} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{GraphicDisplay_8c_aa392d77a94fb811c7114fcd003398f8d}\label{GraphicDisplay_8c_aa392d77a94fb811c7114fcd003398f8d} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!GD\_GetDisplayOn@{GD\_GetDisplayOn}}
+\index{GD\_GetDisplayOn@{GD\_GetDisplayOn}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{GD\_GetDisplayOn()}{GD\_GetDisplayOn()}}
+{\footnotesize\ttfamily bool GD\+\_\+\+Get\+Display\+On (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Gd }\end{DoxyParamCaption})}
+
+
+
+Reads Display\+On state. 
+
+\begin{DoxyReturn}{Returns}
+0\+: OFF. 1\+: ON. 
+\end{DoxyReturn}
+\Hypertarget{GraphicDisplay_8c_a058b61d16a02b94864bd04314ddbea6d}\label{GraphicDisplay_8c_a058b61d16a02b94864bd04314ddbea6d} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!GD\_Init@{GD\_Init}}
+\index{GD\_Init@{GD\_Init}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{GD\_Init()}{GD\_Init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} GD\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Gd,  }\item[{\mbox{\hyperlink{structgd__params__t}{gd\+\_\+params\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{params }\end{DoxyParamCaption})}
+
+
+
+Initializes the Graphic Display module, configured with the parameters provided. 
+
+\begin{DoxyPrecond}{Precondition}
+Initialize the display device driver, and provide the required parameters. 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em Gd} & Pointer to the Graphic Display handle. \\
+\hline
+{\em params} & Pointer with the parameters of the Graphic Display. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+GD\+\_\+\+OK if operation is success. 
+\end{DoxyReturn}
+\Hypertarget{GraphicDisplay_8c_a5fb7fb14fb864ee9912458539ed0b030}\label{GraphicDisplay_8c_a5fb7fb14fb864ee9912458539ed0b030} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!GD\_Line@{GD\_Line}}
+\index{GD\_Line@{GD\_Line}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{GD\_Line()}{GD\_Line()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} GD\+\_\+\+Line (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Gd,  }\item[{uint32\+\_\+t}]{x1,  }\item[{uint32\+\_\+t}]{y1,  }\item[{uint32\+\_\+t}]{x2,  }\item[{uint32\+\_\+t}]{y2,  }\item[{\mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}}}]{color }\end{DoxyParamCaption})}
+
+
+
+Write a line into the frame buffer between (x1,y1) (x2,y2). 
+
+\begin{DoxyPrecond}{Precondition}
+Graphic Display is initialized. 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em Gd} & Pointer to the Graphic Display handle. \\
+\hline
+{\em x1} & X axis for the first point. \\
+\hline
+{\em y1} & Y axis for the first point. \\
+\hline
+{\em x2} & X axis for the second point. \\
+\hline
+{\em y2} & Y axis for the second point. \\
+\hline
+{\em color} & Color of the line. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+GD\+\_\+\+OK if success. 
+\end{DoxyReturn}
+\Hypertarget{GraphicDisplay_8c_a61dabdcec8681e3d106c2ae32846e5a1}\label{GraphicDisplay_8c_a61dabdcec8681e3d106c2ae32846e5a1} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!GD\_Polyline@{GD\_Polyline}}
+\index{GD\_Polyline@{GD\_Polyline}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{GD\_Polyline()}{GD\_Polyline()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} GD\+\_\+\+Polyline (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Gd,  }\item[{\mbox{\hyperlink{structgd__vertex__t}{gd\+\_\+vertex\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{par\+\_\+vertex,  }\item[{uint16\+\_\+t}]{par\+\_\+size,  }\item[{\mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}}}]{color }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em Gd} & \\
+\hline
+{\em par\+\_\+vertex} & \\
+\hline
+{\em par\+\_\+size} & \\
+\hline
+{\em color} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{GraphicDisplay_8c_a9a1d8ddd920fa3190e099baad2cce647}\label{GraphicDisplay_8c_a9a1d8ddd920fa3190e099baad2cce647} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!GD\_SetContrast@{GD\_SetContrast}}
+\index{GD\_SetContrast@{GD\_SetContrast}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{GD\_SetContrast()}{GD\_SetContrast()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} GD\+\_\+\+Set\+Contrast (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Gd,  }\item[{const uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Sets the contrast of the display. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & contrast to set. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Contrast increases as the value increases. 
+
+RESET = 7Fh. 
+\end{DoxyNote}
+\Hypertarget{GraphicDisplay_8c_a7e227bdbef25fc6ec669b4a84c649dc5}\label{GraphicDisplay_8c_a7e227bdbef25fc6ec669b4a84c649dc5} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!GD\_SetCursor@{GD\_SetCursor}}
+\index{GD\_SetCursor@{GD\_SetCursor}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{GD\_SetCursor()}{GD\_SetCursor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} GD\+\_\+\+Set\+Cursor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Gd,  }\item[{uint32\+\_\+t}]{x,  }\item[{uint32\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Set the cursor to the position X,Y. 
+
+\begin{DoxyPrecond}{Precondition}
+Graphic Display is initialized. 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em Gd} & Pointer to the Graphic Display handle. \\
+\hline
+{\em x} & X axis position. \\
+\hline
+{\em y} & Y axis position. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+GD\+\_\+\+OK if success. 
+\end{DoxyReturn}
+\Hypertarget{GraphicDisplay_8c_a0a2122066e0046a15d3446441b27fb06}\label{GraphicDisplay_8c_a0a2122066e0046a15d3446441b27fb06} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!GD\_SetDisplayOn@{GD\_SetDisplayOn}}
+\index{GD\_SetDisplayOn@{GD\_SetDisplayOn}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{GD\_SetDisplayOn()}{GD\_SetDisplayOn()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} GD\+\_\+\+Set\+Display\+On (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Gd,  }\item[{bool}]{on }\end{DoxyParamCaption})}
+
+
+
+Set Display ON/\+OFF. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em on} & 0 for OFF, any for ON. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{GraphicDisplay_8c_abbd368ffa7d5d787e5c4aaa64e5e81f2}\label{GraphicDisplay_8c_abbd368ffa7d5d787e5c4aaa64e5e81f2} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!GD\_UpdateScreen@{GD\_UpdateScreen}}
+\index{GD\_UpdateScreen@{GD\_UpdateScreen}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{GD\_UpdateScreen()}{GD\_UpdateScreen()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} GD\+\_\+\+Update\+Screen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Gd }\end{DoxyParamCaption})}
+
+
+
+Update and refresh the update screen with the data into Frame Buffer. 
+
+\begin{DoxyPrecond}{Precondition}
+Graphic Display is initialized. 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em Gd} & Pointer to the Graphic Display handle. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+GD\+\_\+\+OK if success. 
+\end{DoxyReturn}
+\Hypertarget{GraphicDisplay_8c_a54e4b411218cbeda9d441d3e0d541b27}\label{GraphicDisplay_8c_a54e4b411218cbeda9d441d3e0d541b27} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!GD\_WriteChar@{GD\_WriteChar}}
+\index{GD\_WriteChar@{GD\_WriteChar}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{GD\_WriteChar()}{GD\_WriteChar()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} GD\+\_\+\+Write\+Char (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Gd,  }\item[{char}]{ch,  }\item[{const \mbox{\hyperlink{structgd__font__t}{gd\+\_\+font\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Font,  }\item[{\mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}}}]{color }\end{DoxyParamCaption})}
+
+
+
+Write a character into a Frame Buffer, with the lines with the desired color. 
+
+\begin{DoxyPrecond}{Precondition}
+Graphic Display is initialized. 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em Gd} & Pointer to the Graphic Display handle. \\
+\hline
+{\em ch} & Character coded in ASCII. \\
+\hline
+{\em Font} & Pointer to the Fontset to write. \\
+\hline
+{\em color} & Color of the character. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+GD\+\_\+\+OK if success. 
+\end{DoxyReturn}
+\Hypertarget{GraphicDisplay_8c_aefebb04456bcf0613f9369a339b75f28}\label{GraphicDisplay_8c_aefebb04456bcf0613f9369a339b75f28} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!GD\_WriteString@{GD\_WriteString}}
+\index{GD\_WriteString@{GD\_WriteString}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{GD\_WriteString()}{GD\_WriteString()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} GD\+\_\+\+Write\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Gd,  }\item[{char \texorpdfstring{$\ast$}{*}}]{str,  }\item[{const \mbox{\hyperlink{structgd__font__t}{gd\+\_\+font\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Font,  }\item[{\mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}}}]{color }\end{DoxyParamCaption})}
+
+
+
+Write a string into frame buffer, with the character lines with the desired color. 
+
+\begin{DoxyPrecond}{Precondition}
+Graphic Display is initialized. 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em Gd} & Pointer to the Graphic Display handle. \\
+\hline
+{\em str} & Char array, ended with \textquotesingle{}\textbackslash{}0\textquotesingle{} character. \\
+\hline
+{\em Font} & Pointer to the Fontset to write. \\
+\hline
+{\em color} & Color of the string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+GD\+\_\+\+OK if success. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{GraphicDisplay_8c_a55830c568fe0e586f25f70760b6c6e45}\label{GraphicDisplay_8c_a55830c568fe0e586f25f70760b6c6e45} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!\_Gd\_Driver\_SSD1306Attr@{\_Gd\_Driver\_SSD1306Attr}}
+\index{\_Gd\_Driver\_SSD1306Attr@{\_Gd\_Driver\_SSD1306Attr}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{\_Gd\_Driver\_SSD1306Attr}{\_Gd\_Driver\_SSD1306Attr}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structgd__driver__t}{gd\+\_\+driver\+\_\+t}} \+\_\+\+Gd\+\_\+\+Driver\+\_\+\+SSD1306\+Attr}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .pHandle\ =\ NULL,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .fxnSetPixelColor\ =\ \mbox{\hyperlink{GraphicDisplay_8c_accd51e349e2545860ef4fa3ca42bbbf9}{\_SET\_PIXEL\_COLOR\_TYPECAST}}\ \ \ \ \ \ \mbox{\hyperlink{ssd1306_8c_a12eae041ee14e27db9c4702977d6cbb2}{SSD1306\_Write}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .fxnFillFrameBuffer\ =\ \mbox{\hyperlink{GraphicDisplay_8c_a0202b385f165b17c1b122085d3bc2484}{\_FILL\_FRAME\_BUFFER\_TYPEFCAST}}\ \ \mbox{\hyperlink{ssd1306_8c_a6a32fb38f11d93198a4310db2b47b461}{SSD1306\_Fill}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .fxnRefreshDisp\ =\ \mbox{\hyperlink{GraphicDisplay_8c_a217f263a70f204c3901d479b864e1326}{\_REFRESH\_DISP\_TYPECAST}}\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{ssd1306_8c_ab2152b1a002659a1333538895698fd9f}{SSD1306\_Refresh}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .fxnSetOn\ =\ \mbox{\hyperlink{GraphicDisplay_8c_a85a107bbd540349781df3d8399e79a0a}{\_SET\_ON\_TYPECASTAT}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{ssd1306_8c_a3ea5f071648226cc1e476c752df33d85}{SSD1306\_SetDisplayOn}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .fxnSetContrast\ =\ \mbox{\hyperlink{GraphicDisplay_8c_a47d1fd5a8bffc7dcbf3c9693bd4db2bd}{\_SET\_CONTRAST\_TYPECAST}}\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{ssd1306_8c_a513194a7f53cd0e966c575b2bc51afa4}{SSD1306\_SetContrast}}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+Diver for SSD1306 \Hypertarget{GraphicDisplay_8c_a63dffc519e0905cb29b45f0cffb76c7b}\label{GraphicDisplay_8c_a63dffc519e0905cb29b45f0cffb76c7b} 
+\index{GraphicDisplay.c@{GraphicDisplay.c}!\_Gd\_Driver\_ST7920Attr@{\_Gd\_Driver\_ST7920Attr}}
+\index{\_Gd\_Driver\_ST7920Attr@{\_Gd\_Driver\_ST7920Attr}!GraphicDisplay.c@{GraphicDisplay.c}}
+\doxysubsubsection{\texorpdfstring{\_Gd\_Driver\_ST7920Attr}{\_Gd\_Driver\_ST7920Attr}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structgd__driver__t}{gd\+\_\+driver\+\_\+t}} \+\_\+\+Gd\+\_\+\+Driver\+\_\+\+ST7920\+Attr}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .pHandle\ =\ NULL,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .fxnSetPixelColor\ =\ \mbox{\hyperlink{GraphicDisplay_8c_accd51e349e2545860ef4fa3ca42bbbf9}{\_SET\_PIXEL\_COLOR\_TYPECAST}}\ \ \ \ \ \ \mbox{\hyperlink{st7920_8c_acbfb3eb8fd397d5d2a84e22c9d075d77}{ST7920\_Write}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .fxnFillFrameBuffer\ =\ \mbox{\hyperlink{GraphicDisplay_8c_a0202b385f165b17c1b122085d3bc2484}{\_FILL\_FRAME\_BUFFER\_TYPEFCAST}}\ \ \mbox{\hyperlink{st7920_8c_a0fcff79aff24f3547c759a952548c467}{ST7920\_Fill}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .fxnRefreshDisp\ =\ \mbox{\hyperlink{GraphicDisplay_8c_a217f263a70f204c3901d479b864e1326}{\_REFRESH\_DISP\_TYPECAST}}\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{st7920_8c_a0933ceac610b015bd25490bac72bc052}{ST7920\_Refresh}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .fxnSetOn\ =\ \mbox{\hyperlink{GraphicDisplay_8c_a85a107bbd540349781df3d8399e79a0a}{\_SET\_ON\_TYPECASTAT}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NULL,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .fxnSetContrast\ =\ \mbox{\hyperlink{GraphicDisplay_8c_a47d1fd5a8bffc7dcbf3c9693bd4db2bd}{\_SET\_CONTRAST\_TYPECAST}}\ \ \ \ \ \ \ \ \ \ NULL}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+Diver for ST7920 

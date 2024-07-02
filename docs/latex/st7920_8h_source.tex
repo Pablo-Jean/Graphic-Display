@@ -1,0 +1,112 @@
+\doxysection{st7920.\+h}
+\hypertarget{st7920_8h_source}{}\label{st7920_8h_source}\index{src/drivers/st7920/st7920.h@{src/drivers/st7920/st7920.h}}
+\mbox{\hyperlink{st7920_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ st7920.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Jun\ 30,\ 2024}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ pablo-\/jean}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ DRIVERS\_ST7920\_ST7920\_H\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ DRIVERS\_ST7920\_ST7920\_H\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <assert.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <malloc.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{st7920__defs_8h}{st7920\_defs.h}}"{}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ *\ Macros}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ ST7920\_OK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ ST7920\_FAIL\ \ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ ST7920\_COLOR\_BLACK\ \ \ \ \ \ 0}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ ST7920\_COLOR\_WHITE\ \ \ \ \ \ 1}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00033\ \textcolor{comment}{\ *\ Enumerates}}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\{}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{st7920_8h_aa27c28a5f53522b922fcdea1fdd837e0a08ba89377d24a4f06b53b851e5728e01}{ST7920\_MODE\_SPI}}}
+\DoxyCodeLine{00038\ \}\mbox{\hyperlink{st7920_8h_aa27c28a5f53522b922fcdea1fdd837e0}{st7920\_mode\_e}};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00041\ \textcolor{comment}{\ *\ Structs}}
+\DoxyCodeLine{00042\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{typedef}\ void\ \ \ \ (*\mbox{\hyperlink{st7920_8h_a3dae5ed082f0b682b283c8c763397739}{fxnDelay\_ms}})(uint32\_t\ ms);}
+\DoxyCodeLine{00045\ \textcolor{keyword}{typedef}\ void\ \ \ \ (*\mbox{\hyperlink{st7920_8h_aa17a06097b058b92f1211d2401380168}{fxn7920\_mtxLock}})(void);}
+\DoxyCodeLine{00046\ \textcolor{keyword}{typedef}\ void\ \ \ \ (*\mbox{\hyperlink{st7920_8h_acbeb3a4818e11d8096c8add4cf4d5fae}{fxn7920\_mtxunlock}})(void);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{typedef}\ void\ \ \ \ (*\mbox{\hyperlink{st7920_8h_ae86e188805242ab2453aabb0c346ba45}{fxn1306spi\_cs}})(uint8\_t\ Signal);}
+\DoxyCodeLine{00049\ \textcolor{keyword}{typedef}\ void\ \ \ \ (*\mbox{\hyperlink{st7920_8h_a2b4665b65c77bba1669f5bf270c7fc1c}{fxn1306spi\_reset}})(uint8\_t\ Signal);}
+\DoxyCodeLine{00050\ \textcolor{keyword}{typedef}\ uint8\_t\ (*\mbox{\hyperlink{st7920_8h_a1a23046eef1a9cfd0db62a4662cc84bf}{fxn1306spi\_write}})(uint8\_t\ *buff,\ uint32\_t\ len);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{st7920_8h_aa27c28a5f53522b922fcdea1fdd837e0}{st7920\_mode\_e}}\ \mbox{\hyperlink{structst7920__t_a6300ec53cc3613f06170a56de61fb2e9}{Mode}};}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ delay}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{st7920_8h_a3dae5ed082f0b682b283c8c763397739}{fxnDelay\_ms}}\ \mbox{\hyperlink{structst7920__t_ada91f349f41341d6c3b460c92503a3e2}{delayMs}};}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Mutex}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{st7920_8h_aa17a06097b058b92f1211d2401380168}{fxn7920\_mtxLock}}\ \mbox{\hyperlink{structst7920__t_a37af2bad9f90c799a5eb25e5a53f0cf7}{mtxLock}};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{st7920_8h_acbeb3a4818e11d8096c8add4cf4d5fae}{fxn7920\_mtxunlock}}\ \mbox{\hyperlink{structst7920__t_a5f7a17fc7fc71d5a153f4983e8300814}{mtxUnlock}};}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ only\ for\ spi}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{st7920_8h_ae86e188805242ab2453aabb0c346ba45}{fxn1306spi\_cs}}\ \mbox{\hyperlink{structst7920__t_a1a0498381e96616b11d201d1cf1b67c0}{spiCs}};}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{st7920_8h_a2b4665b65c77bba1669f5bf270c7fc1c}{fxn1306spi\_reset}}\ \mbox{\hyperlink{structst7920__t_adc5ddc320bddb2d0411d51bccf8cea0f}{spiReset}};}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{st7920_8h_a1a23046eef1a9cfd0db62a4662cc84bf}{fxn1306spi\_write}}\ \mbox{\hyperlink{structst7920__t_a06398a86bd829710361289befae53121}{spiWrite}};}
+\DoxyCodeLine{00064\ \ \ \ \ \}fxn;}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structst7920__t_a20ca3e57412ae6cc6e54f364baff687f}{bInitialized}};}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structst7920__t_ac965cf96257a38dcff2802cd65e9adfa}{u32FrameSize}};}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ uint8\_t\ *\mbox{\hyperlink{structst7920__t_a93a352f0f9f32309bd0e51e1a777cd04}{pu8FrameBuffer}};}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structst7920__t_abbd25a93096c8f8f2cedf49a2b21d9b3}{u32Width}};}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structst7920__t_a738566f74f532940e5c89450e08e5b06}{u32Heigth}};}
+\DoxyCodeLine{00071\ \ \ \ \ \}\_intern;}
+\DoxyCodeLine{00072\ \}\mbox{\hyperlink{structst7920__t}{st7920\_t}};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{st7920_8h_aa27c28a5f53522b922fcdea1fdd837e0}{st7920\_mode\_e}}\ \mbox{\hyperlink{structst7920__params__t_a333491a573426d7eba27e994166ef401}{Mode}};}
+\DoxyCodeLine{00076\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structst7920__params__t_a6ae81a64baa7ff952fb6d50ca653c085}{u32Width}};}
+\DoxyCodeLine{00077\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structst7920__params__t_ac33b3f4e8488912f7bad13c6fba75869}{u32Heigth}};}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structst7920__params__t_ad63de1b9fb50cb732cbea48b4e0ba060}{bUseExternalFrameBuffer}};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//functions}}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{comment}{//\ delay}}
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{st7920_8h_a3dae5ed082f0b682b283c8c763397739}{fxnDelay\_ms}}\ \mbox{\hyperlink{structst7920__params__t_a148dcb027e54726dd0b97f809fdffe30}{delayMs}};}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{comment}{//\ Mutex}}
+\DoxyCodeLine{00084\ \ \ \ \ \mbox{\hyperlink{st7920_8h_aa17a06097b058b92f1211d2401380168}{fxn7920\_mtxLock}}\ \mbox{\hyperlink{structst7920__params__t_a8c601948e9f1dfdf330dd22ee4739aa0}{mtxLock}};}
+\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{st7920_8h_acbeb3a4818e11d8096c8add4cf4d5fae}{fxn7920\_mtxunlock}}\ \mbox{\hyperlink{structst7920__params__t_a2b00b2caadd4a68b60b48b64f6e32841}{mtxUnlock}};}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{comment}{//\ only\ for\ spi}}
+\DoxyCodeLine{00087\ \ \ \ \ \mbox{\hyperlink{st7920_8h_ae86e188805242ab2453aabb0c346ba45}{fxn1306spi\_cs}}\ \mbox{\hyperlink{structst7920__params__t_a2eec563e2e10b3a15da71aec5ae67026}{spiCs}};}
+\DoxyCodeLine{00088\ \ \ \ \ \mbox{\hyperlink{st7920_8h_a2b4665b65c77bba1669f5bf270c7fc1c}{fxn1306spi\_reset}}\ \mbox{\hyperlink{structst7920__params__t_a5bcf11190de7924d95a77638ce8438f3}{spiReset}};}
+\DoxyCodeLine{00089\ \ \ \ \ \mbox{\hyperlink{st7920_8h_a1a23046eef1a9cfd0db62a4662cc84bf}{fxn1306spi\_write}}\ \mbox{\hyperlink{structst7920__params__t_ae96812bbca303bf6a7ec8eb68faf1272}{spiWrite}};}
+\DoxyCodeLine{00090\ \}\mbox{\hyperlink{structst7920__params__t}{st7920\_params\_t}};}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00093\ \textcolor{comment}{\ *\ Publics}}
+\DoxyCodeLine{00094\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ uint8\_t\ \mbox{\hyperlink{st7920_8h_a9790769af14868844ed84dbdf3bb8d47}{ST7920\_Init}}(\mbox{\hyperlink{structst7920__t}{st7920\_t}}\ *st7920,\ \mbox{\hyperlink{structst7920__params__t}{st7920\_params\_t}}\ *params);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ uint8\_t\ \mbox{\hyperlink{st7920_8h_a0ef01f805dc01e8b3e73fb4ca63369c7}{ST7920\_SetFrameBuffer}}(\mbox{\hyperlink{structst7920__t}{st7920\_t}}\ *st7920,\ uint8\_t\ *pu8FrameBuffer);}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ uint8\_t\ \mbox{\hyperlink{st7920_8h_a0933ceac610b015bd25490bac72bc052}{ST7920\_Refresh}}(\mbox{\hyperlink{structst7920__t}{st7920\_t}}\ *st7920);}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ uint8\_t\ \mbox{\hyperlink{st7920_8h_acbfb3eb8fd397d5d2a84e22c9d075d77}{ST7920\_Write}}(\mbox{\hyperlink{structst7920__t}{st7920\_t}}\ *st7920,\ uint32\_t\ x,\ uint32\_t\ y,\ \textcolor{keywordtype}{bool}\ color);}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ uint8\_t\ \mbox{\hyperlink{st7920_8h_a0fcff79aff24f3547c759a952548c467}{ST7920\_Fill}}(\mbox{\hyperlink{structst7920__t}{st7920\_t}}\ *st7920,\ uint8\_t\ color);}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ DRIVERS\_ST7920\_ST7920\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

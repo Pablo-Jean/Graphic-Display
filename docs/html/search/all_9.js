@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['u32bufferlen_84',['u32BufferLen',['../structgd__t.html#a6fb770e36b4a274ca2aae8a281fa8410',1,'gd_t']]],
-  ['u32currx_85',['u32CurrX',['../structgd__t.html#ab221329ea9ea4aa1d9115ad939daffd5',1,'gd_t']]],
-  ['u32curry_86',['u32CurrY',['../structgd__t.html#a1b9196c386dd2de8180f135ed6bc86ce',1,'gd_t']]],
-  ['u32height_87',['u32Height',['../structgd__t.html#a83ff4968431898c2d8b260ad4a0a3574',1,'gd_t::u32Height()'],['../structgd__params__t.html#a4aae007f2fd7f42d3dfd68d10d7ff622',1,'gd_params_t::u32Height()']]],
-  ['u32width_88',['u32Width',['../structgd__t.html#a837a07c7091d98bcd6836ef36ef0a471',1,'gd_t::u32Width()'],['../structgd__params__t.html#a89d1e1d557d36339ca109085300751bb',1,'gd_params_t::u32Width()']]]
+  ['mode_0',['mode',['../structssd1306__t.html#a662d1ba9f39a68acb3ad8198f8119f23',1,'ssd1306_t::Mode'],['../structssd1306__params__t.html#a0a500f86675d4c92958814339c13a7f3',1,'ssd1306_params_t::Mode'],['../structst7920__t.html#a6300ec53cc3613f06170a56de61fb2e9',1,'st7920_t::Mode'],['../structst7920__params__t.html#a333491a573426d7eba27e994166ef401',1,'st7920_params_t::Mode']]],
+  ['mtxlock_1',['mtxlock',['../structssd1306__t.html#a84142c74334c1bed4454534827d2bbee',1,'ssd1306_t::mtxLock'],['../structssd1306__params__t.html#a5e1bea82958a4ba2c26ea079e4d77f22',1,'ssd1306_params_t::mtxLock'],['../structst7920__t.html#a37af2bad9f90c799a5eb25e5a53f0cf7',1,'st7920_t::mtxLock'],['../structst7920__params__t.html#a8c601948e9f1dfdf330dd22ee4739aa0',1,'st7920_params_t::mtxLock'],['../structgd__t_1_1t__fxn.html#a2a3710ec34d34a350da6ca46174a046d',1,'gd_t::t_fxn::mtxLock'],['../structgd__params__t.html#a7ed29bfb21d9182e982162fa98e3f827',1,'gd_params_t::mtxLock']]],
+  ['mtxunlock_2',['mtxunlock',['../structssd1306__t.html#a1154f98b1221e3ebb2ced815e3035cf7',1,'ssd1306_t::mtxUnlock'],['../structssd1306__params__t.html#aed435d0ce817eb963589d363492e2efc',1,'ssd1306_params_t::mtxUnlock'],['../structst7920__t.html#a5f7a17fc7fc71d5a153f4983e8300814',1,'st7920_t::mtxUnlock'],['../structst7920__params__t.html#a2b00b2caadd4a68b60b48b64f6e32841',1,'st7920_params_t::mtxUnlock'],['../structgd__t_1_1t__fxn.html#aac006189f35c42c7b2df4eb25d8b1607',1,'gd_t::t_fxn::mtxUnlock'],['../structgd__params__t.html#ae243adb1f5c05325056e494f1a6ec2b7',1,'gd_params_t::mtxUnlock']]]
 ];

@@ -1,0 +1,128 @@
+\doxysection{gd\+\_\+params\+\_\+t Struct Reference}
+\hypertarget{structgd__params__t}{}\label{structgd__params__t}\index{gd\_params\_t@{gd\_params\_t}}
+
+
+Parameters to initialize the Graphic Display Handler.  
+
+
+
+
+{\ttfamily \#include $<$Graphic\+Display.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structgd__params__t_aaaa895d635b096ec43bcc3a6c9179829}{Display\+Handle}}
+\begin{DoxyCompactList}\small\item\em Handle of the display, provide the pointer of this handler. Example fort ssd1306 display\+: \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structgd__driver__t}{gd\+\_\+driver\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structgd__params__t_a5eb06e32a4d37b36f5756826310d72ab}{Display\+Driver}}
+\begin{DoxyCompactList}\small\item\em Driver for the display. \doxylink{group__Ext__Drivers}{External implemented drivers for displays.}. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{structgd__params__t_a4aae007f2fd7f42d3dfd68d10d7ff622}{u32\+Height}}
+\begin{DoxyCompactList}\small\item\em The Heigth of the display, in lines. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{structgd__params__t_a89d1e1d557d36339ca109085300751bb}{u32\+Width}}
+\begin{DoxyCompactList}\small\item\em The Width of the display, in columns. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{GraphicDisplay_8h_a216bf294047075ab0e376f259c8ce303}{fxn\+Gd\+\_\+mtx\+Lock}} \mbox{\hyperlink{structgd__params__t_a7ed29bfb21d9182e982162fa98e3f827}{mtx\+Lock}}
+\begin{DoxyCompactList}\small\item\em mutex lock function pointer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{GraphicDisplay_8h_a0487de7c6e177fe3830beb12e48bb6b0}{fxn\+Gd\+\_\+mtx\+Unlock}} \mbox{\hyperlink{structgd__params__t_ae243adb1f5c05325056e494f1a6ec2b7}{mtx\+Unlock}}
+\begin{DoxyCompactList}\small\item\em mutex unlock function pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Parameters to initialize the Graphic Display Handler. 
+
+\begin{DoxyNote}{Note}
+Used only on handler startup. 
+\end{DoxyNote}
+
+
+\doxysubsection{Field Documentation}
+\Hypertarget{structgd__params__t_a5eb06e32a4d37b36f5756826310d72ab}\label{structgd__params__t_a5eb06e32a4d37b36f5756826310d72ab} 
+\index{gd\_params\_t@{gd\_params\_t}!DisplayDriver@{DisplayDriver}}
+\index{DisplayDriver@{DisplayDriver}!gd\_params\_t@{gd\_params\_t}}
+\doxysubsubsection{\texorpdfstring{DisplayDriver}{DisplayDriver}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structgd__driver__t}{gd\+\_\+driver\+\_\+t}}\texorpdfstring{$\ast$}{*} gd\+\_\+params\+\_\+t\+::\+Display\+Driver}
+
+
+
+Driver for the display. \doxylink{group__Ext__Drivers}{External implemented drivers for displays.}. 
+
+\begin{DoxyNote}{Note}
+Must not be NULL. 
+\end{DoxyNote}
+\Hypertarget{structgd__params__t_aaaa895d635b096ec43bcc3a6c9179829}\label{structgd__params__t_aaaa895d635b096ec43bcc3a6c9179829} 
+\index{gd\_params\_t@{gd\_params\_t}!DisplayHandle@{DisplayHandle}}
+\index{DisplayHandle@{DisplayHandle}!gd\_params\_t@{gd\_params\_t}}
+\doxysubsubsection{\texorpdfstring{DisplayHandle}{DisplayHandle}}
+{\footnotesize\ttfamily void\texorpdfstring{$\ast$}{*} gd\+\_\+params\+\_\+t\+::\+Display\+Handle}
+
+
+
+Handle of the display, provide the pointer of this handler. Example fort ssd1306 display\+: 
+
+gt\+\_\+t Gd; \doxylink{structssd1306__t}{ssd1306\+\_\+t} Ssd1306;
+
+... initialize ssd1306 ...
+
+Gd.\+Display\+Handle = (void\texorpdfstring{$\ast$}{*})\&\+Ssd1306;
+
+... provide other parameters ... ... initialize display Gd ...
+
+\begin{DoxyNote}{Note}
+Must not be NULL 
+\end{DoxyNote}
+\Hypertarget{structgd__params__t_a7ed29bfb21d9182e982162fa98e3f827}\label{structgd__params__t_a7ed29bfb21d9182e982162fa98e3f827} 
+\index{gd\_params\_t@{gd\_params\_t}!mtxLock@{mtxLock}}
+\index{mtxLock@{mtxLock}!gd\_params\_t@{gd\_params\_t}}
+\doxysubsubsection{\texorpdfstring{mtxLock}{mtxLock}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GraphicDisplay_8h_a216bf294047075ab0e376f259c8ce303}{fxn\+Gd\+\_\+mtx\+Lock}} gd\+\_\+params\+\_\+t\+::mtx\+Lock}
+
+
+
+mutex lock function pointer. 
+
+\begin{DoxyNote}{Note}
+This parameter is optional. 
+\end{DoxyNote}
+\Hypertarget{structgd__params__t_ae243adb1f5c05325056e494f1a6ec2b7}\label{structgd__params__t_ae243adb1f5c05325056e494f1a6ec2b7} 
+\index{gd\_params\_t@{gd\_params\_t}!mtxUnlock@{mtxUnlock}}
+\index{mtxUnlock@{mtxUnlock}!gd\_params\_t@{gd\_params\_t}}
+\doxysubsubsection{\texorpdfstring{mtxUnlock}{mtxUnlock}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GraphicDisplay_8h_a0487de7c6e177fe3830beb12e48bb6b0}{fxn\+Gd\+\_\+mtx\+Unlock}} gd\+\_\+params\+\_\+t\+::mtx\+Unlock}
+
+
+
+mutex unlock function pointer. 
+
+\begin{DoxyNote}{Note}
+This parameter is optional. 
+\end{DoxyNote}
+\Hypertarget{structgd__params__t_a4aae007f2fd7f42d3dfd68d10d7ff622}\label{structgd__params__t_a4aae007f2fd7f42d3dfd68d10d7ff622} 
+\index{gd\_params\_t@{gd\_params\_t}!u32Height@{u32Height}}
+\index{u32Height@{u32Height}!gd\_params\_t@{gd\_params\_t}}
+\doxysubsubsection{\texorpdfstring{u32Height}{u32Height}}
+{\footnotesize\ttfamily uint32\+\_\+t gd\+\_\+params\+\_\+t\+::u32\+Height}
+
+
+
+The Heigth of the display, in lines. 
+
+\begin{DoxyNote}{Note}
+Must greater than 0. 
+\end{DoxyNote}
+\Hypertarget{structgd__params__t_a89d1e1d557d36339ca109085300751bb}\label{structgd__params__t_a89d1e1d557d36339ca109085300751bb} 
+\index{gd\_params\_t@{gd\_params\_t}!u32Width@{u32Width}}
+\index{u32Width@{u32Width}!gd\_params\_t@{gd\_params\_t}}
+\doxysubsubsection{\texorpdfstring{u32Width}{u32Width}}
+{\footnotesize\ttfamily uint32\+\_\+t gd\+\_\+params\+\_\+t\+::u32\+Width}
+
+
+
+The Width of the display, in columns. 
+
+\begin{DoxyNote}{Note}
+Must greater than 0. 
+\end{DoxyNote}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{GraphicDisplay_8h}{Graphic\+Display.\+h}}\end{DoxyCompactItemize}

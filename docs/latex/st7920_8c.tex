@@ -1,0 +1,159 @@
+\doxysection{src/drivers/st7920/st7920.c File Reference}
+\hypertarget{st7920_8c}{}\label{st7920_8c}\index{src/drivers/st7920/st7920.c@{src/drivers/st7920/st7920.c}}
+{\ttfamily \#include "{}st7920.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{st7920_8c_ab17ca63d7093e1764eecbb1768b7e09f}{\+\_\+\+PIN\+\_\+\+HIGH}}~1
+\item 
+\#define \mbox{\hyperlink{st7920_8c_a4d16457d4284225a8c766f144ee75317}{\+\_\+\+PIN\+\_\+\+LOW}}~0
+\item 
+\#define \mbox{\hyperlink{st7920_8c_acdf9ea17605dff8b810df8076b6496e2}{\+\_\+\+SUCCESS}}~0
+\item 
+\#define \mbox{\hyperlink{st7920_8c_a99b8a13d1a563011bcc3ec4fce743b11}{\+\_\+\+ST7920\+\_\+\+ERROR\+\_\+\+CHECK}}(x)~if (x != \mbox{\hyperlink{ssd1306_8c_acdf9ea17605dff8b810df8076b6496e2}{\+\_\+\+SUCCESS}}) \{ return \mbox{\hyperlink{st7920_8h_a6019ab08ca40147e4f86ef1063e1fdcf}{ST7920\+\_\+\+FAIL}}; \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{st7920_8c_abbda540cf7e27aa3e5a04f25ce4ee9c5}{\+\_\+delay\+\_\+ms}} (\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}st7920, uint32\+\_\+t ms)
+\item 
+static void \mbox{\hyperlink{st7920_8c_a1758db3d764c16bce38a35596fc38875}{\+\_\+pin\+\_\+reset}} (\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}st7920, uint8\+\_\+t Signal)
+\item 
+static void \mbox{\hyperlink{st7920_8c_aa2b62a16323b91654d9fb0d52aba01d6}{\+\_\+pin\+\_\+cs}} (\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}st7920, uint8\+\_\+t Signal)
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{st7920_8c_abb7344ed9f17a3126735498988f4669a}{\+\_\+spi\+\_\+write}} (\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}st7920, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, uint32\+\_\+t len)
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{st7920_8c_ab7928859f69ef2fb8fd098e9116368b0}{\+\_\+write\+\_\+data}} (\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}st7920, uint8\+\_\+t \texorpdfstring{$\ast$}{*}buff, uint32\+\_\+t len)
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{st7920_8c_a343dfc907f3a48903c27c2f6361c477b}{\+\_\+write\+\_\+command}} (\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}st7920, uint8\+\_\+t cmd)
+\item 
+static void \mbox{\hyperlink{st7920_8c_a3970ca420a24ad5c07083c0d3cd2c60b}{\+\_\+reset}} (\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}st7920)
+\item 
+static void \mbox{\hyperlink{st7920_8c_a1b80b5596dd8646b65f7f15b44f24c54}{\+\_\+mtx\+\_\+lock}} (\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}st7920)
+\item 
+static void \mbox{\hyperlink{st7920_8c_a66dfc5060b1f3618ccf469886af87d81}{\+\_\+mtx\+\_\+unlock}} (\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}st7920)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{st7920_8c_a9790769af14868844ed84dbdf3bb8d47}{ST7920\+\_\+\+Init}} (\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}st7920, \mbox{\hyperlink{structst7920__params__t}{st7920\+\_\+params\+\_\+t}} \texorpdfstring{$\ast$}{*}params)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{st7920_8c_a0ef01f805dc01e8b3e73fb4ca63369c7}{ST7920\+\_\+\+Set\+Frame\+Buffer}} (\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}st7920, uint8\+\_\+t \texorpdfstring{$\ast$}{*}pu8\+Frame\+Buffer)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{st7920_8c_a0933ceac610b015bd25490bac72bc052}{ST7920\+\_\+\+Refresh}} (\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}st7920)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{st7920_8c_acbfb3eb8fd397d5d2a84e22c9d075d77}{ST7920\+\_\+\+Write}} (\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}st7920, uint32\+\_\+t x, uint32\+\_\+t y, bool color)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{st7920_8c_a0fcff79aff24f3547c759a952548c467}{ST7920\+\_\+\+Fill}} (\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}st7920, uint8\+\_\+t color)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{st7920_8c_ab17ca63d7093e1764eecbb1768b7e09f}\label{st7920_8c_ab17ca63d7093e1764eecbb1768b7e09f} 
+\index{st7920.c@{st7920.c}!\_PIN\_HIGH@{\_PIN\_HIGH}}
+\index{\_PIN\_HIGH@{\_PIN\_HIGH}!st7920.c@{st7920.c}}
+\doxysubsubsection{\texorpdfstring{\_PIN\_HIGH}{\_PIN\_HIGH}}
+{\footnotesize\ttfamily \#define \+\_\+\+PIN\+\_\+\+HIGH~1}
+
+\Hypertarget{st7920_8c_a4d16457d4284225a8c766f144ee75317}\label{st7920_8c_a4d16457d4284225a8c766f144ee75317} 
+\index{st7920.c@{st7920.c}!\_PIN\_LOW@{\_PIN\_LOW}}
+\index{\_PIN\_LOW@{\_PIN\_LOW}!st7920.c@{st7920.c}}
+\doxysubsubsection{\texorpdfstring{\_PIN\_LOW}{\_PIN\_LOW}}
+{\footnotesize\ttfamily \#define \+\_\+\+PIN\+\_\+\+LOW~0}
+
+\Hypertarget{st7920_8c_a99b8a13d1a563011bcc3ec4fce743b11}\label{st7920_8c_a99b8a13d1a563011bcc3ec4fce743b11} 
+\index{st7920.c@{st7920.c}!\_ST7920\_ERROR\_CHECK@{\_ST7920\_ERROR\_CHECK}}
+\index{\_ST7920\_ERROR\_CHECK@{\_ST7920\_ERROR\_CHECK}!st7920.c@{st7920.c}}
+\doxysubsubsection{\texorpdfstring{\_ST7920\_ERROR\_CHECK}{\_ST7920\_ERROR\_CHECK}}
+{\footnotesize\ttfamily \#define \+\_\+\+ST7920\+\_\+\+ERROR\+\_\+\+CHECK(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~if (x != \mbox{\hyperlink{ssd1306_8c_acdf9ea17605dff8b810df8076b6496e2}{\+\_\+\+SUCCESS}}) \{ return \mbox{\hyperlink{st7920_8h_a6019ab08ca40147e4f86ef1063e1fdcf}{ST7920\+\_\+\+FAIL}}; \}}
+
+\Hypertarget{st7920_8c_acdf9ea17605dff8b810df8076b6496e2}\label{st7920_8c_acdf9ea17605dff8b810df8076b6496e2} 
+\index{st7920.c@{st7920.c}!\_SUCCESS@{\_SUCCESS}}
+\index{\_SUCCESS@{\_SUCCESS}!st7920.c@{st7920.c}}
+\doxysubsubsection{\texorpdfstring{\_SUCCESS}{\_SUCCESS}}
+{\footnotesize\ttfamily \#define \+\_\+\+SUCCESS~0}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{st7920_8c_abbda540cf7e27aa3e5a04f25ce4ee9c5}\label{st7920_8c_abbda540cf7e27aa3e5a04f25ce4ee9c5} 
+\index{st7920.c@{st7920.c}!\_delay\_ms@{\_delay\_ms}}
+\index{\_delay\_ms@{\_delay\_ms}!st7920.c@{st7920.c}}
+\doxysubsubsection{\texorpdfstring{\_delay\_ms()}{\_delay\_ms()}}
+{\footnotesize\ttfamily static void \+\_\+delay\+\_\+ms (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{st7920,  }\item[{uint32\+\_\+t}]{ms }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{st7920_8c_a1b80b5596dd8646b65f7f15b44f24c54}\label{st7920_8c_a1b80b5596dd8646b65f7f15b44f24c54} 
+\index{st7920.c@{st7920.c}!\_mtx\_lock@{\_mtx\_lock}}
+\index{\_mtx\_lock@{\_mtx\_lock}!st7920.c@{st7920.c}}
+\doxysubsubsection{\texorpdfstring{\_mtx\_lock()}{\_mtx\_lock()}}
+{\footnotesize\ttfamily static void \+\_\+mtx\+\_\+lock (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{st7920 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{st7920_8c_a66dfc5060b1f3618ccf469886af87d81}\label{st7920_8c_a66dfc5060b1f3618ccf469886af87d81} 
+\index{st7920.c@{st7920.c}!\_mtx\_unlock@{\_mtx\_unlock}}
+\index{\_mtx\_unlock@{\_mtx\_unlock}!st7920.c@{st7920.c}}
+\doxysubsubsection{\texorpdfstring{\_mtx\_unlock()}{\_mtx\_unlock()}}
+{\footnotesize\ttfamily static void \+\_\+mtx\+\_\+unlock (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{st7920 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{st7920_8c_aa2b62a16323b91654d9fb0d52aba01d6}\label{st7920_8c_aa2b62a16323b91654d9fb0d52aba01d6} 
+\index{st7920.c@{st7920.c}!\_pin\_cs@{\_pin\_cs}}
+\index{\_pin\_cs@{\_pin\_cs}!st7920.c@{st7920.c}}
+\doxysubsubsection{\texorpdfstring{\_pin\_cs()}{\_pin\_cs()}}
+{\footnotesize\ttfamily static void \+\_\+pin\+\_\+cs (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{st7920,  }\item[{uint8\+\_\+t}]{Signal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{st7920_8c_a1758db3d764c16bce38a35596fc38875}\label{st7920_8c_a1758db3d764c16bce38a35596fc38875} 
+\index{st7920.c@{st7920.c}!\_pin\_reset@{\_pin\_reset}}
+\index{\_pin\_reset@{\_pin\_reset}!st7920.c@{st7920.c}}
+\doxysubsubsection{\texorpdfstring{\_pin\_reset()}{\_pin\_reset()}}
+{\footnotesize\ttfamily static void \+\_\+pin\+\_\+reset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{st7920,  }\item[{uint8\+\_\+t}]{Signal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{st7920_8c_a3970ca420a24ad5c07083c0d3cd2c60b}\label{st7920_8c_a3970ca420a24ad5c07083c0d3cd2c60b} 
+\index{st7920.c@{st7920.c}!\_reset@{\_reset}}
+\index{\_reset@{\_reset}!st7920.c@{st7920.c}}
+\doxysubsubsection{\texorpdfstring{\_reset()}{\_reset()}}
+{\footnotesize\ttfamily static void \+\_\+reset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{st7920 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{st7920_8c_abb7344ed9f17a3126735498988f4669a}\label{st7920_8c_abb7344ed9f17a3126735498988f4669a} 
+\index{st7920.c@{st7920.c}!\_spi\_write@{\_spi\_write}}
+\index{\_spi\_write@{\_spi\_write}!st7920.c@{st7920.c}}
+\doxysubsubsection{\texorpdfstring{\_spi\_write()}{\_spi\_write()}}
+{\footnotesize\ttfamily static uint8\+\_\+t \+\_\+spi\+\_\+write (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{st7920,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data,  }\item[{uint32\+\_\+t}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{st7920_8c_a343dfc907f3a48903c27c2f6361c477b}\label{st7920_8c_a343dfc907f3a48903c27c2f6361c477b} 
+\index{st7920.c@{st7920.c}!\_write\_command@{\_write\_command}}
+\index{\_write\_command@{\_write\_command}!st7920.c@{st7920.c}}
+\doxysubsubsection{\texorpdfstring{\_write\_command()}{\_write\_command()}}
+{\footnotesize\ttfamily static uint8\+\_\+t \+\_\+write\+\_\+command (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{st7920,  }\item[{uint8\+\_\+t}]{cmd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{st7920_8c_ab7928859f69ef2fb8fd098e9116368b0}\label{st7920_8c_ab7928859f69ef2fb8fd098e9116368b0} 
+\index{st7920.c@{st7920.c}!\_write\_data@{\_write\_data}}
+\index{\_write\_data@{\_write\_data}!st7920.c@{st7920.c}}
+\doxysubsubsection{\texorpdfstring{\_write\_data()}{\_write\_data()}}
+{\footnotesize\ttfamily static uint8\+\_\+t \+\_\+write\+\_\+data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{st7920,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{buff,  }\item[{uint32\+\_\+t}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{st7920_8c_a0fcff79aff24f3547c759a952548c467}\label{st7920_8c_a0fcff79aff24f3547c759a952548c467} 
+\index{st7920.c@{st7920.c}!ST7920\_Fill@{ST7920\_Fill}}
+\index{ST7920\_Fill@{ST7920\_Fill}!st7920.c@{st7920.c}}
+\doxysubsubsection{\texorpdfstring{ST7920\_Fill()}{ST7920\_Fill()}}
+{\footnotesize\ttfamily uint8\+\_\+t ST7920\+\_\+\+Fill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{st7920,  }\item[{uint8\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+\Hypertarget{st7920_8c_a9790769af14868844ed84dbdf3bb8d47}\label{st7920_8c_a9790769af14868844ed84dbdf3bb8d47} 
+\index{st7920.c@{st7920.c}!ST7920\_Init@{ST7920\_Init}}
+\index{ST7920\_Init@{ST7920\_Init}!st7920.c@{st7920.c}}
+\doxysubsubsection{\texorpdfstring{ST7920\_Init()}{ST7920\_Init()}}
+{\footnotesize\ttfamily uint8\+\_\+t ST7920\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{st7920,  }\item[{\mbox{\hyperlink{structst7920__params__t}{st7920\+\_\+params\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{params }\end{DoxyParamCaption})}
+
+\Hypertarget{st7920_8c_a0933ceac610b015bd25490bac72bc052}\label{st7920_8c_a0933ceac610b015bd25490bac72bc052} 
+\index{st7920.c@{st7920.c}!ST7920\_Refresh@{ST7920\_Refresh}}
+\index{ST7920\_Refresh@{ST7920\_Refresh}!st7920.c@{st7920.c}}
+\doxysubsubsection{\texorpdfstring{ST7920\_Refresh()}{ST7920\_Refresh()}}
+{\footnotesize\ttfamily uint8\+\_\+t ST7920\+\_\+\+Refresh (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{st7920 }\end{DoxyParamCaption})}
+
+\Hypertarget{st7920_8c_a0ef01f805dc01e8b3e73fb4ca63369c7}\label{st7920_8c_a0ef01f805dc01e8b3e73fb4ca63369c7} 
+\index{st7920.c@{st7920.c}!ST7920\_SetFrameBuffer@{ST7920\_SetFrameBuffer}}
+\index{ST7920\_SetFrameBuffer@{ST7920\_SetFrameBuffer}!st7920.c@{st7920.c}}
+\doxysubsubsection{\texorpdfstring{ST7920\_SetFrameBuffer()}{ST7920\_SetFrameBuffer()}}
+{\footnotesize\ttfamily uint8\+\_\+t ST7920\+\_\+\+Set\+Frame\+Buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{st7920,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{pu8\+Frame\+Buffer }\end{DoxyParamCaption})}
+
+\Hypertarget{st7920_8c_acbfb3eb8fd397d5d2a84e22c9d075d77}\label{st7920_8c_acbfb3eb8fd397d5d2a84e22c9d075d77} 
+\index{st7920.c@{st7920.c}!ST7920\_Write@{ST7920\_Write}}
+\index{ST7920\_Write@{ST7920\_Write}!st7920.c@{st7920.c}}
+\doxysubsubsection{\texorpdfstring{ST7920\_Write()}{ST7920\_Write()}}
+{\footnotesize\ttfamily uint8\+\_\+t ST7920\+\_\+\+Write (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{st7920,  }\item[{uint32\+\_\+t}]{x,  }\item[{uint32\+\_\+t}]{y,  }\item[{bool}]{color }\end{DoxyParamCaption})}
+

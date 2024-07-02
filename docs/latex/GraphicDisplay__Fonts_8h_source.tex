@@ -1,0 +1,58 @@
+\doxysection{Graphic\+Display\+\_\+\+Fonts.\+h}
+\hypertarget{GraphicDisplay__Fonts_8h_source}{}\label{GraphicDisplay__Fonts_8h_source}\index{src/GraphicDisplay\_Fonts.h@{src/GraphicDisplay\_Fonts.h}}
+\mbox{\hyperlink{GraphicDisplay__Fonts_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ GraphicDisplay\_Fonts.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Jun\ 28,\ 2024}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ pablo-\/jean}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *\ This\ Library\ was\ originally\ written\ by\ Olivier\ Van\ den\ Eede\ (4ilo)\ in\ 2016.}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ Some\ refactoring\ was\ done\ and\ SPI\ support\ was\ added\ by\ Aleksander\ Alekseev\ (afiskon)\ in\ 2018.}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ https://github.com/afiskon/stm32-\/ssd1306}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ A\ big\ refactor\ was\ made,\ to\ support\ any\ device\ and\ not\ gluing\ to\ any\ specific\ chipset}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ *\ One\ big\ change:\ we\ using\ now\ the\ Fonts\ as\ a\ pointer,\ the\ process\ is\ more\ fast\ when\ we}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ pass\ the\ Font\ parameter\ to\ the\ function,\ proving\ performance\ and\ reducing\ stack\ usage.}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#ifndef\ GRAPHICDISPLAY\_FONTS\_H\_}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ GRAPHICDISPLAY\_FONTS\_H\_}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ *\ Include}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GraphicDisplay_8h}{GraphicDisplay.h}}"{}}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00030\ \textcolor{comment}{\ *\ Macros}}
+\DoxyCodeLine{00031\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#ifdef\ GD\_INCLUDE\_FONT\_6x8}}
+\DoxyCodeLine{00034\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structgd__font__t}{gd\_font\_t}}*\ \mbox{\hyperlink{GraphicDisplay__Fonts_8h_a4a8c584c264582d1343f1076c584ddfa}{Font\_6x8}};}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#ifdef\ GD\_INCLUDE\_FONT\_7x10}}
+\DoxyCodeLine{00037\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structgd__font__t}{gd\_font\_t}}*\ \mbox{\hyperlink{GraphicDisplay__Fonts_8h_adc1c24c2f0aec36a36b363e2bc5513b4}{Font\_7x10}};}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#ifdef\ GD\_INCLUDE\_FONT\_11x18}}
+\DoxyCodeLine{00040\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structgd__font__t}{gd\_font\_t}}*\ \mbox{\hyperlink{GraphicDisplay__Fonts_8h_a9541ecdb083aa6d2fe3b8e531bfc18ab}{Font\_11x18}};}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#ifdef\ GD\_INCLUDE\_FONT\_16x26}}
+\DoxyCodeLine{00043\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structgd__font__t}{gd\_font\_t}}*\ \mbox{\hyperlink{GraphicDisplay__Fonts_8h_af536a22caa192cb8e36f6a3566268b77}{Font\_16x26}};}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#ifdef\ GD\_INCLUDE\_FONT\_16x24}}
+\DoxyCodeLine{00046\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structgd__font__t}{gd\_font\_t}}*\ \mbox{\hyperlink{GraphicDisplay__Fonts_8h_ac83fa6425aa0518eacfe638a72ce3b67}{Font\_16x24}};}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#ifdef\ GD\_INCLUDE\_FONT\_16x15}}
+\DoxyCodeLine{00053\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structgd__font__t}{gd\_font\_t}}*\ \mbox{\hyperlink{GraphicDisplay__Fonts_8h_a490701361cc63783176e09e39e5109fe}{Font\_16x15}};}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ GRAPHICDISPLAY\_FONTS\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

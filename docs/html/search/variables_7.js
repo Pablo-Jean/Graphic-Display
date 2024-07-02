@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['mtxlock_154',['mtxLock',['../structgd__t.html#a12bea3877708bd7c15daa6c84a93d327',1,'gd_t::mtxLock()'],['../structgd__params__t.html#a7ed29bfb21d9182e982162fa98e3f827',1,'gd_params_t::mtxLock()']]],
-  ['mtxunlock_155',['mtxUnlock',['../structgd__t.html#a4b2abeb86b85f85dff330c27d6f653ce',1,'gd_t::mtxUnlock()'],['../structgd__params__t.html#ae243adb1f5c05325056e494f1a6ec2b7',1,'gd_params_t::mtxUnlock()']]]
+  ['i2cwrite_0',['i2cwrite',['../structssd1306__t.html#adeafa02057c8a35ef8e3b858ec6eac1a',1,'ssd1306_t::i2cWrite'],['../structssd1306__params__t.html#a009c3ec509aa13186c3cdbed59a5628d',1,'ssd1306_params_t::i2cWrite']]]
 ];
