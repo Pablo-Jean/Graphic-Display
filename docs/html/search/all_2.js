@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['char_5fwidth_43',['char_width',['../structgd__font__t.html#a0859118417ec78a1a10a829ad7521f50',1,'gd_font_t::char_width()'],['../GraphicDisplay__Fonts_8c.html#a1059e4d006ffc5f724d703b7336585a7',1,'char_width():&#160;GraphicDisplay_Fonts.c']]]
+  ['3_20in_20header_20file_20create_20the_20handle_20structure_0',['3. In header file, create the handle structure',['../group__Gd__Drivers.html#autotoc_md3',1,'']]]
 ];

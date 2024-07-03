@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['t_5ffxn_174',['t_fxn',['../structgd__t_1_1t__fxn.html',1,'gd_t']]],
-  ['t_5fintern_175',['t_intern',['../structgd__t_1_1t__intern.html',1,'gd_t']]]
+  ['examples_0',['💡 Examples',['../index.html#autotoc_md16',1,'']]],
+  ['extern_20pointer_20to_20driver_1',['6. Create extern pointer to driver',['../group__Gd__Drivers.html#autotoc_md7',1,'']]],
+  ['external_20drivers_20already_20implemented_2',['External Drivers Already Implemented',['../group__Ext__Drivers.html',1,'']]]
 ];

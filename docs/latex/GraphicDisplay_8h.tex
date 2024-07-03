@@ -1,5 +1,5 @@
-\hypertarget{GraphicDisplay_8h}{}\doxysection{src/\+Graphic\+Display.h File Reference}
-\label{GraphicDisplay_8h}\index{src/GraphicDisplay.h@{src/GraphicDisplay.h}}
+\doxysection{src/\+Graphic\+Display.h File Reference}
+\hypertarget{GraphicDisplay_8h}{}\label{GraphicDisplay_8h}\index{src/GraphicDisplay.h@{src/GraphicDisplay.h}}
 
 
 Main header file of Graphic Display Library, here we have the middle layer of the library. Where we works on drawing elements (texts, bitmaps and geometric forms). In drivers folder we have the low layer, composed by display controller drivers. The drivers are independet of the Graphic Display files, you can use them in more advanced libraries, like \href{https://github.com/lvgl/lvgl}{\texttt{ LVGL}}. This library is created to be flexible and scalable, allowing the engineer to use any amount of display, of any type.  
@@ -13,15 +13,15 @@ Main header file of Graphic Display Library, here we have the middle layer of th
 {\ttfamily \#include $<$stddef.\+h$>$}\newline
 {\ttfamily \#include $<$stdbool.\+h$>$}\newline
 {\ttfamily \#include $<$string.\+h$>$}\newline
-{\ttfamily \#include \char`\"{}drivers/ssd1306/ssd1306.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}drivers/st7920/st7920.\+h\char`\"{}}\newline
-\doxysubsection*{Data Structures}
+{\ttfamily \#include "{}drivers/ssd1306/ssd1306.\+h"{}}\newline
+{\ttfamily \#include "{}drivers/st7920/st7920.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structgd__driver__t}{gd\+\_\+driver\+\_\+t}}
 \begin{DoxyCompactList}\small\item\em Struct that creates a driver for the display, holding the handle and functions that are private of the display driver. This allows the library to be very flexible and can handles any display. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structgd__font__t}{gd\+\_\+font\+\_\+t}}
-\begin{DoxyCompactList}\small\item\em Structure to holds Fonts. The default fonts are defined in \mbox{\hyperlink{GraphicDisplay__Fonts_8h}{Graphic\+Display\+\_\+\+Fonts.\+h}}. You can create your own fonts. A software that creates this fonts must be searched. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Structure to holds Fonts. The default fonts are defined in \doxylink{GraphicDisplay__Fonts_8h}{Graphic\+Display\+\_\+\+Fonts.\+h}. You can create your own fonts. A software that creates this fonts must be searched. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structgd__vertex__t}{gd\+\_\+vertex\+\_\+t}}
 \begin{DoxyCompactList}\small\item\em Structure used to support the creation of polylines. In normal use, this is declared as an array, with X and Y points to build lines, between this lines. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structgd__t}{gd\+\_\+t}}
@@ -32,7 +32,7 @@ struct \mbox{\hyperlink{structgd__t_1_1t__intern}{gd\+\_\+t\+::t\+\_\+intern}}
 \item 
 struct \mbox{\hyperlink{structgd__params__t}{gd\+\_\+params\+\_\+t}}
 \begin{DoxyCompactList}\small\item\em Parameters to initialize the Graphic Display Handler. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Macros}
+\doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{GraphicDisplay_8h_aa7d2f2bbaacaff21853159c16aab24c9}{GD\+\_\+\+INCLUDE\+\_\+\+FONT\+\_\+6x8}}
@@ -47,14 +47,14 @@ struct \mbox{\hyperlink{structgd__params__t}{gd\+\_\+params\+\_\+t}}
 \item 
 \#define \mbox{\hyperlink{GraphicDisplay_8h_a4f4a7bfcea2ad96da46e40f19fdc2708}{GD\+\_\+\+INCLUDE\+\_\+\+FONT\+\_\+16x15}}
 \end{DoxyCompactItemize}
-\doxysubsection*{Typedefs}
+\doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef void($\ast$ \mbox{\hyperlink{GraphicDisplay_8h_a95a0209da2d9de6e017097cd628d21a1}{fxn\+Gd\+\_\+mtx\+Lock}}) (void)
+typedef void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{GraphicDisplay_8h_a95a0209da2d9de6e017097cd628d21a1}{fxn\+Gd\+\_\+mtx\+Lock}}) (void)
 \begin{DoxyCompactList}\small\item\em Locks the mutex to prevent overrun and conflicts over threads in RTOS environments. \end{DoxyCompactList}\item 
-typedef void($\ast$ \mbox{\hyperlink{GraphicDisplay_8h_a1b23f979756b388cf38cf929e8fd4818}{fxn\+Gd\+\_\+mtx\+Unlock}}) (void)
+typedef void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{GraphicDisplay_8h_a1b23f979756b388cf38cf929e8fd4818}{fxn\+Gd\+\_\+mtx\+Unlock}}) (void)
 \begin{DoxyCompactList}\small\item\em Unlock the mutex after use on threadsafe need operations. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Enumerations}
+\doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
 enum \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \{ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47a7ecfd9fb1630fe36cbb0874ea0022a9c}{GD\+\_\+\+OK}}
@@ -65,53 +65,53 @@ enum \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\
 , \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131a515b707bcfb4e0ac44f837fd5234c132}{GD\+\_\+\+WHITE}}
  \}
 \begin{DoxyCompactList}\small\item\em Defines the pixel color of the display we want to write. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Functions}
+\doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga058b61d16a02b94864bd04314ddbea6d}{GD\+\_\+\+Init}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd, \mbox{\hyperlink{structgd__params__t}{gd\+\_\+params\+\_\+t}} $\ast$params)
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga058b61d16a02b94864bd04314ddbea6d}{GD\+\_\+\+Init}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, \mbox{\hyperlink{structgd__params__t}{gd\+\_\+params\+\_\+t}} \texorpdfstring{$\ast$}{*}params)
 \begin{DoxyCompactList}\small\item\em Initializes the Graphic Display module, configured with the parameters provided. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga6c6678fa834f9eda68100a55bc829929}{GD\+\_\+\+Fill}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga6c6678fa834f9eda68100a55bc829929}{GD\+\_\+\+Fill}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
 \begin{DoxyCompactList}\small\item\em Fill the Frame Buffer with the provided color. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_gabbd368ffa7d5d787e5c4aaa64e5e81f2}{GD\+\_\+\+Update\+Screen}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd)
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_gabbd368ffa7d5d787e5c4aaa64e5e81f2}{GD\+\_\+\+Update\+Screen}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd)
 \begin{DoxyCompactList}\small\item\em Update and refresh the update screen with the data into Frame Buffer. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_gacf5efac777700f62a56e485113e671fc}{GD\+\_\+\+Draw\+Pixel}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd, uint32\+\_\+t x, uint32\+\_\+t y, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_gacf5efac777700f62a56e485113e671fc}{GD\+\_\+\+Draw\+Pixel}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, uint32\+\_\+t x, uint32\+\_\+t y, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
 \begin{DoxyCompactList}\small\item\em Write a color into the desired pixel in the frame buffer. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga54e4b411218cbeda9d441d3e0d541b27}{GD\+\_\+\+Write\+Char}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd, char ch, const \mbox{\hyperlink{structgd__font__t}{gd\+\_\+font\+\_\+t}} $\ast$Font, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga54e4b411218cbeda9d441d3e0d541b27}{GD\+\_\+\+Write\+Char}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, char ch, const \mbox{\hyperlink{structgd__font__t}{gd\+\_\+font\+\_\+t}} \texorpdfstring{$\ast$}{*}Font, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
 \begin{DoxyCompactList}\small\item\em Write a character into a Frame Buffer, with the lines with the desired color. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_gaefebb04456bcf0613f9369a339b75f28}{GD\+\_\+\+Write\+String}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd, char $\ast$str, const \mbox{\hyperlink{structgd__font__t}{gd\+\_\+font\+\_\+t}} $\ast$Font, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_gaefebb04456bcf0613f9369a339b75f28}{GD\+\_\+\+Write\+String}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, char \texorpdfstring{$\ast$}{*}str, const \mbox{\hyperlink{structgd__font__t}{gd\+\_\+font\+\_\+t}} \texorpdfstring{$\ast$}{*}Font, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
 \begin{DoxyCompactList}\small\item\em Write a string into frame buffer, with the character lines with the desired color. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga7e227bdbef25fc6ec669b4a84c649dc5}{GD\+\_\+\+Set\+Cursor}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd, uint32\+\_\+t x, uint32\+\_\+t y)
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga7e227bdbef25fc6ec669b4a84c649dc5}{GD\+\_\+\+Set\+Cursor}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, uint32\+\_\+t x, uint32\+\_\+t y)
 \begin{DoxyCompactList}\small\item\em Set the cursor to the position X,Y. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga5fb7fb14fb864ee9912458539ed0b030}{GD\+\_\+\+Line}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd, uint32\+\_\+t x1, uint32\+\_\+t y1, uint32\+\_\+t x2, uint32\+\_\+t y2, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga5fb7fb14fb864ee9912458539ed0b030}{GD\+\_\+\+Line}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, uint32\+\_\+t x1, uint32\+\_\+t y1, uint32\+\_\+t x2, uint32\+\_\+t y2, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
 \begin{DoxyCompactList}\small\item\em Write a line into the frame buffer between (x1,y1) (x2,y2). \end{DoxyCompactList}\item 
-\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga1b00f4fc32367f504451fca2f6736ab5}{GD\+\_\+\+Draw\+Arc}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd, uint32\+\_\+t x, uint32\+\_\+t y, uint32\+\_\+t radius, uint16\+\_\+t start\+\_\+angle, uint16\+\_\+t sweep, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga1b00f4fc32367f504451fca2f6736ab5}{GD\+\_\+\+Draw\+Arc}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, uint32\+\_\+t x, uint32\+\_\+t y, uint32\+\_\+t radius, uint16\+\_\+t start\+\_\+angle, uint16\+\_\+t sweep, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
 \begin{DoxyCompactList}\small\item\em Draw an arc into the frame buffer with center, radius, start angle, and sweep. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_gaa1cd0457fcc71e1698445f4011b52d08}{GD\+\_\+\+Draw\+Arc\+With\+Radius\+Line}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd, uint32\+\_\+t x, uint32\+\_\+t y, uint32\+\_\+t radius, uint16\+\_\+t start\+\_\+angle, uint16\+\_\+t sweep, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_gaa1cd0457fcc71e1698445f4011b52d08}{GD\+\_\+\+Draw\+Arc\+With\+Radius\+Line}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, uint32\+\_\+t x, uint32\+\_\+t y, uint32\+\_\+t radius, uint16\+\_\+t start\+\_\+angle, uint16\+\_\+t sweep, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
 \begin{DoxyCompactList}\small\item\em Draw an arc into frame buffer with lines in the radius line. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga35753d3a2b4f1b739268eeb24bf620ba}{GD\+\_\+\+Draw\+Circle}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd, uint32\+\_\+t par\+\_\+x, uint32\+\_\+t par\+\_\+y, uint32\+\_\+t par\+\_\+r, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga35753d3a2b4f1b739268eeb24bf620ba}{GD\+\_\+\+Draw\+Circle}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, uint32\+\_\+t par\+\_\+x, uint32\+\_\+t par\+\_\+y, uint32\+\_\+t par\+\_\+r, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
 \begin{DoxyCompactList}\small\item\em Draw a complete circle with defined radius. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_gaedea84e326e35e9647d1c26e28d68636}{GD\+\_\+\+Fill\+Circle}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd, uint32\+\_\+t par\+\_\+x, uint32\+\_\+t par\+\_\+y, uint32\+\_\+t par\+\_\+r, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} par\+\_\+color)
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_gaedea84e326e35e9647d1c26e28d68636}{GD\+\_\+\+Fill\+Circle}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, uint32\+\_\+t par\+\_\+x, uint32\+\_\+t par\+\_\+y, uint32\+\_\+t par\+\_\+r, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} par\+\_\+color)
 \begin{DoxyCompactList}\small\item\em Draw a circle filled with the provided color. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga61dabdcec8681e3d106c2ae32846e5a1}{GD\+\_\+\+Polyline}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd, \mbox{\hyperlink{structgd__vertex__t}{gd\+\_\+vertex\+\_\+t}} $\ast$par\+\_\+vertex, uint16\+\_\+t par\+\_\+size, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga61dabdcec8681e3d106c2ae32846e5a1}{GD\+\_\+\+Polyline}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, \mbox{\hyperlink{structgd__vertex__t}{gd\+\_\+vertex\+\_\+t}} \texorpdfstring{$\ast$}{*}par\+\_\+vertex, uint16\+\_\+t par\+\_\+size, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
 \begin{DoxyCompactList}\small\item\em Draw a polyline, composed by staigth lines connecting the points given by vertex array. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga8b7073ba76962ae60d6dbf84269ff519}{GD\+\_\+\+Draw\+Rectangle}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd, uint32\+\_\+t x1, uint32\+\_\+t y1, uint32\+\_\+t x2, uint32\+\_\+t y2, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga8b7073ba76962ae60d6dbf84269ff519}{GD\+\_\+\+Draw\+Rectangle}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, uint32\+\_\+t x1, uint32\+\_\+t y1, uint32\+\_\+t x2, uint32\+\_\+t y2, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
 \begin{DoxyCompactList}\small\item\em Draw a Rectangle between the position (x1,y1) and (x2,y2). The rectangle is not filled, just four lines of a thickness of 1px. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_gaaed1396f92e368d4925305a3cd4c1152}{GD\+\_\+\+Fill\+Rectangle}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd, uint32\+\_\+t x1, uint32\+\_\+t y1, uint32\+\_\+t x2, uint32\+\_\+t y2, \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} color)
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_gaaed1396f92e368d4925305a3cd4c1152}{GD\+\_\+\+Fill\+Rectangle}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, uint32\+\_\+t x1, uint32\+\_\+t y1, uint32\+\_\+t x2, uint32\+\_\+t y2, \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} color)
 \begin{DoxyCompactList}\small\item\em Draw a filled rectangle between the pointes (x1,y1) and (x2,y2). \end{DoxyCompactList}\item 
-\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga7218665b79a12fc0b2152ed9aec842aa}{GD\+\_\+\+Draw\+Bitmap}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd, uint32\+\_\+t x, uint32\+\_\+t y, const unsigned char $\ast$bitmap, uint32\+\_\+t w, uint32\+\_\+t h, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga7218665b79a12fc0b2152ed9aec842aa}{GD\+\_\+\+Draw\+Bitmap}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, uint32\+\_\+t x, uint32\+\_\+t y, const unsigned char \texorpdfstring{$\ast$}{*}bitmap, uint32\+\_\+t w, uint32\+\_\+t h, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
 \begin{DoxyCompactList}\small\item\em Draw a bitmap into the Frame Buffer. The bitmap is an array with the pixels on/off. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga044621845c140aa70d7be1ade8cfe078}{GD\+\_\+\+Set\+Contrast}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd, const uint8\+\_\+t value)
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga044621845c140aa70d7be1ade8cfe078}{GD\+\_\+\+Set\+Contrast}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, const uint8\+\_\+t value)
 \begin{DoxyCompactList}\small\item\em Set the contrast of the display, if are supported. If display doesn\textquotesingle{}t have this routine, nothing will happens. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga0a2122066e0046a15d3446441b27fb06}{GD\+\_\+\+Set\+Display\+On}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd, bool on)
+\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga0a2122066e0046a15d3446441b27fb06}{GD\+\_\+\+Set\+Display\+On}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd, bool on)
 \begin{DoxyCompactList}\small\item\em Set display On or Off, if the display implements this routine. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{group__Gd__Function_gaa392d77a94fb811c7114fcd003398f8d}{GD\+\_\+\+Get\+Display\+On}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd)
+bool \mbox{\hyperlink{group__Gd__Function_gaa392d77a94fb811c7114fcd003398f8d}{GD\+\_\+\+Get\+Display\+On}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} \texorpdfstring{$\ast$}{*}Gd)
 \begin{DoxyCompactList}\small\item\em Gets the display On/\+Off state. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Variables}
+\doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{structgd__driver__t}{gd\+\_\+driver\+\_\+t}} $\ast$ \mbox{\hyperlink{group__Ext__Drivers_ga9b964786596cf1d0f845eddc13ea9a67}{Gd\+\_\+\+Driver\+\_\+\+SSD1306}}
+\mbox{\hyperlink{structgd__driver__t}{gd\+\_\+driver\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__Ext__Drivers_ga9b964786596cf1d0f845eddc13ea9a67}{Gd\+\_\+\+Driver\+\_\+\+SSD1306}}
 \begin{DoxyCompactList}\small\item\em SSD1306 Display Driver pointer. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structgd__driver__t}{gd\+\_\+driver\+\_\+t}} $\ast$ \mbox{\hyperlink{group__Ext__Drivers_gaa309ec642bd4ff6ad8d5975bf53bf33e}{Gd\+\_\+\+Driver\+\_\+\+ST7920}}
+\mbox{\hyperlink{structgd__driver__t}{gd\+\_\+driver\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__Ext__Drivers_gaa309ec642bd4ff6ad8d5975bf53bf33e}{Gd\+\_\+\+Driver\+\_\+\+ST7920}}
 \begin{DoxyCompactList}\small\item\em ST7920 Display Driver poointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -119,7 +119,7 @@ bool \mbox{\hyperlink{group__Gd__Function_gaa392d77a94fb811c7114fcd003398f8d}{GD
 Main header file of Graphic Display Library, here we have the middle layer of the library. Where we works on drawing elements (texts, bitmaps and geometric forms). In drivers folder we have the low layer, composed by display controller drivers. The drivers are independet of the Graphic Display files, you can use them in more advanced libraries, like \href{https://github.com/lvgl/lvgl}{\texttt{ LVGL}}. This library is created to be flexible and scalable, allowing the engineer to use any amount of display, of any type. 
 
 \begin{DoxyAuthor}{Author}
-Pablo Jean Rozario
+Pablo Jean Rozario 
 \end{DoxyAuthor}
 \begin{DoxyNote}{Note}
 This library only works with monochrome displays. 
@@ -136,50 +136,50 @@ Copyright (c) 2024
 
 
 \doxysubsection{Macro Definition Documentation}
-\mbox{\Hypertarget{GraphicDisplay_8h_a8ff4b821108afcd58e064fa428f3e375}\label{GraphicDisplay_8h_a8ff4b821108afcd58e064fa428f3e375}} 
-\index{GraphicDisplay.h@{GraphicDisplay.h}!GD\_INCLUDE\_FONT\_11x18@{GD\_INCLUDE\_FONT\_11x18}}
+\Hypertarget{GraphicDisplay_8h_a8ff4b821108afcd58e064fa428f3e375}\index{GraphicDisplay.h@{GraphicDisplay.h}!GD\_INCLUDE\_FONT\_11x18@{GD\_INCLUDE\_FONT\_11x18}}
 \index{GD\_INCLUDE\_FONT\_11x18@{GD\_INCLUDE\_FONT\_11x18}!GraphicDisplay.h@{GraphicDisplay.h}}
 \doxysubsubsection{\texorpdfstring{GD\_INCLUDE\_FONT\_11x18}{GD\_INCLUDE\_FONT\_11x18}}
-{\footnotesize\ttfamily \#define GD\+\_\+\+INCLUDE\+\_\+\+FONT\+\_\+11x18}
+{\footnotesize\ttfamily \label{GraphicDisplay_8h_a8ff4b821108afcd58e064fa428f3e375} 
+\#define GD\+\_\+\+INCLUDE\+\_\+\+FONT\+\_\+11x18}
 
-\mbox{\Hypertarget{GraphicDisplay_8h_a4f4a7bfcea2ad96da46e40f19fdc2708}\label{GraphicDisplay_8h_a4f4a7bfcea2ad96da46e40f19fdc2708}} 
-\index{GraphicDisplay.h@{GraphicDisplay.h}!GD\_INCLUDE\_FONT\_16x15@{GD\_INCLUDE\_FONT\_16x15}}
+\Hypertarget{GraphicDisplay_8h_a4f4a7bfcea2ad96da46e40f19fdc2708}\index{GraphicDisplay.h@{GraphicDisplay.h}!GD\_INCLUDE\_FONT\_16x15@{GD\_INCLUDE\_FONT\_16x15}}
 \index{GD\_INCLUDE\_FONT\_16x15@{GD\_INCLUDE\_FONT\_16x15}!GraphicDisplay.h@{GraphicDisplay.h}}
 \doxysubsubsection{\texorpdfstring{GD\_INCLUDE\_FONT\_16x15}{GD\_INCLUDE\_FONT\_16x15}}
-{\footnotesize\ttfamily \#define GD\+\_\+\+INCLUDE\+\_\+\+FONT\+\_\+16x15}
+{\footnotesize\ttfamily \label{GraphicDisplay_8h_a4f4a7bfcea2ad96da46e40f19fdc2708} 
+\#define GD\+\_\+\+INCLUDE\+\_\+\+FONT\+\_\+16x15}
 
-\mbox{\Hypertarget{GraphicDisplay_8h_a266eda26e9af2141f12c3d6839fc5b09}\label{GraphicDisplay_8h_a266eda26e9af2141f12c3d6839fc5b09}} 
-\index{GraphicDisplay.h@{GraphicDisplay.h}!GD\_INCLUDE\_FONT\_16x24@{GD\_INCLUDE\_FONT\_16x24}}
+\Hypertarget{GraphicDisplay_8h_a266eda26e9af2141f12c3d6839fc5b09}\index{GraphicDisplay.h@{GraphicDisplay.h}!GD\_INCLUDE\_FONT\_16x24@{GD\_INCLUDE\_FONT\_16x24}}
 \index{GD\_INCLUDE\_FONT\_16x24@{GD\_INCLUDE\_FONT\_16x24}!GraphicDisplay.h@{GraphicDisplay.h}}
 \doxysubsubsection{\texorpdfstring{GD\_INCLUDE\_FONT\_16x24}{GD\_INCLUDE\_FONT\_16x24}}
-{\footnotesize\ttfamily \#define GD\+\_\+\+INCLUDE\+\_\+\+FONT\+\_\+16x24}
+{\footnotesize\ttfamily \label{GraphicDisplay_8h_a266eda26e9af2141f12c3d6839fc5b09} 
+\#define GD\+\_\+\+INCLUDE\+\_\+\+FONT\+\_\+16x24}
 
-\mbox{\Hypertarget{GraphicDisplay_8h_a465604c5fa6d1c9b37107f8abec890f2}\label{GraphicDisplay_8h_a465604c5fa6d1c9b37107f8abec890f2}} 
-\index{GraphicDisplay.h@{GraphicDisplay.h}!GD\_INCLUDE\_FONT\_16x26@{GD\_INCLUDE\_FONT\_16x26}}
+\Hypertarget{GraphicDisplay_8h_a465604c5fa6d1c9b37107f8abec890f2}\index{GraphicDisplay.h@{GraphicDisplay.h}!GD\_INCLUDE\_FONT\_16x26@{GD\_INCLUDE\_FONT\_16x26}}
 \index{GD\_INCLUDE\_FONT\_16x26@{GD\_INCLUDE\_FONT\_16x26}!GraphicDisplay.h@{GraphicDisplay.h}}
 \doxysubsubsection{\texorpdfstring{GD\_INCLUDE\_FONT\_16x26}{GD\_INCLUDE\_FONT\_16x26}}
-{\footnotesize\ttfamily \#define GD\+\_\+\+INCLUDE\+\_\+\+FONT\+\_\+16x26}
+{\footnotesize\ttfamily \label{GraphicDisplay_8h_a465604c5fa6d1c9b37107f8abec890f2} 
+\#define GD\+\_\+\+INCLUDE\+\_\+\+FONT\+\_\+16x26}
 
-\mbox{\Hypertarget{GraphicDisplay_8h_aa7d2f2bbaacaff21853159c16aab24c9}\label{GraphicDisplay_8h_aa7d2f2bbaacaff21853159c16aab24c9}} 
-\index{GraphicDisplay.h@{GraphicDisplay.h}!GD\_INCLUDE\_FONT\_6x8@{GD\_INCLUDE\_FONT\_6x8}}
+\Hypertarget{GraphicDisplay_8h_aa7d2f2bbaacaff21853159c16aab24c9}\index{GraphicDisplay.h@{GraphicDisplay.h}!GD\_INCLUDE\_FONT\_6x8@{GD\_INCLUDE\_FONT\_6x8}}
 \index{GD\_INCLUDE\_FONT\_6x8@{GD\_INCLUDE\_FONT\_6x8}!GraphicDisplay.h@{GraphicDisplay.h}}
 \doxysubsubsection{\texorpdfstring{GD\_INCLUDE\_FONT\_6x8}{GD\_INCLUDE\_FONT\_6x8}}
-{\footnotesize\ttfamily \#define GD\+\_\+\+INCLUDE\+\_\+\+FONT\+\_\+6x8}
+{\footnotesize\ttfamily \label{GraphicDisplay_8h_aa7d2f2bbaacaff21853159c16aab24c9} 
+\#define GD\+\_\+\+INCLUDE\+\_\+\+FONT\+\_\+6x8}
 
-\mbox{\Hypertarget{GraphicDisplay_8h_aeed0a1f315e4832137312ad33fe61fff}\label{GraphicDisplay_8h_aeed0a1f315e4832137312ad33fe61fff}} 
-\index{GraphicDisplay.h@{GraphicDisplay.h}!GD\_INCLUDE\_FONT\_7x10@{GD\_INCLUDE\_FONT\_7x10}}
+\Hypertarget{GraphicDisplay_8h_aeed0a1f315e4832137312ad33fe61fff}\index{GraphicDisplay.h@{GraphicDisplay.h}!GD\_INCLUDE\_FONT\_7x10@{GD\_INCLUDE\_FONT\_7x10}}
 \index{GD\_INCLUDE\_FONT\_7x10@{GD\_INCLUDE\_FONT\_7x10}!GraphicDisplay.h@{GraphicDisplay.h}}
 \doxysubsubsection{\texorpdfstring{GD\_INCLUDE\_FONT\_7x10}{GD\_INCLUDE\_FONT\_7x10}}
-{\footnotesize\ttfamily \#define GD\+\_\+\+INCLUDE\+\_\+\+FONT\+\_\+7x10}
+{\footnotesize\ttfamily \label{GraphicDisplay_8h_aeed0a1f315e4832137312ad33fe61fff} 
+\#define GD\+\_\+\+INCLUDE\+\_\+\+FONT\+\_\+7x10}
 
 
 
 \doxysubsection{Typedef Documentation}
-\mbox{\Hypertarget{GraphicDisplay_8h_a95a0209da2d9de6e017097cd628d21a1}\label{GraphicDisplay_8h_a95a0209da2d9de6e017097cd628d21a1}} 
-\index{GraphicDisplay.h@{GraphicDisplay.h}!fxnGd\_mtxLock@{fxnGd\_mtxLock}}
+\Hypertarget{GraphicDisplay_8h_a95a0209da2d9de6e017097cd628d21a1}\index{GraphicDisplay.h@{GraphicDisplay.h}!fxnGd\_mtxLock@{fxnGd\_mtxLock}}
 \index{fxnGd\_mtxLock@{fxnGd\_mtxLock}!GraphicDisplay.h@{GraphicDisplay.h}}
 \doxysubsubsection{\texorpdfstring{fxnGd\_mtxLock}{fxnGd\_mtxLock}}
-{\footnotesize\ttfamily typedef void($\ast$ fxn\+Gd\+\_\+mtx\+Lock) (void)}
+{\footnotesize\ttfamily \label{GraphicDisplay_8h_a95a0209da2d9de6e017097cd628d21a1} 
+typedef void(\texorpdfstring{$\ast$}{*} fxn\+Gd\+\_\+mtx\+Lock) (void)}
 
 
 
@@ -188,11 +188,11 @@ Locks the mutex to prevent overrun and conflicts over threads in RTOS environmen
 \begin{DoxyPrecond}{Precondition}
 Call a function where waits and locks the mutex. 
 \end{DoxyPrecond}
-\mbox{\Hypertarget{GraphicDisplay_8h_a1b23f979756b388cf38cf929e8fd4818}\label{GraphicDisplay_8h_a1b23f979756b388cf38cf929e8fd4818}} 
-\index{GraphicDisplay.h@{GraphicDisplay.h}!fxnGd\_mtxUnlock@{fxnGd\_mtxUnlock}}
+\Hypertarget{GraphicDisplay_8h_a1b23f979756b388cf38cf929e8fd4818}\index{GraphicDisplay.h@{GraphicDisplay.h}!fxnGd\_mtxUnlock@{fxnGd\_mtxUnlock}}
 \index{fxnGd\_mtxUnlock@{fxnGd\_mtxUnlock}!GraphicDisplay.h@{GraphicDisplay.h}}
 \doxysubsubsection{\texorpdfstring{fxnGd\_mtxUnlock}{fxnGd\_mtxUnlock}}
-{\footnotesize\ttfamily typedef void($\ast$ fxn\+Gd\+\_\+mtx\+Unlock) (void)}
+{\footnotesize\ttfamily \label{GraphicDisplay_8h_a1b23f979756b388cf38cf929e8fd4818} 
+typedef void(\texorpdfstring{$\ast$}{*} fxn\+Gd\+\_\+mtx\+Unlock) (void)}
 
 
 
@@ -204,42 +204,42 @@ Call a function where mutex is freed.
 
 
 \doxysubsection{Enumeration Type Documentation}
-\mbox{\Hypertarget{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}\label{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}} 
-\index{GraphicDisplay.h@{GraphicDisplay.h}!gd\_color\_e@{gd\_color\_e}}
+\Hypertarget{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}\index{GraphicDisplay.h@{GraphicDisplay.h}!gd\_color\_e@{gd\_color\_e}}
 \index{gd\_color\_e@{gd\_color\_e}!GraphicDisplay.h@{GraphicDisplay.h}}
 \doxysubsubsection{\texorpdfstring{gd\_color\_e}{gd\_color\_e}}
-{\footnotesize\ttfamily enum \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}}}
+{\footnotesize\ttfamily \label{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131} 
+enum \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}}}
 
 
 
 Defines the pixel color of the display we want to write. 
 
 \begin{DoxyEnumFields}{Enumerator}
-\raisebox{\heightof{T}}[0pt][0pt]{\index{GD\_BLACK@{GD\_BLACK}!GraphicDisplay.h@{GraphicDisplay.h}}\index{GraphicDisplay.h@{GraphicDisplay.h}!GD\_BLACK@{GD\_BLACK}}}\mbox{\Hypertarget{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131a35d29177ec6d49d67f824e8da195f49f}\label{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131a35d29177ec6d49d67f824e8da195f49f}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GD\_BLACK@{GD\_BLACK}!GraphicDisplay.h@{GraphicDisplay.h}}\index{GraphicDisplay.h@{GraphicDisplay.h}!GD\_BLACK@{GD\_BLACK}}}\Hypertarget{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131a35d29177ec6d49d67f824e8da195f49f}\label{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131} 
 GD\+\_\+\+BLACK&it\textquotesingle{}s similar to a blank pixel, turned off \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{GD\_WHITE@{GD\_WHITE}!GraphicDisplay.h@{GraphicDisplay.h}}\index{GraphicDisplay.h@{GraphicDisplay.h}!GD\_WHITE@{GD\_WHITE}}}\mbox{\Hypertarget{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131a515b707bcfb4e0ac44f837fd5234c132}\label{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131a515b707bcfb4e0ac44f837fd5234c132}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GD\_WHITE@{GD\_WHITE}!GraphicDisplay.h@{GraphicDisplay.h}}\index{GraphicDisplay.h@{GraphicDisplay.h}!GD\_WHITE@{GD\_WHITE}}}\Hypertarget{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131a515b707bcfb4e0ac44f837fd5234c132}\label{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131} 
 GD\+\_\+\+WHITE&Turns the pixel opaque, or turn it on \\
 \hline
 
 \end{DoxyEnumFields}
-\mbox{\Hypertarget{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}\label{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}} 
-\index{GraphicDisplay.h@{GraphicDisplay.h}!gd\_error\_e@{gd\_error\_e}}
+\Hypertarget{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}\index{GraphicDisplay.h@{GraphicDisplay.h}!gd\_error\_e@{gd\_error\_e}}
 \index{gd\_error\_e@{gd\_error\_e}!GraphicDisplay.h@{GraphicDisplay.h}}
 \doxysubsubsection{\texorpdfstring{gd\_error\_e}{gd\_error\_e}}
-{\footnotesize\ttfamily enum \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}}}
+{\footnotesize\ttfamily \label{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47} 
+enum \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}}}
 
 
 
 Errors that can be generated by library. 
 
 \begin{DoxyEnumFields}{Enumerator}
-\raisebox{\heightof{T}}[0pt][0pt]{\index{GD\_OK@{GD\_OK}!GraphicDisplay.h@{GraphicDisplay.h}}\index{GraphicDisplay.h@{GraphicDisplay.h}!GD\_OK@{GD\_OK}}}\mbox{\Hypertarget{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47a7ecfd9fb1630fe36cbb0874ea0022a9c}\label{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47a7ecfd9fb1630fe36cbb0874ea0022a9c}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GD\_OK@{GD\_OK}!GraphicDisplay.h@{GraphicDisplay.h}}\index{GraphicDisplay.h@{GraphicDisplay.h}!GD\_OK@{GD\_OK}}}\Hypertarget{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47a7ecfd9fb1630fe36cbb0874ea0022a9c}\label{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47} 
 GD\+\_\+\+OK&Operation was performed succefully \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{GD\_FAIL@{GD\_FAIL}!GraphicDisplay.h@{GraphicDisplay.h}}\index{GraphicDisplay.h@{GraphicDisplay.h}!GD\_FAIL@{GD\_FAIL}}}\mbox{\Hypertarget{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47aed21b1597717f735fea79887750b47e6}\label{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47aed21b1597717f735fea79887750b47e6}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GD\_FAIL@{GD\_FAIL}!GraphicDisplay.h@{GraphicDisplay.h}}\index{GraphicDisplay.h@{GraphicDisplay.h}!GD\_FAIL@{GD\_FAIL}}}\Hypertarget{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47aed21b1597717f735fea79887750b47e6}\label{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47} 
 GD\+\_\+\+FAIL&Operation was failed, in most cases, is a wrong parameter ~\newline
  \\
 \hline

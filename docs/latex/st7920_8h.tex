@@ -1,5 +1,5 @@
-\hypertarget{st7920_8h}{}\doxysection{src/drivers/st7920/st7920.h File Reference}
-\label{st7920_8h}\index{src/drivers/st7920/st7920.h@{src/drivers/st7920/st7920.h}}
+\doxysection{src/drivers/st7920/st7920.h File Reference}
+\hypertarget{st7920_8h}{}\label{st7920_8h}\index{src/drivers/st7920/st7920.h@{src/drivers/st7920/st7920.h}}
 
 
 Driver for ST7920 display driver. This library needs you to implement interface control, providing the function pointer to library handle the display.  
@@ -13,15 +13,15 @@ Driver for ST7920 display driver. This library needs you to implement interface 
 {\ttfamily \#include $<$stddef.\+h$>$}\newline
 {\ttfamily \#include $<$stdbool.\+h$>$}\newline
 {\ttfamily \#include $<$string.\+h$>$}\newline
-{\ttfamily \#include \char`\"{}st7920\+\_\+defs.\+h\char`\"{}}\newline
-\doxysubsection*{Data Structures}
+{\ttfamily \#include "{}st7920\+\_\+defs.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}}
 \begin{DoxyCompactList}\small\item\em Handler of ST7920. Each display must need your own handler. Yes, this library supports multiples displays. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structst7920__params__t}{st7920\+\_\+params\+\_\+t}}
-\end{DoxyCompactItemize}
-\doxysubsection*{Macros}
+\begin{DoxyCompactList}\small\item\em Struct to initialize and configure the driver to control the ST7920 peripheral. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{st7920_8h_a52653ad83af482c3dda8cf34afe715a4}{ST7920\+\_\+\+OK}}~0
@@ -32,39 +32,39 @@ struct \mbox{\hyperlink{structst7920__params__t}{st7920\+\_\+params\+\_\+t}}
 \item 
 \#define \mbox{\hyperlink{st7920_8h_aaa8fed71ff196922dd939ecc5aa429d5}{ST7920\+\_\+\+COLOR\+\_\+\+WHITE}}~1
 \end{DoxyCompactItemize}
-\doxysubsection*{Typedefs}
+\doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef void($\ast$ \mbox{\hyperlink{st7920_8h_a3dae5ed082f0b682b283c8c763397739}{fxn\+Delay\+\_\+ms}}) (uint32\+\_\+t ms)
+typedef void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{st7920_8h_a3dae5ed082f0b682b283c8c763397739}{fxn\+Delay\+\_\+ms}}) (uint32\+\_\+t ms)
 \begin{DoxyCompactList}\small\item\em Function pointer definition for milliseconds delay. \end{DoxyCompactList}\item 
-typedef void($\ast$ \mbox{\hyperlink{st7920_8h_aa17a06097b058b92f1211d2401380168}{fxn7920\+\_\+mtx\+Lock}}) (void)
+typedef void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{st7920_8h_aa17a06097b058b92f1211d2401380168}{fxn7920\+\_\+mtx\+Lock}}) (void)
 \begin{DoxyCompactList}\small\item\em Function pointer to routine that waits for the mutex and lock it. It\textquotesingle{}s useful on RTOS environments. \end{DoxyCompactList}\item 
-typedef void($\ast$ \mbox{\hyperlink{st7920_8h_acbeb3a4818e11d8096c8add4cf4d5fae}{fxn7920\+\_\+mtxunlock}}) (void)
+typedef void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{st7920_8h_acbeb3a4818e11d8096c8add4cf4d5fae}{fxn7920\+\_\+mtxunlock}}) (void)
 \begin{DoxyCompactList}\small\item\em Function pointer to routine that unlocks the mutex. It\textquotesingle{}s useful on RTOS environments. \end{DoxyCompactList}\item 
-typedef void($\ast$ \mbox{\hyperlink{st7920_8h_ae86e188805242ab2453aabb0c346ba45}{fxn1306spi\+\_\+cs}}) (uint8\+\_\+t Signal)
+typedef void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{st7920_8h_ae86e188805242ab2453aabb0c346ba45}{fxn1306spi\+\_\+cs}}) (uint8\+\_\+t Signal)
 \begin{DoxyCompactList}\small\item\em Function pointer to routine to control the Chip Select signal. On ST7920, Chip Select is enabled on High signal. \end{DoxyCompactList}\item 
-typedef void($\ast$ \mbox{\hyperlink{st7920_8h_a2b4665b65c77bba1669f5bf270c7fc1c}{fxn1306spi\+\_\+reset}}) (uint8\+\_\+t Signal)
+typedef void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{st7920_8h_a2b4665b65c77bba1669f5bf270c7fc1c}{fxn1306spi\+\_\+reset}}) (uint8\+\_\+t Signal)
 \begin{DoxyCompactList}\small\item\em Function pointer to routine to control the Reset pin signal. \end{DoxyCompactList}\item 
-typedef uint8\+\_\+t($\ast$ \mbox{\hyperlink{st7920_8h_a1a23046eef1a9cfd0db62a4662cc84bf}{fxn1306spi\+\_\+write}}) (uint8\+\_\+t $\ast$buff, uint32\+\_\+t len)
+typedef uint8\+\_\+t(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{st7920_8h_a1a23046eef1a9cfd0db62a4662cc84bf}{fxn1306spi\+\_\+write}}) (uint8\+\_\+t \texorpdfstring{$\ast$}{*}buff, uint32\+\_\+t len)
 \begin{DoxyCompactList}\small\item\em Function pointer to routine to transmit packets to ST7920 over SPI. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Enumerations}
+\doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
 enum \mbox{\hyperlink{st7920_8h_aa27c28a5f53522b922fcdea1fdd837e0}{st7920\+\_\+mode\+\_\+e}} \{ \mbox{\hyperlink{st7920_8h_aa27c28a5f53522b922fcdea1fdd837e0a08ba89377d24a4f06b53b851e5728e01}{ST7920\+\_\+\+MODE\+\_\+\+SPI}}
  \}
 \begin{DoxyCompactList}\small\item\em Set the Mode of ST7920 display. This device can work on 8bits, 4bits and spi mode, but, here, only the SPI method is implemented, for while. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Functions}
+\doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-uint8\+\_\+t \mbox{\hyperlink{st7920_8h_a9790769af14868844ed84dbdf3bb8d47}{ST7920\+\_\+\+Init}} (\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} $\ast$st7920, \mbox{\hyperlink{structst7920__params__t}{st7920\+\_\+params\+\_\+t}} $\ast$params)
+uint8\+\_\+t \mbox{\hyperlink{st7920_8h_a9790769af14868844ed84dbdf3bb8d47}{ST7920\+\_\+\+Init}} (\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}st7920, \mbox{\hyperlink{structst7920__params__t}{st7920\+\_\+params\+\_\+t}} \texorpdfstring{$\ast$}{*}params)
 \item 
-uint8\+\_\+t \mbox{\hyperlink{st7920_8h_a0ef01f805dc01e8b3e73fb4ca63369c7}{ST7920\+\_\+\+Set\+Frame\+Buffer}} (\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} $\ast$st7920, uint8\+\_\+t $\ast$pu8\+Frame\+Buffer)
+uint8\+\_\+t \mbox{\hyperlink{st7920_8h_a0ef01f805dc01e8b3e73fb4ca63369c7}{ST7920\+\_\+\+Set\+Frame\+Buffer}} (\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}st7920, uint8\+\_\+t \texorpdfstring{$\ast$}{*}pu8\+Frame\+Buffer)
 \item 
-uint8\+\_\+t \mbox{\hyperlink{st7920_8h_a0933ceac610b015bd25490bac72bc052}{ST7920\+\_\+\+Refresh}} (\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} $\ast$st7920)
+uint8\+\_\+t \mbox{\hyperlink{st7920_8h_a0933ceac610b015bd25490bac72bc052}{ST7920\+\_\+\+Refresh}} (\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}st7920)
 \item 
-uint8\+\_\+t \mbox{\hyperlink{st7920_8h_acbfb3eb8fd397d5d2a84e22c9d075d77}{ST7920\+\_\+\+Write}} (\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} $\ast$st7920, uint32\+\_\+t x, uint32\+\_\+t y, bool color)
+uint8\+\_\+t \mbox{\hyperlink{st7920_8h_acbfb3eb8fd397d5d2a84e22c9d075d77}{ST7920\+\_\+\+Write}} (\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}st7920, uint32\+\_\+t x, uint32\+\_\+t y, bool color)
 \item 
-uint8\+\_\+t \mbox{\hyperlink{st7920_8h_a0fcff79aff24f3547c759a952548c467}{ST7920\+\_\+\+Fill}} (\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} $\ast$st7920, uint8\+\_\+t color)
+uint8\+\_\+t \mbox{\hyperlink{st7920_8h_a0fcff79aff24f3547c759a952548c467}{ST7920\+\_\+\+Fill}} (\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}st7920, uint8\+\_\+t color)
 \end{DoxyCompactItemize}
 
 
@@ -86,38 +86,38 @@ Copyright (c) 2024
 
 
 \doxysubsection{Macro Definition Documentation}
-\mbox{\Hypertarget{st7920_8h_a9fc05a56724b73d0241a42711a5f13d6}\label{st7920_8h_a9fc05a56724b73d0241a42711a5f13d6}} 
-\index{st7920.h@{st7920.h}!ST7920\_COLOR\_BLACK@{ST7920\_COLOR\_BLACK}}
+\Hypertarget{st7920_8h_a9fc05a56724b73d0241a42711a5f13d6}\index{st7920.h@{st7920.h}!ST7920\_COLOR\_BLACK@{ST7920\_COLOR\_BLACK}}
 \index{ST7920\_COLOR\_BLACK@{ST7920\_COLOR\_BLACK}!st7920.h@{st7920.h}}
 \doxysubsubsection{\texorpdfstring{ST7920\_COLOR\_BLACK}{ST7920\_COLOR\_BLACK}}
-{\footnotesize\ttfamily \#define ST7920\+\_\+\+COLOR\+\_\+\+BLACK~0}
+{\footnotesize\ttfamily \label{st7920_8h_a9fc05a56724b73d0241a42711a5f13d6} 
+\#define ST7920\+\_\+\+COLOR\+\_\+\+BLACK~0}
 
-\mbox{\Hypertarget{st7920_8h_aaa8fed71ff196922dd939ecc5aa429d5}\label{st7920_8h_aaa8fed71ff196922dd939ecc5aa429d5}} 
-\index{st7920.h@{st7920.h}!ST7920\_COLOR\_WHITE@{ST7920\_COLOR\_WHITE}}
+\Hypertarget{st7920_8h_aaa8fed71ff196922dd939ecc5aa429d5}\index{st7920.h@{st7920.h}!ST7920\_COLOR\_WHITE@{ST7920\_COLOR\_WHITE}}
 \index{ST7920\_COLOR\_WHITE@{ST7920\_COLOR\_WHITE}!st7920.h@{st7920.h}}
 \doxysubsubsection{\texorpdfstring{ST7920\_COLOR\_WHITE}{ST7920\_COLOR\_WHITE}}
-{\footnotesize\ttfamily \#define ST7920\+\_\+\+COLOR\+\_\+\+WHITE~1}
+{\footnotesize\ttfamily \label{st7920_8h_aaa8fed71ff196922dd939ecc5aa429d5} 
+\#define ST7920\+\_\+\+COLOR\+\_\+\+WHITE~1}
 
-\mbox{\Hypertarget{st7920_8h_a6019ab08ca40147e4f86ef1063e1fdcf}\label{st7920_8h_a6019ab08ca40147e4f86ef1063e1fdcf}} 
-\index{st7920.h@{st7920.h}!ST7920\_FAIL@{ST7920\_FAIL}}
+\Hypertarget{st7920_8h_a6019ab08ca40147e4f86ef1063e1fdcf}\index{st7920.h@{st7920.h}!ST7920\_FAIL@{ST7920\_FAIL}}
 \index{ST7920\_FAIL@{ST7920\_FAIL}!st7920.h@{st7920.h}}
 \doxysubsubsection{\texorpdfstring{ST7920\_FAIL}{ST7920\_FAIL}}
-{\footnotesize\ttfamily \#define ST7920\+\_\+\+FAIL~1}
+{\footnotesize\ttfamily \label{st7920_8h_a6019ab08ca40147e4f86ef1063e1fdcf} 
+\#define ST7920\+\_\+\+FAIL~1}
 
-\mbox{\Hypertarget{st7920_8h_a52653ad83af482c3dda8cf34afe715a4}\label{st7920_8h_a52653ad83af482c3dda8cf34afe715a4}} 
-\index{st7920.h@{st7920.h}!ST7920\_OK@{ST7920\_OK}}
+\Hypertarget{st7920_8h_a52653ad83af482c3dda8cf34afe715a4}\index{st7920.h@{st7920.h}!ST7920\_OK@{ST7920\_OK}}
 \index{ST7920\_OK@{ST7920\_OK}!st7920.h@{st7920.h}}
 \doxysubsubsection{\texorpdfstring{ST7920\_OK}{ST7920\_OK}}
-{\footnotesize\ttfamily \#define ST7920\+\_\+\+OK~0}
+{\footnotesize\ttfamily \label{st7920_8h_a52653ad83af482c3dda8cf34afe715a4} 
+\#define ST7920\+\_\+\+OK~0}
 
 
 
 \doxysubsection{Typedef Documentation}
-\mbox{\Hypertarget{st7920_8h_ae86e188805242ab2453aabb0c346ba45}\label{st7920_8h_ae86e188805242ab2453aabb0c346ba45}} 
-\index{st7920.h@{st7920.h}!fxn1306spi\_cs@{fxn1306spi\_cs}}
+\Hypertarget{st7920_8h_ae86e188805242ab2453aabb0c346ba45}\index{st7920.h@{st7920.h}!fxn1306spi\_cs@{fxn1306spi\_cs}}
 \index{fxn1306spi\_cs@{fxn1306spi\_cs}!st7920.h@{st7920.h}}
 \doxysubsubsection{\texorpdfstring{fxn1306spi\_cs}{fxn1306spi\_cs}}
-{\footnotesize\ttfamily typedef void($\ast$ fxn1306spi\+\_\+cs) (uint8\+\_\+t Signal)}
+{\footnotesize\ttfamily \label{st7920_8h_ae86e188805242ab2453aabb0c346ba45} 
+typedef void(\texorpdfstring{$\ast$}{*} fxn1306spi\+\_\+cs) (uint8\+\_\+t Signal)}
 
 
 
@@ -126,21 +126,21 @@ Function pointer to routine to control the Chip Select signal. On ST7920, Chip S
 \begin{DoxyNote}{Note}
 Used only in SPI mode. 
 \end{DoxyNote}
-\mbox{\Hypertarget{st7920_8h_a2b4665b65c77bba1669f5bf270c7fc1c}\label{st7920_8h_a2b4665b65c77bba1669f5bf270c7fc1c}} 
-\index{st7920.h@{st7920.h}!fxn1306spi\_reset@{fxn1306spi\_reset}}
+\Hypertarget{st7920_8h_a2b4665b65c77bba1669f5bf270c7fc1c}\index{st7920.h@{st7920.h}!fxn1306spi\_reset@{fxn1306spi\_reset}}
 \index{fxn1306spi\_reset@{fxn1306spi\_reset}!st7920.h@{st7920.h}}
 \doxysubsubsection{\texorpdfstring{fxn1306spi\_reset}{fxn1306spi\_reset}}
-{\footnotesize\ttfamily typedef void($\ast$ fxn1306spi\+\_\+reset) (uint8\+\_\+t Signal)}
+{\footnotesize\ttfamily \label{st7920_8h_a2b4665b65c77bba1669f5bf270c7fc1c} 
+typedef void(\texorpdfstring{$\ast$}{*} fxn1306spi\+\_\+reset) (uint8\+\_\+t Signal)}
 
 
 
 Function pointer to routine to control the Reset pin signal. 
 
-\mbox{\Hypertarget{st7920_8h_a1a23046eef1a9cfd0db62a4662cc84bf}\label{st7920_8h_a1a23046eef1a9cfd0db62a4662cc84bf}} 
-\index{st7920.h@{st7920.h}!fxn1306spi\_write@{fxn1306spi\_write}}
+\Hypertarget{st7920_8h_a1a23046eef1a9cfd0db62a4662cc84bf}\index{st7920.h@{st7920.h}!fxn1306spi\_write@{fxn1306spi\_write}}
 \index{fxn1306spi\_write@{fxn1306spi\_write}!st7920.h@{st7920.h}}
 \doxysubsubsection{\texorpdfstring{fxn1306spi\_write}{fxn1306spi\_write}}
-{\footnotesize\ttfamily typedef uint8\+\_\+t($\ast$ fxn1306spi\+\_\+write) (uint8\+\_\+t $\ast$buff, uint32\+\_\+t len)}
+{\footnotesize\ttfamily \label{st7920_8h_a1a23046eef1a9cfd0db62a4662cc84bf} 
+typedef uint8\+\_\+t(\texorpdfstring{$\ast$}{*} fxn1306spi\+\_\+write) (uint8\+\_\+t \texorpdfstring{$\ast$}{*}buff, uint32\+\_\+t len)}
 
 
 
@@ -149,11 +149,11 @@ Function pointer to routine to transmit packets to ST7920 over SPI.
 \begin{DoxyNote}{Note}
 Used only in SPI mode. 
 \end{DoxyNote}
-\mbox{\Hypertarget{st7920_8h_aa17a06097b058b92f1211d2401380168}\label{st7920_8h_aa17a06097b058b92f1211d2401380168}} 
-\index{st7920.h@{st7920.h}!fxn7920\_mtxLock@{fxn7920\_mtxLock}}
+\Hypertarget{st7920_8h_aa17a06097b058b92f1211d2401380168}\index{st7920.h@{st7920.h}!fxn7920\_mtxLock@{fxn7920\_mtxLock}}
 \index{fxn7920\_mtxLock@{fxn7920\_mtxLock}!st7920.h@{st7920.h}}
 \doxysubsubsection{\texorpdfstring{fxn7920\_mtxLock}{fxn7920\_mtxLock}}
-{\footnotesize\ttfamily typedef void($\ast$ fxn7920\+\_\+mtx\+Lock) (void)}
+{\footnotesize\ttfamily \label{st7920_8h_aa17a06097b058b92f1211d2401380168} 
+typedef void(\texorpdfstring{$\ast$}{*} fxn7920\+\_\+mtx\+Lock) (void)}
 
 
 
@@ -162,11 +162,11 @@ Function pointer to routine that waits for the mutex and lock it. It\textquotesi
 \begin{DoxyNote}{Note}
 If driver calls are made over multiple threads, do not omit this. 
 \end{DoxyNote}
-\mbox{\Hypertarget{st7920_8h_acbeb3a4818e11d8096c8add4cf4d5fae}\label{st7920_8h_acbeb3a4818e11d8096c8add4cf4d5fae}} 
-\index{st7920.h@{st7920.h}!fxn7920\_mtxunlock@{fxn7920\_mtxunlock}}
+\Hypertarget{st7920_8h_acbeb3a4818e11d8096c8add4cf4d5fae}\index{st7920.h@{st7920.h}!fxn7920\_mtxunlock@{fxn7920\_mtxunlock}}
 \index{fxn7920\_mtxunlock@{fxn7920\_mtxunlock}!st7920.h@{st7920.h}}
 \doxysubsubsection{\texorpdfstring{fxn7920\_mtxunlock}{fxn7920\_mtxunlock}}
-{\footnotesize\ttfamily typedef void($\ast$ fxn7920\+\_\+mtxunlock) (void)}
+{\footnotesize\ttfamily \label{st7920_8h_acbeb3a4818e11d8096c8add4cf4d5fae} 
+typedef void(\texorpdfstring{$\ast$}{*} fxn7920\+\_\+mtxunlock) (void)}
 
 
 
@@ -175,11 +175,11 @@ Function pointer to routine that unlocks the mutex. It\textquotesingle{}s useful
 \begin{DoxyNote}{Note}
 If driver calls are made over multiple threads, do not omit this. 
 \end{DoxyNote}
-\mbox{\Hypertarget{st7920_8h_a3dae5ed082f0b682b283c8c763397739}\label{st7920_8h_a3dae5ed082f0b682b283c8c763397739}} 
-\index{st7920.h@{st7920.h}!fxnDelay\_ms@{fxnDelay\_ms}}
+\Hypertarget{st7920_8h_a3dae5ed082f0b682b283c8c763397739}\index{st7920.h@{st7920.h}!fxnDelay\_ms@{fxnDelay\_ms}}
 \index{fxnDelay\_ms@{fxnDelay\_ms}!st7920.h@{st7920.h}}
 \doxysubsubsection{\texorpdfstring{fxnDelay\_ms}{fxnDelay\_ms}}
-{\footnotesize\ttfamily typedef void($\ast$ fxn\+Delay\+\_\+ms) (uint32\+\_\+t ms)}
+{\footnotesize\ttfamily \label{st7920_8h_a3dae5ed082f0b682b283c8c763397739} 
+typedef void(\texorpdfstring{$\ast$}{*} fxn\+Delay\+\_\+ms) (uint32\+\_\+t ms)}
 
 
 
@@ -193,18 +193,18 @@ Function pointer definition for milliseconds delay.
 
 
 \doxysubsection{Enumeration Type Documentation}
-\mbox{\Hypertarget{st7920_8h_aa27c28a5f53522b922fcdea1fdd837e0}\label{st7920_8h_aa27c28a5f53522b922fcdea1fdd837e0}} 
-\index{st7920.h@{st7920.h}!st7920\_mode\_e@{st7920\_mode\_e}}
+\Hypertarget{st7920_8h_aa27c28a5f53522b922fcdea1fdd837e0}\index{st7920.h@{st7920.h}!st7920\_mode\_e@{st7920\_mode\_e}}
 \index{st7920\_mode\_e@{st7920\_mode\_e}!st7920.h@{st7920.h}}
 \doxysubsubsection{\texorpdfstring{st7920\_mode\_e}{st7920\_mode\_e}}
-{\footnotesize\ttfamily enum \mbox{\hyperlink{st7920_8h_aa27c28a5f53522b922fcdea1fdd837e0}{st7920\+\_\+mode\+\_\+e}}}
+{\footnotesize\ttfamily \label{st7920_8h_aa27c28a5f53522b922fcdea1fdd837e0} 
+enum \mbox{\hyperlink{st7920_8h_aa27c28a5f53522b922fcdea1fdd837e0}{st7920\+\_\+mode\+\_\+e}}}
 
 
 
 Set the Mode of ST7920 display. This device can work on 8bits, 4bits and spi mode, but, here, only the SPI method is implemented, for while. 
 
 \begin{DoxyEnumFields}{Enumerator}
-\raisebox{\heightof{T}}[0pt][0pt]{\index{ST7920\_MODE\_SPI@{ST7920\_MODE\_SPI}!st7920.h@{st7920.h}}\index{st7920.h@{st7920.h}!ST7920\_MODE\_SPI@{ST7920\_MODE\_SPI}}}\mbox{\Hypertarget{st7920_8h_aa27c28a5f53522b922fcdea1fdd837e0a08ba89377d24a4f06b53b851e5728e01}\label{st7920_8h_aa27c28a5f53522b922fcdea1fdd837e0a08ba89377d24a4f06b53b851e5728e01}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ST7920\_MODE\_SPI@{ST7920\_MODE\_SPI}!st7920.h@{st7920.h}}\index{st7920.h@{st7920.h}!ST7920\_MODE\_SPI@{ST7920\_MODE\_SPI}}}\Hypertarget{st7920_8h_aa27c28a5f53522b922fcdea1fdd837e0a08ba89377d24a4f06b53b851e5728e01}\label{st7920_8h_aa27c28a5f53522b922fcdea1fdd837e0} 
 ST7920\+\_\+\+MODE\+\_\+\+SPI&Initialize ST7920 in SPI mode and serial communication. \\
 \hline
 
@@ -212,33 +212,85 @@ ST7920\+\_\+\+MODE\+\_\+\+SPI&Initialize ST7920 in SPI mode and serial communica
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{st7920_8h_a0fcff79aff24f3547c759a952548c467}\label{st7920_8h_a0fcff79aff24f3547c759a952548c467}} 
-\index{st7920.h@{st7920.h}!ST7920\_Fill@{ST7920\_Fill}}
+\Hypertarget{st7920_8h_a0fcff79aff24f3547c759a952548c467}\index{st7920.h@{st7920.h}!ST7920\_Fill@{ST7920\_Fill}}
 \index{ST7920\_Fill@{ST7920\_Fill}!st7920.h@{st7920.h}}
 \doxysubsubsection{\texorpdfstring{ST7920\_Fill()}{ST7920\_Fill()}}
-{\footnotesize\ttfamily uint8\+\_\+t ST7920\+\_\+\+Fill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} $\ast$}]{st7920,  }\item[{uint8\+\_\+t}]{color }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{st7920_8h_a0fcff79aff24f3547c759a952548c467} 
+uint8\+\_\+t ST7920\+\_\+\+Fill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{st7920}{, }\item[{uint8\+\_\+t}]{color}{}\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{st7920_8h_a9790769af14868844ed84dbdf3bb8d47}\label{st7920_8h_a9790769af14868844ed84dbdf3bb8d47}} 
-\index{st7920.h@{st7920.h}!ST7920\_Init@{ST7920\_Init}}
+
+\begin{DoxyParams}{Parameters}
+{\em st7920} & \\
+\hline
+{\em color} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t 
+\end{DoxyReturn}
+\Hypertarget{st7920_8h_a9790769af14868844ed84dbdf3bb8d47}\index{st7920.h@{st7920.h}!ST7920\_Init@{ST7920\_Init}}
 \index{ST7920\_Init@{ST7920\_Init}!st7920.h@{st7920.h}}
 \doxysubsubsection{\texorpdfstring{ST7920\_Init()}{ST7920\_Init()}}
-{\footnotesize\ttfamily uint8\+\_\+t ST7920\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} $\ast$}]{st7920,  }\item[{\mbox{\hyperlink{structst7920__params__t}{st7920\+\_\+params\+\_\+t}} $\ast$}]{params }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{st7920_8h_a9790769af14868844ed84dbdf3bb8d47} 
+uint8\+\_\+t ST7920\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{st7920}{, }\item[{\mbox{\hyperlink{structst7920__params__t}{st7920\+\_\+params\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{params}{}\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{st7920_8h_a0933ceac610b015bd25490bac72bc052}\label{st7920_8h_a0933ceac610b015bd25490bac72bc052}} 
-\index{st7920.h@{st7920.h}!ST7920\_Refresh@{ST7920\_Refresh}}
+
+\begin{DoxyParams}{Parameters}
+{\em st7920} & \\
+\hline
+{\em params} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t 
+\end{DoxyReturn}
+\Hypertarget{st7920_8h_a0933ceac610b015bd25490bac72bc052}\index{st7920.h@{st7920.h}!ST7920\_Refresh@{ST7920\_Refresh}}
 \index{ST7920\_Refresh@{ST7920\_Refresh}!st7920.h@{st7920.h}}
 \doxysubsubsection{\texorpdfstring{ST7920\_Refresh()}{ST7920\_Refresh()}}
-{\footnotesize\ttfamily uint8\+\_\+t ST7920\+\_\+\+Refresh (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} $\ast$}]{st7920 }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{st7920_8h_a0933ceac610b015bd25490bac72bc052} 
+uint8\+\_\+t ST7920\+\_\+\+Refresh (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{st7920}{}\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{st7920_8h_a0ef01f805dc01e8b3e73fb4ca63369c7}\label{st7920_8h_a0ef01f805dc01e8b3e73fb4ca63369c7}} 
-\index{st7920.h@{st7920.h}!ST7920\_SetFrameBuffer@{ST7920\_SetFrameBuffer}}
+
+\begin{DoxyParams}{Parameters}
+{\em st7920} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t 
+\end{DoxyReturn}
+\Hypertarget{st7920_8h_a0ef01f805dc01e8b3e73fb4ca63369c7}\index{st7920.h@{st7920.h}!ST7920\_SetFrameBuffer@{ST7920\_SetFrameBuffer}}
 \index{ST7920\_SetFrameBuffer@{ST7920\_SetFrameBuffer}!st7920.h@{st7920.h}}
 \doxysubsubsection{\texorpdfstring{ST7920\_SetFrameBuffer()}{ST7920\_SetFrameBuffer()}}
-{\footnotesize\ttfamily uint8\+\_\+t ST7920\+\_\+\+Set\+Frame\+Buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} $\ast$}]{st7920,  }\item[{uint8\+\_\+t $\ast$}]{pu8\+Frame\+Buffer }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{st7920_8h_a0ef01f805dc01e8b3e73fb4ca63369c7} 
+uint8\+\_\+t ST7920\+\_\+\+Set\+Frame\+Buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{st7920}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{pu8\+Frame\+Buffer}{}\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{st7920_8h_acbfb3eb8fd397d5d2a84e22c9d075d77}\label{st7920_8h_acbfb3eb8fd397d5d2a84e22c9d075d77}} 
-\index{st7920.h@{st7920.h}!ST7920\_Write@{ST7920\_Write}}
+
+\begin{DoxyParams}{Parameters}
+{\em st7920} & \\
+\hline
+{\em pu8\+Frame\+Buffer} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t 
+\end{DoxyReturn}
+\Hypertarget{st7920_8h_acbfb3eb8fd397d5d2a84e22c9d075d77}\index{st7920.h@{st7920.h}!ST7920\_Write@{ST7920\_Write}}
 \index{ST7920\_Write@{ST7920\_Write}!st7920.h@{st7920.h}}
 \doxysubsubsection{\texorpdfstring{ST7920\_Write()}{ST7920\_Write()}}
-{\footnotesize\ttfamily uint8\+\_\+t ST7920\+\_\+\+Write (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} $\ast$}]{st7920,  }\item[{uint32\+\_\+t}]{x,  }\item[{uint32\+\_\+t}]{y,  }\item[{bool}]{color }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{st7920_8h_acbfb3eb8fd397d5d2a84e22c9d075d77} 
+uint8\+\_\+t ST7920\+\_\+\+Write (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{st7920}{, }\item[{uint32\+\_\+t}]{x}{, }\item[{uint32\+\_\+t}]{y}{, }\item[{bool}]{color}{}\end{DoxyParamCaption})}
 
+
+\begin{DoxyParams}{Parameters}
+{\em st7920} & \\
+\hline
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+{\em color} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t 
+\end{DoxyReturn}
