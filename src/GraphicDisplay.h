@@ -219,7 +219,6 @@ typedef struct{
 	void* pHandle;
 
 	/**
-	 * @fn fxnSetPixelColor
 	 * @brief Sets a value of a pixel on a gived position on the Frame Buffer.
 	 * Please, do not directly write on display, just write on a buffer.
 	 * @note This function is MANDATORY!
@@ -233,7 +232,6 @@ typedef struct{
 	uint8_t (*fxnSetPixelColor)(void* handle, uint32_t x, uint32_t y, uint8_t color);
 
 	/**
-	 * @fn fxnFillFrameBuffer
 	 * @brief Fills the Frame Buffer of the display device with a provided color.
 	 * @note This function is MANDATORY!
 	 *
@@ -244,7 +242,6 @@ typedef struct{
 	uint8_t (*fxnFillFrameBuffer)(void* handle, uint8_t color);
 
 	/**
-	 * @fn fxnRefreshDisp.
 	 * @brief Refresh the display with the internal Frame Buffer.
 	 * This method, improves the performance of the display driver and Graphic Display lib.
 	 * @note This function is MANDATORY!
@@ -255,7 +252,6 @@ typedef struct{
 	uint8_t (*fxnRefreshDisp)(void* handle);
 
 	/**
-	 * @fn fxnSetOn
 	 * @brief Turns the display on or off.
 	 * @note This function is optional.
 	 *
@@ -266,7 +262,6 @@ typedef struct{
 	uint8_t (*fxnSetOn)(void* handle, bool on);
 
 	/**
-	 * @fn fxnSetContrast
 	 * @brief Set the contrast of the display, the internal value must be treated with:
 	 * 0 to minimal contrast.
 	 * 100 to maximum contrast.

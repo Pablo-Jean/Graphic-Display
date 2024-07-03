@@ -176,13 +176,13 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga7218665b79a12fc0b2152ed9aec842aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a bitmap into the Frame Buffer. The bitmap is an array with the pixels on/off.  <a href="group__Gd__Function.html#ga7218665b79a12fc0b2152ed9aec842aa">More...</a><br /></td></tr>
 <tr class="separator:ga7218665b79a12fc0b2152ed9aec842aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga044621845c140aa70d7be1ade8cfe078"><td class="memItemLeft" align="right" valign="top"><a class="el" href="GraphicDisplay_8h.html#a511ea90d1d18ab0dccbb13cf9deeea47">gd_error_e</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Gd__Function.html#ga044621845c140aa70d7be1ade8cfe078">GD_SetContrast</a> (<a class="el" href="structgd__t.html">gd_t</a> *Gd, uint8_t value)</td></tr>
-<tr class="memdesc:ga044621845c140aa70d7be1ade8cfe078"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the contrast of the display.  <a href="group__Gd__Function.html#ga044621845c140aa70d7be1ade8cfe078">More...</a><br /></td></tr>
+<tr class="memdesc:ga044621845c140aa70d7be1ade8cfe078"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the contrast of the display, if are supported. If display doesn't have this routine, nothing will happens.  <a href="group__Gd__Function.html#ga044621845c140aa70d7be1ade8cfe078">More...</a><br /></td></tr>
 <tr class="separator:ga044621845c140aa70d7be1ade8cfe078"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0a2122066e0046a15d3446441b27fb06"><td class="memItemLeft" align="right" valign="top"><a class="el" href="GraphicDisplay_8h.html#a511ea90d1d18ab0dccbb13cf9deeea47">gd_error_e</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Gd__Function.html#ga0a2122066e0046a15d3446441b27fb06">GD_SetDisplayOn</a> (<a class="el" href="structgd__t.html">gd_t</a> *Gd, bool on)</td></tr>
-<tr class="memdesc:ga0a2122066e0046a15d3446441b27fb06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set Display ON/OFF.  <a href="group__Gd__Function.html#ga0a2122066e0046a15d3446441b27fb06">More...</a><br /></td></tr>
+<tr class="memdesc:ga0a2122066e0046a15d3446441b27fb06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set display On or Off, if the display implements this routine.  <a href="group__Gd__Function.html#ga0a2122066e0046a15d3446441b27fb06">More...</a><br /></td></tr>
 <tr class="separator:ga0a2122066e0046a15d3446441b27fb06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa392d77a94fb811c7114fcd003398f8d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Gd__Function.html#gaa392d77a94fb811c7114fcd003398f8d">GD_GetDisplayOn</a> (<a class="el" href="structgd__t.html">gd_t</a> *Gd)</td></tr>
-<tr class="memdesc:gaa392d77a94fb811c7114fcd003398f8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads DisplayOn state.  <a href="group__Gd__Function.html#gaa392d77a94fb811c7114fcd003398f8d">More...</a><br /></td></tr>
+<tr class="memdesc:gaa392d77a94fb811c7114fcd003398f8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the display On/Off state.  <a href="group__Gd__Function.html#gaa392d77a94fb811c7114fcd003398f8d">More...</a><br /></td></tr>
 <tr class="separator:gaa392d77a94fb811c7114fcd003398f8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
@@ -610,8 +610,8 @@ Variables</h2></td></tr>
 <div class="line">        .fxnSetContrast = <a class="code" href="GraphicDisplay_8c.html#a47d1fd5a8bffc7dcbf3c9693bd4db2bd">_SET_CONTRAST_TYPECAST</a>            NULL</div>
 <div class="line">}</div>
 <div class="ttc" id="ast7920_8c_html_a0933ceac610b015bd25490bac72bc052"><div class="ttname"><a href="st7920_8c.html#a0933ceac610b015bd25490bac72bc052">ST7920_Refresh</a></div><div class="ttdeci">uint8_t ST7920_Refresh(st7920_t *st7920)</div><div class="ttdef"><b>Definition:</b> st7920.c:207</div></div>
-<div class="ttc" id="ast7920_8c_html_a0fcff79aff24f3547c759a952548c467"><div class="ttname"><a href="st7920_8c.html#a0fcff79aff24f3547c759a952548c467">ST7920_Fill</a></div><div class="ttdeci">uint8_t ST7920_Fill(st7920_t *st7920, uint8_t color)</div><div class="ttdef"><b>Definition:</b> st7920.c:285</div></div>
-<div class="ttc" id="ast7920_8c_html_acbfb3eb8fd397d5d2a84e22c9d075d77"><div class="ttname"><a href="st7920_8c.html#acbfb3eb8fd397d5d2a84e22c9d075d77">ST7920_Write</a></div><div class="ttdeci">uint8_t ST7920_Write(st7920_t *st7920, uint32_t x, uint32_t y, bool color)</div><div class="ttdef"><b>Definition:</b> st7920.c:257</div></div>
+<div class="ttc" id="ast7920_8c_html_a0fcff79aff24f3547c759a952548c467"><div class="ttname"><a href="st7920_8c.html#a0fcff79aff24f3547c759a952548c467">ST7920_Fill</a></div><div class="ttdeci">uint8_t ST7920_Fill(st7920_t *st7920, uint8_t color)</div><div class="ttdef"><b>Definition:</b> st7920.c:275</div></div>
+<div class="ttc" id="ast7920_8c_html_acbfb3eb8fd397d5d2a84e22c9d075d77"><div class="ttname"><a href="st7920_8c.html#acbfb3eb8fd397d5d2a84e22c9d075d77">ST7920_Write</a></div><div class="ttdeci">uint8_t ST7920_Write(st7920_t *st7920, uint32_t x, uint32_t y, bool color)</div><div class="ttdef"><b>Definition:</b> st7920.c:247</div></div>
 </div><!-- fragment --><p>Diver for ST7920 </p>
 
 </div>

@@ -41,17 +41,11 @@ Graphic Display functions, used during Graphic Display Operation.
 \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga7218665b79a12fc0b2152ed9aec842aa}{GD\+\_\+\+Draw\+Bitmap}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd, uint32\+\_\+t x, uint32\+\_\+t y, const unsigned char $\ast$bitmap, uint32\+\_\+t w, uint32\+\_\+t h, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
 \begin{DoxyCompactList}\small\item\em Draw a bitmap into the Frame Buffer. The bitmap is an array with the pixels on/off. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga044621845c140aa70d7be1ade8cfe078}{GD\+\_\+\+Set\+Contrast}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd, const uint8\+\_\+t value)
-\begin{DoxyCompactList}\small\item\em Sets the contrast of the display. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Set the contrast of the display, if are supported. If display doesn\textquotesingle{}t have this routine, nothing will happens. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga0a2122066e0046a15d3446441b27fb06}{GD\+\_\+\+Set\+Display\+On}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd, bool on)
-\begin{DoxyCompactList}\small\item\em Set Display ON/\+OFF. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Set display On or Off, if the display implements this routine. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{group__Gd__Function_gaa392d77a94fb811c7114fcd003398f8d}{GD\+\_\+\+Get\+Display\+On}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd)
-\begin{DoxyCompactList}\small\item\em Reads Display\+On state. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_gae2f338a026cf0ee8de48a650290caa44}{GD\+\_\+\+Reset}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd)
-\item 
-\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga65392fc3b1e28c133812dddf6c4ab3b5}{GD\+\_\+\+Write\+Command}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd, uint8\+\_\+t byte)
-\item 
-\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga0b6cf078867fed366c7605945c3fe3df}{GD\+\_\+\+Write\+Data}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd, uint8\+\_\+t $\ast$buffer, size\+\_\+t buff\+\_\+size)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Gets the display On/\+Off state. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -166,7 +160,7 @@ GD\+\_\+\+OK is success.
 \index{Graphic Display Functions@{Graphic Display Functions}!GD\_DrawCircle@{GD\_DrawCircle}}
 \index{GD\_DrawCircle@{GD\_DrawCircle}!Graphic Display Functions@{Graphic Display Functions}}
 \doxysubsubsection{\texorpdfstring{GD\_DrawCircle()}{GD\_DrawCircle()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} GD\+\_\+\+Draw\+Circle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$}]{Gd,  }\item[{uint32\+\_\+t}]{par\+\_\+x,  }\item[{uint32\+\_\+t}]{par\+\_\+y,  }\item[{uint32\+\_\+t}]{par\+\_\+r,  }\item[{\mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}}}]{par\+\_\+color }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} GD\+\_\+\+Draw\+Circle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$}]{Gd,  }\item[{uint32\+\_\+t}]{par\+\_\+x,  }\item[{uint32\+\_\+t}]{par\+\_\+y,  }\item[{uint32\+\_\+t}]{par\+\_\+r,  }\item[{\mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}}}]{color }\end{DoxyParamCaption})}
 
 
 
@@ -342,10 +336,18 @@ GD\+\_\+\+OK if success.
 
 
 
-Reads Display\+On state. 
+Gets the display On/\+Off state. 
 
+\begin{DoxyPrecond}{Precondition}
+Graphic Display is initialized. 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em Gd} & Pointer to the Graphic Display handle. \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-0\+: OFF. 1\+: ON. 
+{\ttfamily true} if the display was online, {\ttfamily false} if not. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{group__Gd__Function_ga058b61d16a02b94864bd04314ddbea6d}\label{group__Gd__Function_ga058b61d16a02b94864bd04314ddbea6d}} 
 \index{Graphic Display Functions@{Graphic Display Functions}!GD\_Init@{GD\_Init}}
@@ -428,12 +430,6 @@ Graphic Display is initialized.
 \begin{DoxyReturn}{Returns}
 GD\+\_\+\+OK if success. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__Gd__Function_gae2f338a026cf0ee8de48a650290caa44}\label{group__Gd__Function_gae2f338a026cf0ee8de48a650290caa44}} 
-\index{Graphic Display Functions@{Graphic Display Functions}!GD\_Reset@{GD\_Reset}}
-\index{GD\_Reset@{GD\_Reset}!Graphic Display Functions@{Graphic Display Functions}}
-\doxysubsubsection{\texorpdfstring{GD\_Reset()}{GD\_Reset()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} GD\+\_\+\+Reset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$}]{Gd }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{group__Gd__Function_ga044621845c140aa70d7be1ade8cfe078}\label{group__Gd__Function_ga044621845c140aa70d7be1ade8cfe078}} 
 \index{Graphic Display Functions@{Graphic Display Functions}!GD\_SetContrast@{GD\_SetContrast}}
 \index{GD\_SetContrast@{GD\_SetContrast}!Graphic Display Functions@{Graphic Display Functions}}
@@ -442,18 +438,21 @@ GD\+\_\+\+OK if success.
 
 
 
-Sets the contrast of the display. 
+Set the contrast of the display, if are supported. If display doesn\textquotesingle{}t have this routine, nothing will happens. 
 
+\begin{DoxyPrecond}{Precondition}
+Graphic Display is initialized. 
+\end{DoxyPrecond}
 
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em value} & contrast to set. \\
+\begin{DoxyParams}{Parameters}
+{\em Gd} & Pointer to the Graphic Display handle. \\
+\hline
+{\em value} & Value of contrast, from 0 to 100. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyNote}{Note}
-Contrast increases as the value increases. 
-
-RESET = 7Fh. 
-\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+GD\+\_\+\+OK if success. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{group__Gd__Function_ga7e227bdbef25fc6ec669b4a84c649dc5}\label{group__Gd__Function_ga7e227bdbef25fc6ec669b4a84c649dc5}} 
 \index{Graphic Display Functions@{Graphic Display Functions}!GD\_SetCursor@{GD\_SetCursor}}
 \index{GD\_SetCursor@{GD\_SetCursor}!Graphic Display Functions@{Graphic Display Functions}}
@@ -487,13 +486,21 @@ GD\+\_\+\+OK if success.
 
 
 
-Set Display ON/\+OFF. 
+Set display On or Off, if the display implements this routine. 
 
+\begin{DoxyPrecond}{Precondition}
+Graphic Display is initialized. 
+\end{DoxyPrecond}
 
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em on} & 0 for OFF, any for ON. \\
+\begin{DoxyParams}{Parameters}
+{\em Gd} & Pointer to the Graphic Display handle. \\
+\hline
+{\em on} & Set to {\ttfamily true} to turn on, of {\ttfamily to} false. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+GD\+\_\+\+OK if success. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{group__Gd__Function_gabbd368ffa7d5d787e5c4aaa64e5e81f2}\label{group__Gd__Function_gabbd368ffa7d5d787e5c4aaa64e5e81f2}} 
 \index{Graphic Display Functions@{Graphic Display Functions}!GD\_UpdateScreen@{GD\_UpdateScreen}}
 \index{GD\_UpdateScreen@{GD\_UpdateScreen}!Graphic Display Functions@{Graphic Display Functions}}
@@ -542,18 +549,6 @@ Graphic Display is initialized.
 \begin{DoxyReturn}{Returns}
 GD\+\_\+\+OK if success. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__Gd__Function_ga65392fc3b1e28c133812dddf6c4ab3b5}\label{group__Gd__Function_ga65392fc3b1e28c133812dddf6c4ab3b5}} 
-\index{Graphic Display Functions@{Graphic Display Functions}!GD\_WriteCommand@{GD\_WriteCommand}}
-\index{GD\_WriteCommand@{GD\_WriteCommand}!Graphic Display Functions@{Graphic Display Functions}}
-\doxysubsubsection{\texorpdfstring{GD\_WriteCommand()}{GD\_WriteCommand()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} GD\+\_\+\+Write\+Command (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$}]{Gd,  }\item[{uint8\+\_\+t}]{byte }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{group__Gd__Function_ga0b6cf078867fed366c7605945c3fe3df}\label{group__Gd__Function_ga0b6cf078867fed366c7605945c3fe3df}} 
-\index{Graphic Display Functions@{Graphic Display Functions}!GD\_WriteData@{GD\_WriteData}}
-\index{GD\_WriteData@{GD\_WriteData}!Graphic Display Functions@{Graphic Display Functions}}
-\doxysubsubsection{\texorpdfstring{GD\_WriteData()}{GD\_WriteData()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} GD\+\_\+\+Write\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$}]{Gd,  }\item[{uint8\+\_\+t $\ast$}]{buffer,  }\item[{size\+\_\+t}]{buff\+\_\+size }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{group__Gd__Function_gaefebb04456bcf0613f9369a339b75f28}\label{group__Gd__Function_gaefebb04456bcf0613f9369a339b75f28}} 
 \index{Graphic Display Functions@{Graphic Display Functions}!GD\_WriteString@{GD\_WriteString}}
 \index{GD\_WriteString@{GD\_WriteString}!Graphic Display Functions@{Graphic Display Functions}}

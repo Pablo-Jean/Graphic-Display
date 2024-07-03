@@ -23,11 +23,11 @@ var searchData=
   ['fxn7920_5fmtxlock_71',['fxn7920_mtxLock',['../st7920_8h.html#aa17a06097b058b92f1211d2401380168',1,'st7920.h']]],
   ['fxn7920_5fmtxunlock_72',['fxn7920_mtxunlock',['../st7920_8h.html#acbeb3a4818e11d8096c8add4cf4d5fae',1,'st7920.h']]],
   ['fxndelay_5fms_73',['fxnDelay_ms',['../ssd1306_8h.html#a3dae5ed082f0b682b283c8c763397739',1,'fxnDelay_ms():&#160;ssd1306.h'],['../st7920_8h.html#a3dae5ed082f0b682b283c8c763397739',1,'fxnDelay_ms():&#160;st7920.h']]],
-  ['fxnfillframebuffer_74',['fxnFillFrameBuffer',['../structgd__driver__t.html#ab605f9ba28bc8db0a8ea4c7ffb6d23f9',1,'gd_driver_t']]],
+  ['fxnfillframebuffer_74',['fxnFillFrameBuffer',['../structgd__driver__t.html#a2dd45a5bdd972a6db5f8ad6dd1afbd57',1,'gd_driver_t']]],
   ['fxngd_5fmtxlock_75',['fxnGd_mtxLock',['../GraphicDisplay_8h.html#a216bf294047075ab0e376f259c8ce303',1,'GraphicDisplay.h']]],
   ['fxngd_5fmtxunlock_76',['fxnGd_mtxUnlock',['../GraphicDisplay_8h.html#a0487de7c6e177fe3830beb12e48bb6b0',1,'GraphicDisplay.h']]],
-  ['fxnrefreshdisp_77',['fxnRefreshDisp',['../structgd__driver__t.html#ae1e7f5724ba39294196879177234b65c',1,'gd_driver_t']]],
-  ['fxnsetcontrast_78',['fxnSetContrast',['../structgd__driver__t.html#a34775a981d04443551ce597e99b112e0',1,'gd_driver_t']]],
-  ['fxnseton_79',['fxnSetOn',['../structgd__driver__t.html#a6ede5cdba5af21271a4b5f12eb0522d2',1,'gd_driver_t']]],
-  ['fxnsetpixelcolor_80',['fxnSetPixelColor',['../structgd__driver__t.html#ac7f7040bdb9b45b1fb0a787376815c5a',1,'gd_driver_t']]]
+  ['fxnrefreshdisp_77',['fxnRefreshDisp',['../structgd__driver__t.html#a18009e0128c18eb1b496e05a1545d35a',1,'gd_driver_t']]],
+  ['fxnsetcontrast_78',['fxnSetContrast',['../structgd__driver__t.html#a7c81c22500b85649be40065faae60459',1,'gd_driver_t']]],
+  ['fxnseton_79',['fxnSetOn',['../structgd__driver__t.html#a9d544dc5d4b8a3c27f401e9ee0974eef',1,'gd_driver_t']]],
+  ['fxnsetpixelcolor_80',['fxnSetPixelColor',['../structgd__driver__t.html#ae5622c7b473b4f454217ea6b39aaca0b',1,'gd_driver_t']]]
 ];

@@ -64,7 +64,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "GraphicDisplay_8c.html",
-"st7920_8h.html#ae86e188805242ab2453aabb0c346ba45"
+"structgd__driver__t.html#a2dd45a5bdd972a6db5f8ad6dd1afbd57"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

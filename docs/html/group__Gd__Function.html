@@ -145,20 +145,14 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga7218665b79a12fc0b2152ed9aec842aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a bitmap into the Frame Buffer. The bitmap is an array with the pixels on/off.  <a href="group__Gd__Function.html#ga7218665b79a12fc0b2152ed9aec842aa">More...</a><br /></td></tr>
 <tr class="separator:ga7218665b79a12fc0b2152ed9aec842aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga044621845c140aa70d7be1ade8cfe078"><td class="memItemLeft" align="right" valign="top"><a class="el" href="GraphicDisplay_8h.html#a511ea90d1d18ab0dccbb13cf9deeea47">gd_error_e</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Gd__Function.html#ga044621845c140aa70d7be1ade8cfe078">GD_SetContrast</a> (<a class="el" href="structgd__t.html">gd_t</a> *Gd, const uint8_t value)</td></tr>
-<tr class="memdesc:ga044621845c140aa70d7be1ade8cfe078"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the contrast of the display.  <a href="group__Gd__Function.html#ga044621845c140aa70d7be1ade8cfe078">More...</a><br /></td></tr>
+<tr class="memdesc:ga044621845c140aa70d7be1ade8cfe078"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the contrast of the display, if are supported. If display doesn't have this routine, nothing will happens.  <a href="group__Gd__Function.html#ga044621845c140aa70d7be1ade8cfe078">More...</a><br /></td></tr>
 <tr class="separator:ga044621845c140aa70d7be1ade8cfe078"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0a2122066e0046a15d3446441b27fb06"><td class="memItemLeft" align="right" valign="top"><a class="el" href="GraphicDisplay_8h.html#a511ea90d1d18ab0dccbb13cf9deeea47">gd_error_e</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Gd__Function.html#ga0a2122066e0046a15d3446441b27fb06">GD_SetDisplayOn</a> (<a class="el" href="structgd__t.html">gd_t</a> *Gd, bool on)</td></tr>
-<tr class="memdesc:ga0a2122066e0046a15d3446441b27fb06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set Display ON/OFF.  <a href="group__Gd__Function.html#ga0a2122066e0046a15d3446441b27fb06">More...</a><br /></td></tr>
+<tr class="memdesc:ga0a2122066e0046a15d3446441b27fb06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set display On or Off, if the display implements this routine.  <a href="group__Gd__Function.html#ga0a2122066e0046a15d3446441b27fb06">More...</a><br /></td></tr>
 <tr class="separator:ga0a2122066e0046a15d3446441b27fb06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa392d77a94fb811c7114fcd003398f8d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Gd__Function.html#gaa392d77a94fb811c7114fcd003398f8d">GD_GetDisplayOn</a> (<a class="el" href="structgd__t.html">gd_t</a> *Gd)</td></tr>
-<tr class="memdesc:gaa392d77a94fb811c7114fcd003398f8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads DisplayOn state.  <a href="group__Gd__Function.html#gaa392d77a94fb811c7114fcd003398f8d">More...</a><br /></td></tr>
+<tr class="memdesc:gaa392d77a94fb811c7114fcd003398f8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the display On/Off state.  <a href="group__Gd__Function.html#gaa392d77a94fb811c7114fcd003398f8d">More...</a><br /></td></tr>
 <tr class="separator:gaa392d77a94fb811c7114fcd003398f8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae2f338a026cf0ee8de48a650290caa44"><td class="memItemLeft" align="right" valign="top"><a class="el" href="GraphicDisplay_8h.html#a511ea90d1d18ab0dccbb13cf9deeea47">gd_error_e</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Gd__Function.html#gae2f338a026cf0ee8de48a650290caa44">GD_Reset</a> (<a class="el" href="structgd__t.html">gd_t</a> *Gd)</td></tr>
-<tr class="separator:gae2f338a026cf0ee8de48a650290caa44"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga65392fc3b1e28c133812dddf6c4ab3b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="GraphicDisplay_8h.html#a511ea90d1d18ab0dccbb13cf9deeea47">gd_error_e</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Gd__Function.html#ga65392fc3b1e28c133812dddf6c4ab3b5">GD_WriteCommand</a> (<a class="el" href="structgd__t.html">gd_t</a> *Gd, uint8_t byte)</td></tr>
-<tr class="separator:ga65392fc3b1e28c133812dddf6c4ab3b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0b6cf078867fed366c7605945c3fe3df"><td class="memItemLeft" align="right" valign="top"><a class="el" href="GraphicDisplay_8h.html#a511ea90d1d18ab0dccbb13cf9deeea47">gd_error_e</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Gd__Function.html#ga0b6cf078867fed366c7605945c3fe3df">GD_WriteData</a> (<a class="el" href="structgd__t.html">gd_t</a> *Gd, uint8_t *buffer, size_t buff_size)</td></tr>
-<tr class="separator:ga0b6cf078867fed366c7605945c3fe3df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Graphic Display functions, used during Graphic Display Operation. </p>
@@ -420,7 +414,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="GraphicDisplay_8h.html#a4f2cb946ed52adcaffd555dd99107131">gd_color_e</a>&#160;</td>
-          <td class="paramname"><em>par_color</em>&#160;</td>
+          <td class="paramname"><em>color</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -750,8 +744,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Reads DisplayOn state. </p>
-<dl class="section return"><dt>Returns</dt><dd>0: OFF. 1: ON. </dd></dl>
+<p>Gets the display On/Off state. </p>
+<dl class="section pre"><dt>Precondition</dt><dd>Graphic Display is initialized. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Gd</td><td>Pointer to the Graphic Display handle. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the display was online, <code>false</code> if not. </dd></dl>
 
 </div>
 </div>
@@ -914,24 +915,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gae2f338a026cf0ee8de48a650290caa44"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae2f338a026cf0ee8de48a650290caa44">&#9670;&nbsp;</a></span>GD_Reset()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="GraphicDisplay_8h.html#a511ea90d1d18ab0dccbb13cf9deeea47">gd_error_e</a> GD_Reset </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structgd__t.html">gd_t</a> *&#160;</td>
-          <td class="paramname"><em>Gd</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="ga044621845c140aa70d7be1ade8cfe078"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga044621845c140aa70d7be1ade8cfe078">&#9670;&nbsp;</a></span>GD_SetContrast()</h2>
 
@@ -958,16 +941,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the contrast of the display. </p>
+<p>Set the contrast of the display, if are supported. If display doesn't have this routine, nothing will happens. </p>
+<dl class="section pre"><dt>Precondition</dt><dd>Graphic Display is initialized. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>contrast to set. </td></tr>
+    <tr><td class="paramname">Gd</td><td>Pointer to the Graphic Display handle. </td></tr>
+    <tr><td class="paramname">value</td><td>Value of contrast, from 0 to 100. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>Contrast increases as the value increases. </dd>
-<dd>
-RESET = 7Fh. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>GD_OK if success. </dd></dl>
 
 </div>
 </div>
@@ -1043,13 +1026,16 @@ RESET = 7Fh. </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>Set Display ON/OFF. </p>
+<p>Set display On or Off, if the display implements this routine. </p>
+<dl class="section pre"><dt>Precondition</dt><dd>Graphic Display is initialized. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">on</td><td>0 for OFF, any for ON. </td></tr>
+    <tr><td class="paramname">Gd</td><td>Pointer to the Graphic Display handle. </td></tr>
+    <tr><td class="paramname">on</td><td>Set to <code>true</code> to turn on, of <code>to</code> false. </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>GD_OK if success. </dd></dl>
 
 </div>
 </div>
@@ -1131,68 +1117,6 @@ RESET = 7Fh. </dd></dl>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>GD_OK if success. </dd></dl>
-
-</div>
-</div>
-<a id="ga65392fc3b1e28c133812dddf6c4ab3b5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga65392fc3b1e28c133812dddf6c4ab3b5">&#9670;&nbsp;</a></span>GD_WriteCommand()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="GraphicDisplay_8h.html#a511ea90d1d18ab0dccbb13cf9deeea47">gd_error_e</a> GD_WriteCommand </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structgd__t.html">gd_t</a> *&#160;</td>
-          <td class="paramname"><em>Gd</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>byte</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ga0b6cf078867fed366c7605945c3fe3df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga0b6cf078867fed366c7605945c3fe3df">&#9670;&nbsp;</a></span>GD_WriteData()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="GraphicDisplay_8h.html#a511ea90d1d18ab0dccbb13cf9deeea47">gd_error_e</a> GD_WriteData </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structgd__t.html">gd_t</a> *&#160;</td>
-          <td class="paramname"><em>Gd</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>buffer</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>buff_size</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>

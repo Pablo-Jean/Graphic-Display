@@ -68,11 +68,11 @@ static uint16\+\_\+t \mbox{\hyperlink{GraphicDisplay_8c_a5fd04a7d00ffba567ff17cf
 \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga7218665b79a12fc0b2152ed9aec842aa}{GD\+\_\+\+Draw\+Bitmap}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd, uint32\+\_\+t x, uint32\+\_\+t y, const unsigned char $\ast$bitmap, uint32\+\_\+t w, uint32\+\_\+t h, \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\+\_\+color\+\_\+e}} color)
 \begin{DoxyCompactList}\small\item\em Draw a bitmap into the Frame Buffer. The bitmap is an array with the pixels on/off. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga044621845c140aa70d7be1ade8cfe078}{GD\+\_\+\+Set\+Contrast}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd, uint8\+\_\+t value)
-\begin{DoxyCompactList}\small\item\em Sets the contrast of the display. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Set the contrast of the display, if are supported. If display doesn\textquotesingle{}t have this routine, nothing will happens. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\+\_\+error\+\_\+e}} \mbox{\hyperlink{group__Gd__Function_ga0a2122066e0046a15d3446441b27fb06}{GD\+\_\+\+Set\+Display\+On}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd, bool on)
-\begin{DoxyCompactList}\small\item\em Set Display ON/\+OFF. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Set display On or Off, if the display implements this routine. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{group__Gd__Function_gaa392d77a94fb811c7114fcd003398f8d}{GD\+\_\+\+Get\+Display\+On}} (\mbox{\hyperlink{structgd__t}{gd\+\_\+t}} $\ast$Gd)
-\begin{DoxyCompactList}\small\item\em Reads Display\+On state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Gets the display On/\+Off state. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
