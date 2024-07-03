@@ -1,5 +1,10 @@
 \hypertarget{st7920_8h}{}\doxysection{src/drivers/st7920/st7920.h File Reference}
 \label{st7920_8h}\index{src/drivers/st7920/st7920.h@{src/drivers/st7920/st7920.h}}
+
+
+Driver for ST7920 display driver. This library needs you to implement interface control, providing the function pointer to library handle the display.  
+
+
 {\ttfamily \#include $<$assert.\+h$>$}\newline
 {\ttfamily \#include $<$malloc.\+h$>$}\newline
 {\ttfamily \#include $<$stdint.\+h$>$}\newline
@@ -13,7 +18,7 @@
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}}
-\item 
+\begin{DoxyCompactList}\small\item\em Handler of ST7920. Each display must need your own handler. Yes, this library supports multiples displays. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structst7920__params__t}{st7920\+\_\+params\+\_\+t}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Macros}
@@ -31,23 +36,23 @@ struct \mbox{\hyperlink{structst7920__params__t}{st7920\+\_\+params\+\_\+t}}
 \begin{DoxyCompactItemize}
 \item 
 typedef void($\ast$ \mbox{\hyperlink{st7920_8h_a3dae5ed082f0b682b283c8c763397739}{fxn\+Delay\+\_\+ms}}) (uint32\+\_\+t ms)
-\item 
+\begin{DoxyCompactList}\small\item\em Function pointer definition for milliseconds delay. \end{DoxyCompactList}\item 
 typedef void($\ast$ \mbox{\hyperlink{st7920_8h_aa17a06097b058b92f1211d2401380168}{fxn7920\+\_\+mtx\+Lock}}) (void)
-\item 
+\begin{DoxyCompactList}\small\item\em Function pointer to routine that waits for the mutex and lock it. It\textquotesingle{}s useful on RTOS environments. \end{DoxyCompactList}\item 
 typedef void($\ast$ \mbox{\hyperlink{st7920_8h_acbeb3a4818e11d8096c8add4cf4d5fae}{fxn7920\+\_\+mtxunlock}}) (void)
-\item 
+\begin{DoxyCompactList}\small\item\em Function pointer to routine that unlocks the mutex. It\textquotesingle{}s useful on RTOS environments. \end{DoxyCompactList}\item 
 typedef void($\ast$ \mbox{\hyperlink{st7920_8h_ae86e188805242ab2453aabb0c346ba45}{fxn1306spi\+\_\+cs}}) (uint8\+\_\+t Signal)
-\item 
+\begin{DoxyCompactList}\small\item\em Function pointer to routine to control the Chip Select signal. On ST7920, Chip Select is enabled on High signal. \end{DoxyCompactList}\item 
 typedef void($\ast$ \mbox{\hyperlink{st7920_8h_a2b4665b65c77bba1669f5bf270c7fc1c}{fxn1306spi\+\_\+reset}}) (uint8\+\_\+t Signal)
-\item 
+\begin{DoxyCompactList}\small\item\em Function pointer to routine to control the Reset pin signal. \end{DoxyCompactList}\item 
 typedef uint8\+\_\+t($\ast$ \mbox{\hyperlink{st7920_8h_a1a23046eef1a9cfd0db62a4662cc84bf}{fxn1306spi\+\_\+write}}) (uint8\+\_\+t $\ast$buff, uint32\+\_\+t len)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Function pointer to routine to transmit packets to ST7920 over SPI. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
 enum \mbox{\hyperlink{st7920_8h_aa27c28a5f53522b922fcdea1fdd837e0}{st7920\+\_\+mode\+\_\+e}} \{ \mbox{\hyperlink{st7920_8h_aa27c28a5f53522b922fcdea1fdd837e0a08ba89377d24a4f06b53b851e5728e01}{ST7920\+\_\+\+MODE\+\_\+\+SPI}}
  \}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Set the Mode of ST7920 display. This device can work on 8bits, 4bits and spi mode, but, here, only the SPI method is implemented, for while. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -61,6 +66,23 @@ uint8\+\_\+t \mbox{\hyperlink{st7920_8h_acbfb3eb8fd397d5d2a84e22c9d075d77}{ST792
 \item 
 uint8\+\_\+t \mbox{\hyperlink{st7920_8h_a0fcff79aff24f3547c759a952548c467}{ST7920\+\_\+\+Fill}} (\mbox{\hyperlink{structst7920__t}{st7920\+\_\+t}} $\ast$st7920, uint8\+\_\+t color)
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Driver for ST7920 display driver. This library needs you to implement interface control, providing the function pointer to library handle the display. 
+
+\begin{DoxyAuthor}{Author}
+Pablo Jean Rozario (\href{mailto:pablo.jean.eel@gmail.com}{\texttt{ pablo.\+jean.\+eel@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v1.\+0.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/07-\/02
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2024 
+\end{DoxyCopyright}
 
 
 \doxysubsection{Macro Definition Documentation}
@@ -97,11 +119,22 @@ uint8\+\_\+t \mbox{\hyperlink{st7920_8h_a0fcff79aff24f3547c759a952548c467}{ST792
 \doxysubsubsection{\texorpdfstring{fxn1306spi\_cs}{fxn1306spi\_cs}}
 {\footnotesize\ttfamily typedef void($\ast$ fxn1306spi\+\_\+cs) (uint8\+\_\+t Signal)}
 
+
+
+Function pointer to routine to control the Chip Select signal. On ST7920, Chip Select is enabled on High signal. 
+
+\begin{DoxyNote}{Note}
+Used only in SPI mode. 
+\end{DoxyNote}
 \mbox{\Hypertarget{st7920_8h_a2b4665b65c77bba1669f5bf270c7fc1c}\label{st7920_8h_a2b4665b65c77bba1669f5bf270c7fc1c}} 
 \index{st7920.h@{st7920.h}!fxn1306spi\_reset@{fxn1306spi\_reset}}
 \index{fxn1306spi\_reset@{fxn1306spi\_reset}!st7920.h@{st7920.h}}
 \doxysubsubsection{\texorpdfstring{fxn1306spi\_reset}{fxn1306spi\_reset}}
 {\footnotesize\ttfamily typedef void($\ast$ fxn1306spi\+\_\+reset) (uint8\+\_\+t Signal)}
+
+
+
+Function pointer to routine to control the Reset pin signal. 
 
 \mbox{\Hypertarget{st7920_8h_a1a23046eef1a9cfd0db62a4662cc84bf}\label{st7920_8h_a1a23046eef1a9cfd0db62a4662cc84bf}} 
 \index{st7920.h@{st7920.h}!fxn1306spi\_write@{fxn1306spi\_write}}
@@ -109,24 +142,54 @@ uint8\+\_\+t \mbox{\hyperlink{st7920_8h_a0fcff79aff24f3547c759a952548c467}{ST792
 \doxysubsubsection{\texorpdfstring{fxn1306spi\_write}{fxn1306spi\_write}}
 {\footnotesize\ttfamily typedef uint8\+\_\+t($\ast$ fxn1306spi\+\_\+write) (uint8\+\_\+t $\ast$buff, uint32\+\_\+t len)}
 
+
+
+Function pointer to routine to transmit packets to ST7920 over SPI. 
+
+\begin{DoxyNote}{Note}
+Used only in SPI mode. 
+\end{DoxyNote}
 \mbox{\Hypertarget{st7920_8h_aa17a06097b058b92f1211d2401380168}\label{st7920_8h_aa17a06097b058b92f1211d2401380168}} 
 \index{st7920.h@{st7920.h}!fxn7920\_mtxLock@{fxn7920\_mtxLock}}
 \index{fxn7920\_mtxLock@{fxn7920\_mtxLock}!st7920.h@{st7920.h}}
 \doxysubsubsection{\texorpdfstring{fxn7920\_mtxLock}{fxn7920\_mtxLock}}
 {\footnotesize\ttfamily typedef void($\ast$ fxn7920\+\_\+mtx\+Lock) (void)}
 
+
+
+Function pointer to routine that waits for the mutex and lock it. It\textquotesingle{}s useful on RTOS environments. 
+
+\begin{DoxyNote}{Note}
+If driver calls are made over multiple threads, do not omit this. 
+\end{DoxyNote}
 \mbox{\Hypertarget{st7920_8h_acbeb3a4818e11d8096c8add4cf4d5fae}\label{st7920_8h_acbeb3a4818e11d8096c8add4cf4d5fae}} 
 \index{st7920.h@{st7920.h}!fxn7920\_mtxunlock@{fxn7920\_mtxunlock}}
 \index{fxn7920\_mtxunlock@{fxn7920\_mtxunlock}!st7920.h@{st7920.h}}
 \doxysubsubsection{\texorpdfstring{fxn7920\_mtxunlock}{fxn7920\_mtxunlock}}
 {\footnotesize\ttfamily typedef void($\ast$ fxn7920\+\_\+mtxunlock) (void)}
 
+
+
+Function pointer to routine that unlocks the mutex. It\textquotesingle{}s useful on RTOS environments. 
+
+\begin{DoxyNote}{Note}
+If driver calls are made over multiple threads, do not omit this. 
+\end{DoxyNote}
 \mbox{\Hypertarget{st7920_8h_a3dae5ed082f0b682b283c8c763397739}\label{st7920_8h_a3dae5ed082f0b682b283c8c763397739}} 
 \index{st7920.h@{st7920.h}!fxnDelay\_ms@{fxnDelay\_ms}}
 \index{fxnDelay\_ms@{fxnDelay\_ms}!st7920.h@{st7920.h}}
 \doxysubsubsection{\texorpdfstring{fxnDelay\_ms}{fxnDelay\_ms}}
 {\footnotesize\ttfamily typedef void($\ast$ fxn\+Delay\+\_\+ms) (uint32\+\_\+t ms)}
 
+
+
+Function pointer definition for milliseconds delay. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ms} & Amount of milliseconds to wait. \\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Enumeration Type Documentation}
@@ -136,9 +199,13 @@ uint8\+\_\+t \mbox{\hyperlink{st7920_8h_a0fcff79aff24f3547c759a952548c467}{ST792
 \doxysubsubsection{\texorpdfstring{st7920\_mode\_e}{st7920\_mode\_e}}
 {\footnotesize\ttfamily enum \mbox{\hyperlink{st7920_8h_aa27c28a5f53522b922fcdea1fdd837e0}{st7920\+\_\+mode\+\_\+e}}}
 
+
+
+Set the Mode of ST7920 display. This device can work on 8bits, 4bits and spi mode, but, here, only the SPI method is implemented, for while. 
+
 \begin{DoxyEnumFields}{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{ST7920\_MODE\_SPI@{ST7920\_MODE\_SPI}!st7920.h@{st7920.h}}\index{st7920.h@{st7920.h}!ST7920\_MODE\_SPI@{ST7920\_MODE\_SPI}}}\mbox{\Hypertarget{st7920_8h_aa27c28a5f53522b922fcdea1fdd837e0a08ba89377d24a4f06b53b851e5728e01}\label{st7920_8h_aa27c28a5f53522b922fcdea1fdd837e0a08ba89377d24a4f06b53b851e5728e01}} 
-ST7920\+\_\+\+MODE\+\_\+\+SPI&\\
+ST7920\+\_\+\+MODE\+\_\+\+SPI&Initialize ST7920 in SPI mode and serial communication. \\
 \hline
 
 \end{DoxyEnumFields}

@@ -144,14 +144,14 @@ Data Structures</h2></td></tr>
 <p>After you test your driver, you can move on to the next steps.</p>
 <h3><a class="anchor" id="autotoc_md6"></a>
 5. Add include into GraphicDisplay.h</h3>
-<p>Go to <em><a class="el" href="GraphicDisplay_8h.html">GraphicDisplay.h</a></em> and include the new driver</p>
+<p>Go to <em><a class="el" href="GraphicDisplay_8h.html" title="Main header file of Graphic Display Library, here we have the middle layer of the library....">GraphicDisplay.h</a></em> and include the new driver</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;driver/ss9090/ss9090.h&quot;</span></div>
 </div><!-- fragment --><h3><a class="anchor" id="autotoc_md7"></a>
 6. Create extern pointer to driver</h3>
 <p>Before the Public functions, you will see a piece of code with the Driver externs.</p>
 <p>Here, you need to create the extern pointer to the driver, this will help developer to insert the driver on code. For SS9090, we write as follows the extern:</p>
 <div class="fragment"><div class="line"><span class="keyword">extern</span> <a class="code" href="structgd__driver__t.html">gd_driver_t</a>* Gd_Driver_SS9090;</div>
-<div class="ttc" id="astructgd__driver__t_html"><div class="ttname"><a href="structgd__driver__t.html">gd_driver_t</a></div><div class="ttdoc">Struct that creates a driver for the display, holding the handle and functions that are private of th...</div><div class="ttdef"><b>Definition:</b> GraphicDisplay.h:217</div></div>
+<div class="ttc" id="astructgd__driver__t_html"><div class="ttname"><a href="structgd__driver__t.html">gd_driver_t</a></div><div class="ttdoc">Struct that creates a driver for the display, holding the handle and functions that are private of th...</div><div class="ttdef"><b>Definition:</b> GraphicDisplay.h:229</div></div>
 </div><!-- fragment --><h3><a class="anchor" id="autotoc_md8"></a>
 7. Instance the Driver Variable</h3>
 <p>Go to <em><a class="el" href="GraphicDisplay_8c.html">GraphicDisplay.c</a></em>, in the beginning, you will see the structs containing the drivers, now, creates the instance attributing the function calls to the struct, and the pointer. Here, we use pointers, because they are more fast to pass as a parameters. For our fictional SS9090 driver, we have something similar to this:</p>
@@ -170,7 +170,7 @@ Data Structures</h2></td></tr>
 <div class="ttc" id="aGraphicDisplay_8c_html_a47d1fd5a8bffc7dcbf3c9693bd4db2bd"><div class="ttname"><a href="GraphicDisplay_8c.html#a47d1fd5a8bffc7dcbf3c9693bd4db2bd">_SET_CONTRAST_TYPECAST</a></div><div class="ttdeci">#define _SET_CONTRAST_TYPECAST</div><div class="ttdef"><b>Definition:</b> GraphicDisplay.c:26</div></div>
 <div class="ttc" id="aGraphicDisplay_8c_html_a85a107bbd540349781df3d8399e79a0a"><div class="ttname"><a href="GraphicDisplay_8c.html#a85a107bbd540349781df3d8399e79a0a">_SET_ON_TYPECASTAT</a></div><div class="ttdeci">#define _SET_ON_TYPECASTAT</div><div class="ttdef"><b>Definition:</b> GraphicDisplay.c:25</div></div>
 <div class="ttc" id="aGraphicDisplay_8c_html_accd51e349e2545860ef4fa3ca42bbbf9"><div class="ttname"><a href="GraphicDisplay_8c.html#accd51e349e2545860ef4fa3ca42bbbf9">_SET_PIXEL_COLOR_TYPECAST</a></div><div class="ttdeci">#define _SET_PIXEL_COLOR_TYPECAST</div><div class="ttdef"><b>Definition:</b> GraphicDisplay.c:22</div></div>
-<div class="ttc" id="astructgd__driver__t_html_a4160faa3f8da427a3941ad11bafc74f0"><div class="ttname"><a href="structgd__driver__t.html#a4160faa3f8da427a3941ad11bafc74f0">gd_driver_t::pHandle</a></div><div class="ttdeci">void * pHandle</div><div class="ttdoc">Handle of the display. The variable that holds all data of device.</div><div class="ttdef"><b>Definition:</b> GraphicDisplay.h:219</div></div>
+<div class="ttc" id="astructgd__driver__t_html_a4160faa3f8da427a3941ad11bafc74f0"><div class="ttname"><a href="structgd__driver__t.html#a4160faa3f8da427a3941ad11bafc74f0">gd_driver_t::pHandle</a></div><div class="ttdeci">void * pHandle</div><div class="ttdoc">Handle of the display. The variable that holds all data of device.</div><div class="ttdef"><b>Definition:</b> GraphicDisplay.h:231</div></div>
 </div><!-- fragment --><h3><a class="anchor" id="autotoc_md9"></a>
 8. Done</h3>
 <p>Your library is implemented, so, almost, all you need to do is test your implementation ans check if everything works as expected.</p>

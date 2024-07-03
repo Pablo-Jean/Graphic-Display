@@ -1,5 +1,10 @@
 \hypertarget{GraphicDisplay_8h}{}\doxysection{src/\+Graphic\+Display.h File Reference}
 \label{GraphicDisplay_8h}\index{src/GraphicDisplay.h@{src/GraphicDisplay.h}}
+
+
+Main header file of Graphic Display Library, here we have the middle layer of the library. Where we works on drawing elements (texts, bitmaps and geometric forms). In drivers folder we have the low layer, composed by display controller drivers. The drivers are independet of the Graphic Display files, you can use them in more advanced libraries, like \href{https://github.com/lvgl/lvgl}{\texttt{ LVGL}}. This library is created to be flexible and scalable, allowing the engineer to use any amount of display, of any type.  
+
+
 {\ttfamily \#include $<$assert.\+h$>$}\newline
 {\ttfamily \#include $<$math.\+h$>$}\newline
 {\ttfamily \#include $<$stdint.\+h$>$}\newline
@@ -45,9 +50,9 @@ struct \mbox{\hyperlink{structgd__params__t}{gd\+\_\+params\+\_\+t}}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef void($\ast$ \mbox{\hyperlink{GraphicDisplay_8h_a216bf294047075ab0e376f259c8ce303}{fxn\+Gd\+\_\+mtx\+Lock}}) (void)
+typedef void($\ast$ \mbox{\hyperlink{GraphicDisplay_8h_a95a0209da2d9de6e017097cd628d21a1}{fxn\+Gd\+\_\+mtx\+Lock}}) (void)
 \begin{DoxyCompactList}\small\item\em Locks the mutex to prevent overrun and conflicts over threads in RTOS environments. \end{DoxyCompactList}\item 
-typedef void($\ast$ \mbox{\hyperlink{GraphicDisplay_8h_a0487de7c6e177fe3830beb12e48bb6b0}{fxn\+Gd\+\_\+mtx\+Unlock}}) (void)
+typedef void($\ast$ \mbox{\hyperlink{GraphicDisplay_8h_a1b23f979756b388cf38cf929e8fd4818}{fxn\+Gd\+\_\+mtx\+Unlock}}) (void)
 \begin{DoxyCompactList}\small\item\em Unlock the mutex after use on threadsafe need operations. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Enumerations}
 \begin{DoxyCompactItemize}
@@ -110,6 +115,26 @@ bool \mbox{\hyperlink{group__Gd__Function_gaa392d77a94fb811c7114fcd003398f8d}{GD
 \begin{DoxyCompactList}\small\item\em ST7920 Display Driver poointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+Main header file of Graphic Display Library, here we have the middle layer of the library. Where we works on drawing elements (texts, bitmaps and geometric forms). In drivers folder we have the low layer, composed by display controller drivers. The drivers are independet of the Graphic Display files, you can use them in more advanced libraries, like \href{https://github.com/lvgl/lvgl}{\texttt{ LVGL}}. This library is created to be flexible and scalable, allowing the engineer to use any amount of display, of any type. 
+
+\begin{DoxyAuthor}{Author}
+Pablo Jean Rozario
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+This library only works with monochrome displays. 
+\end{DoxyNote}
+\begin{DoxyVersion}{Version}
+1.\+0.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/06-\/28
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2024 
+\end{DoxyCopyright}
+
+
 \doxysubsection{Macro Definition Documentation}
 \mbox{\Hypertarget{GraphicDisplay_8h_a8ff4b821108afcd58e064fa428f3e375}\label{GraphicDisplay_8h_a8ff4b821108afcd58e064fa428f3e375}} 
 \index{GraphicDisplay.h@{GraphicDisplay.h}!GD\_INCLUDE\_FONT\_11x18@{GD\_INCLUDE\_FONT\_11x18}}
@@ -150,11 +175,11 @@ bool \mbox{\hyperlink{group__Gd__Function_gaa392d77a94fb811c7114fcd003398f8d}{GD
 
 
 \doxysubsection{Typedef Documentation}
-\mbox{\Hypertarget{GraphicDisplay_8h_a216bf294047075ab0e376f259c8ce303}\label{GraphicDisplay_8h_a216bf294047075ab0e376f259c8ce303}} 
+\mbox{\Hypertarget{GraphicDisplay_8h_a95a0209da2d9de6e017097cd628d21a1}\label{GraphicDisplay_8h_a95a0209da2d9de6e017097cd628d21a1}} 
 \index{GraphicDisplay.h@{GraphicDisplay.h}!fxnGd\_mtxLock@{fxnGd\_mtxLock}}
 \index{fxnGd\_mtxLock@{fxnGd\_mtxLock}!GraphicDisplay.h@{GraphicDisplay.h}}
 \doxysubsubsection{\texorpdfstring{fxnGd\_mtxLock}{fxnGd\_mtxLock}}
-{\footnotesize\ttfamily fxn\+Gd\+\_\+mtx\+Lock}
+{\footnotesize\ttfamily typedef void($\ast$ fxn\+Gd\+\_\+mtx\+Lock) (void)}
 
 
 
@@ -163,11 +188,11 @@ Locks the mutex to prevent overrun and conflicts over threads in RTOS environmen
 \begin{DoxyPrecond}{Precondition}
 Call a function where waits and locks the mutex. 
 \end{DoxyPrecond}
-\mbox{\Hypertarget{GraphicDisplay_8h_a0487de7c6e177fe3830beb12e48bb6b0}\label{GraphicDisplay_8h_a0487de7c6e177fe3830beb12e48bb6b0}} 
+\mbox{\Hypertarget{GraphicDisplay_8h_a1b23f979756b388cf38cf929e8fd4818}\label{GraphicDisplay_8h_a1b23f979756b388cf38cf929e8fd4818}} 
 \index{GraphicDisplay.h@{GraphicDisplay.h}!fxnGd\_mtxUnlock@{fxnGd\_mtxUnlock}}
 \index{fxnGd\_mtxUnlock@{fxnGd\_mtxUnlock}!GraphicDisplay.h@{GraphicDisplay.h}}
 \doxysubsubsection{\texorpdfstring{fxnGd\_mtxUnlock}{fxnGd\_mtxUnlock}}
-{\footnotesize\ttfamily fxn\+Gd\+\_\+mtx\+Unlock}
+{\footnotesize\ttfamily typedef void($\ast$ fxn\+Gd\+\_\+mtx\+Unlock) (void)}
 
 
 

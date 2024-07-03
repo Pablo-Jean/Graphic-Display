@@ -11,6 +11,7 @@ Graphic Display is a C library designed for controlling monochromatic displays w
 *   **Customizable Driver Logic**: The library provides a flexible interface for implementing your own display driver logic, enabling you to support various types of displays.
 *   **Cross-platform Compatibility**: Graphic Display is designed to be platform-independent, making it easy to integrate into your projects across different operating systems.
 *   **Efficient and Lightweight**: The library is optimized for performance and has a small footprint, ensuring minimal impact on your project's resources.
+*   **Independent Drivers**: The drivers of this libraries is builded thinking on a independency with the middle layer (GraphicDisplay.h), allowing you to use in more advanced graphic libraries, like [LVGL](https://github.com/lvgl/lvgl).
   
 ## 🗂️ API Reference
     

@@ -94,6 +94,9 @@ $(document).ready(function(){initNavTree('st7920_8h.html',''); initResizable(); 
 <div class="title">st7920.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Driver for ST7920 display driver. This library needs you to implement interface control, providing the function pointer to library handle the display.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;assert.h&gt;</code><br />
 <code>#include &lt;malloc.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
@@ -109,6 +112,7 @@ $(document).ready(function(){initNavTree('st7920_8h.html',''); initResizable(); 
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structst7920__t.html">st7920_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handler of ST7920. Each display must need your own handler. Yes, this library supports multiples displays.  <a href="structst7920__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structst7920__params__t.html">st7920_params_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -127,22 +131,29 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a3dae5ed082f0b682b283c8c763397739"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st7920_8h.html#a3dae5ed082f0b682b283c8c763397739">fxnDelay_ms</a>) (uint32_t ms)</td></tr>
+<tr class="memdesc:a3dae5ed082f0b682b283c8c763397739"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer definition for milliseconds delay.  <a href="st7920_8h.html#a3dae5ed082f0b682b283c8c763397739">More...</a><br /></td></tr>
 <tr class="separator:a3dae5ed082f0b682b283c8c763397739"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa17a06097b058b92f1211d2401380168"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st7920_8h.html#aa17a06097b058b92f1211d2401380168">fxn7920_mtxLock</a>) (void)</td></tr>
+<tr class="memdesc:aa17a06097b058b92f1211d2401380168"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer to routine that waits for the mutex and lock it. It's useful on RTOS environments.  <a href="st7920_8h.html#aa17a06097b058b92f1211d2401380168">More...</a><br /></td></tr>
 <tr class="separator:aa17a06097b058b92f1211d2401380168"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbeb3a4818e11d8096c8add4cf4d5fae"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st7920_8h.html#acbeb3a4818e11d8096c8add4cf4d5fae">fxn7920_mtxunlock</a>) (void)</td></tr>
+<tr class="memdesc:acbeb3a4818e11d8096c8add4cf4d5fae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer to routine that unlocks the mutex. It's useful on RTOS environments.  <a href="st7920_8h.html#acbeb3a4818e11d8096c8add4cf4d5fae">More...</a><br /></td></tr>
 <tr class="separator:acbeb3a4818e11d8096c8add4cf4d5fae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae86e188805242ab2453aabb0c346ba45"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st7920_8h.html#ae86e188805242ab2453aabb0c346ba45">fxn1306spi_cs</a>) (uint8_t Signal)</td></tr>
+<tr class="memdesc:ae86e188805242ab2453aabb0c346ba45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer to routine to control the Chip Select signal. On ST7920, Chip Select is enabled on High signal.  <a href="st7920_8h.html#ae86e188805242ab2453aabb0c346ba45">More...</a><br /></td></tr>
 <tr class="separator:ae86e188805242ab2453aabb0c346ba45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b4665b65c77bba1669f5bf270c7fc1c"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st7920_8h.html#a2b4665b65c77bba1669f5bf270c7fc1c">fxn1306spi_reset</a>) (uint8_t Signal)</td></tr>
+<tr class="memdesc:a2b4665b65c77bba1669f5bf270c7fc1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer to routine to control the Reset pin signal.  <a href="st7920_8h.html#a2b4665b65c77bba1669f5bf270c7fc1c">More...</a><br /></td></tr>
 <tr class="separator:a2b4665b65c77bba1669f5bf270c7fc1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a23046eef1a9cfd0db62a4662cc84bf"><td class="memItemLeft" align="right" valign="top">typedef uint8_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st7920_8h.html#a1a23046eef1a9cfd0db62a4662cc84bf">fxn1306spi_write</a>) (uint8_t *buff, uint32_t len)</td></tr>
+<tr class="memdesc:a1a23046eef1a9cfd0db62a4662cc84bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer to routine to transmit packets to ST7920 over SPI.  <a href="st7920_8h.html#a1a23046eef1a9cfd0db62a4662cc84bf">More...</a><br /></td></tr>
 <tr class="separator:a1a23046eef1a9cfd0db62a4662cc84bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:aa27c28a5f53522b922fcdea1fdd837e0"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st7920_8h.html#aa27c28a5f53522b922fcdea1fdd837e0">st7920_mode_e</a> { <a class="el" href="st7920_8h.html#aa27c28a5f53522b922fcdea1fdd837e0a08ba89377d24a4f06b53b851e5728e01">ST7920_MODE_SPI</a>
  }</td></tr>
+<tr class="memdesc:aa27c28a5f53522b922fcdea1fdd837e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Mode of ST7920 display. This device can work on 8bits, 4bits and spi mode, but, here, only the SPI method is implemented, for while.  <a href="st7920_8h.html#aa27c28a5f53522b922fcdea1fdd837e0">More...</a><br /></td></tr>
 <tr class="separator:aa27c28a5f53522b922fcdea1fdd837e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -158,7 +169,13 @@ Functions</h2></td></tr>
 <tr class="memitem:a0fcff79aff24f3547c759a952548c467"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st7920_8h.html#a0fcff79aff24f3547c759a952548c467">ST7920_Fill</a> (<a class="el" href="structst7920__t.html">st7920_t</a> *st7920, uint8_t color)</td></tr>
 <tr class="separator:a0fcff79aff24f3547c759a952548c467"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Driver for ST7920 display driver. This library needs you to implement interface control, providing the function pointer to library handle the display. </p>
+<dl class="section author"><dt>Author</dt><dd>Pablo Jean Rozario (<a href="#" onclick="location.href='mai'+'lto:'+'pab'+'lo'+'.je'+'an'+'.ee'+'l@'+'gma'+'il'+'.co'+'m'; return false;">pablo<span style="display: none;">.nosp@m.</span>.jea<span style="display: none;">.nosp@m.</span>n.eel<span style="display: none;">.nosp@m.</span>@gma<span style="display: none;">.nosp@m.</span>il.co<span style="display: none;">.nosp@m.</span>m</a>) </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>v1.0.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2024-07-02</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2024 </dd></dl>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a9fc05a56724b73d0241a42711a5f13d6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9fc05a56724b73d0241a42711a5f13d6">&#9670;&nbsp;</a></span>ST7920_COLOR_BLACK</h2>
 
@@ -228,6 +245,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Function pointer to routine to control the Chip Select signal. On ST7920, Chip Select is enabled on High signal. </p>
+<dl class="section note"><dt>Note</dt><dd>Used only in SPI mode. </dd></dl>
+
 </div>
 </div>
 <a id="a2b4665b65c77bba1669f5bf270c7fc1c"></a>
@@ -241,6 +261,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Function pointer to routine to control the Reset pin signal. </p>
 
 </div>
 </div>
@@ -256,6 +278,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Function pointer to routine to transmit packets to ST7920 over SPI. </p>
+<dl class="section note"><dt>Note</dt><dd>Used only in SPI mode. </dd></dl>
+
 </div>
 </div>
 <a id="aa17a06097b058b92f1211d2401380168"></a>
@@ -269,6 +294,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Function pointer to routine that waits for the mutex and lock it. It's useful on RTOS environments. </p>
+<dl class="section note"><dt>Note</dt><dd>If driver calls are made over multiple threads, do not omit this. </dd></dl>
 
 </div>
 </div>
@@ -284,6 +312,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Function pointer to routine that unlocks the mutex. It's useful on RTOS environments. </p>
+<dl class="section note"><dt>Note</dt><dd>If driver calls are made over multiple threads, do not omit this. </dd></dl>
+
 </div>
 </div>
 <a id="a3dae5ed082f0b682b283c8c763397739"></a>
@@ -297,6 +328,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Function pointer definition for milliseconds delay. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ms</td><td>Amount of milliseconds to wait. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -312,8 +351,11 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set the Mode of ST7920 display. This device can work on 8bits, 4bits and spi mode, but, here, only the SPI method is implemented, for while. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aa27c28a5f53522b922fcdea1fdd837e0a08ba89377d24a4f06b53b851e5728e01"></a>ST7920_MODE_SPI&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aa27c28a5f53522b922fcdea1fdd837e0a08ba89377d24a4f06b53b851e5728e01"></a>ST7920_MODE_SPI&#160;</td><td class="fielddoc"><p>Initialize ST7920 in SPI mode and serial communication. </p>
+</td></tr>
 </table>
 
 </div>

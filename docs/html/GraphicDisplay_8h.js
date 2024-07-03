@@ -12,8 +12,8 @@ var GraphicDisplay_8h =
     [ "GD_INCLUDE_FONT_16x26", "GraphicDisplay_8h.html#a465604c5fa6d1c9b37107f8abec890f2", null ],
     [ "GD_INCLUDE_FONT_6x8", "GraphicDisplay_8h.html#aa7d2f2bbaacaff21853159c16aab24c9", null ],
     [ "GD_INCLUDE_FONT_7x10", "GraphicDisplay_8h.html#aeed0a1f315e4832137312ad33fe61fff", null ],
-    [ "fxnGd_mtxLock", "GraphicDisplay_8h.html#a216bf294047075ab0e376f259c8ce303", null ],
-    [ "fxnGd_mtxUnlock", "GraphicDisplay_8h.html#a0487de7c6e177fe3830beb12e48bb6b0", null ],
+    [ "fxnGd_mtxLock", "GraphicDisplay_8h.html#a95a0209da2d9de6e017097cd628d21a1", null ],
+    [ "fxnGd_mtxUnlock", "GraphicDisplay_8h.html#a1b23f979756b388cf38cf929e8fd4818", null ],
     [ "gd_color_e", "GraphicDisplay_8h.html#a4f2cb946ed52adcaffd555dd99107131", [
       [ "GD_BLACK", "GraphicDisplay_8h.html#a4f2cb946ed52adcaffd555dd99107131a35d29177ec6d49d67f824e8da195f49f", null ],
       [ "GD_WHITE", "GraphicDisplay_8h.html#a4f2cb946ed52adcaffd555dd99107131a515b707bcfb4e0ac44f837fd5234c132", null ]

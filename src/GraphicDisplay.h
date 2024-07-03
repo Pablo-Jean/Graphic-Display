@@ -1,12 +1,26 @@
-/*
- * GraphicDisplay.h
- *
- *  Created on: Jun 28, 2024
- *      Author: pablo-jean
+/**
+ * @file 		GraphicDisplay.h
+ * @author 		Pablo Jean Rozario
+ * @brief 		Main header file of Graphic Display Library, here we have the middle layer
+ * 				of the library. Where we works on drawing elements (texts, bitmaps and
+ * 				geometric forms). In drivers folder we have the low layer, composed by
+ * 				display controller drivers.
+ * 				The drivers are independet of the Graphic Display files, you can use them in
+ * 				more advanced libraries, like [LVGL](https://github.com/lvgl/lvgl).
+ * 				This library is created to be flexible and scalable, allowing the engineer
+ * 				to use any amount of display, of any type.
+ * 
+ * @note		This library only works with monochrome displays.
+ * @version 	1.0.0
+ * @date 		2024-06-28
+ * 
+ * @copyright Copyright (c) 2024
+ * 
  */
 
 #ifndef GRAPHICDISPLAY_H_
 #define GRAPHICDISPLAY_H_
+
 
 /*
  * Includes
@@ -83,7 +97,6 @@ typedef enum{
  */
 
 /**
- * @fn fxnGd_mtxLock
  * @brief Locks the mutex to prevent overrun and conflicts over threads in
  * RTOS environments.
  *
@@ -92,7 +105,6 @@ typedef enum{
 typedef void (*fxnGd_mtxLock)(void);
 
 /**
- * @fn fxnGd_mtxUnlock
  * @brief Unlock the mutex after use on threadsafe need operations.
  *
  * @pre Call a function where mutex is freed.

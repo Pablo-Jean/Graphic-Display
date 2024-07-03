@@ -95,6 +95,9 @@ $(document).ready(function(){initNavTree('GraphicDisplay_8h.html',''); initResiz
 <div class="title">GraphicDisplay.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Main header file of Graphic Display Library, here we have the middle layer of the library. Where we works on drawing elements (texts, bitmaps and geometric forms). In drivers folder we have the low layer, composed by display controller drivers. The drivers are independet of the Graphic Display files, you can use them in more advanced libraries, like <a href="https://github.com/lvgl/lvgl">LVGL</a>. This library is created to be flexible and scalable, allowing the engineer to use any amount of display, of any type.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;assert.h&gt;</code><br />
 <code>#include &lt;math.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
@@ -147,12 +150,12 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a216bf294047075ab0e376f259c8ce303"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="GraphicDisplay_8h.html#a216bf294047075ab0e376f259c8ce303">fxnGd_mtxLock</a>) (void)</td></tr>
-<tr class="memdesc:a216bf294047075ab0e376f259c8ce303"><td class="mdescLeft">&#160;</td><td class="mdescRight">Locks the mutex to prevent overrun and conflicts over threads in RTOS environments.  <a href="GraphicDisplay_8h.html#a216bf294047075ab0e376f259c8ce303">More...</a><br /></td></tr>
-<tr class="separator:a216bf294047075ab0e376f259c8ce303"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0487de7c6e177fe3830beb12e48bb6b0"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="GraphicDisplay_8h.html#a0487de7c6e177fe3830beb12e48bb6b0">fxnGd_mtxUnlock</a>) (void)</td></tr>
-<tr class="memdesc:a0487de7c6e177fe3830beb12e48bb6b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unlock the mutex after use on threadsafe need operations.  <a href="GraphicDisplay_8h.html#a0487de7c6e177fe3830beb12e48bb6b0">More...</a><br /></td></tr>
-<tr class="separator:a0487de7c6e177fe3830beb12e48bb6b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95a0209da2d9de6e017097cd628d21a1"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="GraphicDisplay_8h.html#a95a0209da2d9de6e017097cd628d21a1">fxnGd_mtxLock</a>) (void)</td></tr>
+<tr class="memdesc:a95a0209da2d9de6e017097cd628d21a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Locks the mutex to prevent overrun and conflicts over threads in RTOS environments.  <a href="GraphicDisplay_8h.html#a95a0209da2d9de6e017097cd628d21a1">More...</a><br /></td></tr>
+<tr class="separator:a95a0209da2d9de6e017097cd628d21a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b23f979756b388cf38cf929e8fd4818"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="GraphicDisplay_8h.html#a1b23f979756b388cf38cf929e8fd4818">fxnGd_mtxUnlock</a>) (void)</td></tr>
+<tr class="memdesc:a1b23f979756b388cf38cf929e8fd4818"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unlock the mutex after use on threadsafe need operations.  <a href="GraphicDisplay_8h.html#a1b23f979756b388cf38cf929e8fd4818">More...</a><br /></td></tr>
+<tr class="separator:a1b23f979756b388cf38cf929e8fd4818"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -236,7 +239,14 @@ Variables</h2></td></tr>
 <tr class="memdesc:gaa309ec642bd4ff6ad8d5975bf53bf33e"><td class="mdescLeft">&#160;</td><td class="mdescRight">ST7920 Display Driver poointer.  <a href="group__Ext__Drivers.html#gaa309ec642bd4ff6ad8d5975bf53bf33e">More...</a><br /></td></tr>
 <tr class="separator:gaa309ec642bd4ff6ad8d5975bf53bf33e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Main header file of Graphic Display Library, here we have the middle layer of the library. Where we works on drawing elements (texts, bitmaps and geometric forms). In drivers folder we have the low layer, composed by display controller drivers. The drivers are independet of the Graphic Display files, you can use them in more advanced libraries, like <a href="https://github.com/lvgl/lvgl">LVGL</a>. This library is created to be flexible and scalable, allowing the engineer to use any amount of display, of any type. </p>
+<dl class="section author"><dt>Author</dt><dd>Pablo Jean Rozario</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This library only works with monochrome displays. </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2024-06-28</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2024 </dd></dl>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a8ff4b821108afcd58e064fa428f3e375"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8ff4b821108afcd58e064fa428f3e375">&#9670;&nbsp;</a></span>GD_INCLUDE_FONT_11x18</h2>
 
@@ -322,14 +332,14 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="a216bf294047075ab0e376f259c8ce303"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a216bf294047075ab0e376f259c8ce303">&#9670;&nbsp;</a></span>fxnGd_mtxLock</h2>
+<a id="a95a0209da2d9de6e017097cd628d21a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95a0209da2d9de6e017097cd628d21a1">&#9670;&nbsp;</a></span>fxnGd_mtxLock</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">fxnGd_mtxLock</td>
+          <td class="memname">typedef void(* fxnGd_mtxLock) (void)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -339,14 +349,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a0487de7c6e177fe3830beb12e48bb6b0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0487de7c6e177fe3830beb12e48bb6b0">&#9670;&nbsp;</a></span>fxnGd_mtxUnlock</h2>
+<a id="a1b23f979756b388cf38cf929e8fd4818"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b23f979756b388cf38cf929e8fd4818">&#9670;&nbsp;</a></span>fxnGd_mtxUnlock</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">fxnGd_mtxUnlock</td>
+          <td class="memname">typedef void(* fxnGd_mtxUnlock) (void)</td>
         </tr>
       </table>
 </div><div class="memdoc">
