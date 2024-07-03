@@ -1,107 +1,105 @@
-\chapter{Graphic Display -\/ Library for Monochrome Display, without any Microcontroller or Display dependency.}
-\hypertarget{index}{}\label{index}\index{Graphic Display -\/ Library for Monochrome Display, without any Microcontroller or Display dependency.@{Graphic Display -\/ Library for Monochrome Display, without any Microcontroller or Display dependency.}}
 \label{index_md_README}%
 \Hypertarget{index_md_README}%
- \hypertarget{index_autotoc_md11}{}\doxysection{\texorpdfstring{🔍 About the Library}{🔍 About the Library}}\label{index_autotoc_md11}
-Graphic Display is a C library designed for controlling monochromatic displays without any chipset or microcontroller dependency. This library allows you to use any display by providing a driver logic, making it a versatile solution for your project.\hypertarget{index_autotoc_md12}{}\doxysection{\texorpdfstring{✨ Features}{✨ Features}}\label{index_autotoc_md12}
+ \hypertarget{index_autotoc_md11}{}\doxysection{🔍 About the Library}\label{index_autotoc_md11}
+Graphic Display is a C library designed for controlling monochromatic displays without any chipset or microcontroller dependency. This library allows you to use any display by providing a driver logic, making it a versatile solution for your project.\hypertarget{index_autotoc_md12}{}\doxysection{✨ Features}\label{index_autotoc_md12}
 
 \begin{DoxyItemize}
 \item {\bfseries{Chipset and Microcontroller Independent}}\+: Graphic Display does not rely on any specific chipset or microcontroller, allowing you to use it with a wide range of hardware.
 \item {\bfseries{Customizable Driver Logic}}\+: The library provides a flexible interface for implementing your own display driver logic, enabling you to support various types of displays.
 \item {\bfseries{Cross-\/platform Compatibility}}\+: Graphic Display is designed to be platform-\/independent, making it easy to integrate into your projects across different operating systems.
 \item {\bfseries{Efficient and Lightweight}}\+: The library is optimized for performance and has a small footprint, ensuring minimal impact on your project\textquotesingle{}s resources.
-\end{DoxyItemize}\hypertarget{index_autotoc_md13}{}\doxysection{\texorpdfstring{🗂️ API Reference}{🗂️ API Reference}}\label{index_autotoc_md13}
-Access the Link \href{https://pablo-jean.github.io/Graphic-Display}{\texttt{ Graphic Display API Reference}} to see detailed information about functions, structs and more.\hypertarget{index_autotoc_md14}{}\doxysection{\texorpdfstring{🛠️ Installation}{🛠️ Installation}}\label{index_autotoc_md14}
+\end{DoxyItemize}\hypertarget{index_autotoc_md13}{}\doxysection{🗂️ API Reference}\label{index_autotoc_md13}
+Access the Link \href{https://pablo-jean.github.io/Graphic-Display}{\texttt{ Graphic Display API Reference}} to see detailed information about functions, structs and more.\hypertarget{index_autotoc_md14}{}\doxysection{🛠️ Installation}\label{index_autotoc_md14}
 To use Graphic Display in your project, follow these steps\+:
 
 
 \begin{DoxyEnumerate}
 \item git clone {\ttfamily git@github.\+com\+:Pablo-\/\+Jean/\+Graphic-\/\+Display.\+git}.
 \item Include the library into source code compilation and include paths.
-\item {\ttfamily \#include "{}\+Graphic\+Display.\+h"{}}.
+\item {\ttfamily \#include \char`\"{}\+Graphic\+Display.\+h\char`\"{}}.
 \item Link the library to your project during compilation.
 \end{DoxyEnumerate}
 
-Do not forget to remove examples from source code path \+:).\hypertarget{index_autotoc_md15}{}\doxysection{\texorpdfstring{🚀 Usage}{🚀 Usage}}\label{index_autotoc_md15}
+Do not forget to remove examples from source code path \+:).\hypertarget{index_autotoc_md15}{}\doxysection{🚀 Usage}\label{index_autotoc_md15}
 Here\textquotesingle{}s a basic example of how to use the Graphic Display library with {\bfseries{SSD1306}} display in I2C mode\+:
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GraphicDisplay_8h}{GraphicDisplay.h}}"{}}}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ssd1306_8h}{drivers/ssd1306/ssd1306.h}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{GraphicDisplay_8h}{GraphicDisplay.h}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{ssd1306_8h}{drivers/ssd1306/ssd1306.h}}"{}}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{comment}{/*\ Function\ to\ handle\ the\ I2C\ interface\ }}
-\DoxyCodeLine{\textcolor{comment}{\ \ \ This\ routine\ will\ be\ provided\ do\ SSD1306\ library\ instance.\ */}}
-\DoxyCodeLine{\textcolor{keywordtype}{void}\ \_display\_i2c\_interface(uint8\_t\ i2cAddr,\ uint8\_t\ reg,\ uint8\_t\ *buff,\ uint32\_t\ len)\{}
-\DoxyCodeLine{\ \ \ \ \textcolor{comment}{/*\ Call\ the\ I2C\ driver\ of\ your\ microcontroller\ */}}
-\DoxyCodeLine{\ \ \ \ uint8\_t\ resp\ =\ I2C\_Write\_mem(i2cHandler,\ i2cAddr,\ reg,\ buff,\ len);}
+\DoxyCodeLine{\textcolor{comment}{/* Function to handle the I2C interface }}
+\DoxyCodeLine{\textcolor{comment}{   This routine will be provided do SSD1306 library instance. */}}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \_display\_i2c\_interface(uint8\_t i2cAddr, uint8\_t reg, uint8\_t *buff, uint32\_t len)\{}
+\DoxyCodeLine{    \textcolor{comment}{/* Call the I2C driver of your microcontroller */}}
+\DoxyCodeLine{    uint8\_t resp = I2C\_Write\_mem(i2cHandler, i2cAddr, reg, buff, len);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ resp;}
+\DoxyCodeLine{    \textcolor{keywordflow}{return} resp;}
 \DoxyCodeLine{\}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{void}\ main\ ()\{}
-\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Creates\ SSD1306\ instance.\ We\ recommend\ to\ initialize\ as\ 0.}}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{structssd1306__t}{ssd1306\_t}}\ Ssd1306\ =\ \{0\};}
-\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Creates\ struct\ with\ parameters\ of\ SSD1306}}
-\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ This\ structure\ is\ different\ according\ with\ display\ interface\ chip.}}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{structssd1306__params__t}{ssd1306\_params\_t}}\ Ssd1306\_Params\ =\ \{}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ I2C\ mode}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ .\mbox{\hyperlink{structssd1306__params__t_a0a500f86675d4c92958814339c13a7f3}{Mode}}\ =\ \mbox{\hyperlink{ssd1306_8h_aebba6d5ffaba7c542d9b01e8e8f65e52a60d2f734a501c69379621a4f55d469bc}{SSD1306\_MODE\_I2C}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Set\ Heighth\ and\ Width\ (128x64)}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ .u32Heigth\ =\ 64,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ .u32Width\ =\ 128,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ We\ do\ not\ provide\ the\ Frame\ Buffer\ array,\ so,\ the\ library\ will\ allocate\ internally.}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ .bUseExternalFrameBuffer\ =\ \textcolor{keyword}{false},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ provide\ the\ Delay\ routine}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ .delayMs\ =\ DelayMs,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ provide\ the\ routine\ to\ handle\ the\ I2C\ display\ interface}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ .i2cWrite\ =\ \_display\_i2c\_interface,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ provide\ the\ SSD1306\ address\ (remember,\ bit\ 7\ must\ aways\ be\ 0)}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ if\ your\ i2c\ library\ requires\ to\ shift\ 1\ bit\ to\ left\ (example:\ STM32\ HAL\ requires\ this)}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ .u8I2CAddr\ =\ 0x3C}
-\DoxyCodeLine{\ \ \ \ \};}
+\DoxyCodeLine{\textcolor{keywordtype}{void} main ()\{}
+\DoxyCodeLine{    \textcolor{comment}{// Creates SSD1306 instance. We recommend to initialize as 0.}}
+\DoxyCodeLine{    \mbox{\hyperlink{structssd1306__t}{ssd1306\_t}} Ssd1306 = \{0\};}
+\DoxyCodeLine{    \textcolor{comment}{// Creates struct with parameters of SSD1306}}
+\DoxyCodeLine{    \textcolor{comment}{// This structure is different according with display interface chip.}}
+\DoxyCodeLine{    \mbox{\hyperlink{structssd1306__params__t}{ssd1306\_params\_t}} Ssd1306\_Params = \{}
+\DoxyCodeLine{        \textcolor{comment}{// set I2C mode}}
+\DoxyCodeLine{        .\mbox{\hyperlink{structssd1306__params__t_a0a500f86675d4c92958814339c13a7f3}{Mode}} = \mbox{\hyperlink{ssd1306_8h_aebba6d5ffaba7c542d9b01e8e8f65e52a60d2f734a501c69379621a4f55d469bc}{SSD1306\_MODE\_I2C}},}
+\DoxyCodeLine{        \textcolor{comment}{// Set Heighth and Width (128x64)}}
+\DoxyCodeLine{        .u32Heigth = 64,}
+\DoxyCodeLine{        .u32Width = 128,}
+\DoxyCodeLine{        \textcolor{comment}{// We do not provide the Frame Buffer array, so, the library will allocate internally.}}
+\DoxyCodeLine{        .bUseExternalFrameBuffer = \textcolor{keyword}{false},}
+\DoxyCodeLine{        \textcolor{comment}{// provide the Delay routine}}
+\DoxyCodeLine{        .delayMs = DelayMs,}
+\DoxyCodeLine{        \textcolor{comment}{// provide the routine to handle the I2C display interface}}
+\DoxyCodeLine{        .i2cWrite = \_display\_i2c\_interface,}
+\DoxyCodeLine{        \textcolor{comment}{// provide the SSD1306 address (remember, bit 7 must aways be 0)}}
+\DoxyCodeLine{        \textcolor{comment}{// check if your i2c library requires to shift 1 bit to left (example: STM32 HAL requires this)}}
+\DoxyCodeLine{        .u8I2CAddr = 0x3C}
+\DoxyCodeLine{    \};}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Created\ Graphic\ Display\ library\ instance.\ We\ recommend\ you\ to\ initialize\ is\ as\ 0}}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{structgd__t}{gd\_t}}\ Graphic\ =\ \{0\};}
-\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Create\ struct\ with\ the\ Graphic\ Display\ parameters}}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{structgd__params__t}{gd\_params\_t}}\ Graphic\_Params\ =\ \{}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Provide\ the\ drivers\ to\ work\ with\ SSD1306,\ for\ libraries\ place\ into\ drivers\ folder}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ we\ have\ this\ already\ created,\ the\ naming\ of\ this\ Driver\ follows\ this\ logic:}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Gd\_Driver\_XXXX}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ where\ XXXX\ is\ the\ name\ of\ device\ driver,\ always\ in\ UPPER\ CASE.}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ Driver\ is\ just\ a\ struct\ containing\ pointers\ to\ the\ functions\ of\ the\ display.}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ .\mbox{\hyperlink{structgd__params__t_a5eb06e32a4d37b36f5756826310d72ab}{DisplayDriver}}\ =\ \mbox{\hyperlink{group__Ext__Drivers_ga9b964786596cf1d0f845eddc13ea9a67}{Gd\_Driver\_SSD1306}},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Provide\ the\ handle\ instance\ of\ the\ display,\ as\ a\ pointer}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ .DisplayHandle\ =\ (\textcolor{keywordtype}{void}*)(\&Ssd1306),}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Provide\ the\ Height\ and\ Width\ of\ your\ display}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ .u32Height\ =\ 64,}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ .u32Width\ =\ 128}
-\DoxyCodeLine{\ \ \ \ \};}
+\DoxyCodeLine{    \textcolor{comment}{// Created Graphic Display library instance. We recommend you to initialize is as 0}}
+\DoxyCodeLine{    \mbox{\hyperlink{structgd__t}{gd\_t}} Graphic = \{0\};}
+\DoxyCodeLine{    \textcolor{comment}{// Create struct with the Graphic Display parameters}}
+\DoxyCodeLine{    \mbox{\hyperlink{structgd__params__t}{gd\_params\_t}} Graphic\_Params = \{}
+\DoxyCodeLine{        \textcolor{comment}{// Provide the drivers to work with SSD1306, for libraries place into drivers folder}}
+\DoxyCodeLine{        \textcolor{comment}{// we have this already created, the naming of this Driver follows this logic:}}
+\DoxyCodeLine{        \textcolor{comment}{// Gd\_Driver\_XXXX}}
+\DoxyCodeLine{        \textcolor{comment}{// where XXXX is the name of device driver, always in UPPER CASE.}}
+\DoxyCodeLine{        \textcolor{comment}{//}}
+\DoxyCodeLine{        \textcolor{comment}{// This Driver is just a struct containing pointers to the functions of the display.}}
+\DoxyCodeLine{        .\mbox{\hyperlink{structgd__params__t_a5eb06e32a4d37b36f5756826310d72ab}{DisplayDriver}} = \mbox{\hyperlink{group__Ext__Drivers_ga9b964786596cf1d0f845eddc13ea9a67}{Gd\_Driver\_SSD1306}},}
+\DoxyCodeLine{        \textcolor{comment}{// Provide the handle instance of the display, as a pointer}}
+\DoxyCodeLine{        .DisplayHandle = (\textcolor{keywordtype}{void}*)(\&Ssd1306),}
+\DoxyCodeLine{        \textcolor{comment}{// Provide the Height and Width of your display}}
+\DoxyCodeLine{        .u32Height = 64,}
+\DoxyCodeLine{        .u32Width = 128}
+\DoxyCodeLine{    \};}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Initialize\ the\ display\ device}}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{ssd1306_8c_a89baf372e82a096c62f1d961776b3a07}{SSD1306\_Init}}(\&Ssd1306,\ \&Ssd1306\_Params);}
+\DoxyCodeLine{    \textcolor{comment}{// Initialize the display device}}
+\DoxyCodeLine{    \mbox{\hyperlink{ssd1306_8c_a89baf372e82a096c62f1d961776b3a07}{SSD1306\_Init}}(\&Ssd1306, \&Ssd1306\_Params);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Initialize\ the\ Graphic\ Display\ layer}}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{group__Gd__Function_ga058b61d16a02b94864bd04314ddbea6d}{GD\_Init}}(\&Graphic,\ \&Graphic\_Params);}
+\DoxyCodeLine{    \textcolor{comment}{// Initialize the Graphic Display layer}}
+\DoxyCodeLine{    \mbox{\hyperlink{group__Gd__Function_ga058b61d16a02b94864bd04314ddbea6d}{GD\_Init}}(\&Graphic, \&Graphic\_Params);}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Write\ your\ text,\ or\ symbols,\ or\ images}}
+\DoxyCodeLine{    \textcolor{comment}{// Write your text, or symbols, or images}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ To\ see\ all\ changes\ on\ display,\ you\ need\ to\ refresh\ manually}}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{group__Gd__Function_gabbd368ffa7d5d787e5c4aaa64e5e81f2}{GD\_UpdateScreen}}(\&Graphic);}
-\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ You\ do\ not\ need\ to\ call\ the\ device\ driver\ refresh,\ Graphic\ Display\ library\ to\ this\ for\ you.}}
+\DoxyCodeLine{    \textcolor{comment}{// To see all changes on display, you need to refresh manually}}
+\DoxyCodeLine{    \mbox{\hyperlink{group__Gd__Function_gabbd368ffa7d5d787e5c4aaa64e5e81f2}{GD\_UpdateScreen}}(\&Graphic);}
+\DoxyCodeLine{    \textcolor{comment}{// You do not need to call the device driver refresh, Graphic Display library to this for you.}}
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md16}{}\doxysection{\texorpdfstring{💡 Examples}{💡 Examples}}\label{index_autotoc_md16}
-You can find various examples of using the Graphic Display library in the \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}examples\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} directory. These examples cover different use cases and demonstrate the library\textquotesingle{}s capabilities.\hypertarget{index_autotoc_md17}{}\doxysection{\texorpdfstring{🤝 Contributing}{🤝 Contributing}}\label{index_autotoc_md17}
-We welcome contributions to the Graphic Display library! If you find any issues or have ideas for improvements, please feel free to submit a pull request or open an issue on the \href{https://github.com/pablo-jean/graphic-display}{\texttt{ Git\+Hub repository}}.\hypertarget{index_autotoc_md18}{}\doxysection{\texorpdfstring{🛠️ Creating Your Driver}{🛠️ Creating Your Driver}}\label{index_autotoc_md18}
+\hypertarget{index_autotoc_md16}{}\doxysection{💡 Examples}\label{index_autotoc_md16}
+You can find various examples of using the Graphic Display library in the~{\bfseries{examples}}~directory. These examples cover different use cases and demonstrate the library\textquotesingle{}s capabilities.\hypertarget{index_autotoc_md17}{}\doxysection{🤝 Contributing}\label{index_autotoc_md17}
+We welcome contributions to the Graphic Display library! If you find any issues or have ideas for improvements, please feel free to submit a pull request or open an issue on the~\href{https://github.com/pablo-jean/graphic-display}{\texttt{ Git\+Hub repository}}.\hypertarget{index_autotoc_md18}{}\doxysection{🛠️ Creating Your Driver}\label{index_autotoc_md18}
 You can write your own driver to use with this library, the only requirement is that your display is Monochromatic, this library doesn\textquotesingle{}t support color displays.
 
 Feel free to perform a Fork, implement your driver, and make a Pull request, sharing your contributing with other developers.
 
-To see what you need to do, check the API reference.\hypertarget{index_autotoc_md19}{}\doxysection{\texorpdfstring{📄 License}{📄 License}}\label{index_autotoc_md19}
-Graphic Display is released under the \+MIT License. Feel free to use, modify, and distribute the library as per the terms of the license.\hypertarget{index_autotoc_md20}{}\doxysection{\texorpdfstring{Credits}{Credits}}\label{index_autotoc_md20}
+To see what you need to do, check the API reference.\hypertarget{index_autotoc_md19}{}\doxysection{📄 License}\label{index_autotoc_md19}
+Graphic Display is released under the~MIT License. Feel free to use, modify, and distribute the library as per the terms of the license.\hypertarget{index_autotoc_md20}{}\doxysection{Credits}\label{index_autotoc_md20}
 This library was based on \href{https://github.com/afiskon/stm32-ssd1306}{\texttt{ Afiskon/stm32-\/ssd1306}}.
 
 My object is to create a easy simple Graphic Display Library, with all flexibility it deserves. 

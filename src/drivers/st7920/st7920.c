@@ -238,16 +238,6 @@ uint8_t ST7920_Refresh(st7920_t *st7920){
 			Temp[0] = FrameBuffer[Index];
 			Temp[1] = FrameBuffer[Index + 1];
 			_write_data(st7920, Temp, 2);
-
-//			Temp=	(((FrameBuffer[Index+8]>>Db)&0x01)<<7)|
-//						(((FrameBuffer[Index+9]>>Db)&0x01)<<6)|
-//						(((FrameBuffer[Index+10]>>Db)&0x01)<<5)|
-//						(((FrameBuffer[Index+11]>>Db)&0x01)<<4)|
-//						(((FrameBuffer[Index+12]>>Db)&0x01)<<3)|
-//						(((FrameBuffer[Index+13]>>Db)&0x01)<<2)|
-//						(((FrameBuffer[Index+14]>>Db)&0x01)<<1)|
-//						(((FrameBuffer[Index+15]>>Db)&0x01)<<0);
-//			_write_data(st7920, &Temp, 1);
 		}
 	}
 

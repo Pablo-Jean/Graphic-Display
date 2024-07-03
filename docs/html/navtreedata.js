@@ -25,8 +25,19 @@
 var NAVTREE =
 [
   [ "Graphic Display", "index.html", [
-    [ "Graphic Display - Library for Monochrome Display, without any Microcontroller or Display dependency.", "index.html", "index" ],
-    [ "Topics", "topics.html", "topics" ],
+    [ "Graphic Display - Library for Monochrome Display, without any Microcontroller or Display dependency.", "index.html", [
+      [ "🔍 About the Library", "index.html#autotoc_md11", null ],
+      [ "✨ Features", "index.html#autotoc_md12", null ],
+      [ "🗂️ API Reference", "index.html#autotoc_md13", null ],
+      [ "🛠️ Installation", "index.html#autotoc_md14", null ],
+      [ "🚀 Usage", "index.html#autotoc_md15", null ],
+      [ "💡 Examples", "index.html#autotoc_md16", null ],
+      [ "🤝 Contributing", "index.html#autotoc_md17", null ],
+      [ "🛠️ Creating Your Driver", "index.html#autotoc_md18", null ],
+      [ "📄 License", "index.html#autotoc_md19", null ],
+      [ "Credits", "index.html#autotoc_md20", null ]
+    ] ],
+    [ "Modules", "modules.html", "modules" ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
       [ "Data Structure Index", "classes.html", null ],
@@ -53,7 +64,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "GraphicDisplay_8c.html",
-"structssd1306__params__t.html#a56ff898fbb352dbc77f2ed223fb09308"
+"st7920_8h.html#ae86e188805242ab2453aabb0c346ba45"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

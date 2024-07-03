@@ -1,7 +1,7 @@
-\doxysection{src/drivers/ssd1306/ssd1306.c File Reference}
-\hypertarget{ssd1306_8c}{}\label{ssd1306_8c}\index{src/drivers/ssd1306/ssd1306.c@{src/drivers/ssd1306/ssd1306.c}}
-{\ttfamily \#include "{}ssd1306.\+h"{}}\newline
-\doxysubsubsection*{Macros}
+\hypertarget{ssd1306_8c}{}\doxysection{src/drivers/ssd1306/ssd1306.c File Reference}
+\label{ssd1306_8c}\index{src/drivers/ssd1306/ssd1306.c@{src/drivers/ssd1306/ssd1306.c}}
+{\ttfamily \#include \char`\"{}ssd1306.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{ssd1306_8c_ab17ca63d7093e1764eecbb1768b7e09f}{\+\_\+\+PIN\+\_\+\+HIGH}}~1
@@ -10,182 +10,182 @@
 \item 
 \#define \mbox{\hyperlink{ssd1306_8c_acdf9ea17605dff8b810df8076b6496e2}{\+\_\+\+SUCCESS}}~0
 \item 
-\#define \mbox{\hyperlink{ssd1306_8c_ac57f51113cc6cfc11e64031256929697}{\+\_\+\+SSD\+\_\+\+ERROR\+\_\+\+CHECK}}(x)~if (x != \mbox{\hyperlink{ssd1306_8c_acdf9ea17605dff8b810df8076b6496e2}{\+\_\+\+SUCCESS}}) \{ return \mbox{\hyperlink{ssd1306_8h_af2c02605a6602997b61861062e2091f0}{SSD1306\+\_\+\+FAIL}}; \}
+\#define \mbox{\hyperlink{ssd1306_8c_ac57f51113cc6cfc11e64031256929697}{\+\_\+\+SSD\+\_\+\+ERROR\+\_\+\+CHECK}}(x)~if (x != \mbox{\hyperlink{st7920_8c_acdf9ea17605dff8b810df8076b6496e2}{\+\_\+\+SUCCESS}}) \{ return \mbox{\hyperlink{ssd1306_8h_af2c02605a6602997b61861062e2091f0}{SSD1306\+\_\+\+FAIL}}; \}
 \end{DoxyCompactItemize}
-\doxysubsubsection*{Functions}
+\doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-static void \mbox{\hyperlink{ssd1306_8c_ac55555fc079ea5d550e32fbd34bfc959}{\+\_\+delay\+\_\+ms}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}ssd1306, uint32\+\_\+t ms)
+static void \mbox{\hyperlink{ssd1306_8c_ac55555fc079ea5d550e32fbd34bfc959}{\+\_\+delay\+\_\+ms}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$ssd1306, uint32\+\_\+t ms)
 \item 
-static void \mbox{\hyperlink{ssd1306_8c_a56bbfb5414251d3814f9aff6f0bcfa20}{\+\_\+pin\+\_\+reset}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}ssd1306, uint8\+\_\+t Signal)
+static void \mbox{\hyperlink{ssd1306_8c_a56bbfb5414251d3814f9aff6f0bcfa20}{\+\_\+pin\+\_\+reset}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$ssd1306, uint8\+\_\+t Signal)
 \item 
-static void \mbox{\hyperlink{ssd1306_8c_a871219c01cdd45e1c76930daa6f5d9fc}{\+\_\+pin\+\_\+dc}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}ssd1306, uint8\+\_\+t Signal)
+static void \mbox{\hyperlink{ssd1306_8c_a871219c01cdd45e1c76930daa6f5d9fc}{\+\_\+pin\+\_\+dc}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$ssd1306, uint8\+\_\+t Signal)
 \item 
-static void \mbox{\hyperlink{ssd1306_8c_a9f581ed75bcfb4a48d54baf9a140dfb7}{\+\_\+pin\+\_\+cs}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}ssd1306, uint8\+\_\+t Signal)
+static void \mbox{\hyperlink{ssd1306_8c_a9f581ed75bcfb4a48d54baf9a140dfb7}{\+\_\+pin\+\_\+cs}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$ssd1306, uint8\+\_\+t Signal)
 \item 
-static uint8\+\_\+t \mbox{\hyperlink{ssd1306_8c_a624fd517fcf6a6c839c52d0c4f7f18e8}{\+\_\+spi\+\_\+write}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}ssd1306, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, uint32\+\_\+t len)
+static uint8\+\_\+t \mbox{\hyperlink{ssd1306_8c_a624fd517fcf6a6c839c52d0c4f7f18e8}{\+\_\+spi\+\_\+write}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$ssd1306, uint8\+\_\+t $\ast$data, uint32\+\_\+t len)
 \item 
-static uint8\+\_\+t \mbox{\hyperlink{ssd1306_8c_a86803e8e59953f7f58f99a1e74884710}{\+\_\+i2c\+\_\+write}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}ssd1306, uint8\+\_\+t reg, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, uint32\+\_\+t len)
+static uint8\+\_\+t \mbox{\hyperlink{ssd1306_8c_a86803e8e59953f7f58f99a1e74884710}{\+\_\+i2c\+\_\+write}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$ssd1306, uint8\+\_\+t reg, uint8\+\_\+t $\ast$data, uint32\+\_\+t len)
 \item 
-static uint8\+\_\+t \mbox{\hyperlink{ssd1306_8c_ae06c3918b2cfd559926ef5ac1d46f93b}{\+\_\+write\+\_\+data}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}ssd1306, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, uint32\+\_\+t len)
+static uint8\+\_\+t \mbox{\hyperlink{ssd1306_8c_ae06c3918b2cfd559926ef5ac1d46f93b}{\+\_\+write\+\_\+data}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$ssd1306, uint8\+\_\+t $\ast$data, uint32\+\_\+t len)
 \item 
-static uint8\+\_\+t \mbox{\hyperlink{ssd1306_8c_a5f217ca5bcdbf10e649cd875b4c45a80}{\+\_\+write\+\_\+command}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}ssd1306, uint8\+\_\+t cmd)
+static uint8\+\_\+t \mbox{\hyperlink{ssd1306_8c_a5f217ca5bcdbf10e649cd875b4c45a80}{\+\_\+write\+\_\+command}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$ssd1306, uint8\+\_\+t cmd)
 \item 
-static void \mbox{\hyperlink{ssd1306_8c_aef5fe11717f623da57548f6b200e987c}{\+\_\+reset}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}ssd1306)
+static void \mbox{\hyperlink{ssd1306_8c_aef5fe11717f623da57548f6b200e987c}{\+\_\+reset}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$ssd1306)
 \item 
-static void \mbox{\hyperlink{ssd1306_8c_a1afa11fc4f79caf8f7194d8fd51c9c9f}{\+\_\+mtx\+\_\+lock}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}ssd1306)
+static void \mbox{\hyperlink{ssd1306_8c_a1afa11fc4f79caf8f7194d8fd51c9c9f}{\+\_\+mtx\+\_\+lock}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$ssd1306)
 \item 
-static void \mbox{\hyperlink{ssd1306_8c_a51d8032d33946ca932cf68ccf2a185f5}{\+\_\+mtx\+\_\+unlock}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}ssd1306)
+static void \mbox{\hyperlink{ssd1306_8c_a51d8032d33946ca932cf68ccf2a185f5}{\+\_\+mtx\+\_\+unlock}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$ssd1306)
 \item 
-uint8\+\_\+t \mbox{\hyperlink{ssd1306_8c_a89baf372e82a096c62f1d961776b3a07}{SSD1306\+\_\+\+Init}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}ssd1306, \mbox{\hyperlink{structssd1306__params__t}{ssd1306\+\_\+params\+\_\+t}} \texorpdfstring{$\ast$}{*}params)
+uint8\+\_\+t \mbox{\hyperlink{ssd1306_8c_a89baf372e82a096c62f1d961776b3a07}{SSD1306\+\_\+\+Init}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$ssd1306, \mbox{\hyperlink{structssd1306__params__t}{ssd1306\+\_\+params\+\_\+t}} $\ast$params)
 \item 
-uint8\+\_\+t \mbox{\hyperlink{ssd1306_8c_af64a3457ed2db672f03128f855226757}{SSD1306\+\_\+\+Set\+Frame\+Buffer}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}ssd1306, uint8\+\_\+t \texorpdfstring{$\ast$}{*}pu8\+Frame\+Buffer)
+uint8\+\_\+t \mbox{\hyperlink{ssd1306_8c_af64a3457ed2db672f03128f855226757}{SSD1306\+\_\+\+Set\+Frame\+Buffer}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$ssd1306, uint8\+\_\+t $\ast$pu8\+Frame\+Buffer)
 \item 
-uint8\+\_\+t \mbox{\hyperlink{ssd1306_8c_a513194a7f53cd0e966c575b2bc51afa4}{SSD1306\+\_\+\+Set\+Contrast}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}ssd1306, uint8\+\_\+t level)
+uint8\+\_\+t \mbox{\hyperlink{ssd1306_8c_a513194a7f53cd0e966c575b2bc51afa4}{SSD1306\+\_\+\+Set\+Contrast}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$ssd1306, uint8\+\_\+t level)
 \item 
-uint8\+\_\+t \mbox{\hyperlink{ssd1306_8c_a3ea5f071648226cc1e476c752df33d85}{SSD1306\+\_\+\+Set\+Display\+On}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}ssd1306, bool on)
+uint8\+\_\+t \mbox{\hyperlink{ssd1306_8c_a3ea5f071648226cc1e476c752df33d85}{SSD1306\+\_\+\+Set\+Display\+On}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$ssd1306, bool on)
 \item 
-uint8\+\_\+t \mbox{\hyperlink{ssd1306_8c_ab2152b1a002659a1333538895698fd9f}{SSD1306\+\_\+\+Refresh}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}ssd1306)
+uint8\+\_\+t \mbox{\hyperlink{ssd1306_8c_ab2152b1a002659a1333538895698fd9f}{SSD1306\+\_\+\+Refresh}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$ssd1306)
 \item 
-uint8\+\_\+t \mbox{\hyperlink{ssd1306_8c_a12eae041ee14e27db9c4702977d6cbb2}{SSD1306\+\_\+\+Write}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}ssd1306, uint32\+\_\+t x, uint32\+\_\+t y, bool color)
+uint8\+\_\+t \mbox{\hyperlink{ssd1306_8c_a12eae041ee14e27db9c4702977d6cbb2}{SSD1306\+\_\+\+Write}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$ssd1306, uint32\+\_\+t x, uint32\+\_\+t y, bool color)
 \item 
-uint8\+\_\+t \mbox{\hyperlink{ssd1306_8c_a6a32fb38f11d93198a4310db2b47b461}{SSD1306\+\_\+\+Fill}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}ssd1306, uint8\+\_\+t color)
+uint8\+\_\+t \mbox{\hyperlink{ssd1306_8c_a6a32fb38f11d93198a4310db2b47b461}{SSD1306\+\_\+\+Fill}} (\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$ssd1306, uint8\+\_\+t color)
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Macro Definition Documentation}
-\Hypertarget{ssd1306_8c_ab17ca63d7093e1764eecbb1768b7e09f}\index{ssd1306.c@{ssd1306.c}!\_PIN\_HIGH@{\_PIN\_HIGH}}
+\mbox{\Hypertarget{ssd1306_8c_ab17ca63d7093e1764eecbb1768b7e09f}\label{ssd1306_8c_ab17ca63d7093e1764eecbb1768b7e09f}} 
+\index{ssd1306.c@{ssd1306.c}!\_PIN\_HIGH@{\_PIN\_HIGH}}
 \index{\_PIN\_HIGH@{\_PIN\_HIGH}!ssd1306.c@{ssd1306.c}}
 \doxysubsubsection{\texorpdfstring{\_PIN\_HIGH}{\_PIN\_HIGH}}
-{\footnotesize\ttfamily \label{ssd1306_8c_ab17ca63d7093e1764eecbb1768b7e09f} 
-\#define \+\_\+\+PIN\+\_\+\+HIGH~1}
+{\footnotesize\ttfamily \#define \+\_\+\+PIN\+\_\+\+HIGH~1}
 
-\Hypertarget{ssd1306_8c_a4d16457d4284225a8c766f144ee75317}\index{ssd1306.c@{ssd1306.c}!\_PIN\_LOW@{\_PIN\_LOW}}
+\mbox{\Hypertarget{ssd1306_8c_a4d16457d4284225a8c766f144ee75317}\label{ssd1306_8c_a4d16457d4284225a8c766f144ee75317}} 
+\index{ssd1306.c@{ssd1306.c}!\_PIN\_LOW@{\_PIN\_LOW}}
 \index{\_PIN\_LOW@{\_PIN\_LOW}!ssd1306.c@{ssd1306.c}}
 \doxysubsubsection{\texorpdfstring{\_PIN\_LOW}{\_PIN\_LOW}}
-{\footnotesize\ttfamily \label{ssd1306_8c_a4d16457d4284225a8c766f144ee75317} 
-\#define \+\_\+\+PIN\+\_\+\+LOW~0}
+{\footnotesize\ttfamily \#define \+\_\+\+PIN\+\_\+\+LOW~0}
 
-\Hypertarget{ssd1306_8c_ac57f51113cc6cfc11e64031256929697}\index{ssd1306.c@{ssd1306.c}!\_SSD\_ERROR\_CHECK@{\_SSD\_ERROR\_CHECK}}
+\mbox{\Hypertarget{ssd1306_8c_ac57f51113cc6cfc11e64031256929697}\label{ssd1306_8c_ac57f51113cc6cfc11e64031256929697}} 
+\index{ssd1306.c@{ssd1306.c}!\_SSD\_ERROR\_CHECK@{\_SSD\_ERROR\_CHECK}}
 \index{\_SSD\_ERROR\_CHECK@{\_SSD\_ERROR\_CHECK}!ssd1306.c@{ssd1306.c}}
 \doxysubsubsection{\texorpdfstring{\_SSD\_ERROR\_CHECK}{\_SSD\_ERROR\_CHECK}}
-{\footnotesize\ttfamily \label{ssd1306_8c_ac57f51113cc6cfc11e64031256929697} 
-\#define \+\_\+\+SSD\+\_\+\+ERROR\+\_\+\+CHECK(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})~if (x != \mbox{\hyperlink{ssd1306_8c_acdf9ea17605dff8b810df8076b6496e2}{\+\_\+\+SUCCESS}}) \{ return \mbox{\hyperlink{ssd1306_8h_af2c02605a6602997b61861062e2091f0}{SSD1306\+\_\+\+FAIL}}; \}}
+{\footnotesize\ttfamily \#define \+\_\+\+SSD\+\_\+\+ERROR\+\_\+\+CHECK(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~if (x != \mbox{\hyperlink{st7920_8c_acdf9ea17605dff8b810df8076b6496e2}{\+\_\+\+SUCCESS}}) \{ return \mbox{\hyperlink{ssd1306_8h_af2c02605a6602997b61861062e2091f0}{SSD1306\+\_\+\+FAIL}}; \}}
 
-\Hypertarget{ssd1306_8c_acdf9ea17605dff8b810df8076b6496e2}\index{ssd1306.c@{ssd1306.c}!\_SUCCESS@{\_SUCCESS}}
+\mbox{\Hypertarget{ssd1306_8c_acdf9ea17605dff8b810df8076b6496e2}\label{ssd1306_8c_acdf9ea17605dff8b810df8076b6496e2}} 
+\index{ssd1306.c@{ssd1306.c}!\_SUCCESS@{\_SUCCESS}}
 \index{\_SUCCESS@{\_SUCCESS}!ssd1306.c@{ssd1306.c}}
 \doxysubsubsection{\texorpdfstring{\_SUCCESS}{\_SUCCESS}}
-{\footnotesize\ttfamily \label{ssd1306_8c_acdf9ea17605dff8b810df8076b6496e2} 
-\#define \+\_\+\+SUCCESS~0}
+{\footnotesize\ttfamily \#define \+\_\+\+SUCCESS~0}
 
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{ssd1306_8c_ac55555fc079ea5d550e32fbd34bfc959}\index{ssd1306.c@{ssd1306.c}!\_delay\_ms@{\_delay\_ms}}
+\mbox{\Hypertarget{ssd1306_8c_ac55555fc079ea5d550e32fbd34bfc959}\label{ssd1306_8c_ac55555fc079ea5d550e32fbd34bfc959}} 
+\index{ssd1306.c@{ssd1306.c}!\_delay\_ms@{\_delay\_ms}}
 \index{\_delay\_ms@{\_delay\_ms}!ssd1306.c@{ssd1306.c}}
 \doxysubsubsection{\texorpdfstring{\_delay\_ms()}{\_delay\_ms()}}
-{\footnotesize\ttfamily \label{ssd1306_8c_ac55555fc079ea5d550e32fbd34bfc959} 
-static void \+\_\+delay\+\_\+ms (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ssd1306}{, }\item[{uint32\+\_\+t}]{ms}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static void \+\_\+delay\+\_\+ms (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{ssd1306,  }\item[{uint32\+\_\+t}]{ms }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{ssd1306_8c_a86803e8e59953f7f58f99a1e74884710}\index{ssd1306.c@{ssd1306.c}!\_i2c\_write@{\_i2c\_write}}
+\mbox{\Hypertarget{ssd1306_8c_a86803e8e59953f7f58f99a1e74884710}\label{ssd1306_8c_a86803e8e59953f7f58f99a1e74884710}} 
+\index{ssd1306.c@{ssd1306.c}!\_i2c\_write@{\_i2c\_write}}
 \index{\_i2c\_write@{\_i2c\_write}!ssd1306.c@{ssd1306.c}}
 \doxysubsubsection{\texorpdfstring{\_i2c\_write()}{\_i2c\_write()}}
-{\footnotesize\ttfamily \label{ssd1306_8c_a86803e8e59953f7f58f99a1e74884710} 
-static uint8\+\_\+t \+\_\+i2c\+\_\+write (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ssd1306}{, }\item[{uint8\+\_\+t}]{reg}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{uint32\+\_\+t}]{len}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static uint8\+\_\+t \+\_\+i2c\+\_\+write (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{ssd1306,  }\item[{uint8\+\_\+t}]{reg,  }\item[{uint8\+\_\+t $\ast$}]{data,  }\item[{uint32\+\_\+t}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{ssd1306_8c_a1afa11fc4f79caf8f7194d8fd51c9c9f}\index{ssd1306.c@{ssd1306.c}!\_mtx\_lock@{\_mtx\_lock}}
+\mbox{\Hypertarget{ssd1306_8c_a1afa11fc4f79caf8f7194d8fd51c9c9f}\label{ssd1306_8c_a1afa11fc4f79caf8f7194d8fd51c9c9f}} 
+\index{ssd1306.c@{ssd1306.c}!\_mtx\_lock@{\_mtx\_lock}}
 \index{\_mtx\_lock@{\_mtx\_lock}!ssd1306.c@{ssd1306.c}}
 \doxysubsubsection{\texorpdfstring{\_mtx\_lock()}{\_mtx\_lock()}}
-{\footnotesize\ttfamily \label{ssd1306_8c_a1afa11fc4f79caf8f7194d8fd51c9c9f} 
-static void \+\_\+mtx\+\_\+lock (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ssd1306}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static void \+\_\+mtx\+\_\+lock (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{ssd1306 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{ssd1306_8c_a51d8032d33946ca932cf68ccf2a185f5}\index{ssd1306.c@{ssd1306.c}!\_mtx\_unlock@{\_mtx\_unlock}}
+\mbox{\Hypertarget{ssd1306_8c_a51d8032d33946ca932cf68ccf2a185f5}\label{ssd1306_8c_a51d8032d33946ca932cf68ccf2a185f5}} 
+\index{ssd1306.c@{ssd1306.c}!\_mtx\_unlock@{\_mtx\_unlock}}
 \index{\_mtx\_unlock@{\_mtx\_unlock}!ssd1306.c@{ssd1306.c}}
 \doxysubsubsection{\texorpdfstring{\_mtx\_unlock()}{\_mtx\_unlock()}}
-{\footnotesize\ttfamily \label{ssd1306_8c_a51d8032d33946ca932cf68ccf2a185f5} 
-static void \+\_\+mtx\+\_\+unlock (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ssd1306}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static void \+\_\+mtx\+\_\+unlock (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{ssd1306 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{ssd1306_8c_a9f581ed75bcfb4a48d54baf9a140dfb7}\index{ssd1306.c@{ssd1306.c}!\_pin\_cs@{\_pin\_cs}}
+\mbox{\Hypertarget{ssd1306_8c_a9f581ed75bcfb4a48d54baf9a140dfb7}\label{ssd1306_8c_a9f581ed75bcfb4a48d54baf9a140dfb7}} 
+\index{ssd1306.c@{ssd1306.c}!\_pin\_cs@{\_pin\_cs}}
 \index{\_pin\_cs@{\_pin\_cs}!ssd1306.c@{ssd1306.c}}
 \doxysubsubsection{\texorpdfstring{\_pin\_cs()}{\_pin\_cs()}}
-{\footnotesize\ttfamily \label{ssd1306_8c_a9f581ed75bcfb4a48d54baf9a140dfb7} 
-static void \+\_\+pin\+\_\+cs (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ssd1306}{, }\item[{uint8\+\_\+t}]{Signal}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static void \+\_\+pin\+\_\+cs (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{ssd1306,  }\item[{uint8\+\_\+t}]{Signal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{ssd1306_8c_a871219c01cdd45e1c76930daa6f5d9fc}\index{ssd1306.c@{ssd1306.c}!\_pin\_dc@{\_pin\_dc}}
+\mbox{\Hypertarget{ssd1306_8c_a871219c01cdd45e1c76930daa6f5d9fc}\label{ssd1306_8c_a871219c01cdd45e1c76930daa6f5d9fc}} 
+\index{ssd1306.c@{ssd1306.c}!\_pin\_dc@{\_pin\_dc}}
 \index{\_pin\_dc@{\_pin\_dc}!ssd1306.c@{ssd1306.c}}
 \doxysubsubsection{\texorpdfstring{\_pin\_dc()}{\_pin\_dc()}}
-{\footnotesize\ttfamily \label{ssd1306_8c_a871219c01cdd45e1c76930daa6f5d9fc} 
-static void \+\_\+pin\+\_\+dc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ssd1306}{, }\item[{uint8\+\_\+t}]{Signal}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static void \+\_\+pin\+\_\+dc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{ssd1306,  }\item[{uint8\+\_\+t}]{Signal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{ssd1306_8c_a56bbfb5414251d3814f9aff6f0bcfa20}\index{ssd1306.c@{ssd1306.c}!\_pin\_reset@{\_pin\_reset}}
+\mbox{\Hypertarget{ssd1306_8c_a56bbfb5414251d3814f9aff6f0bcfa20}\label{ssd1306_8c_a56bbfb5414251d3814f9aff6f0bcfa20}} 
+\index{ssd1306.c@{ssd1306.c}!\_pin\_reset@{\_pin\_reset}}
 \index{\_pin\_reset@{\_pin\_reset}!ssd1306.c@{ssd1306.c}}
 \doxysubsubsection{\texorpdfstring{\_pin\_reset()}{\_pin\_reset()}}
-{\footnotesize\ttfamily \label{ssd1306_8c_a56bbfb5414251d3814f9aff6f0bcfa20} 
-static void \+\_\+pin\+\_\+reset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ssd1306}{, }\item[{uint8\+\_\+t}]{Signal}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static void \+\_\+pin\+\_\+reset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{ssd1306,  }\item[{uint8\+\_\+t}]{Signal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{ssd1306_8c_aef5fe11717f623da57548f6b200e987c}\index{ssd1306.c@{ssd1306.c}!\_reset@{\_reset}}
+\mbox{\Hypertarget{ssd1306_8c_aef5fe11717f623da57548f6b200e987c}\label{ssd1306_8c_aef5fe11717f623da57548f6b200e987c}} 
+\index{ssd1306.c@{ssd1306.c}!\_reset@{\_reset}}
 \index{\_reset@{\_reset}!ssd1306.c@{ssd1306.c}}
 \doxysubsubsection{\texorpdfstring{\_reset()}{\_reset()}}
-{\footnotesize\ttfamily \label{ssd1306_8c_aef5fe11717f623da57548f6b200e987c} 
-static void \+\_\+reset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ssd1306}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static void \+\_\+reset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{ssd1306 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{ssd1306_8c_a624fd517fcf6a6c839c52d0c4f7f18e8}\index{ssd1306.c@{ssd1306.c}!\_spi\_write@{\_spi\_write}}
+\mbox{\Hypertarget{ssd1306_8c_a624fd517fcf6a6c839c52d0c4f7f18e8}\label{ssd1306_8c_a624fd517fcf6a6c839c52d0c4f7f18e8}} 
+\index{ssd1306.c@{ssd1306.c}!\_spi\_write@{\_spi\_write}}
 \index{\_spi\_write@{\_spi\_write}!ssd1306.c@{ssd1306.c}}
 \doxysubsubsection{\texorpdfstring{\_spi\_write()}{\_spi\_write()}}
-{\footnotesize\ttfamily \label{ssd1306_8c_a624fd517fcf6a6c839c52d0c4f7f18e8} 
-static uint8\+\_\+t \+\_\+spi\+\_\+write (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ssd1306}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{uint32\+\_\+t}]{len}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static uint8\+\_\+t \+\_\+spi\+\_\+write (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{ssd1306,  }\item[{uint8\+\_\+t $\ast$}]{data,  }\item[{uint32\+\_\+t}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{ssd1306_8c_a5f217ca5bcdbf10e649cd875b4c45a80}\index{ssd1306.c@{ssd1306.c}!\_write\_command@{\_write\_command}}
+\mbox{\Hypertarget{ssd1306_8c_a5f217ca5bcdbf10e649cd875b4c45a80}\label{ssd1306_8c_a5f217ca5bcdbf10e649cd875b4c45a80}} 
+\index{ssd1306.c@{ssd1306.c}!\_write\_command@{\_write\_command}}
 \index{\_write\_command@{\_write\_command}!ssd1306.c@{ssd1306.c}}
 \doxysubsubsection{\texorpdfstring{\_write\_command()}{\_write\_command()}}
-{\footnotesize\ttfamily \label{ssd1306_8c_a5f217ca5bcdbf10e649cd875b4c45a80} 
-static uint8\+\_\+t \+\_\+write\+\_\+command (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ssd1306}{, }\item[{uint8\+\_\+t}]{cmd}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static uint8\+\_\+t \+\_\+write\+\_\+command (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{ssd1306,  }\item[{uint8\+\_\+t}]{cmd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{ssd1306_8c_ae06c3918b2cfd559926ef5ac1d46f93b}\index{ssd1306.c@{ssd1306.c}!\_write\_data@{\_write\_data}}
+\mbox{\Hypertarget{ssd1306_8c_ae06c3918b2cfd559926ef5ac1d46f93b}\label{ssd1306_8c_ae06c3918b2cfd559926ef5ac1d46f93b}} 
+\index{ssd1306.c@{ssd1306.c}!\_write\_data@{\_write\_data}}
 \index{\_write\_data@{\_write\_data}!ssd1306.c@{ssd1306.c}}
 \doxysubsubsection{\texorpdfstring{\_write\_data()}{\_write\_data()}}
-{\footnotesize\ttfamily \label{ssd1306_8c_ae06c3918b2cfd559926ef5ac1d46f93b} 
-static uint8\+\_\+t \+\_\+write\+\_\+data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ssd1306}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{uint32\+\_\+t}]{len}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static uint8\+\_\+t \+\_\+write\+\_\+data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{ssd1306,  }\item[{uint8\+\_\+t $\ast$}]{data,  }\item[{uint32\+\_\+t}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{ssd1306_8c_a6a32fb38f11d93198a4310db2b47b461}\index{ssd1306.c@{ssd1306.c}!SSD1306\_Fill@{SSD1306\_Fill}}
+\mbox{\Hypertarget{ssd1306_8c_a6a32fb38f11d93198a4310db2b47b461}\label{ssd1306_8c_a6a32fb38f11d93198a4310db2b47b461}} 
+\index{ssd1306.c@{ssd1306.c}!SSD1306\_Fill@{SSD1306\_Fill}}
 \index{SSD1306\_Fill@{SSD1306\_Fill}!ssd1306.c@{ssd1306.c}}
 \doxysubsubsection{\texorpdfstring{SSD1306\_Fill()}{SSD1306\_Fill()}}
-{\footnotesize\ttfamily \label{ssd1306_8c_a6a32fb38f11d93198a4310db2b47b461} 
-uint8\+\_\+t SSD1306\+\_\+\+Fill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ssd1306}{, }\item[{uint8\+\_\+t}]{color}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily uint8\+\_\+t SSD1306\+\_\+\+Fill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{ssd1306,  }\item[{uint8\+\_\+t}]{color }\end{DoxyParamCaption})}
 
-\Hypertarget{ssd1306_8c_a89baf372e82a096c62f1d961776b3a07}\index{ssd1306.c@{ssd1306.c}!SSD1306\_Init@{SSD1306\_Init}}
+\mbox{\Hypertarget{ssd1306_8c_a89baf372e82a096c62f1d961776b3a07}\label{ssd1306_8c_a89baf372e82a096c62f1d961776b3a07}} 
+\index{ssd1306.c@{ssd1306.c}!SSD1306\_Init@{SSD1306\_Init}}
 \index{SSD1306\_Init@{SSD1306\_Init}!ssd1306.c@{ssd1306.c}}
 \doxysubsubsection{\texorpdfstring{SSD1306\_Init()}{SSD1306\_Init()}}
-{\footnotesize\ttfamily \label{ssd1306_8c_a89baf372e82a096c62f1d961776b3a07} 
-uint8\+\_\+t SSD1306\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ssd1306}{, }\item[{\mbox{\hyperlink{structssd1306__params__t}{ssd1306\+\_\+params\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{params}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily uint8\+\_\+t SSD1306\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{ssd1306,  }\item[{\mbox{\hyperlink{structssd1306__params__t}{ssd1306\+\_\+params\+\_\+t}} $\ast$}]{params }\end{DoxyParamCaption})}
 
-\Hypertarget{ssd1306_8c_ab2152b1a002659a1333538895698fd9f}\index{ssd1306.c@{ssd1306.c}!SSD1306\_Refresh@{SSD1306\_Refresh}}
+\mbox{\Hypertarget{ssd1306_8c_ab2152b1a002659a1333538895698fd9f}\label{ssd1306_8c_ab2152b1a002659a1333538895698fd9f}} 
+\index{ssd1306.c@{ssd1306.c}!SSD1306\_Refresh@{SSD1306\_Refresh}}
 \index{SSD1306\_Refresh@{SSD1306\_Refresh}!ssd1306.c@{ssd1306.c}}
 \doxysubsubsection{\texorpdfstring{SSD1306\_Refresh()}{SSD1306\_Refresh()}}
-{\footnotesize\ttfamily \label{ssd1306_8c_ab2152b1a002659a1333538895698fd9f} 
-uint8\+\_\+t SSD1306\+\_\+\+Refresh (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ssd1306}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily uint8\+\_\+t SSD1306\+\_\+\+Refresh (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{ssd1306 }\end{DoxyParamCaption})}
 
-\Hypertarget{ssd1306_8c_a513194a7f53cd0e966c575b2bc51afa4}\index{ssd1306.c@{ssd1306.c}!SSD1306\_SetContrast@{SSD1306\_SetContrast}}
+\mbox{\Hypertarget{ssd1306_8c_a513194a7f53cd0e966c575b2bc51afa4}\label{ssd1306_8c_a513194a7f53cd0e966c575b2bc51afa4}} 
+\index{ssd1306.c@{ssd1306.c}!SSD1306\_SetContrast@{SSD1306\_SetContrast}}
 \index{SSD1306\_SetContrast@{SSD1306\_SetContrast}!ssd1306.c@{ssd1306.c}}
 \doxysubsubsection{\texorpdfstring{SSD1306\_SetContrast()}{SSD1306\_SetContrast()}}
-{\footnotesize\ttfamily \label{ssd1306_8c_a513194a7f53cd0e966c575b2bc51afa4} 
-uint8\+\_\+t SSD1306\+\_\+\+Set\+Contrast (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ssd1306}{, }\item[{uint8\+\_\+t}]{level}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily uint8\+\_\+t SSD1306\+\_\+\+Set\+Contrast (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{ssd1306,  }\item[{uint8\+\_\+t}]{level }\end{DoxyParamCaption})}
 
-\Hypertarget{ssd1306_8c_a3ea5f071648226cc1e476c752df33d85}\index{ssd1306.c@{ssd1306.c}!SSD1306\_SetDisplayOn@{SSD1306\_SetDisplayOn}}
+\mbox{\Hypertarget{ssd1306_8c_a3ea5f071648226cc1e476c752df33d85}\label{ssd1306_8c_a3ea5f071648226cc1e476c752df33d85}} 
+\index{ssd1306.c@{ssd1306.c}!SSD1306\_SetDisplayOn@{SSD1306\_SetDisplayOn}}
 \index{SSD1306\_SetDisplayOn@{SSD1306\_SetDisplayOn}!ssd1306.c@{ssd1306.c}}
 \doxysubsubsection{\texorpdfstring{SSD1306\_SetDisplayOn()}{SSD1306\_SetDisplayOn()}}
-{\footnotesize\ttfamily \label{ssd1306_8c_a3ea5f071648226cc1e476c752df33d85} 
-uint8\+\_\+t SSD1306\+\_\+\+Set\+Display\+On (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ssd1306}{, }\item[{bool}]{on}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily uint8\+\_\+t SSD1306\+\_\+\+Set\+Display\+On (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{ssd1306,  }\item[{bool}]{on }\end{DoxyParamCaption})}
 
-\Hypertarget{ssd1306_8c_af64a3457ed2db672f03128f855226757}\index{ssd1306.c@{ssd1306.c}!SSD1306\_SetFrameBuffer@{SSD1306\_SetFrameBuffer}}
+\mbox{\Hypertarget{ssd1306_8c_af64a3457ed2db672f03128f855226757}\label{ssd1306_8c_af64a3457ed2db672f03128f855226757}} 
+\index{ssd1306.c@{ssd1306.c}!SSD1306\_SetFrameBuffer@{SSD1306\_SetFrameBuffer}}
 \index{SSD1306\_SetFrameBuffer@{SSD1306\_SetFrameBuffer}!ssd1306.c@{ssd1306.c}}
 \doxysubsubsection{\texorpdfstring{SSD1306\_SetFrameBuffer()}{SSD1306\_SetFrameBuffer()}}
-{\footnotesize\ttfamily \label{ssd1306_8c_af64a3457ed2db672f03128f855226757} 
-uint8\+\_\+t SSD1306\+\_\+\+Set\+Frame\+Buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ssd1306}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{pu8\+Frame\+Buffer}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily uint8\+\_\+t SSD1306\+\_\+\+Set\+Frame\+Buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{ssd1306,  }\item[{uint8\+\_\+t $\ast$}]{pu8\+Frame\+Buffer }\end{DoxyParamCaption})}
 
-\Hypertarget{ssd1306_8c_a12eae041ee14e27db9c4702977d6cbb2}\index{ssd1306.c@{ssd1306.c}!SSD1306\_Write@{SSD1306\_Write}}
+\mbox{\Hypertarget{ssd1306_8c_a12eae041ee14e27db9c4702977d6cbb2}\label{ssd1306_8c_a12eae041ee14e27db9c4702977d6cbb2}} 
+\index{ssd1306.c@{ssd1306.c}!SSD1306\_Write@{SSD1306\_Write}}
 \index{SSD1306\_Write@{SSD1306\_Write}!ssd1306.c@{ssd1306.c}}
 \doxysubsubsection{\texorpdfstring{SSD1306\_Write()}{SSD1306\_Write()}}
-{\footnotesize\ttfamily \label{ssd1306_8c_a12eae041ee14e27db9c4702977d6cbb2} 
-uint8\+\_\+t SSD1306\+\_\+\+Write (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ssd1306}{, }\item[{uint32\+\_\+t}]{x}{, }\item[{uint32\+\_\+t}]{y}{, }\item[{bool}]{color}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily uint8\+\_\+t SSD1306\+\_\+\+Write (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structssd1306__t}{ssd1306\+\_\+t}} $\ast$}]{ssd1306,  }\item[{uint32\+\_\+t}]{x,  }\item[{uint32\+\_\+t}]{y,  }\item[{bool}]{color }\end{DoxyParamCaption})}
 

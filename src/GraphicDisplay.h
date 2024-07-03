@@ -437,7 +437,6 @@ extern gd_driver_t* Gd_Driver_ST7920;
  * 	@{
  */
 /**
- * @fn gd_error_e GD_Init(gd_t*, gd_params_t*)
  * @brief Initializes the Graphic Display module, configured with the parameters
  * provided.
  *
@@ -449,7 +448,6 @@ extern gd_driver_t* Gd_Driver_ST7920;
 gd_error_e GD_Init(gd_t *Gd, gd_params_t *params);
 
 /**
- * @fn gd_error_e GD_Fill(gd_t*, gd_color_e)
  * @brief Fill the Frame Buffer with the provided color.
  *
  * @pre 			Graphic Display is initialized.
@@ -460,7 +458,6 @@ gd_error_e GD_Init(gd_t *Gd, gd_params_t *params);
 gd_error_e GD_Fill(gd_t *Gd, gd_color_e color);
 
 /**
- * @fn gd_error_e GD_UpdateScreen(gd_t*)
  * @brief Update and refresh the update screen with the data into Frame Buffer.
  *
  * @pre			Graphic Display is initialized.
@@ -470,7 +467,6 @@ gd_error_e GD_Fill(gd_t *Gd, gd_color_e color);
 gd_error_e GD_UpdateScreen(gd_t *Gd);
 
 /**
- * @fn gd_error_e GD_DrawPixel(gd_t*, uint32_t, uint32_t, gd_color_e)
  * @brief Write a color into the desired pixel in the frame buffer.
  *
  * @pre 		Graphic Display is initialized.
@@ -483,7 +479,6 @@ gd_error_e GD_UpdateScreen(gd_t *Gd);
 gd_error_e GD_DrawPixel(gd_t *Gd,  uint32_t x, uint32_t y, gd_color_e color);
 
 /**
- * @fn gd_error_e GD_WriteChar(gd_t*, char, const gd_font_t*, gd_color_e)
  * @brief Write a character into a Frame Buffer, with the lines with the desired color.
  *
  * @pre 		Graphic Display is initialized.
@@ -496,7 +491,6 @@ gd_error_e GD_DrawPixel(gd_t *Gd,  uint32_t x, uint32_t y, gd_color_e color);
 gd_error_e GD_WriteChar(gd_t *Gd,  char ch, const gd_font_t *Font, gd_color_e color);
 
 /**
- * @fn gd_error_e GD_WriteString(gd_t*, char*, const gd_font_t*, gd_color_e)
  * @brief Write a string into frame buffer, with the character lines with the desired color.
  *
  * @pre			Graphic Display is initialized.
@@ -509,7 +503,6 @@ gd_error_e GD_WriteChar(gd_t *Gd,  char ch, const gd_font_t *Font, gd_color_e co
 gd_error_e GD_WriteString(gd_t *Gd,  char* str, const gd_font_t *Font, gd_color_e color);
 
 /**
- * @fn gd_error_e GD_SetCursor(gd_t*, uint32_t, uint32_t)
  * @brief Set the cursor to the position X,Y.
  *
  * @pre			Graphic Display is initialized.
@@ -521,7 +514,6 @@ gd_error_e GD_WriteString(gd_t *Gd,  char* str, const gd_font_t *Font, gd_color_
 gd_error_e GD_SetCursor(gd_t *Gd,  uint32_t x, uint32_t y);
 
 /**
- * @fn gd_error_e GD_Line(gd_t*, uint32_t, uint32_t, uint32_t, uint32_t, gd_color_e)
  * @brief Write a line into the frame buffer between (x1,y1) (x2,y2).
  *
  * @pre			Graphic Display is initialized.
@@ -536,7 +528,6 @@ gd_error_e GD_SetCursor(gd_t *Gd,  uint32_t x, uint32_t y);
 gd_error_e GD_Line(gd_t *Gd,  uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2, gd_color_e color);
 
 /**
- * @fn gd_error_e GD_DrawArc(gd_t*, uint32_t, uint32_t, uint32_t, uint16_t, uint16_t, gd_color_e)
  * @brief Draw an arc into the frame buffer with center, radius, start angle, and sweep.
  *
  * @pre					Graphic Display is initialized.
@@ -552,7 +543,6 @@ gd_error_e GD_Line(gd_t *Gd,  uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2
 gd_error_e GD_DrawArc(gd_t *Gd,  uint32_t x, uint32_t y, uint32_t radius, uint16_t start_angle, uint16_t sweep, gd_color_e color);
 
 /**
- * @fn gd_error_e GD_DrawArcWithRadiusLine(gd_t*, uint32_t, uint32_t, uint32_t, uint16_t, uint16_t, gd_color_e)
  * @brief Draw an arc into frame buffer with lines in the radius line.
  *
  * @pre					Graphic Display is initialized.
@@ -569,7 +559,6 @@ gd_error_e GD_DrawArcWithRadiusLine(gd_t *Gd, uint32_t x, uint32_t y, uint32_t r
 
 
 /**
- * @fn gd_error_e GD_DrawCircle(gd_t*, uint32_t, uint32_t, uint32_t, gd_color_e)
  * @brief Draw a complete circle with defined radius.
  *
  * @pre				Graphic Display is initialized.
@@ -584,7 +573,6 @@ gd_error_e GD_DrawCircle(gd_t *Gd, uint32_t par_x, uint32_t par_y, uint32_t par_
 
 
 /**
- * @fn gd_error_e GD_FillCircle(gd_t*, uint32_t, uint32_t, uint32_t, gd_color_e)
  * @brief Draw a circle filled with the provided color.
  *
  * @pre					Graphic Display is initialized.
@@ -598,93 +586,99 @@ gd_error_e GD_DrawCircle(gd_t *Gd, uint32_t par_x, uint32_t par_y, uint32_t par_
 gd_error_e GD_FillCircle(gd_t *Gd, uint32_t par_x,uint32_t par_y,uint32_t par_r,gd_color_e par_color);
 
 /**
- * @fn gd_error_e GD_Polyline(gd_t*, gd_vertex_t*, uint16_t, gd_color_e)
- * @brief
+ * @brief Draw a polyline, composed by staigth lines connecting the points given by
+ * vertex array.
  *
- * @pre
- * @post
- * @param Gd
- * @param par_vertex
- * @param par_size
- * @param color
- * @return
+ * @pre					Graphic Display is initialized.
+ * @param Gd			Pointer to the Graphic Display handle.
+ * @param par_vertex	Vertex array, with (x, y) points, where the lines will be 
+ * 						connected
+ * @param par_size		The number of points in **par_vertex**.
+ * @param color			Color of the polyline.
+ * @return				GD_OK if success.
  */
 gd_error_e GD_Polyline(gd_t *Gd, gd_vertex_t *par_vertex, uint16_t par_size, gd_color_e color);
 
 /**
- * @fn gd_error_e GD_DrawRectangle(gd_t*, uint32_t, uint32_t, uint32_t, uint32_t, gd_color_e)
- * @brief
+ * @brief Draw a Rectangle between the position (x1,y1) and (x2,y2). The rectangle is not filled,
+ * just four lines of a thickness of 1px.
+ * 
  *
- * @pre
- * @post
- * @param Gd
- * @param x1
- * @param y1
- * @param x2
- * @param y2
- * @param color
- * @return
+ * @pre					Graphic Display is initialized.
+ * @param Gd			Pointer to the Graphic Display handle.
+ * @param x1			X axis of first point of rectangle.	
+ * @param y1			Y axis of first point of rectangle.
+ * @param x2			X axis of second point of rectangle.	
+ * @param y2			Y axis of first second of rectangle.
+ * @param color			Color of the rectangle borders.
+ * @return				GD_OK if success.
  */
 gd_error_e GD_DrawRectangle(gd_t *Gd, uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2, gd_color_e color);
 
 /**
- * @fn gd_error_e GD_FillRectangle(gd_t*, uint32_t, uint32_t, uint32_t, uint32_t, gd_error_e)
- * @brief
+ * @brief Draw a filled rectangle between the pointes (x1,y1) and (x2,y2).
  *
- * @pre
- * @post
- * @param Gd
- * @param x1
- * @param y1
- * @param x2
- * @param y2
- * @param color
- * @return
+ * @pre					Graphic Display is initialized.
+ * @param Gd			Pointer to the Graphic Display handle.
+ * @param x1			X axis of first point of rectangle.	
+ * @param y1			Y axis of first point of rectangle.
+ * @param x2			X axis of second point of rectangle.	
+ * @param y2			Y axis of first second of rectangle.
+ * @param color			Color of the entire rectangle.
+ * @return				GD_OK if success.
  */
 gd_error_e GD_FillRectangle(gd_t *Gd, uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2, gd_error_e color);
 
 /**
- * @fn gd_error_e GD_DrawBitmap(gd_t*, uint32_t, uint32_t, const unsigned char*, uint32_t, uint32_t, gd_color_e)
- * @brief
- *
- * @pre
- * @post
- * @param Gd
- * @param x
- * @param y
- * @param bitmap
- * @param w
- * @param h
- * @param color
- * @return
+ * @brief Draw a bitmap into the Frame Buffer. The bitmap is an array with the pixels on/off.
+ * @note You can use the [Open LCD Assistant](https://github.com/faytor/open_lcd_assistant) tool,
+ * I have choose this tool because are compatible with any OS.
+ *  
+ * @pre					Graphic Display is initialized.
+ * @param Gd			Pointer to the Graphic Display handle.
+ * @param x				Start X axis of bitmap.
+ * @param y				Start Y axis of bitmap.
+ * @param bitmap		Bitmap array containing the image.
+ * @param w				The Width of the bitmap. This parameter must be the real size of bitmap,
+ * 						we do not support image resize, yet.
+ * @param h				The Height of the bitmap. This parameter must be the real size of bitmap,
+ * 						we do not support image resize, yet.
+ * @param color			The 'color' of the image. In practice, if parameter was @link GD_BLACK @endlink, 
+ * 						this will invert the bitmap color, if was @link GD_WHITE @endlink, the original 
+ * 						color is keeped.
+ * @return				GD_OK is success.
  */
 gd_error_e GD_DrawBitmap(gd_t *Gd, uint32_t x, uint32_t y, const unsigned char* bitmap, uint32_t w, uint32_t h, gd_color_e color);
 
 /**
- * @brief Sets the contrast of the display.
- * @param[in] value contrast to set.
- * @note Contrast increases as the value increases.
- * @note RESET = 7Fh.
+ * @brief Set the contrast of the display, if are supported. If display doesn't have this
+ * routine, nothing will happens.
+ * 
+ * @pre					Graphic Display is initialized.
+ * @param Gd			Pointer to the Graphic Display handle.
+ * @param value 		Value of contrast, from 0 to 100.
+ * @return  			GD_OK if success.
  */
 gd_error_e GD_SetContrast(gd_t *Gd, const uint8_t value);
 
 /**
- * @brief Set Display ON/OFF.
- * @param[in] on 0 for OFF, any for ON.
+ * @brief Set display On or Off, if the display implements this routine.
+ * 
+ * @pre					Graphic Display is initialized.
+ * @param Gd 			Pointer to the Graphic Display handle.
+ * @param on 			Set to \c true to turn on, of \c to false.
+ * @return 				GD_OK if success. 
  */
 gd_error_e GD_SetDisplayOn(gd_t *Gd, bool on);
 
 /**
- * @brief Reads DisplayOn state.
- * @return  0: OFF.
- *          1: ON.
+ * @brief Gets the display On/Off state.
+ * 
+ * @pre					Graphic Display is initialized.
+ * @param Gd 			Pointer to the Graphic Display handle.
+ * @return 				\c true if the display was online, \c false if not.
  */
 bool GD_GetDisplayOn(gd_t *Gd);
-
-// Low-level procedures
-gd_error_e GD_Reset(gd_t *Gd);
-gd_error_e GD_WriteCommand(gd_t *Gd, uint8_t byte);
-gd_error_e GD_WriteData(gd_t *Gd, uint8_t* buffer, size_t buff_size);
 
 /**
   * @}
