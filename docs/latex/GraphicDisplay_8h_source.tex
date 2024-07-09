@@ -2,200 +2,190 @@
 \hypertarget{GraphicDisplay_8h_source}{}\label{GraphicDisplay_8h_source}\index{src/GraphicDisplay.h@{src/GraphicDisplay.h}}
 \mbox{\hyperlink{GraphicDisplay_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ GraphicDisplay.h}}
-\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
-\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Jun\ 28,\ 2024}}
-\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ pablo-\/jean}}
-\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
-\DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ GRAPHICDISPLAY\_H\_}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ GRAPHICDISPLAY\_H\_}}
-\DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ Includes}}
-\DoxyCodeLine{00013\ \textcolor{comment}{\ */}}
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <assert.h>}}
-\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <math.h>}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
-\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
-\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
-\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#ifndef\ GRAPHICDISPLAY\_H\_}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ GRAPHICDISPLAY\_H\_}}
 \DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ssd1306_8h}{drivers/ssd1306/ssd1306.h}}"{}}}
-\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{st7920_8h}{drivers/st7920/st7920.h}}"{}}}
-\DoxyCodeLine{00026\ }
-\DoxyCodeLine{00027\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00028\ \textcolor{comment}{\ *\ Check\ if\ gd\_config.h\ exists,\ otherwise,\ we\ load\ a\ 'default'\ configuration}}
-\DoxyCodeLine{00029\ \textcolor{comment}{\ *}}
-\DoxyCodeLine{00030\ \textcolor{comment}{\ *\ NOTE:\ Some\ compilers\ can`t\ support\ this\ directive,\ but\ the\ following\ list\ can\ support.}}
-\DoxyCodeLine{00031\ \textcolor{comment}{\ *\ Clang}}
-\DoxyCodeLine{00032\ \textcolor{comment}{\ *\ GCC\ from\ 5.X}}
-\DoxyCodeLine{00033\ \textcolor{comment}{\ *\ Visual\ Studio\ from\ VS2015\ Update\ 2}}
-\DoxyCodeLine{00034\ \textcolor{comment}{\ *}}
-\DoxyCodeLine{00035\ \textcolor{comment}{\ *\ If\ your\ compiler\ give\ an\ error\ in\ this\ line,\ insert\ the\ NO\_SUPPORT\_FOR\_HAS\_INCLUDED}}
-\DoxyCodeLine{00036\ \textcolor{comment}{\ *\ in\ the\ preprocessor\ of\ your\ compiler\ and\ you\ need\ to\ create\ the\ "{}gd\_config.h"{}\ header\ file}}
-\DoxyCodeLine{00037\ \textcolor{comment}{\ */}}
-\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#ifndef\ NO\_SUPPORT\_FOR\_HAS\_INCLUDED}}
-\DoxyCodeLine{00039\ \textcolor{preprocessor}{\ \ \ \ \#if\ \_\_has\_include("{}gd\_config.h"{})}}
-\DoxyCodeLine{00040\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ "{}gd\_config.h"{}}}
-\DoxyCodeLine{00041\ \textcolor{preprocessor}{\ \ \ \ \#else}}
-\DoxyCodeLine{00042\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ GD\_INCLUDE\_FONT\_6x8}}
-\DoxyCodeLine{00043\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ GD\_INCLUDE\_FONT\_7x10}}
-\DoxyCodeLine{00044\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ GD\_INCLUDE\_FONT\_11x18}}
-\DoxyCodeLine{00045\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ GD\_INCLUDE\_FONT\_16x26}}
-\DoxyCodeLine{00046\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ GD\_INCLUDE\_FONT\_16x24}}
-\DoxyCodeLine{00047\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ GD\_INCLUDE\_FONT\_16x15}}
-\DoxyCodeLine{00048\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
-\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#else}}
-\DoxyCodeLine{00050\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}gd\_config.h"{}}}
-\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00053\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00054\ \textcolor{comment}{\ *\ Macros}}
-\DoxyCodeLine{00055\ \textcolor{comment}{\ */}}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00057\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00058\ \textcolor{comment}{\ *\ Enumerates}}
-\DoxyCodeLine{00059\ \textcolor{comment}{\ */}}
-\DoxyCodeLine{00060\ }
-\DoxyCodeLine{00066\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\{}
-\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47a7ecfd9fb1630fe36cbb0874ea0022a9c}{GD\_OK}},\ }
-\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47aed21b1597717f735fea79887750b47e6}{GD\_FAIL}}}
-\DoxyCodeLine{00069\ \}\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ *\ Includes}}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ <assert.h>}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ssd1306_8h}{drivers/ssd1306/ssd1306.h}}"{}}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{st7920_8h}{drivers/st7920/st7920.h}}"{}}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00042\ \textcolor{comment}{\ *\ Check\ if\ gd\_config.h\ exists,\ otherwise,\ we\ load\ a\ 'default'\ configuration}}
+\DoxyCodeLine{00043\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00044\ \textcolor{comment}{\ *\ NOTE:\ Some\ compilers\ can`t\ support\ this\ directive,\ but\ the\ following\ list\ can\ support.}}
+\DoxyCodeLine{00045\ \textcolor{comment}{\ *\ Clang}}
+\DoxyCodeLine{00046\ \textcolor{comment}{\ *\ GCC\ from\ 5.X}}
+\DoxyCodeLine{00047\ \textcolor{comment}{\ *\ Visual\ Studio\ from\ VS2015\ Update\ 2}}
+\DoxyCodeLine{00048\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00049\ \textcolor{comment}{\ *\ If\ your\ compiler\ give\ an\ error\ in\ this\ line,\ insert\ the\ NO\_SUPPORT\_FOR\_HAS\_INCLUDED}}
+\DoxyCodeLine{00050\ \textcolor{comment}{\ *\ in\ the\ preprocessor\ of\ your\ compiler\ and\ you\ need\ to\ create\ the\ "{}gd\_config.h"{}\ header\ file}}
+\DoxyCodeLine{00051\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#ifndef\ NO\_SUPPORT\_FOR\_HAS\_INCLUDED}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\ \ \ \ \#if\ \_\_has\_include("{}gd\_config.h"{})}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ "{}gd\_config.h"{}}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ GD\_INCLUDE\_FONT\_6x8}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ GD\_INCLUDE\_FONT\_7x10}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ GD\_INCLUDE\_FONT\_11x18}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ GD\_INCLUDE\_FONT\_16x26}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ GD\_INCLUDE\_FONT\_16x24}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ GD\_INCLUDE\_FONT\_16x15}}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}gd\_config.h"{}}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00068\ \textcolor{comment}{\ *\ Macros}}
+\DoxyCodeLine{00069\ \textcolor{comment}{\ */}}
 \DoxyCodeLine{00070\ }
-\DoxyCodeLine{00076\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\{}
-\DoxyCodeLine{00077\ \ \ \ \ \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131a35d29177ec6d49d67f824e8da195f49f}{GD\_BLACK}},}
-\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131a515b707bcfb4e0ac44f837fd5234c132}{GD\_WHITE}}\ }
-\DoxyCodeLine{00079\ \}\mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\_color\_e}};}
-\DoxyCodeLine{00080\ }
-\DoxyCodeLine{00081\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00082\ \textcolor{comment}{\ *\ Structs}}
-\DoxyCodeLine{00083\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00071\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00072\ \textcolor{comment}{\ *\ Enumerates}}
+\DoxyCodeLine{00073\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00080\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\{}
+\DoxyCodeLine{00081\ \ \ \ \ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47a7ecfd9fb1630fe36cbb0874ea0022a9c}{GD\_OK}},\ }
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47aed21b1597717f735fea79887750b47e6}{GD\_FAIL}}}
+\DoxyCodeLine{00083\ \}\mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}};}
 \DoxyCodeLine{00084\ }
-\DoxyCodeLine{00092\ \textcolor{keyword}{typedef}\ void\ (*\mbox{\hyperlink{GraphicDisplay_8h_a95a0209da2d9de6e017097cd628d21a1}{fxnGd\_mtxLock}})(void);}
-\DoxyCodeLine{00093\ }
-\DoxyCodeLine{00100\ \textcolor{keyword}{typedef}\ void\ (*\mbox{\hyperlink{GraphicDisplay_8h_a1b23f979756b388cf38cf929e8fd4818}{fxnGd\_mtxUnlock}})(void);}
-\DoxyCodeLine{00101\ }
-\DoxyCodeLine{00217\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
-\DoxyCodeLine{00219\ \ \ \ \ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{structgd__driver__t_a4160faa3f8da427a3941ad11bafc74f0}{pHandle}};}
-\DoxyCodeLine{00220\ }
-\DoxyCodeLine{00233\ \ \ \ \ uint8\_t\ (*fxnSetPixelColor)(\textcolor{keywordtype}{void}*\ handle,\ uint32\_t\ x,\ uint32\_t\ y,\ uint8\_t\ color);}
-\DoxyCodeLine{00234\ }
-\DoxyCodeLine{00244\ \ \ \ \ uint8\_t\ (*fxnFillFrameBuffer)(\textcolor{keywordtype}{void}*\ handle,\ uint8\_t\ color);}
+\DoxyCodeLine{00090\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\{}
+\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131a35d29177ec6d49d67f824e8da195f49f}{GD\_BLACK}},}
+\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131a515b707bcfb4e0ac44f837fd5234c132}{GD\_WHITE}}\ }
+\DoxyCodeLine{00093\ \}\mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\_color\_e}};}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00096\ \textcolor{comment}{\ *\ Structs}}
+\DoxyCodeLine{00097\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00105\ \textcolor{keyword}{typedef}\ void\ (*\mbox{\hyperlink{GraphicDisplay_8h_a95a0209da2d9de6e017097cd628d21a1}{fxnGd\_mtxLock}})(void);}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00112\ \textcolor{keyword}{typedef}\ void\ (*\mbox{\hyperlink{GraphicDisplay_8h_a1b23f979756b388cf38cf929e8fd4818}{fxnGd\_mtxUnlock}})(void);}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00229\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00231\ \ \ \ \ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{structgd__driver__t_a4160faa3f8da427a3941ad11bafc74f0}{pHandle}};}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00244\ \ \ \ \ uint8\_t\ (*fxnSetPixelColor)(\textcolor{keywordtype}{void}*\ handle,\ uint32\_t\ x,\ uint32\_t\ y,\ uint8\_t\ color);}
 \DoxyCodeLine{00245\ }
-\DoxyCodeLine{00255\ \ \ \ \ uint8\_t\ (*fxnRefreshDisp)(\textcolor{keywordtype}{void}*\ handle);}
-\DoxyCodeLine{00256\ }
-\DoxyCodeLine{00266\ \ \ \ \ uint8\_t\ (*fxnSetOn)(\textcolor{keywordtype}{void}*\ handle,\ \textcolor{keywordtype}{bool}\ on);}
-\DoxyCodeLine{00267\ }
-\DoxyCodeLine{00279\ \ \ \ \ uint8\_t\ (*fxnSetContrast)(\textcolor{keywordtype}{void}*\ handle,\ uint8\_t\ value);}
-\DoxyCodeLine{00280\ }
-\DoxyCodeLine{00281\ \}\mbox{\hyperlink{structgd__driver__t}{gd\_driver\_t}};}
-\DoxyCodeLine{00282\ }
-\DoxyCodeLine{00293\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
-\DoxyCodeLine{00295\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ \mbox{\hyperlink{structgd__font__t_a582b2bf69bb1d4c071dacea7ec8decd5}{width}};}
-\DoxyCodeLine{00297\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ \mbox{\hyperlink{structgd__font__t_ad0c807a87b77f8e5598471e67e26f06c}{height}};}
-\DoxyCodeLine{00299\ \ \ \ \ \textcolor{keyword}{const}\ uint16\_t\ *\textcolor{keyword}{const}\ \mbox{\hyperlink{structgd__font__t_aa0744a38d7362ffce8ee3685c5e52215}{data}};}
-\DoxyCodeLine{00301\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ *\textcolor{keyword}{const}\ \mbox{\hyperlink{structgd__font__t_a0859118417ec78a1a10a829ad7521f50}{char\_width}};}
-\DoxyCodeLine{00302\ \}\mbox{\hyperlink{structgd__font__t}{gd\_font\_t}};}
-\DoxyCodeLine{00303\ }
-\DoxyCodeLine{00311\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
-\DoxyCodeLine{00313\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structgd__vertex__t_af4a2542f9f937eaccb213ffb9cbf9f07}{x}};}
-\DoxyCodeLine{00315\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structgd__vertex__t_a20b27aae56c187008604c6c239029cb4}{y}};}
-\DoxyCodeLine{00316\ \}\mbox{\hyperlink{structgd__vertex__t}{gd\_vertex\_t}};}
-\DoxyCodeLine{00317\ }
-\DoxyCodeLine{00325\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
-\DoxyCodeLine{00327\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structgd__t_a83ff4968431898c2d8b260ad4a0a3574}{u32Height}};}
-\DoxyCodeLine{00329\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structgd__t_a837a07c7091d98bcd6836ef36ef0a471}{u32Width}};}
-\DoxyCodeLine{00330\ }
-\DoxyCodeLine{00331\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgd__t_1_1t__fxn}{t\_fxn}}\{}
-\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{GraphicDisplay_8h_a95a0209da2d9de6e017097cd628d21a1}{fxnGd\_mtxLock}}\ \mbox{\hyperlink{structgd__t_1_1t__fxn_a2a3710ec34d34a350da6ca46174a046d}{mtxLock}};}
-\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{GraphicDisplay_8h_a1b23f979756b388cf38cf929e8fd4818}{fxnGd\_mtxUnlock}}\ \mbox{\hyperlink{structgd__t_1_1t__fxn_aac006189f35c42c7b2df4eb25d8b1607}{mtxUnlock}};}
-\DoxyCodeLine{00338\ \ \ \ \ \}fxn;}
-\DoxyCodeLine{00339\ }
-\DoxyCodeLine{00342\ \ \ \ \ \mbox{\hyperlink{structgd__driver__t}{gd\_driver\_t}}\ *\mbox{\hyperlink{structgd__t_a5cf04bce3dcba9fb45eb71fddb112930}{disp}};}
-\DoxyCodeLine{00343\ }
-\DoxyCodeLine{00344\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgd__t_1_1t__intern}{t\_intern}}\{}
-\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structgd__t_1_1t__intern_a41046747e2047a299d29315ef8be9fb6}{u32BufferLen}};}
-\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structgd__t_1_1t__intern_ab7683dad54aeac2497e3b565cd5e9c20}{u32CurrX}};}
-\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structgd__t_1_1t__intern_abc8f33bc2626db871ba727bbef294e0b}{u32CurrY}};}
-\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structgd__t_1_1t__intern_a051682e225b5aa03041e6c7a74922aa7}{bDisplayOn}};}
-\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structgd__t_1_1t__intern_aa08fa087a04f734c8bdf12fd4506a495}{bInitialized}};}
-\DoxyCodeLine{00360\ \ \ \ \ \}\_intern;\ }
-\DoxyCodeLine{00361\ \}\mbox{\hyperlink{structgd__t}{gd\_t}};}
-\DoxyCodeLine{00362\ }
-\DoxyCodeLine{00368\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
-\DoxyCodeLine{00385\ \ \ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{structgd__params__t_aaaa895d635b096ec43bcc3a6c9179829}{DisplayHandle}};}
-\DoxyCodeLine{00386\ }
-\DoxyCodeLine{00389\ \ \ \ \ \mbox{\hyperlink{structgd__driver__t}{gd\_driver\_t}}\ *\mbox{\hyperlink{structgd__params__t_a5eb06e32a4d37b36f5756826310d72ab}{DisplayDriver}};}
-\DoxyCodeLine{00390\ }
-\DoxyCodeLine{00394\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structgd__params__t_a4aae007f2fd7f42d3dfd68d10d7ff622}{u32Height}};}
-\DoxyCodeLine{00395\ }
-\DoxyCodeLine{00399\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structgd__params__t_a89d1e1d557d36339ca109085300751bb}{u32Width}};}
-\DoxyCodeLine{00400\ }
-\DoxyCodeLine{00404\ \ \ \ \ \mbox{\hyperlink{GraphicDisplay_8h_a95a0209da2d9de6e017097cd628d21a1}{fxnGd\_mtxLock}}\ \mbox{\hyperlink{structgd__params__t_a7ed29bfb21d9182e982162fa98e3f827}{mtxLock}};}
-\DoxyCodeLine{00405\ }
-\DoxyCodeLine{00409\ \ \ \ \ \mbox{\hyperlink{GraphicDisplay_8h_a1b23f979756b388cf38cf929e8fd4818}{fxnGd\_mtxUnlock}}\ \mbox{\hyperlink{structgd__params__t_ae243adb1f5c05325056e494f1a6ec2b7}{mtxUnlock}};}
-\DoxyCodeLine{00410\ \}\mbox{\hyperlink{structgd__params__t}{gd\_params\_t}};}
-\DoxyCodeLine{00411\ }
-\DoxyCodeLine{00412\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00413\ \textcolor{comment}{\ *\ Externs}}
-\DoxyCodeLine{00414\ \textcolor{comment}{\ */}}
-\DoxyCodeLine{00415\ }
-\DoxyCodeLine{00423\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structgd__driver__t}{gd\_driver\_t}}*\ \mbox{\hyperlink{group__Ext__Drivers_ga9b964786596cf1d0f845eddc13ea9a67}{Gd\_Driver\_SSD1306}};}
-\DoxyCodeLine{00425\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structgd__driver__t}{gd\_driver\_t}}*\ \mbox{\hyperlink{group__Ext__Drivers_gaa309ec642bd4ff6ad8d5975bf53bf33e}{Gd\_Driver\_ST7920}};}
-\DoxyCodeLine{00430\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00431\ \textcolor{comment}{\ *\ Publics}}
-\DoxyCodeLine{00432\ \textcolor{comment}{\ */}}
-\DoxyCodeLine{00433\ }
-\DoxyCodeLine{00449\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_ga058b61d16a02b94864bd04314ddbea6d}{GD\_Init}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ \mbox{\hyperlink{structgd__params__t}{gd\_params\_t}}\ *params);}
-\DoxyCodeLine{00450\ }
-\DoxyCodeLine{00460\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_ga6c6678fa834f9eda68100a55bc829929}{GD\_Fill}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\_color\_e}}\ color);}
-\DoxyCodeLine{00461\ }
-\DoxyCodeLine{00470\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_gabbd368ffa7d5d787e5c4aaa64e5e81f2}{GD\_UpdateScreen}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd);}
-\DoxyCodeLine{00471\ }
-\DoxyCodeLine{00483\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_gacf5efac777700f62a56e485113e671fc}{GD\_DrawPixel}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ \ uint32\_t\ x,\ uint32\_t\ y,\ \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\_color\_e}}\ color);}
-\DoxyCodeLine{00484\ }
-\DoxyCodeLine{00496\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_ga54e4b411218cbeda9d441d3e0d541b27}{GD\_WriteChar}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ \ \textcolor{keywordtype}{char}\ ch,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structgd__font__t}{gd\_font\_t}}\ *Font,\ \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\_color\_e}}\ color);}
-\DoxyCodeLine{00497\ }
-\DoxyCodeLine{00509\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_gaefebb04456bcf0613f9369a339b75f28}{GD\_WriteString}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ \ \textcolor{keywordtype}{char}*\ str,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structgd__font__t}{gd\_font\_t}}\ *Font,\ \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\_color\_e}}\ color);}
-\DoxyCodeLine{00510\ }
+\DoxyCodeLine{00254\ \ \ \ \ uint8\_t\ (*fxnFillFrameBuffer)(\textcolor{keywordtype}{void}*\ handle,\ uint8\_t\ color);}
+\DoxyCodeLine{00255\ }
+\DoxyCodeLine{00264\ \ \ \ \ uint8\_t\ (*fxnRefreshDisp)(\textcolor{keywordtype}{void}*\ handle);}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00274\ \ \ \ \ uint8\_t\ (*fxnSetOn)(\textcolor{keywordtype}{void}*\ handle,\ \textcolor{keywordtype}{bool}\ on);}
+\DoxyCodeLine{00275\ }
+\DoxyCodeLine{00286\ \ \ \ \ uint8\_t\ (*fxnSetContrast)(\textcolor{keywordtype}{void}*\ handle,\ uint8\_t\ value);}
+\DoxyCodeLine{00287\ }
+\DoxyCodeLine{00288\ \}\mbox{\hyperlink{structgd__driver__t}{gd\_driver\_t}};}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00300\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00302\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ \mbox{\hyperlink{structgd__font__t_a582b2bf69bb1d4c071dacea7ec8decd5}{width}};}
+\DoxyCodeLine{00304\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ \mbox{\hyperlink{structgd__font__t_ad0c807a87b77f8e5598471e67e26f06c}{height}};}
+\DoxyCodeLine{00306\ \ \ \ \ \textcolor{keyword}{const}\ uint16\_t\ *\textcolor{keyword}{const}\ \mbox{\hyperlink{structgd__font__t_aa0744a38d7362ffce8ee3685c5e52215}{data}};}
+\DoxyCodeLine{00308\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ *\textcolor{keyword}{const}\ \mbox{\hyperlink{structgd__font__t_a0859118417ec78a1a10a829ad7521f50}{char\_width}};}
+\DoxyCodeLine{00309\ \}\mbox{\hyperlink{structgd__font__t}{gd\_font\_t}};}
+\DoxyCodeLine{00310\ }
+\DoxyCodeLine{00318\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00320\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structgd__vertex__t_af4a2542f9f937eaccb213ffb9cbf9f07}{x}};}
+\DoxyCodeLine{00322\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structgd__vertex__t_a20b27aae56c187008604c6c239029cb4}{y}};}
+\DoxyCodeLine{00323\ \}\mbox{\hyperlink{structgd__vertex__t}{gd\_vertex\_t}};}
+\DoxyCodeLine{00324\ }
+\DoxyCodeLine{00332\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00334\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structgd__t_a83ff4968431898c2d8b260ad4a0a3574}{u32Height}};}
+\DoxyCodeLine{00336\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structgd__t_a837a07c7091d98bcd6836ef36ef0a471}{u32Width}};}
+\DoxyCodeLine{00337\ }
+\DoxyCodeLine{00338\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgd__t_1_1t__fxn}{t\_fxn}}\{}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{GraphicDisplay_8h_a95a0209da2d9de6e017097cd628d21a1}{fxnGd\_mtxLock}}\ \mbox{\hyperlink{structgd__t_1_1t__fxn_a2a3710ec34d34a350da6ca46174a046d}{mtxLock}};}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{GraphicDisplay_8h_a1b23f979756b388cf38cf929e8fd4818}{fxnGd\_mtxUnlock}}\ \mbox{\hyperlink{structgd__t_1_1t__fxn_aac006189f35c42c7b2df4eb25d8b1607}{mtxUnlock}};}
+\DoxyCodeLine{00345\ \ \ \ \ \}fxn;}
+\DoxyCodeLine{00346\ }
+\DoxyCodeLine{00349\ \ \ \ \ \mbox{\hyperlink{structgd__driver__t}{gd\_driver\_t}}\ *\mbox{\hyperlink{structgd__t_a5cf04bce3dcba9fb45eb71fddb112930}{disp}};}
+\DoxyCodeLine{00350\ }
+\DoxyCodeLine{00351\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgd__t_1_1t__intern}{t\_intern}}\{}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structgd__t_1_1t__intern_a41046747e2047a299d29315ef8be9fb6}{u32BufferLen}};}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structgd__t_1_1t__intern_ab7683dad54aeac2497e3b565cd5e9c20}{u32CurrX}};}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structgd__t_1_1t__intern_abc8f33bc2626db871ba727bbef294e0b}{u32CurrY}};}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structgd__t_1_1t__intern_a051682e225b5aa03041e6c7a74922aa7}{bDisplayOn}};}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structgd__t_1_1t__intern_aa08fa087a04f734c8bdf12fd4506a495}{bInitialized}};}
+\DoxyCodeLine{00367\ \ \ \ \ \}\_intern;\ }
+\DoxyCodeLine{00368\ \}\mbox{\hyperlink{structgd__t}{gd\_t}};}
+\DoxyCodeLine{00369\ }
+\DoxyCodeLine{00375\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00392\ \ \ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{structgd__params__t_aaaa895d635b096ec43bcc3a6c9179829}{DisplayHandle}};}
+\DoxyCodeLine{00393\ }
+\DoxyCodeLine{00396\ \ \ \ \ \mbox{\hyperlink{structgd__driver__t}{gd\_driver\_t}}\ *\mbox{\hyperlink{structgd__params__t_a5eb06e32a4d37b36f5756826310d72ab}{DisplayDriver}};}
+\DoxyCodeLine{00397\ }
+\DoxyCodeLine{00401\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structgd__params__t_a4aae007f2fd7f42d3dfd68d10d7ff622}{u32Height}};}
+\DoxyCodeLine{00402\ }
+\DoxyCodeLine{00406\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structgd__params__t_a89d1e1d557d36339ca109085300751bb}{u32Width}};}
+\DoxyCodeLine{00407\ }
+\DoxyCodeLine{00411\ \ \ \ \ \mbox{\hyperlink{GraphicDisplay_8h_a95a0209da2d9de6e017097cd628d21a1}{fxnGd\_mtxLock}}\ \mbox{\hyperlink{structgd__params__t_a7ed29bfb21d9182e982162fa98e3f827}{mtxLock}};}
+\DoxyCodeLine{00412\ }
+\DoxyCodeLine{00416\ \ \ \ \ \mbox{\hyperlink{GraphicDisplay_8h_a1b23f979756b388cf38cf929e8fd4818}{fxnGd\_mtxUnlock}}\ \mbox{\hyperlink{structgd__params__t_ae243adb1f5c05325056e494f1a6ec2b7}{mtxUnlock}};}
+\DoxyCodeLine{00417\ \}\mbox{\hyperlink{structgd__params__t}{gd\_params\_t}};}
+\DoxyCodeLine{00418\ }
+\DoxyCodeLine{00419\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00420\ \textcolor{comment}{\ *\ Externs}}
+\DoxyCodeLine{00421\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00422\ }
+\DoxyCodeLine{00430\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structgd__driver__t}{gd\_driver\_t}}*\ \mbox{\hyperlink{group__Ext__Drivers_ga9b964786596cf1d0f845eddc13ea9a67}{Gd\_Driver\_SSD1306}};}
+\DoxyCodeLine{00432\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structgd__driver__t}{gd\_driver\_t}}*\ \mbox{\hyperlink{group__Ext__Drivers_gaa309ec642bd4ff6ad8d5975bf53bf33e}{Gd\_Driver\_ST7920}};}
+\DoxyCodeLine{00437\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00438\ \textcolor{comment}{\ *\ Publics}}
+\DoxyCodeLine{00439\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00440\ }
+\DoxyCodeLine{00455\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_ga058b61d16a02b94864bd04314ddbea6d}{GD\_Init}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ \mbox{\hyperlink{structgd__params__t}{gd\_params\_t}}\ *params);}
+\DoxyCodeLine{00456\ }
+\DoxyCodeLine{00465\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_ga6c6678fa834f9eda68100a55bc829929}{GD\_Fill}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\_color\_e}}\ color);}
+\DoxyCodeLine{00466\ }
+\DoxyCodeLine{00474\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_gabbd368ffa7d5d787e5c4aaa64e5e81f2}{GD\_UpdateScreen}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd);}
+\DoxyCodeLine{00475\ }
+\DoxyCodeLine{00486\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_gacf5efac777700f62a56e485113e671fc}{GD\_DrawPixel}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ \ uint32\_t\ x,\ uint32\_t\ y,\ \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\_color\_e}}\ color);}
+\DoxyCodeLine{00487\ }
+\DoxyCodeLine{00498\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_ga54e4b411218cbeda9d441d3e0d541b27}{GD\_WriteChar}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ \ \textcolor{keywordtype}{char}\ ch,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structgd__font__t}{gd\_font\_t}}\ *Font,\ \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\_color\_e}}\ color);}
+\DoxyCodeLine{00499\ }
+\DoxyCodeLine{00510\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_gaefebb04456bcf0613f9369a339b75f28}{GD\_WriteString}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ \ \textcolor{keywordtype}{char}*\ str,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structgd__font__t}{gd\_font\_t}}\ *Font,\ \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\_color\_e}}\ color);}
+\DoxyCodeLine{00511\ }
 \DoxyCodeLine{00521\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_ga7e227bdbef25fc6ec669b4a84c649dc5}{GD\_SetCursor}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ \ uint32\_t\ x,\ uint32\_t\ y);}
 \DoxyCodeLine{00522\ }
-\DoxyCodeLine{00536\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_ga5fb7fb14fb864ee9912458539ed0b030}{GD\_Line}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ \ uint32\_t\ x1,\ uint32\_t\ y1,\ uint32\_t\ x2,\ uint32\_t\ y2,\ \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\_color\_e}}\ color);}
-\DoxyCodeLine{00537\ }
-\DoxyCodeLine{00552\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_ga1b00f4fc32367f504451fca2f6736ab5}{GD\_DrawArc}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ \ uint32\_t\ x,\ uint32\_t\ y,\ uint32\_t\ radius,\ uint16\_t\ start\_angle,\ uint16\_t\ sweep,\ \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\_color\_e}}\ color);}
-\DoxyCodeLine{00553\ }
-\DoxyCodeLine{00568\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_gaa1cd0457fcc71e1698445f4011b52d08}{GD\_DrawArcWithRadiusLine}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ uint32\_t\ x,\ uint32\_t\ y,\ uint32\_t\ radius,\ uint16\_t\ start\_angle,\ uint16\_t\ sweep,\ \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\_color\_e}}\ color);}
-\DoxyCodeLine{00569\ }
-\DoxyCodeLine{00570\ }
-\DoxyCodeLine{00583\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_ga35753d3a2b4f1b739268eeb24bf620ba}{GD\_DrawCircle}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ uint32\_t\ par\_x,\ uint32\_t\ par\_y,\ uint32\_t\ par\_r,\ \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\_color\_e}}\ color);}
-\DoxyCodeLine{00584\ }
-\DoxyCodeLine{00585\ }
-\DoxyCodeLine{00598\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_gaedea84e326e35e9647d1c26e28d68636}{GD\_FillCircle}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ uint32\_t\ par\_x,uint32\_t\ par\_y,uint32\_t\ par\_r,\mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\_color\_e}}\ par\_color);}
-\DoxyCodeLine{00599\ }
-\DoxyCodeLine{00612\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_ga61dabdcec8681e3d106c2ae32846e5a1}{GD\_Polyline}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ \mbox{\hyperlink{structgd__vertex__t}{gd\_vertex\_t}}\ *par\_vertex,\ uint16\_t\ par\_size,\ \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\_color\_e}}\ color);}
-\DoxyCodeLine{00613\ }
-\DoxyCodeLine{00628\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_ga8b7073ba76962ae60d6dbf84269ff519}{GD\_DrawRectangle}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ uint32\_t\ x1,\ uint32\_t\ y1,\ uint32\_t\ x2,\ uint32\_t\ y2,\ \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\_color\_e}}\ color);}
-\DoxyCodeLine{00629\ }
-\DoxyCodeLine{00644\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_gaaed1396f92e368d4925305a3cd4c1152}{GD\_FillRectangle}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ uint32\_t\ x1,\ uint32\_t\ y1,\ uint32\_t\ x2,\ uint32\_t\ y2,\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ color);}
-\DoxyCodeLine{00645\ }
-\DoxyCodeLine{00661\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_ga7218665b79a12fc0b2152ed9aec842aa}{GD\_DrawBitmap}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ uint32\_t\ x,\ uint32\_t\ y,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ bitmap,\ uint32\_t\ w,\ uint32\_t\ h,\ \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\_color\_e}}\ color);}
-\DoxyCodeLine{00662\ }
+\DoxyCodeLine{00535\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_ga5fb7fb14fb864ee9912458539ed0b030}{GD\_Line}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ \ uint32\_t\ x1,\ uint32\_t\ y1,\ uint32\_t\ x2,\ uint32\_t\ y2,\ \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\_color\_e}}\ color);}
+\DoxyCodeLine{00536\ }
+\DoxyCodeLine{00550\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_ga1b00f4fc32367f504451fca2f6736ab5}{GD\_DrawArc}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ \ uint32\_t\ x,\ uint32\_t\ y,\ uint32\_t\ radius,\ uint16\_t\ start\_angle,\ uint16\_t\ sweep,\ \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\_color\_e}}\ color);}
+\DoxyCodeLine{00551\ }
+\DoxyCodeLine{00565\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_gaa1cd0457fcc71e1698445f4011b52d08}{GD\_DrawArcWithRadiusLine}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ uint32\_t\ x,\ uint32\_t\ y,\ uint32\_t\ radius,\ uint16\_t\ start\_angle,\ uint16\_t\ sweep,\ \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\_color\_e}}\ color);}
+\DoxyCodeLine{00566\ }
+\DoxyCodeLine{00567\ }
+\DoxyCodeLine{00579\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_ga35753d3a2b4f1b739268eeb24bf620ba}{GD\_DrawCircle}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ uint32\_t\ par\_x,\ uint32\_t\ par\_y,\ uint32\_t\ par\_r,\ \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\_color\_e}}\ color);}
+\DoxyCodeLine{00580\ }
+\DoxyCodeLine{00581\ }
+\DoxyCodeLine{00593\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_gaedea84e326e35e9647d1c26e28d68636}{GD\_FillCircle}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ uint32\_t\ par\_x,uint32\_t\ par\_y,uint32\_t\ par\_r,\mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\_color\_e}}\ par\_color);}
+\DoxyCodeLine{00594\ }
+\DoxyCodeLine{00607\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_ga61dabdcec8681e3d106c2ae32846e5a1}{GD\_Polyline}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ \mbox{\hyperlink{structgd__vertex__t}{gd\_vertex\_t}}\ *par\_vertex,\ uint16\_t\ par\_size,\ \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\_color\_e}}\ color);}
+\DoxyCodeLine{00608\ }
+\DoxyCodeLine{00623\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_ga8b7073ba76962ae60d6dbf84269ff519}{GD\_DrawRectangle}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ uint32\_t\ x1,\ uint32\_t\ y1,\ uint32\_t\ x2,\ uint32\_t\ y2,\ \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\_color\_e}}\ color);}
+\DoxyCodeLine{00624\ }
+\DoxyCodeLine{00637\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_gaaed1396f92e368d4925305a3cd4c1152}{GD\_FillRectangle}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ uint32\_t\ x1,\ uint32\_t\ y1,\ uint32\_t\ x2,\ uint32\_t\ y2,\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ color);}
+\DoxyCodeLine{00638\ }
+\DoxyCodeLine{00658\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_ga7218665b79a12fc0b2152ed9aec842aa}{GD\_DrawBitmap}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ uint32\_t\ x,\ uint32\_t\ y,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ bitmap,\ uint32\_t\ w,\ uint32\_t\ h,\ \mbox{\hyperlink{GraphicDisplay_8h_a4f2cb946ed52adcaffd555dd99107131}{gd\_color\_e}}\ color);}
+\DoxyCodeLine{00659\ }
 \DoxyCodeLine{00669\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_ga044621845c140aa70d7be1ade8cfe078}{GD\_SetContrast}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ \textcolor{keyword}{const}\ uint8\_t\ value);}
 \DoxyCodeLine{00670\ }
-\DoxyCodeLine{00675\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_ga0a2122066e0046a15d3446441b27fb06}{GD\_SetDisplayOn}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ \textcolor{keywordtype}{bool}\ on);}
-\DoxyCodeLine{00676\ }
-\DoxyCodeLine{00682\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group__Gd__Function_gaa392d77a94fb811c7114fcd003398f8d}{GD\_GetDisplayOn}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd);}
-\DoxyCodeLine{00683\ }
-\DoxyCodeLine{00684\ \textcolor{comment}{//\ Low-\/level\ procedures}}
-\DoxyCodeLine{00685\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_gae2f338a026cf0ee8de48a650290caa44}{GD\_Reset}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd);}
-\DoxyCodeLine{00686\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_ga65392fc3b1e28c133812dddf6c4ab3b5}{GD\_WriteCommand}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ uint8\_t\ \textcolor{keywordtype}{byte});}
-\DoxyCodeLine{00687\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_ga0b6cf078867fed366c7605945c3fe3df}{GD\_WriteData}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ uint8\_t*\ buffer,\ \textcolor{keywordtype}{size\_t}\ buff\_size);}
-\DoxyCodeLine{00688\ }
-\DoxyCodeLine{00693\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ GRAPHICDISPLAY\_H\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00679\ \mbox{\hyperlink{GraphicDisplay_8h_a511ea90d1d18ab0dccbb13cf9deeea47}{gd\_error\_e}}\ \mbox{\hyperlink{group__Gd__Function_ga0a2122066e0046a15d3446441b27fb06}{GD\_SetDisplayOn}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd,\ \textcolor{keywordtype}{bool}\ on);}
+\DoxyCodeLine{00680\ }
+\DoxyCodeLine{00688\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group__Gd__Function_gaa392d77a94fb811c7114fcd003398f8d}{GD\_GetDisplayOn}}(\mbox{\hyperlink{structgd__t}{gd\_t}}\ *Gd);}
+\DoxyCodeLine{00689\ }
+\DoxyCodeLine{00694\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ GRAPHICDISPLAY\_H\_\ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

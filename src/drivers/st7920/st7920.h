@@ -107,14 +107,41 @@ typedef uint8_t (*fxn1306spi_write)(uint8_t *buff, uint32_t len);
 typedef struct{
 	st7920_mode_e Mode;
 	struct{
-		// delay
+		/**
+		 * @brief 	Pointer to function to execute a milliseconds delay.
+		 */
 		fxnDelay_ms delayMs;
-		// Mutex
+
+		/**
+		 * @brief 	Pointer to function that waits and lock the mutex.
+		 */
 		fxn7920_mtxLock mtxLock;
+
+		/**
+		 * @brief 	Pointer to function that will unlock the mutex.
+		 * 
+		 */
 		fxn7920_mtxunlock mtxUnlock;
-		// only for spi
+
+		/**
+		 * @brief 	Pointer to function that controls the Chip Select pin of ST7920.
+		 * @note 	Mandatory when display is on ST7920_MODE_SPI.
+		 * 
+		 */
 		fxn1306spi_cs spiCs;
+
+		/**
+		 * @brief 	Pointer to function that controls the Reset pin of ST7920.
+		 * @note 	Mandatory when display is on ST7920_MODE_SPI.
+		 * 
+		 */
 		fxn1306spi_reset spiReset;
+
+		/**
+		 * @brief 	Pointer to function that write data over SPI.
+		 * @note 	Mandatory when display is on ST7920_MODE_SPI.
+		 * @pre		Configure the SPI Peripheral in Mode 1 (CPOL=0 and CPHA=1).
+		 */
 		fxn1306spi_write spiWrite;
 	}fxn;
 	struct{
@@ -126,21 +153,80 @@ typedef struct{
 	}_intern;
 }st7920_t;
 
+/**
+ * @struct st7920_params_t
+ * @brief  Struct to initialize and configure the driver to control the ST7920 peripheral.
+ * 
+ */
 typedef struct{
+	/**
+	 * @brief 	Configures the Mode of the ST7920. This driver can work on 4bit, 8bit or SPI mode.
+	 * @note	Only ST7920_MODE_SPI is implemented. Other values will assert the program.
+	 * 
+	 */
 	st7920_mode_e Mode;
+
+	/**
+	 * @brief Configure the Width of the display.
+	 * 
+	 */
 	uint32_t u32Width;
+
+	/**
+	 * @brief Configure the Height of the display.
+	 * 
+	 */
 	uint32_t u32Heigth;
+
+	/**
+	 * @brief 	Sets to \c true to provide a external FrameBuffer array. The size of array must be calculated
+	 * 		 	with the formula Width*Height/8. If \c false, the library will allocate the array in Initialization.
+	 * @note	To provide the buffer, use @link ST7920_SetFrameBuffer @endlink routine to provide the array.
+ 	 * 
+	 */
 	bool bUseExternalFrameBuffer;
 
 	//functions
-	// delay
+	/**
+	 * @brief 	Pointer to delay milliseconds routine.
+	 * 
+	 */
 	fxnDelay_ms delayMs;
+
 	// Mutex
+	/**
+	 * @brief 	Pointer to mutex lock. If not used, sets to \c NULL.
+	 * 
+	 */
 	fxn7920_mtxLock mtxLock;
+
+	/**
+	 * @brief 	Pointer to mutex unlock. If not used, sets to \c NULL.
+	 * 
+	 */
 	fxn7920_mtxunlock mtxUnlock;
+
 	// only for spi
+	/**
+	 * @brief 	Pointer to Chip Select controller routine.
+	 * @note 	Mandatory when display is on ST7920_MODE_SPI.
+	 * 
+	 */
 	fxn1306spi_cs spiCs;
+
+	/**
+	 * @brief 	Pointer to Reset controller routine.
+	 * @note 	Mandatory when display is on ST7920_MODE_SPI.
+	 * 
+	 */
 	fxn1306spi_reset spiReset;
+
+	/**
+	 * @brief 	Pointer to spi controller routine.
+	 * @pre		Configure the SPI Peripheral in Mode 1 (CPOL=0 and CPHA=1).
+	 * @note 	Mandatory when display is on ST7920_MODE_SPI.
+	 * 
+	 */
 	fxn1306spi_write spiWrite;
 }st7920_params_t;
 
@@ -148,14 +234,50 @@ typedef struct{
  * Publics
  */
 
+/**
+ * @brief 
+ * 
+ * @param st7920 
+ * @param params 
+ * @return uint8_t 
+ */
 uint8_t ST7920_Init(st7920_t *st7920, st7920_params_t *params);
 
+/**
+ * @brief 
+ * 
+ * @param st7920 
+ * @param pu8FrameBuffer 
+ * @return uint8_t 
+ */
 uint8_t ST7920_SetFrameBuffer(st7920_t *st7920, uint8_t *pu8FrameBuffer);
 
+/**
+ * @brief 
+ * 
+ * @param st7920 
+ * @return uint8_t 
+ */
 uint8_t ST7920_Refresh(st7920_t *st7920);
 
+/**
+ * @brief 
+ * 
+ * @param st7920 
+ * @param x 
+ * @param y 
+ * @param color 
+ * @return uint8_t 
+ */
 uint8_t ST7920_Write(st7920_t *st7920, uint32_t x, uint32_t y, bool color);
 
+/**
+ * @brief 
+ * 
+ * @param st7920 
+ * @param color 
+ * @return uint8_t 
+ */
 uint8_t ST7920_Fill(st7920_t *st7920, uint8_t color);
 
 #endif /* DRIVERS_ST7920_ST7920_H_ */
