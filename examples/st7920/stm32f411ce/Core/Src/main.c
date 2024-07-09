@@ -21,10 +21,11 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <string.h>
+#include <stdio.h>
+
 #include "GraphicDisplay.h"
-
 #include "GraphicDisplay_Fonts.h"
-
 #include "drivers/st7920/st7920.h"
 /* USER CODE END Includes */
 
@@ -139,6 +140,9 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
+	char Text[20];
+	uint32_t cnt = 0;
+
 	st7920_t St7920 = {0};
 	st7920_params_t St7920_params = {
 			.Mode = ST7920_MODE_SPI,
@@ -190,12 +194,27 @@ int main(void)
   //GD_WriteString(&Graphic, "Ola Mundo", Font_11x18, GD_WHITE);
   GD_DrawBitmap(&Graphic, 2, 2, Ouroboros_logo_bmp, Ouroboros_logo_bmp_width, Ouroboros_logo_bmp_height, GD_WHITE);
   GD_UpdateScreen(&Graphic);
+
+  HAL_Delay(1000);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  GD_Fill(&Graphic, GD_BLACK);
+	  sprintf(Text, "Ctn: %lu", cnt);
+	  GD_SetCursor(&Graphic, 1, 28);
+	  GD_WriteString(&Graphic, Text, Font_11x18, GD_WHITE);
+	  GD_DrawCircle(&Graphic, 10, 10, 8, GD_WHITE);
+	  GD_DrawRectangle(&Graphic, 25, 5, 50, 15, GD_WHITE);
+
+	  GD_UpdateScreen(&Graphic);
+	  HAL_Delay(500);
+	  cnt++;
+	  if (cnt > 999){
+		  cnt = 0;
+	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

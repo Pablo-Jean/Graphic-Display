@@ -220,18 +220,18 @@ uint8_t ST7920_Refresh(st7920_t *st7920){
 	width = st7920->_intern.u32Width;
 	for(y=0;y<height;y++)
 	{
+		if(y<32)//Up
+		{
+			_write_command(st7920, 0x80 | y);										//Y(0-31)
+			_write_command(st7920, 0x80 | 0);										//X(0-8)
+		}
+		else
+		{
+			_write_command(st7920, 0x80 | (y-32));//Y(0-31)
+			_write_command(st7920, 0x88 | 0);//X(0-8)
+		}
 		for(x=0 ; x<(width/16) ; x++)
 		{
-			if(y<32)//Up
-			{
-				_write_command(st7920, 0x80 | y);										//Y(0-31)
-				_write_command(st7920, 0x80 | x);										//X(0-8)
-			}
-			else
-			{
-				_write_command(st7920, 0x80 | (y-32));//Y(0-31)
-				_write_command(st7920, 0x88 | x);//X(0-8)
-			}
 
 			Index=(y*width/8) + (x*2);
 
