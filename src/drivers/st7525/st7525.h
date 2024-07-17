@@ -14,6 +14,7 @@
  */
 
 #include <assert.h>
+#include <drivers/st7525/st7525_defs.h>
 #include <malloc.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -22,7 +23,6 @@
 #include <stdbool.h>
 #include <string.h>
 
-#include "st7525_defs.h"
 
 /*
  * Macros

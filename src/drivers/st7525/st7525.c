@@ -10,7 +10,7 @@
  * Include
  */
 
-#include "st7525.h"
+#include <drivers/st7525/st7525.h>
 
 /*
  * Privates

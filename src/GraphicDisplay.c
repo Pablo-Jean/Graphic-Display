@@ -47,6 +47,17 @@ gd_driver_t _Gd_Driver_ST7920Attr = {
 };
 gd_driver_t *Gd_Driver_ST7920 = &_Gd_Driver_ST7920Attr;
 
+/** Diver for ST7525 **/
+gd_driver_t _Gd_Driver_ST7525Attr = {
+		.pHandle = NULL,
+		.fxnSetPixelColor = _SET_PIXEL_COLOR_TYPECAST		ST7525_Write,
+		.fxnFillFrameBuffer = _FILL_FRAME_BUFFER_TYPEFCAST 	ST7525_Fill,
+		.fxnRefreshDisp = _REFRESH_DISP_TYPECAST 			ST7525_Refresh,
+		.fxnSetOn = _SET_ON_TYPECASTAT 						ST7525_SetDisplayOn,
+		.fxnSetContrast = _SET_CONTRAST_TYPECAST			ST7525_SetContrast
+};
+gd_driver_t *Gd_Driver_ST7525 = &_Gd_Driver_ST7525Attr;
+
 /* Macros */
 
 /* Display Functions */
