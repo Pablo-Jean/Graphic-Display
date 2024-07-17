@@ -207,7 +207,7 @@ uint8_t ST7920_SetFrameBuffer(st7920_t *st7920, uint8_t *pu8FrameBuffer){
 uint8_t ST7920_Refresh(st7920_t *st7920){
 	uint8_t x, y;
 	uint16_t Index=0;
-	uint8_t Temp[2],Db;
+	uint8_t Temp[2];
 	uint8_t *FrameBuffer;
 	uint32_t height, width;
 
