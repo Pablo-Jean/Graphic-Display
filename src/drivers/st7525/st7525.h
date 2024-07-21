@@ -80,17 +80,23 @@ typedef struct{
 	struct{
 		bool bInitialized;
 		bool bPending;
+		bool bInvertX;
+		bool bInvertY;
 		st7525_frame_rate_e eFrameRate;
 		uint32_t u32FrameSize;
 		uint8_t *pu8FrameBuffer;
 		uint32_t u32Width;
 		uint32_t u32Heigth;
 		uint32_t u32Pages;
+		uint32_t u32Offset;
 	}_intern;
 }st7525_t;
 
 typedef struct{
 	st7525_mode_e Mode;
+	bool bInvertX;
+	bool bInvertY;
+	uint32_t u32Offset;
 	uint32_t u32Width;
 	uint32_t u32Heigth;
 	st7525_frame_rate_e eFrameRate;
