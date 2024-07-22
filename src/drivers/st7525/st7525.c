@@ -96,7 +96,7 @@ static void _reset(st7525_t *st7525){
 
 	    // Reset the Driver
 	    _pin_reset(st7525, _PIN_LOW);
-	    _delay_ms(st7525, 1);
+	    _delay_ms(st7525, 10);
 	    _pin_reset(st7525, _PIN_HIGH);
 	    _delay_ms(st7525, 1000);
 	}
@@ -148,6 +148,7 @@ uint8_t ST7525_Init(st7525_t *st7525, st7525_params_t *params){
 	if (params->bUseExternalFrameBuffer == false){
 		st7525->_intern.pu8FrameBuffer = (uint8_t*)malloc(st7525->_intern.u32FrameSize);
 		assert(st7525->_intern.pu8FrameBuffer != NULL);
+		memset(st7525->_intern.pu8FrameBuffer, 0, st7525->_intern.u32FrameSize);
 	}
 	else{
 		st7525->_intern.pu8FrameBuffer = NULL;
@@ -158,8 +159,8 @@ uint8_t ST7525_Init(st7525_t *st7525, st7525_params_t *params){
 
 	_mtx_lock(st7525);
 //
-	_write_command(st7525, ST7525_CMD_SOFT_RESET);
-	_delay_ms(st7525, 1000);
+//	_write_command(st7525, ST7525_CMD_SOFT_RESET);
+//	_delay_ms(st7525, 1000);
 	// Set Frame rate for maximum
 	_write_command(st7525, ST7525_CMD_SET_FRAME_RATE | st7525->_intern.eFrameRate);
 	// Set Bias to 1/9
@@ -173,6 +174,9 @@ uint8_t ST7525_Init(st7525_t *st7525, st7525_params_t *params){
 	_write_command(st7525, 0x70);
 	// Set Address
 	_set_address(st7525, 0, 0);
+	if (st7525->_intern.pu8FrameBuffer != NULL){
+		_write_data(st7525, st7525->_intern.pu8FrameBuffer, st7525->_intern.u32FrameSize);
+	}
 	// Eanbles the Dispaly
 	_write_command(st7525, ST7525_CMD_SET_DISPLAY_EN | 0x1);
 
@@ -261,8 +265,6 @@ uint8_t ST7525_Write(st7525_t *st7525, uint32_t x, uint32_t y, bool color){
 	heigth = st7525->_intern.u32Heigth;
 	offset = st7525->_intern.u32Offset;
 
-	// offset
-	y = ((y+offset) % st7525->_intern.u32Heigth);
 	//check axis inversion
 	if (st7525->_intern.bInvertX == true){
 		x = (st7525->_intern.u32Width - (x+1));
@@ -270,6 +272,8 @@ uint8_t ST7525_Write(st7525_t *st7525, uint32_t x, uint32_t y, bool color){
 	if (st7525->_intern.bInvertY == true){
 		y = (st7525->_intern.u32Heigth - (y+1));
 	}
+	// offset
+	y = ((y+offset) % st7525->_intern.u32Heigth);
 
 	_mtx_lock(st7525);
 	aPos = x + ((y/8) * width);
