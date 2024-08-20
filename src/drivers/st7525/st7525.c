@@ -96,8 +96,6 @@ static void _reset(st7525_t *st7525){
 
 	    // Reset the Driver
 	    _pin_reset(st7525, _PIN_HIGH);
-		_delay_ms(st7525, 100);
-	    _pin_reset(st7525, _PIN_LOW);
 	    _delay_ms(st7525, 2);
 	    _pin_reset(st7525, _PIN_HIGH);
 	    _delay_ms(st7525, 5);
