@@ -91,14 +91,11 @@ void _set_address(st7525_t *st7525, uint8_t page, uint8_t columns){
 
 static void _reset(st7525_t *st7525){
 	if (st7525->Mode == ST7525_MODE_SPI){
-	    // CS = HIGH
-	    _pin_cs(st7525, _PIN_HIGH);
-
 	    // Reset the Driver
+	    _pin_reset(st7525, _PIN_LOW);
+	    _delay_ms(st7525, 10);
 	    _pin_reset(st7525, _PIN_HIGH);
-	    _delay_ms(st7525, 2);
-	    _pin_reset(st7525, _PIN_HIGH);
-	    _delay_ms(st7525, 5);
+	    _delay_ms(st7525, 10);
 	}
 }
 
@@ -119,6 +116,8 @@ static void _mtx_unlock(st7525_t *st7525){
  */
 
 uint8_t ST7525_Init(st7525_t *st7525, st7525_params_t *params){
+	uint8_t repeat_reset = 2;
+
 	assert(st7525 != NULL);
 	assert(params != NULL);
 	// if your program stuck here, and is the first call of Init
@@ -154,31 +153,41 @@ uint8_t ST7525_Init(st7525_t *st7525, st7525_params_t *params){
 		st7525->_intern.pu8FrameBuffer = NULL;
 	}
 
-	// Reset Display
-	_reset(st7525);
+	// for some reason, we need to perform start process two times
+	// to prevent ST7525 to generate an undesired offset
+	while (repeat_reset > 0){
+		_delay_ms(st7525, 10);
+		// Reset Display
+		_reset(st7525);
+		_delay_ms(st7525, 100);
 
-	_mtx_lock(st7525);
+		_mtx_lock(st7525);
 
-	// Set Frame rate for maximum
-	_write_command(st7525, ST7525_CMD_SET_FRAME_RATE | st7525->_intern.eFrameRate);
-	// Set Bias to 1/9
-	_write_command(st7525, ST7525_CMD_SET_BIAS | 0x3);
-	// Set scan direction to Normal
-	_write_command(st7525, ST7525_CMD_SET_SCAN_DIR | 0x0);
-	// Set DDRAM Strategy
-	_write_command(st7525, ST7525_CMD_SET_RAM_ADDR_CTRL | 0x1);
-	// Set Contrast to 0x79
-	_write_command(st7525, ST7525_CMD_SET_CONTRAST);
-	_write_command(st7525, 0x70);
-	// Set Address
-	_set_address(st7525, 0, 0);
-	if (st7525->_intern.pu8FrameBuffer != NULL){
-		_write_data(st7525, st7525->_intern.pu8FrameBuffer, st7525->_intern.u32FrameSize);
+		// Send Software Reset Command
+		_write_command(st7525, ST7525_CMD_SOFT_RESET);
+		// Set Frame rate for maximum
+		_write_command(st7525, ST7525_CMD_SET_FRAME_RATE | st7525->_intern.eFrameRate);
+		// Set Bias to 1/9
+		_write_command(st7525, ST7525_CMD_SET_BIAS | 0x3);
+		// Set scan direction to Normal
+		_write_command(st7525, ST7525_CMD_SET_SCAN_DIR | 0x0);
+	//	// Set DDRAM Strategy
+		_write_command(st7525, ST7525_CMD_SET_RAM_ADDR_CTRL | 0x1);
+		// Set Contrast to 0x79
+		_write_command(st7525, ST7525_CMD_SET_CONTRAST);
+		_write_command(st7525, 0x70);
+		// Set Address
+		_set_address(st7525, 0, 0);
+		if (st7525->_intern.pu8FrameBuffer != NULL){
+			_write_data(st7525, st7525->_intern.pu8FrameBuffer, st7525->_intern.u32FrameSize);
+		}
+		// Eanbles the Dispaly
+		_write_command(st7525, ST7525_CMD_SET_DISPLAY_EN | 0x1);
+
+		_mtx_unlock(st7525);
+
+		repeat_reset--;
 	}
-	// Eanbles the Dispaly
-	_write_command(st7525, ST7525_CMD_SET_DISPLAY_EN | 0x1);
-
-	_mtx_unlock(st7525);
 
 	st7525->_intern.bInitialized = true;
 
@@ -246,7 +255,7 @@ uint8_t ST7525_Refresh(st7525_t *st7525){
 
 uint8_t ST7525_Write(st7525_t *st7525, uint32_t x, uint32_t y, bool color){
 	uint8_t *FrameBuffer;
-	uint32_t width, heigth, aPos, offset;
+	uint32_t width, aPos, offset;
 
 	assert(st7525 != NULL);
 	assert(st7525->_intern.bInitialized == true);
@@ -260,7 +269,6 @@ uint8_t ST7525_Write(st7525_t *st7525, uint32_t x, uint32_t y, bool color){
 
 	FrameBuffer = st7525->_intern.pu8FrameBuffer;
 	width = st7525->_intern.u32Width;
-	heigth = st7525->_intern.u32Heigth;
 	offset = st7525->_intern.u32Offset;
 
 	//check axis inversion
