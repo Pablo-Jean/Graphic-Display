@@ -96,9 +96,9 @@ static void _reset(st7525_t *st7525){
 
 	    // Reset the Driver
 	    _pin_reset(st7525, _PIN_HIGH);
-		_delay_ms(st7525, 200);
+		_delay_ms(st7525, 100);
 	    _pin_reset(st7525, _PIN_LOW);
-	    _delay_ms(st7525, 5);
+	    _delay_ms(st7525, 2);
 	    _pin_reset(st7525, _PIN_HIGH);
 	    _delay_ms(st7525, 5);
 	}
@@ -158,12 +158,9 @@ uint8_t ST7525_Init(st7525_t *st7525, st7525_params_t *params){
 
 	// Reset Display
 	_reset(st7525);
-	_reset(st7525);
 
 	_mtx_lock(st7525);
-//
-//	_write_command(st7525, ST7525_CMD_SOFT_RESET);
-//	_delay_ms(st7525, 1000);
+
 	// Set Frame rate for maximum
 	_write_command(st7525, ST7525_CMD_SET_FRAME_RATE | st7525->_intern.eFrameRate);
 	// Set Bias to 1/9
