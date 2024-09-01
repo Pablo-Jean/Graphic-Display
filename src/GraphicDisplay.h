@@ -27,7 +27,6 @@
  */
 
 #include <assert.h>
-#include <drivers/st7525/st7525.h>
 #include <math.h>
 #include <stdint.h>
 #include <stdio.h>
