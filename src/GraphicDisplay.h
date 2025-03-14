@@ -27,6 +27,7 @@
  */
 
 #include <assert.h>
+#include <drivers/st7525/st7525.h>
 #include <math.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -228,6 +229,9 @@ typedef void (*fxnGd_mtxUnlock)(void);
  *
  */
 typedef struct{
+	/** @brief Handle of the display. The variable that holds all data of device. */
+	void* pHandle;
+
 	/**
 	 * @brief Sets a value of a pixel on a gived position on the Frame Buffer.
 	 * Please, do not directly write on display, just write on a buffer.
@@ -342,13 +346,9 @@ typedef struct{
 		fxnGd_mtxUnlock mtxUnlock;
 	}fxn;
 
-	/** @brief Display driver, that contains the routines.
+	/** @brief Display driver, that contains the Handler and routines.
 	 * @note Developer must to no change this parameters directly.  */
 	gd_driver_t *disp;
-
-	/** @brief Display handle..
-	 * @note Developer must to no change this parameters directly.  */
-	void* pHandle;
 
 	struct t_intern{
 		/** @brief Size of the Frame Buffer display

@@ -27,6 +27,7 @@
 
 /** Diver for SSD1306 **/
 gd_driver_t _Gd_Driver_SSD1306Attr = {
+		.pHandle = NULL,
 		.fxnSetPixelColor = _SET_PIXEL_COLOR_TYPECAST		SSD1306_Write,
 		.fxnFillFrameBuffer = _FILL_FRAME_BUFFER_TYPEFCAST 	SSD1306_Fill,
 		.fxnRefreshDisp = _REFRESH_DISP_TYPECAST 			SSD1306_Refresh,
@@ -37,6 +38,7 @@ gd_driver_t *Gd_Driver_SSD1306 = &_Gd_Driver_SSD1306Attr;
 
 /** Diver for ST7920 **/
 gd_driver_t _Gd_Driver_ST7920Attr = {
+		.pHandle = NULL,
 		.fxnSetPixelColor = _SET_PIXEL_COLOR_TYPECAST		ST7920_Write,
 		.fxnFillFrameBuffer = _FILL_FRAME_BUFFER_TYPEFCAST 	ST7920_Fill,
 		.fxnRefreshDisp = _REFRESH_DISP_TYPECAST 			ST7920_Refresh,
@@ -47,6 +49,7 @@ gd_driver_t *Gd_Driver_ST7920 = &_Gd_Driver_ST7920Attr;
 
 /** Diver for ST7525 **/
 gd_driver_t _Gd_Driver_ST7525Attr = {
+		.pHandle = NULL,
 		.fxnSetPixelColor = _SET_PIXEL_COLOR_TYPECAST		ST7525_Write,
 		.fxnFillFrameBuffer = _FILL_FRAME_BUFFER_TYPEFCAST 	ST7525_Fill,
 		.fxnRefreshDisp = _REFRESH_DISP_TYPECAST 			ST7525_Refresh,
@@ -61,28 +64,28 @@ gd_driver_t *Gd_Driver_ST7525 = &_Gd_Driver_ST7525Attr;
 
 static void _drv_fill_frame_buffer(gd_t *Gd, gd_color_e color){
 	assert(Gd->disp->fxnFillFrameBuffer != NULL);
-	Gd->disp->fxnFillFrameBuffer(Gd->pHandle, (uint8_t)color);
+	Gd->disp->fxnFillFrameBuffer(Gd->disp->pHandle, (uint8_t)color);
 }
 
 static void _drv_set_pixel(gd_t *Gd, uint32_t x, uint32_t y, gd_color_e color){
 	assert(Gd->disp->fxnSetPixelColor != NULL);
-	Gd->disp->fxnSetPixelColor(Gd->pHandle, x, y, (uint8_t)color);
+	Gd->disp->fxnSetPixelColor(Gd->disp->pHandle, x, y, (uint8_t)color);
 }
 
 static void _drv_set_refresh(gd_t *Gd){
 	assert(Gd->disp->fxnRefreshDisp != NULL);
-	Gd->disp->fxnRefreshDisp(Gd->pHandle);
+	Gd->disp->fxnRefreshDisp(Gd->disp->pHandle);
 }
 
 static void _drv_set_constrat(gd_t *Gd, uint8_t value){
 	if (Gd->disp->fxnSetContrast != NULL){
-		Gd->disp->fxnSetContrast(Gd->pHandle, value);
+		Gd->disp->fxnSetContrast(Gd->disp->pHandle, value);
 	}
 }
 
 static void _drv_set_on(gd_t *Gd, bool On){
 	if (Gd->disp->fxnSetOn != NULL){
-		Gd->disp->fxnSetOn(Gd->pHandle, On);
+		Gd->disp->fxnSetOn(Gd->disp->pHandle, On);
 	}
 }
 
@@ -135,7 +138,7 @@ gd_error_e GD_Init(gd_t *Gd, gd_params_t *params) {
 	Gd->u32Height = params->u32Height;
 	Gd->u32Width = params->u32Width;
 	Gd->disp = params->DisplayDriver;
-	Gd->pHandle = params->DisplayHandle;
+	Gd->disp->pHandle = params->DisplayHandle;
 	Gd->_intern.u32BufferLen = Gd->u32Height * Gd->u32Width / 8;
 
 	// Set default values for screen object
