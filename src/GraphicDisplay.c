@@ -58,6 +58,16 @@ gd_driver_t _Gd_Driver_ST7525Attr = {
 };
 gd_driver_t *Gd_Driver_ST7525 = &_Gd_Driver_ST7525Attr;
 
+/** Diver for ST7565 **/
+gd_driver_t _Gd_Driver_ST7565Attr = {
+		.fxnSetPixelColor = _SET_PIXEL_COLOR_TYPECAST		ST7565_Write,
+		.fxnFillFrameBuffer = _FILL_FRAME_BUFFER_TYPEFCAST 	ST7565_Fill,
+		.fxnRefreshDisp = _REFRESH_DISP_TYPECAST 			ST7565_Refresh,
+		.fxnSetOn = _SET_ON_TYPECASTAT 						NULL,
+		.fxnSetContrast = _SET_CONTRAST_TYPECAST			ST7565_SetContrast
+};
+gd_driver_t *Gd_Driver_ST7565 = &_Gd_Driver_ST7565Attr;
+
 /* Macros */
 
 /* Display Functions */

@@ -39,6 +39,7 @@
 #include "drivers/ssd1306/ssd1306.h"
 #include "drivers/st7920/st7920.h"
 #include "drivers/st7525/st7525.h"
+#include "drivers/st7565/st7565.h"
 
 /*
  * Check if gd_config.h exists, otherwise, we load a 'default' configuration
@@ -430,10 +431,12 @@ typedef struct{
  */
 /** @brief SSD1306 Display Driver pointer. */
 extern gd_driver_t* Gd_Driver_SSD1306;
-/** @brief ST7920 Display Driver poointer. */
+/** @brief ST7920 Display Driver pointer. */
 extern gd_driver_t* Gd_Driver_ST7920;
-/** @brief ST7920 Display Driver poointer. */
+/** @brief ST7920 Display Driver pointer. */
 extern gd_driver_t* Gd_Driver_ST7525;
+/** @brief ST7565 Display Driver pointer. */
+extern gd_driver_t* Gd_Driver_ST7565;
 /**
   * @}
   */
